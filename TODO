@@ -1,0 +1,87 @@
+/** Non-exhaustive list of requirements **/
+
+"""
+    [ ] -> Not done
+    [~] -> In progress
+    [/] -> Need tests
+    [X] -> Done
+"""
+
+1           EDITOR:
+1.0         |---GUI:
+1.0.0       |   |---- All loaded tiles:                                     [ ]
+1.0.1       |   |---- A map:                                                [ ]
+1.0.2       |   |---- A toolbox:                                            [ ]
+1.0.3       |   #---- A menu:                                               [ ]
+1.1         |---SPRITE:
+1.1.0       |   |---- Background tile:                                      [ ]
+1.1.1       |   |---- Foreground tile:                                      [ ]
+1.1.2       |   #---- Walkable option:                                      [ ]
+1.2         |---CHARACTER:
+1.2.0       |   |---HERO:
+1.2.0.0     |   |   #---- Spawn position:                                   [ ]
+1.2.1       |   |---NPC:
+1.2.1.0     |   |   #---- Dialogue:                                         [ ]
+1.2.2       |   |---- Position                                              [ ]
+1.2.3       |   |---- Sprites for all directions:                           [ ]
+1.2.4       |   |---- Idle:                                                 [ ]
+1.2.5       |   |---- move left:                                            [ ]
+1.2.6       |   |---- move right:                                           [ ]
+1.2.7       |   |---- move north:                                           [ ]
+1.2.8       |   #---- move south:                                           [ ]
+1.3         |---FILE:
+1.3.0       |   |---WORLD FILE:
+1.3.0.0     |   |   |   CHARACTER:
+1.3.0.0.0   |   |   |   |---- Position:                                     [ ]
+1.3.0.0.1   |   |   |   #---- Dialogue:                                     [ ]
+1.3.0.1     |   |   |---- Files in './tests/worlds':                        [ ]
+1.3.0.2     |   |   |---- A single map:                                     [ ]
+1.3.0.3     |   |   |---- Scripts:                                          [ ]
+1.3.0.4     |   |   |---- Paths to sprites:                                 [ ]
+1.3.0.5     |   |   |---- Several maps:                                     [ ]
+1.3.0.6     |   |   #---- Parsing:                                          [ ]
+1.3.1       |   #---TILE:
+1.3.1.0     |       #--- Additional files in './tests/resources':           [ ]
+1.4         |---TOOLS:
+1.4.0       |   |---FOREGROUND TILE:
+1.4.0.0     |   |   |---- Place foreground tile:                            [ ]
+1.4.0.1     |   |   |---- Move foreground tile:                             [ ]
+1.4.0.2     |   |   #---- Delete foreground tile:                           [ ]
+1.4.1       |   |---BACKGROUND TILE:
+1.4.1.0     |   |   |---- Place background tile:                            [ ]
+1.4.1.1     |   |   |---- Move background tile:                             [ ]
+1.4.1.2     |   |   #---- Delete background tile:                           [ ]
+1.4.2       |   |---GENERAL TILE:
+1.4.2.0     |   |   |---- Set as walkable:                                  [ ]
+1.4.2.1     |   |   |---- Set as not walkable:                              [ ]
+1.4.2.2     |   |   |---- Place NPC:                                        [ ]
+1.4.2.3     |   |   |---- Remove NPC:                                       [ ]
+1.4.2.4     |   |   |---- Place teleporter:                                 [ ]
+1.4.2.5     |   |   #---- Remove teleporter:                                [ ]
+1.4.3       |   #---SELECTION:
+1.4.3.0     |       |---- Select rectangle:                                 [ ]
+1.4.3.1     |       |---- Unselect selection:                               [ ]
+1.4.3.2     |       |---- Apply modification:                               [ ]
+1.4.3.3     |       #---- Highlighted selection:                            [ ]
+1.5         |---Map:
+1.5.0       |   |---- Multiple map in project:                              [ ]
+1.5.1       |   |---- User can switch between map:                          [ ]
+1.5.2       |   #---- Large map displayed with scrollbar:                   [ ]
+1.6         #---HISTORY:
+1.6.0           |---- Stack of action:                                      [ ]
+1.6.1           |---- Undo:                                                 [ ]
+1.6.2           #---- Redo:                                                 [ ]
+2           ENGINE:
+2.0         |---MAP:
+2.0.0       |   |---- Display tiles:                                        [ ]
+2.0.1       |   |---- Handle collisions:                                    [ ]
+2.0.2       |   #---- link maps:                                            [ ]
+2.1         |---PLAYER:
+2.1.0       |   |---- Can move:                                             [ ]
+2.1.1       |   |---- Can interact with NPC:                                [ ]
+2.1.2       |   |---- Idle:                                                 [ ]
+2.1.3       |   #---- Input in README:                                      [ ]
+2.2         |---NPC:
+2.2.0       |   |---- Idle:                                                 [ ]
+2.2.1       |   #---- Default dialogue:                                     [ ]
+2.3         #---- Game can be paused:                                       [ ]
