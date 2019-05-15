@@ -21,7 +21,10 @@ public class MainController {
         });
         editor.mapPane.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                System.out.println("X: " + e.getX() / 16 + ", Y: " + e.getY() / 16);
+                int x = e.getX() / 16;
+                int y = e.getY() / 16;
+                System.out.println("X: " + x + ", Y: " + y);
+                editorState.mouseClicked(x, y, editor.mapPane);
             }
         });
     }

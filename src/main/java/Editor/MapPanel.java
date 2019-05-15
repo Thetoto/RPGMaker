@@ -6,13 +6,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class MapPanel extends JPanel {
+public class MapPanel extends JLayeredPane {
 
     BufferedImage bi;
+    BufferedImage selection_layout;
 
     public MapPanel() {
         bi = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
-        this.setBackground(Color.BLUE);
+        selection_layout = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
+
+        JLabel Limg = new JLabel(new ImageIcon(selection_layout));
+        Limg.setBounds(0, -90, this.getWidth(), this.getHeight());
+        this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT,JLayeredPane.DEFAULT_LAYER);
     }
 
     public void set_image(ImportedTile img) {
@@ -30,7 +35,24 @@ public class MapPanel extends JPanel {
         g.dispose();
 
         JLabel Limg = new JLabel(new ImageIcon(bi));
-        this.add(Limg);
+        this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT, 1);
+        this.repaint();
+    }
+
+    public void show_selection(int x, int y) {
+        this.remove(JLayeredPane.DEFAULT_LAYER);
+        selection_layout = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g = selection_layout.createGraphics();
+        g.setColor(new Color(200, 0, 0, 50));
+        g.drawRect(x * 16, y * 16, 16, 16);
+        g.fillRect(x * 16, y * 16, 16, 16);
+        g.dispose();
+
+        JLabel Limg = new JLabel(new ImageIcon(selection_layout));
+        Limg.setBounds(0, 0, this.getWidth(), this.getHeight());
+
+        this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT,JLayeredPane.DEFAULT_LAYER);
         this.repaint();
     }
 }
