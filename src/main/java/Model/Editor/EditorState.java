@@ -7,11 +7,13 @@ import java.awt.*;
 import java.util.Observable;
 
 public class EditorState extends Observable {
+    public ToolsState toolsState;
     public String text;
     public Map map;
     public Point selection;
 
     public EditorState() {
+        toolsState = new ToolsState();
         text = "Button";
         map = new Map(new Dimension(20, 20));
         selection = null;

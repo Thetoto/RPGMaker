@@ -14,7 +14,7 @@ public class Editor extends JFrame implements Observer {
 
     public TilesPanel tilesPane;
     public MapPanel mapPane;
-    public JPanel toolsPane;
+    public ToolsPanel toolsPane;
 
     public TopBar topBar;
 
@@ -38,12 +38,8 @@ public class Editor extends JFrame implements Observer {
         tilesPane = new TilesPanel();
         mapPane = new MapPanel();
 
-        toolsPane = new JPanel();
+        toolsPane = new ToolsPanel();
         toolsPane.setBackground(Color.GREEN);
-
-        tmpButton = new JButton("click");
-        toolsPane.add(tmpButton);
-
 
         mainPane = new JPanel();
         mainPane.setLayout(new BorderLayout());
@@ -54,7 +50,7 @@ public class Editor extends JFrame implements Observer {
 
         this.setContentPane(mainPane);
 
-        setVisible(true);
+        this.setVisible(true);
     }
 
     @Override
@@ -62,7 +58,7 @@ public class Editor extends JFrame implements Observer {
         menuBar.setVisible(flag);
 
         mapPane.setVisible(flag);
-        toolsPane.setVisible(flag);
+
         tilesPane.setVisible(flag);
         topBar.setVisible(flag);
 
