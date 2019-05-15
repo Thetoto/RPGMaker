@@ -8,4 +8,8 @@ public class Tile {
     public Tile(BufferedImage image) {
         this.image = image;
     }
+
+    public BufferedImage get() {
+        return image;
+    }
 }
