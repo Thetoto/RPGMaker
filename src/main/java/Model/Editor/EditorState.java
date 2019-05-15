@@ -10,7 +10,7 @@ public class EditorState extends Observable {
 
     public void tmpAction(String new_text) {
         text = new_text;
-
+        setChanged();
         notifyObservers(this);
     }
 }
