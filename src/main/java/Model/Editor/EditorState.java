@@ -9,7 +9,7 @@ import java.util.Observable;
 public class EditorState extends Observable {
     public String text;
     public Map map;
-    Point selection;
+    public Point selection;
 
     public EditorState() {
         text = "Button";
@@ -25,6 +25,7 @@ public class EditorState extends Observable {
 
     public void mouseClicked(int x, int y, MapPanel mapPanel) {
         selection = new Point(x, y);
-        mapPanel.show_selection(x, y);
+        setChanged();
+        notifyObservers("mouseClicked");
     }
 }
