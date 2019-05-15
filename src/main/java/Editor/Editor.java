@@ -16,6 +16,8 @@ public class Editor extends JFrame implements Observer {
     public MapPanel mapPane;
     public JPanel toolsPane;
 
+    public TopBar topBar;
+
     public JButton tmpButton;
 
     public Editor() {
@@ -31,6 +33,7 @@ public class Editor extends JFrame implements Observer {
         menuBar.add(new JMenu("coucou"));
         this.setJMenuBar(menuBar);
 
+        topBar = new TopBar();
 
         tilesPane = new TilesPanel();
         mapPane = new MapPanel();
@@ -41,26 +44,30 @@ public class Editor extends JFrame implements Observer {
         tmpButton = new JButton("click");
         toolsPane.add(tmpButton);
 
+
         mainPane = new JPanel();
         mainPane.setLayout(new BorderLayout());
         mainPane.add(tilesPane, BorderLayout.WEST);
         mainPane.add(mapPane, BorderLayout.CENTER);
         mainPane.add(toolsPane, BorderLayout.EAST);
+        mainPane.add(topBar, BorderLayout.NORTH);
 
         this.setContentPane(mainPane);
 
-        setAllVisible();
+        setVisible(true);
     }
 
-    private void setAllVisible() {
-        menuBar.setVisible(true);
+    @Override
+    public void setVisible(boolean flag) {
+        menuBar.setVisible(flag);
 
-        mapPane.setVisible(true);
-        toolsPane.setVisible(true);
-        tilesPane.setVisible(true);
+        mapPane.setVisible(flag);
+        toolsPane.setVisible(flag);
+        tilesPane.setVisible(flag);
+        topBar.setVisible(flag);
 
-        mainPane.setVisible(true);
-        this.setVisible(true);
+        mainPane.setVisible(flag);
+        super.setVisible(flag);
     }
 
     public void update(Observable observable, Object o) {

@@ -8,11 +8,11 @@ public class TilesPanel extends JPanel {
     public JPanel forgroundTab;
     public JPanel backgroundTab;
 
-    public JTree treePanel;
+    public TreePanel treePanel;
 
     public TilesPanel() {
         this.setBackground(Color.RED);
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.setLayout(new GridLayout(2, 1));
 
         forgroundTab = new JPanel();
         forgroundTab.setBackground(Color.CYAN);
@@ -23,10 +23,10 @@ public class TilesPanel extends JPanel {
         tilesTypePanel.add("Background", backgroundTab);
         tilesTypePanel.add("Forground", forgroundTab);
 
-        treePanel = new JTree();
+        treePanel = new TreePanel();
 
-        this.add("Tiles Tab", tilesTypePanel);
-        this.add("Tree", treePanel);
+        this.add(tilesTypePanel);
+        this.add(treePanel);
     }
 
     @Override
