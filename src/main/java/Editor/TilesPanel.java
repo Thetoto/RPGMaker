@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TilesPanel extends JPanel {
-    private JTabbedPane tilesTypePanel;
-    private JPanel forgroundTab;
-    private JPanel backgroundTab;
+    public JTabbedPane tilesTypePanel;
+    public JPanel forgroundTab;
+    public JPanel backgroundTab;
 
-    private JTree treePanel;
+    public JTree treePanel;
 
     public TilesPanel() {
         this.setBackground(Color.RED);

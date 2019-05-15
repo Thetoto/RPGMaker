@@ -1,5 +1,7 @@
 package Editor;
 
+import Model.Editor.EditorState;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
@@ -7,12 +9,14 @@ import java.util.Observer;
 
 public class Editor extends JFrame implements Observer {
 
-    private JMenuBar menuBar;
-    private JPanel mainPane;
+    public JMenuBar menuBar;
+    public JPanel mainPane;
 
-    private TilesPanel tilesPane;
-    private MapPanel mapPane;
-    private JPanel toolsPane;
+    public TilesPanel tilesPane;
+    public MapPanel mapPane;
+    public JPanel toolsPane;
+
+    public JButton tmpButton;
 
     public Editor() {
         this.setSize(1080,720);
@@ -33,6 +37,9 @@ public class Editor extends JFrame implements Observer {
 
         toolsPane = new JPanel();
         toolsPane.setBackground(Color.GREEN);
+
+        tmpButton = new JButton("click");
+        toolsPane.add(tmpButton);
 
         mainPane = new JPanel();
         mainPane.setLayout(new BorderLayout());
@@ -57,6 +64,9 @@ public class Editor extends JFrame implements Observer {
     }
 
     public void update(Observable observable, Object o) {
-
+        if (o instanceof EditorState) {
+            EditorState obj = (EditorState)o;
+            tmpButton.setText(obj.text);
+        }
     }
 }
