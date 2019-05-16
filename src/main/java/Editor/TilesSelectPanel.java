@@ -1,20 +1,23 @@
 package Editor;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TilesSelectPanel extends JPanel {
-    ArrayList<JButton> buttons = new ArrayList<>();
-
+    Map<String, JButton> buttons = new HashMap<>();
     public TilesSelectPanel() {
     }
 
-    @Override
-    public Component add(Component component) {
-        if (component instanceof JButton) {
-            buttons.add((JButton)component);
+    public void addTile(String name, JButton button) {
+        buttons.put(name, button);
+        this.add(button);
+    }
+
+    public void clean() {
+        for (JButton b : buttons.values()) {
+            this.remove(b);
         }
-        return super.add(component);
+        buttons.clear();
     }
 }

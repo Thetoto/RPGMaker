@@ -1,18 +1,13 @@
 package Editor;
 
 import Model.Editor.ImportedTile;
+import Model.Editor.TilesState;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.stream.Stream;
 
 public class TilesPanel extends JPanel implements Observer {
     public JTabbedPane tilesTypePanel;
@@ -30,8 +25,6 @@ public class TilesPanel extends JPanel implements Observer {
         foregroundTab.setBackground(Color.CYAN);
         backgroundTab = new TilesSelectPanel();
         backgroundTab.setBackground(Color.MAGENTA);
-        initTiles("background", backgroundTab);
-        initTiles("foreground", foregroundTab);
 
         tilesTypePanel = new JTabbedPane();
         tilesTypePanel.add("Background", backgroundTab);
@@ -55,34 +48,31 @@ public class TilesPanel extends JPanel implements Observer {
         treePanel.setVisible(aFlag);
     }
 
-    public void initTiles(String path, JPanel panel) {
-        try (Stream<Path> paths = Files.walk(Paths.get(ClassLoader.getSystemClassLoader().getResource(path).getPath()))) {
-            paths.filter(Files::isRegularFile).forEach((file) -> {
-                JButton button =  new JButton();
-
-                BufferedImage img = null;
-                try {
-                    img = ImageIO.read(file.toFile());
-                    button.setIcon(new ImageIcon(img));
-
-                    panel.add(button);
-                    button.setPreferredSize(new Dimension(img.getWidth(), img.getHeight()));
-                } catch (IOException e) {
-                    System.err.println("Can't load this file : " + file.getFileName());
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void update(Observable observable, Object o) {
-        if (o instanceof ImportedTile) {
-            ImportedTile obj = (ImportedTile)o;
-            BufferedImage imgButton = obj.getFullImage();
-            JButton button =  new JButton();
-            button.setIcon(new ImageIcon(imgButton));
+        if (observable instanceof TilesState) {
+            backgroundTab.clean();
+            foregroundTab.clean();
+            TilesState obj = (TilesState)observable;
+            for (String k : obj.backgroundTiles.keySet()) {
+                BufferedImage icon = obj.backgroundTiles.get(k).get();
+                System.out.println(k);
+                JButton button = new JButton();
+                button.setIcon(new ImageIcon(icon));
+                button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));
+
+                backgroundTab.addTile(k, button);
+            }
+            for (String k : obj.foregroundTiles.keySet()) {
+                ImportedTile fore = obj.foregroundTiles.get(k);
+                BufferedImage icon = fore.getFullImage();
+
+                JButton button = new JButton();
+                button.setIcon(new ImageIcon(icon));
+                button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));
+
+                foregroundTab.addTile(k, button);
+            }
         }
     }
 }

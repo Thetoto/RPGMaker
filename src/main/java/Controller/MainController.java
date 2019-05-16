@@ -24,8 +24,10 @@ public class MainController {
         editorState = new EditorState();
 
         editorState.addObserver(editor);
+        editorState.tilesState.addObserver(editor.tilesPane);
 
         toolsController = new ToolsController(editor.toolsPane, editorState.toolsState);
+        editorState.tilesState.addDefaultTiles();
 
         editor.mapPane.addMouseCompleteListener(new MouseAdapter() {
             Point mouseEnter = null;

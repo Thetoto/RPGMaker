@@ -1,13 +1,11 @@
 package Editor;
 
 import Model.Editor.EditorState;
-import com.google.gson.Gson;
+import Tools.Tools;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -100,7 +98,7 @@ public class Editor extends JFrame implements Observer {
     public static JButton initIconButton(String path, JPanel panel) {
         JButton button =  new JButton();
         try {
-            Image img = ImageIO.read(ClassLoader.getSystemClassLoader().getResource(path));
+            Image img = ImageIO.read(Tools.getFileFromRessources(path));
 
             button.setIcon(new ImageIcon(img));
         } catch (Exception ex) {

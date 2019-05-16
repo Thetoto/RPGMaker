@@ -14,6 +14,7 @@ import java.util.Observable;
 
 public class EditorState extends Observable {
     public ToolsState toolsState;
+    public TilesState tilesState;
     public String text;
     public Map map;
 
@@ -23,6 +24,7 @@ public class EditorState extends Observable {
 
     public EditorState() {
         toolsState = new ToolsState();
+        tilesState = new TilesState();
         text = "Button";
         map = new Map(new Dimension(20, 20), "Default");
         selectionIn = null;

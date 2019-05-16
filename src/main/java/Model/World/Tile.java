@@ -9,7 +9,13 @@ public class Tile {
     transient BufferedImage refImage = null;
     Point position;
 
+    public Tile(String name, BufferedImage image) {
+        this.image = name;
+        this.refImage = image;
+    }
+
     public Tile(BufferedImage image) {
+        this.image = "Internal Image";
         this.refImage = image;
     }
 
