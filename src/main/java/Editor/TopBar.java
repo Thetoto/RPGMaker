@@ -1,6 +1,5 @@
 package Editor;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,27 +14,13 @@ public class TopBar extends JPanel {
 
     public TopBar() {
         this.setBackground(Color.LIGHT_GRAY);
-        loadButton = initButton("load.png");
-        saveButton = initButton("save.png");
-        undoButton = initButton("undo.png");
-        redoButton = initButton("redo.png");
-        createButton = initButton("create.png");
-        toolsButton = initButton("tools.png");
-        showGridButton = initButton("grid.png");
-    }
-
-    private JButton initButton(String path) {
-        JButton button =  new JButton();
-        try {
-            Image img = ImageIO.read(ClassLoader.getSystemClassLoader().getResource(path));
-
-            button.setIcon(new ImageIcon(img));
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        this.add(button);
-        button.setPreferredSize(new Dimension(32,32));
-        return button;
+        loadButton = Editor.initIconButton("load.png", this);
+        saveButton = Editor.initIconButton("save.png", this);
+        undoButton = Editor.initIconButton("undo.png", this);
+        redoButton = Editor.initIconButton("redo.png", this);
+        createButton = Editor.initIconButton("create.png", this);
+        toolsButton = Editor.initIconButton("tools.png", this);
+        showGridButton = Editor.initIconButton("grid.png", this);
     }
 
     @Override

@@ -2,6 +2,7 @@ package Editor;
 
 import Model.Editor.EditorState;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
@@ -86,5 +87,19 @@ public class Editor extends JFrame implements Observer {
                 tilesPane.treePanel.setDir(obs.dir);
             }
         }
+    }
+
+    public static JButton initIconButton(String path, JPanel panel) {
+        JButton button =  new JButton();
+        try {
+            Image img = ImageIO.read(ClassLoader.getSystemClassLoader().getResource(path));
+
+            button.setIcon(new ImageIcon(img));
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        panel.add(button);
+        button.setPreferredSize(new Dimension(32,32));
+        return button;
     }
 }
