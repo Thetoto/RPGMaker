@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TilesSelectPanel extends JPanel {
-    Map<String, JButton> buttons = new HashMap<>();
+    public Map<String, JButton> buttons = new HashMap<>();
+
     public TilesSelectPanel() {
     }
 

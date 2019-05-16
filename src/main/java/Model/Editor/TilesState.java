@@ -17,10 +17,18 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class TilesState extends Observable {
+    public boolean currentIsForeground;
+    public String currentTile;
+
     public Map<String, Tile> backgroundTiles = new HashMap<>();
     public Map<String, ImportedTile> foregroundTiles = new HashMap<>();
 
     public TilesState() {
+    }
+
+    public void setCurrentTile(String currentTile, boolean isForeground) {
+        this.currentTile = currentTile;
+        this.currentIsForeground = isForeground;
     }
 
     public void addDefaultTiles() {

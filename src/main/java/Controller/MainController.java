@@ -2,6 +2,7 @@ package Controller;
 
 import Editor.Editor;
 import Model.Editor.EditorState;
+import Model.Editor.ToolsEnum;
 import Model.World.Map;
 import Model.World.World;
 import com.google.gson.Gson;
@@ -18,16 +19,17 @@ public class MainController {
     EditorState editorState;
 
     ToolsController toolsController;
+    TilesController tilesController;
+
     public MainController() {
         editor = new Editor();
 
         editorState = new EditorState();
 
         editorState.addObserver(editor);
-        editorState.tilesState.addObserver(editor.tilesPane);
 
         toolsController = new ToolsController(editor.toolsPane, editorState.toolsState);
-        editorState.tilesState.addDefaultTiles();
+        tilesController = new TilesController(editor.tilesPane, editorState.tilesState, toolsController);
 
         editor.mapPane.addMouseCompleteListener(new MouseAdapter() {
             Point mouseEnter = null;
@@ -59,9 +61,9 @@ public class MainController {
 
         editor.topBar.loadButton.addActionListener(e -> editorState.getWorld());
 
-        editor.topBar.toolsButton.addActionListener(actionEvent -> toolsController.setToolBox());
+        editor.topBar.toolsButton.addActionListener(actionEvent -> toolsController.setTool(ToolsEnum.TOOLBOX));
 
-        editor.topBar.createButton.addActionListener(e-> {
+        editor.topBar.createButton.addActionListener(e -> {
             if (editorState.world == null) {
                 editorState.defaultWorld();
             } else {
@@ -69,10 +71,6 @@ public class MainController {
             }
         });
 
-        editor.topBar.saveButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                editorState.saveWorld();
-            }
-        });
+        editor.topBar.saveButton.addActionListener(e -> editorState.saveWorld());
     }
 }

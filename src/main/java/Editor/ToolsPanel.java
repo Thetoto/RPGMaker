@@ -39,7 +39,10 @@ public class ToolsPanel extends JPanel implements Observer {
             case TOOLBOX:
                 toolBoxPanel.setVisible(true);
                 break;
+            case TILES:
+                break;
             case NONE:
+                setVisible(false);
                 break;
         }
     }
