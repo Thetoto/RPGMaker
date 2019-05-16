@@ -53,7 +53,7 @@ public class TilesPanel extends JPanel {
 
     public void initTiles(String path, JPanel panel) {
         try (Stream<Path> paths = Files.walk(Paths.get(ClassLoader.getSystemClassLoader().getResource(path).getPath()))) {
-            paths.forEach((file) -> {
+            paths.filter(Files::isRegularFile).forEach((file) -> {
                 JButton button =  new JButton();
 
                 BufferedImage img = null;
@@ -64,7 +64,7 @@ public class TilesPanel extends JPanel {
                     panel.add(button);
                     button.setPreferredSize(new Dimension(img.getWidth(), img.getHeight()));
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.err.println("Can't load this file : " + file.getFileName());
                 }
             });
         } catch (IOException e) {

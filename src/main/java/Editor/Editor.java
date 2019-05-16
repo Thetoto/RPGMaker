@@ -24,6 +24,11 @@ public class Editor extends JFrame implements Observer {
     public Editor() {
         this.setSize(1080,720);
         this.setTitle("BibleRPG - Premium Edition");
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUpEditor();
     }
