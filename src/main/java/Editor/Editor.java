@@ -74,22 +74,10 @@ public class Editor extends JFrame implements Observer {
     }
 
     public void update(Observable observable, Object o) {
-        EditorState obs = (EditorState) observable;
-        if (o instanceof EditorState) {
-            EditorState obj = (EditorState)o;
-            tmpButton.setText(obj.text);
-        }
-        if (o instanceof String){
+        if (o instanceof String && observable instanceof EditorState){
             String arg = (String) o;
-            if (arg.equals("mouseOver")) {
-                EditorState coords = (EditorState) observable;
-                //mapPane.show_selection(coords.selectionIn);
-            }
-            if (arg.equals("mouseClicked")) {
-                EditorState coords = (EditorState) observable;
-                mapPane.show_selection(coords.selectionIn, coords.selectionOut);
-            }
-            else if (arg.equals("New World")) {
+            EditorState obs = (EditorState) observable;
+            if (arg.equals("New World")) {
                 tilesPane.treePanel.show_world(obs.world);
             }
         }

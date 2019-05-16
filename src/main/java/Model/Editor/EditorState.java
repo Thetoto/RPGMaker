@@ -14,36 +14,23 @@ import java.io.IOException;
 import java.util.Observable;
 
 public class EditorState extends Observable {
+    public static EditorState instance;
+
     public ToolsState toolsState;
     public TilesState tilesState;
-    public String text;
-    public Map map;
+    public MapState mapState;
 
-    public Point selectionIn;
-    public Point selectionOut;
     public World world;
 
     public EditorState() {
+        instance = this;
         toolsState = new ToolsState();
         tilesState = new TilesState();
-        text = "Button";
-        map = new Map(new Dimension(20, 20), "Default");
-        selectionIn = null;
-        selectionOut = null;
+        mapState = new MapState();
     }
 
-    public void tmpAction(String new_text) {
-        text = new_text;
-        setChanged();
-        notifyObservers(this);
-    }
-
-    public void mouseClicked(Point in, Point out) {
-        this.selectionIn = in;
-        this.selectionOut = out;
-
-        setChanged();
-        notifyObservers("mouseClicked");
+    public static EditorState getInstance() {
+        return instance;
     }
 
     public void getWorld() {
@@ -61,7 +48,8 @@ public class EditorState extends Observable {
 
     public void defaultWorld() {
         world = new World("New World");
-        world.addMap(new Map(new Dimension(100, 100), "Nice"));
+        world.addMap(new Map(new Dimension(20, 20), "Nice"));
+        mapState.setNewMap(world.getMaps().get(0));
         setChanged();
         notifyObservers("New World");
     }
@@ -69,4 +57,5 @@ public class EditorState extends Observable {
     public void saveWorld() {
         FileManager.saveFile(world);
     }
+
 }

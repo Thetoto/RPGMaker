@@ -7,7 +7,6 @@ public class Tile {
     String image;
     // transient = not serialized in Gson
     transient BufferedImage refImage = null;
-    Point position;
 
     public Tile(String name, BufferedImage image) {
         this.image = name;

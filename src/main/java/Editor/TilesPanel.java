@@ -65,7 +65,7 @@ public class TilesPanel extends JPanel implements Observer {
             }
             for (String k : obj.foregroundTiles.keySet()) {
                 ImportedTile fore = obj.foregroundTiles.get(k);
-                BufferedImage icon = fore.getFullImage();
+                BufferedImage icon = fore.get();
 
                 JButton button = new JButton();
                 button.setIcon(new ImageIcon(icon));

@@ -17,8 +17,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class TilesState extends Observable {
-    public boolean currentIsForeground;
-    public String currentTile;
+    public Tile currentTile;
 
     public Map<String, Tile> backgroundTiles = new HashMap<>();
     public Map<String, ImportedTile> foregroundTiles = new HashMap<>();
@@ -27,8 +26,11 @@ public class TilesState extends Observable {
     }
 
     public void setCurrentTile(String currentTile, boolean isForeground) {
-        this.currentTile = currentTile;
-        this.currentIsForeground = isForeground;
+        if (isForeground) {
+            this.currentTile = foregroundTiles.get(currentTile);
+        } else {
+            this.currentTile = backgroundTiles.get(currentTile);
+        }
     }
 
     public void addDefaultTiles() {
@@ -44,10 +46,10 @@ public class TilesState extends Observable {
         try {
             BufferedImage img = ImageIO.read(file.toFile());
             if (isForeground) {
-                ImportedTile fore = new ImportedTile(img);
+                ImportedTile fore = new ImportedTile(file.getFileName().toString(), img);
                 foregroundTiles.put(file.getFileName().toString(), fore);
             } else {
-                Tile back = new Tile(img);
+                Tile back = new Tile(file.getFileName().toString(), img);
                 backgroundTiles.put(file.getFileName().toString(), back);
             }
         } catch (IOException e) {
