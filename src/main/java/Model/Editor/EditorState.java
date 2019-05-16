@@ -1,5 +1,6 @@
 package Model.Editor;
 
+import Editor.FileManager;
 import Model.World.Map;
 import Model.World.World;
 import com.google.gson.Gson;
@@ -46,23 +47,14 @@ public class EditorState extends Observable {
     }
 
     public void getWorld() {
-        JFrame frame = new JFrame();
-        JFileChooser fc = new JFileChooser();
-        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        frame.setContentPane(fc);
-        int res = fc.showOpenDialog(frame);
-        if (res == JFileChooser.APPROVE_OPTION) {
-            File file = fc.getSelectedFile();
-            Gson gson = new Gson();
-            System.out.println(file.toString() + " " + gson);
-            try {
-                world = gson.fromJson(new FileReader(file), World.class);
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
+        File file = FileManager.getFile();
+        Gson gson = new Gson();
+        System.out.println(file.toString() + " " + gson);
+        try {
+            world = gson.fromJson(new FileReader(file), World.class);
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-        frame.setVisible(false);
-        frame.dispose();
         setChanged();
         notifyObservers("New World");
     }
@@ -75,25 +67,6 @@ public class EditorState extends Observable {
     }
 
     public void saveWorld() {
-        File file = null;
-        JFrame frame = new JFrame();
-        JFileChooser fc = new JFileChooser();
-        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        frame.setContentPane(fc);
-        int res = fc.showSaveDialog(frame);
-        if (res == JFileChooser.APPROVE_OPTION) {
-            file = fc.getSelectedFile();
-                Gson gson = new Gson();
-                String world_json = gson.toJson(world);
-                try {
-                    file.createNewFile();
-                    FileOutputStream writer = new FileOutputStream(file);
-                    writer.write(world_json.getBytes());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-        }
-        frame.setVisible(false);
-        frame.dispose();
+        FileManager.saveFile(world);
     }
 }
