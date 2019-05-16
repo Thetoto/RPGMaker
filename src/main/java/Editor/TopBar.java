@@ -14,6 +14,7 @@ public class TopBar extends JPanel {
     public JButton showGridButton;
 
     public TopBar() {
+        this.setBackground(Color.LIGHT_GRAY);
         loadButton = initButton("load.png");
         saveButton = initButton("save.png");
         undoButton = initButton("undo.png");

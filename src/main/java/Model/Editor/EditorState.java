@@ -1,9 +1,10 @@
 package Model.Editor;
 
-import Editor.MapPanel;
 import Model.World.Map;
 
+import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.Observable;
 
 public class EditorState extends Observable {
@@ -13,6 +14,7 @@ public class EditorState extends Observable {
 
     public Point selectionIn;
     public Point selectionOut;
+    public File dir;
 
     public EditorState() {
         toolsState = new ToolsState();
@@ -34,5 +36,20 @@ public class EditorState extends Observable {
 
         setChanged();
         notifyObservers("mouseClicked");
+    }
+
+    public void getDir() {
+        JFrame frame = new JFrame();
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        frame.setContentPane(fc);
+        int res = fc.showOpenDialog(frame);
+        if (res == JFileChooser.APPROVE_OPTION) {
+            dir = fc.getSelectedFile();
+        }
+        frame.setVisible(false);
+        frame.dispose();
+        setChanged();
+        notifyObservers("New Directory Selected");
     }
 }

@@ -39,7 +39,12 @@ public class MainController {
                 System.out.println("In  | X: " + mouseOut.x + ", Y: " + mouseOut.y);
                 editorState.mouseClicked(mouseEnter, mouseOut);
             }
+        });
 
+        editor.topBar.loadButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                editorState.getDir();
+            }
         });
 
         editor.topBar.toolsButton.addActionListener(new ActionListener() {

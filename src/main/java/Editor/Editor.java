@@ -67,6 +67,7 @@ public class Editor extends JFrame implements Observer {
     }
 
     public void update(Observable observable, Object o) {
+        EditorState obs = (EditorState) observable;
         if (o instanceof EditorState) {
             EditorState obj = (EditorState)o;
             tmpButton.setText(obj.text);
@@ -80,6 +81,9 @@ public class Editor extends JFrame implements Observer {
             if (arg.equals("mouseClicked")) {
                 EditorState coords = (EditorState) observable;
                 mapPane.show_selection(coords.selectionIn, coords.selectionOut);
+            }
+            else if (arg.equals("New Directory Selected")) {
+                tilesPane.treePanel.setDir(obs.dir);
             }
         }
     }
