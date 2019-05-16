@@ -67,17 +67,9 @@ public class MainController {
             }
         });
 
-        editor.topBar.saveButton.addActionListener(e -> {
-            Gson gson = new Gson();
-            String res = gson.toJson(editorState.world);
-
-            try {
-                File file = new File("test.wrld");
-                file.createNewFile();
-                FileOutputStream writer = new FileOutputStream(file);
-                writer.write(res.getBytes());
-            } catch (IOException ex) {
-                ex.printStackTrace();
+        editor.topBar.saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                editorState.saveWorld();
             }
         });
     }

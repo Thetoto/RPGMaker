@@ -6,11 +6,10 @@ import com.google.gson.Gson;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.IOException;
 import java.util.Observable;
 
 public class EditorState extends Observable {
@@ -71,5 +70,28 @@ public class EditorState extends Observable {
         world.addMap(new Map(new Dimension(100, 100), "Nice"));
         setChanged();
         notifyObservers("New World");
+    }
+
+    public void saveWorld() {
+        File file = null;
+        JFrame frame = new JFrame();
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        frame.setContentPane(fc);
+        int res = fc.showSaveDialog(frame);
+        if (res == JFileChooser.APPROVE_OPTION) {
+            file = fc.getSelectedFile();
+                Gson gson = new Gson();
+                String world_json = gson.toJson(world);
+                try {
+                    file.createNewFile();
+                    FileOutputStream writer = new FileOutputStream(file);
+                    writer.write(world_json.getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+        frame.setVisible(false);
+        frame.dispose();
     }
 }

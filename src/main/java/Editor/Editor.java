@@ -1,10 +1,13 @@
 package Editor;
 
 import Model.Editor.EditorState;
+import com.google.gson.Gson;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Observable;
 import java.util.Observer;
 
