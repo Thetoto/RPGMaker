@@ -39,15 +39,19 @@ public class MapPanel extends JLayeredPane {
         this.repaint();
     }
 
-    public void show_selection(int x, int y) {
+    public void show_selection(Point in, Point out) {
         this.remove(JLayeredPane.DEFAULT_LAYER);
         selection_layout = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
-        Graphics2D g = selection_layout.createGraphics();
-        g.setColor(new Color(200, 0, 0, 50));
-        g.drawRect(x * 16, y * 16, 16, 16);
-        g.fillRect(x * 16, y * 16, 16, 16);
-        g.dispose();
+        for (int x = in.x; x < out.x; x++) {
+            for (int y = in.y; y < out.y; y++) {
+                Graphics2D g = selection_layout.createGraphics();
+                g.setColor(new Color(200, 0, 0, 50));
+                g.drawRect(x * 16, y * 16, 16, 16);
+                g.fillRect(x * 16, y * 16, 16, 16);
+                g.dispose();
+            }
+        }
 
         JLabel Limg = new JLabel(new ImageIcon(selection_layout));
         Limg.setBounds(0, 0, this.getWidth(), this.getHeight());

@@ -10,13 +10,16 @@ public class EditorState extends Observable {
     public ToolsState toolsState;
     public String text;
     public Map map;
-    public Point selection;
+
+    public Point selectionIn;
+    public Point selectionOut;
 
     public EditorState() {
         toolsState = new ToolsState();
         text = "Button";
         map = new Map(new Dimension(20, 20));
-        selection = null;
+        selectionIn = null;
+        selectionOut = null;
     }
 
     public void tmpAction(String new_text) {
@@ -25,8 +28,10 @@ public class EditorState extends Observable {
         notifyObservers(this);
     }
 
-    public void mouseClicked(int x, int y, MapPanel mapPanel) {
-        selection = new Point(x, y);
+    public void mouseClicked(Point in, Point out) {
+        this.selectionIn = in;
+        this.selectionOut = out;
+
         setChanged();
         notifyObservers("mouseClicked");
     }

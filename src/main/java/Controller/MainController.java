@@ -3,6 +3,7 @@ package Controller;
 import Editor.Editor;
 import Model.Editor.EditorState;
 
+import java.awt.*;
 import java.awt.event.*;
 
 public class MainController {
@@ -19,11 +20,19 @@ public class MainController {
         toolsController = new ToolsController(editor.toolsPane, editorState.toolsState);
 
         editor.mapPane.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                int x = e.getX() / 16;
-                int y = e.getY() / 16;
-                System.out.println("X: " + x + ", Y: " + y);
-                editorState.mouseClicked(x, y, editor.mapPane);
+            Point mouseEnter = null;
+
+            public void mousePressed(MouseEvent e) {
+                mouseEnter =  new Point(e.getX() / 16, e.getY() / 16);
+                System.out.println("In  | X: " + mouseEnter.x + ", Y: " + mouseEnter.y);
+            }
+
+            public void mouseReleased​(MouseEvent e) {
+                if (mouseEnter == null)
+                    return;
+                Point mouseOut =  new Point(e.getX() / 16, e.getY() / 16);
+                System.out.println("Out | X: " + mouseOut.x + ", Y: " + mouseOut.y);
+                editorState.mouseClicked(mouseEnter, mouseOut);
             }
         });
 

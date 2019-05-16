@@ -74,8 +74,8 @@ public class Editor extends JFrame implements Observer {
         if (o instanceof String){
             String arg = (String) o;
             if (arg.equals("mouseClicked")) {
-                Point coords = ((EditorState) observable).selection;
-                mapPane.show_selection(coords.x, coords.y);
+                EditorState coords = (EditorState) observable;
+                mapPane.show_selection(coords.selectionIn, coords.selectionOut);
             }
         }
     }
