@@ -49,7 +49,7 @@ public class MainController {
 
         editor.topBar.loadButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                editorState.getDir();
+                editorState.getWorld();
             }
         });
 

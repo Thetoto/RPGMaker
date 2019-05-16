@@ -1,10 +1,16 @@
 package Model.Editor;
 
 import Model.World.Map;
+import Model.World.World;
+import com.google.gson.Gson;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Observable;
 
 public class EditorState extends Observable {
@@ -14,12 +20,12 @@ public class EditorState extends Observable {
 
     public Point selectionIn;
     public Point selectionOut;
-    public File dir;
+    public World world;
 
     public EditorState() {
         toolsState = new ToolsState();
         text = "Button";
-        map = new Map(new Dimension(20, 20));
+        map = new Map(new Dimension(20, 20), "Default");
         selectionIn = null;
         selectionOut = null;
     }
@@ -38,14 +44,21 @@ public class EditorState extends Observable {
         notifyObservers("mouseClicked");
     }
 
-    public void getDir() {
+    public void getWorld() {
         JFrame frame = new JFrame();
         JFileChooser fc = new JFileChooser();
-        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         frame.setContentPane(fc);
         int res = fc.showOpenDialog(frame);
         if (res == JFileChooser.APPROVE_OPTION) {
-            dir = fc.getSelectedFile();
+            File file = fc.getSelectedFile();
+            Gson gson = new Gson();
+            System.out.println(file.toString() + " " + gson);
+            try {
+                world = gson.fromJson(new FileReader(file), World.class);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
         frame.setVisible(false);
         frame.dispose();

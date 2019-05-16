@@ -89,7 +89,7 @@ public class Editor extends JFrame implements Observer {
                 mapPane.show_selection(coords.selectionIn, coords.selectionOut);
             }
             else if (arg.equals("New Directory Selected")) {
-                tilesPane.treePanel.setDir(obs.dir);
+                tilesPane.treePanel.setWorld(obs.world);
             }
         }
     }
