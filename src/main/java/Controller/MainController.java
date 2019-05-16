@@ -19,21 +19,27 @@ public class MainController {
 
         toolsController = new ToolsController(editor.toolsPane, editorState.toolsState);
 
-        editor.mapPane.addMouseListener(new MouseAdapter() {
+        editor.mapPane.addMouseCompleteListener(new MouseAdapter() {
             Point mouseEnter = null;
 
             public void mousePressed(MouseEvent e) {
-                mouseEnter =  new Point(e.getX() / 16, e.getY() / 16);
+                mouseEnter = new Point(e.getX() / 16, e.getY() / 16);
                 System.out.println("In  | X: " + mouseEnter.x + ", Y: " + mouseEnter.y);
+                editorState.mouseClicked(mouseEnter, mouseEnter);
             }
 
-            public void mouseReleased​(MouseEvent e) {
+            public void mouseReleased(MouseEvent e) {
+                mouseEnter = null;
+            }
+
+            public void mouseDragged(MouseEvent e) {
                 if (mouseEnter == null)
                     return;
                 Point mouseOut =  new Point(e.getX() / 16, e.getY() / 16);
-                System.out.println("Out | X: " + mouseOut.x + ", Y: " + mouseOut.y);
+                System.out.println("In  | X: " + mouseOut.x + ", Y: " + mouseOut.y);
                 editorState.mouseClicked(mouseEnter, mouseOut);
             }
+
         });
 
         editor.topBar.toolsButton.addActionListener(new ActionListener() {

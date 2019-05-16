@@ -4,7 +4,11 @@ import Model.Editor.ImportedTile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.EventListener;
 
 public class MapPanel extends JLayeredPane {
 
@@ -43,8 +47,8 @@ public class MapPanel extends JLayeredPane {
         this.remove(JLayeredPane.DEFAULT_LAYER);
         selection_layout = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
-        for (int x = in.x; x < out.x; x++) {
-            for (int y = in.y; y < out.y; y++) {
+        for (int x = in.x; x <= out.x; x++) {
+            for (int y = in.y; y <= out.y; y++) {
                 Graphics2D g = selection_layout.createGraphics();
                 g.setColor(new Color(200, 0, 0, 50));
                 g.drawRect(x * 16, y * 16, 16, 16);
@@ -58,5 +62,10 @@ public class MapPanel extends JLayeredPane {
 
         this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT,JLayeredPane.DEFAULT_LAYER);
         this.repaint();
+    }
+
+    public void addMouseCompleteListener(MouseAdapter listener) {
+        this.addMouseListener(listener);
+        this.addMouseMotionListener(listener);
     }
 }
