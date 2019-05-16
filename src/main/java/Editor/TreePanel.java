@@ -9,6 +9,8 @@ public class TreePanel extends JTree {
     File dir = null;
 
     public TreePanel() {
+        dir = new File(System.getProperty("user.dir"));
+        show_dir();
     }
 
     public void setDir(File directory) {
