@@ -1,15 +1,23 @@
 package Model.World;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Tile {
-    BufferedImage image;
+    String image;
+    // transient = not serialized in Gson
+    transient BufferedImage refImage = null;
+    Point position;
 
     public Tile(BufferedImage image) {
-        this.image = image;
+        this.refImage = image;
+    }
+
+    public String geName() {
+        return image;
     }
 
     public BufferedImage get() {
-        return image;
+        return refImage;
     }
 }

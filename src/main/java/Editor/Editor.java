@@ -88,8 +88,8 @@ public class Editor extends JFrame implements Observer {
                 EditorState coords = (EditorState) observable;
                 mapPane.show_selection(coords.selectionIn, coords.selectionOut);
             }
-            else if (arg.equals("New Directory Selected")) {
-                tilesPane.treePanel.setWorld(obs.world);
+            else if (arg.equals("New World")) {
+                tilesPane.treePanel.show_world(obs.world);
             }
         }
     }

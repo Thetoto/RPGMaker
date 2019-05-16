@@ -63,6 +63,13 @@ public class EditorState extends Observable {
         frame.setVisible(false);
         frame.dispose();
         setChanged();
-        notifyObservers("New Directory Selected");
+        notifyObservers("New World");
+    }
+
+    public void defaultWorld() {
+        world = new World("New World");
+        world.addMap(new Map(new Dimension(100, 100), "Nice"));
+        setChanged();
+        notifyObservers("New World");
     }
 }

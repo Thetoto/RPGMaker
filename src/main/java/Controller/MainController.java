@@ -2,17 +2,25 @@ package Controller;
 
 import Editor.Editor;
 import Model.Editor.EditorState;
+import Model.World.Map;
+import Model.World.World;
+import com.google.gson.Gson;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainController {
     Editor editor;
+
     EditorState editorState;
 
     ToolsController toolsController;
     public MainController() {
         editor = new Editor();
+
         editorState = new EditorState();
 
         editorState.addObserver(editor);
@@ -47,15 +55,29 @@ public class MainController {
             }
         });
 
-        editor.topBar.loadButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                editorState.getWorld();
+        editor.topBar.loadButton.addActionListener(e -> editorState.getWorld());
+
+        editor.topBar.toolsButton.addActionListener(actionEvent -> toolsController.setToolBox());
+
+        editor.topBar.createButton.addActionListener(e-> {
+            if (editorState.world == null) {
+                editorState.defaultWorld();
+            } else {
+                editorState.world.addMap(new Map(new Dimension(100, 100), "Nice"));
             }
         });
 
-        editor.topBar.toolsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                toolsController.setToolBox();
+        editor.topBar.saveButton.addActionListener(e -> {
+            Gson gson = new Gson();
+            String res = gson.toJson(editorState.world);
+
+            try {
+                File file = new File("test.wrld");
+                file.createNewFile();
+                FileOutputStream writer = new FileOutputStream(file);
+                writer.write(res.getBytes());
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         });
     }

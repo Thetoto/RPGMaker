@@ -8,18 +8,12 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
 public class TreePanel extends JTree {
-    World world = null;
 
     public TreePanel() {
         setModel(null);
     }
 
-    public void setWorld(World world) {
-        this.world  = world;
-        show_world();
-    }
-
-    public void show_world() {
+    public void show_world(World world) {
         if (world == null)
             return;
 

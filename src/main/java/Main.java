@@ -11,20 +11,5 @@ public class Main {
         System.out.println("Hello World!");
         new MainController();
 
-        World world = new World("test");
-        Map map = new Map(new Dimension(100, 100), "Nice");
-        world.addMap(map);
-
-        Gson gson = new Gson();
-        String res = gson.toJson(world);
-
-        try {
-            File file = new File("test.wrld");
-            file.createNewFile();
-            FileOutputStream writer = new FileOutputStream(file);
-            writer.write(res.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

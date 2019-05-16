@@ -1,5 +1,7 @@
 package Editor;
 
+import Model.Editor.ImportedTile;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -8,9 +10,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.stream.Stream;
 
-public class TilesPanel extends JPanel {
+public class TilesPanel extends JPanel implements Observer {
     public JTabbedPane tilesTypePanel;
 
     public TilesSelectPanel foregroundTab;
@@ -69,6 +73,16 @@ public class TilesPanel extends JPanel {
             });
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        if (o instanceof ImportedTile) {
+            ImportedTile obj = (ImportedTile)o;
+            BufferedImage imgButton = obj.getFullImage();
+            JButton button =  new JButton();
+            button.setIcon(new ImageIcon(imgButton));
         }
     }
 }

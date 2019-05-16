@@ -11,18 +11,19 @@ import java.util.Vector;
 
 public class ImportedTile {
     private Dimension dimension;
+    private BufferedImage fullImage;
     private Vector<Tile> image;
     //private boolean IsWalkable; Est-ce qu'un foreground est unwalkable par défaut ?
 
     public ImportedTile(String img_path) throws Exception {
-        BufferedImage image_tmp = null;
+        fullImage = null;
         try {
-            image_tmp = ImageIO.read(new File(img_path));
+            fullImage = ImageIO.read(new File(img_path));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int height = image_tmp.getHeight();
-        int width = image_tmp.getWidth();
+        int height = fullImage.getHeight();
+        int width = fullImage.getWidth();
         if (height % 16 != 0 || width % 16 != 0)
             throw new Exception("Invalid dimension");
         height /= 16;
@@ -31,7 +32,7 @@ public class ImportedTile {
         image = new Vector<Tile>();
         for (int i  = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                Tile t = new Tile(image_tmp.getSubimage(i * 16,j * 16,16, 16));
+                Tile t = new Tile(fullImage.getSubimage(i * 16,j * 16,16, 16));
                 image.add(t);
             }
         }
@@ -39,6 +40,10 @@ public class ImportedTile {
 
     public int getHeight() {
         return dimension.height;
+    }
+
+    public BufferedImage getFullImage() {
+        return fullImage;
     }
 
     public int getWidth() {
