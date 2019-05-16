@@ -11,6 +11,7 @@ public class TreePanel extends JTree {
     World world = null;
 
     public TreePanel() {
+        setModel(null);
     }
 
     public void setWorld(World world) {
