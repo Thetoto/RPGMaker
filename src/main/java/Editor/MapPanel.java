@@ -47,8 +47,13 @@ public class MapPanel extends JLayeredPane {
         this.remove(JLayeredPane.DEFAULT_LAYER);
         selection_layout = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
-        for (int x = in.x; x <= out.x; x++) {
-            for (int y = in.y; y <= out.y; y++) {
+        int minX = in.x < out.x ? in.x : out.x;
+        int maxX = in.x > out.x ? in.x : out.x;
+        int minY = in.y < out.y ? in.y : out.y;
+        int maxY = in.y > out.y ? in.y : out.y;
+
+        for (int x = minX; x <= maxX; x++) {
+            for (int y = minY; y <= maxY; y++) {
                 Graphics2D g = selection_layout.createGraphics();
                 g.setColor(new Color(200, 0, 0, 50));
                 g.drawRect(x * 16, y * 16, 16, 16);
