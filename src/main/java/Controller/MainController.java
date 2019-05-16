@@ -23,6 +23,12 @@ public class MainController {
             Point mouseEnter = null;
 
             public void mousePressed(MouseEvent e) {
+                if (editorState.selectionIn != null) {
+                    mouseEnter = null;
+                    System.out.println("Deselect");
+                    editorState.mouseClicked(null, null);
+                    return;
+                }
                 mouseEnter = new Point(e.getX() / 16, e.getY() / 16);
                 System.out.println("In  | X: " + mouseEnter.x + ", Y: " + mouseEnter.y);
                 editorState.mouseClicked(mouseEnter, mouseEnter);

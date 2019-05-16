@@ -4,11 +4,8 @@ import Model.Editor.ImportedTile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.util.EventListener;
 
 public class MapPanel extends JLayeredPane {
 
@@ -46,22 +43,22 @@ public class MapPanel extends JLayeredPane {
     public void show_selection(Point in, Point out) {
         this.remove(JLayeredPane.DEFAULT_LAYER);
         selection_layout = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        if (in != null && out != null) {
+            int minX = in.x < out.x ? in.x : out.x;
+            int maxX = in.x > out.x ? in.x : out.x;
+            int minY = in.y < out.y ? in.y : out.y;
+            int maxY = in.y > out.y ? in.y : out.y;
 
-        int minX = in.x < out.x ? in.x : out.x;
-        int maxX = in.x > out.x ? in.x : out.x;
-        int minY = in.y < out.y ? in.y : out.y;
-        int maxY = in.y > out.y ? in.y : out.y;
-
-        for (int x = minX; x <= maxX; x++) {
-            for (int y = minY; y <= maxY; y++) {
-                Graphics2D g = selection_layout.createGraphics();
-                g.setColor(new Color(200, 0, 0, 50));
-                g.drawRect(x * 16, y * 16, 16, 16);
-                g.fillRect(x * 16, y * 16, 16, 16);
-                g.dispose();
+            for (int x = minX; x <= maxX; x++) {
+                for (int y = minY; y <= maxY; y++) {
+                    Graphics2D g = selection_layout.createGraphics();
+                    g.setColor(new Color(200, 0, 0, 50));
+                    g.drawRect(x * 16, y * 16, 16, 16);
+                    g.fillRect(x * 16, y * 16, 16, 16);
+                    g.dispose();
+                }
             }
         }
-
         JLabel Limg = new JLabel(new ImageIcon(selection_layout));
         Limg.setBounds(0, 0, this.getWidth(), this.getHeight());
 
