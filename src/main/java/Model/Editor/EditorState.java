@@ -65,6 +65,8 @@ public class EditorState extends Observable {
     }
 
     public void invertGrid() {
+        if (mapState.currentMap == null)
+            return;
         showGrid = !showGrid;
         mapState.mousePreview(mapState.selectionIn, mapState.selectionOut);
         mapState.updateMap();

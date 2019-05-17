@@ -36,6 +36,7 @@ public class MapPanel extends JLayeredPane implements Observer {
         int multiply = showGrid ? 17 : 16;
         this.remove(1);
         bi = new BufferedImage(map.getDim().width * multiply, map.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
+
         Graphics2D g = bi.createGraphics();
         for (int x = 0; x < map.getDim().width; x++) {
             for (int y = 0; y < map.getDim().height; y++) {
@@ -49,10 +50,13 @@ public class MapPanel extends JLayeredPane implements Observer {
             set_image(g, tile, pt);
         }
         g.dispose();
-        JLabel Mimg = new JLabel(new ImageIcon(bi));
-        Mimg.setBounds(0, 0, bi.getWidth(), bi.getHeight());
 
+        JLabel Mimg = new JLabel(new ImageIcon(bi));
+
+        Mimg.setBounds(0, 0, bi.getWidth(), bi.getHeight());
         this.addImpl(Mimg, JLayeredPane.TOP_ALIGNMENT, 1);
+
+        this.setSizeMap();
         this.repaint();
     }
 
@@ -115,18 +119,10 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(bi.getWidth(), bi.getHeight());
-    }
+    private void setSizeMap() {
+        this.setPreferredSize(new Dimension(bi.getWidth(), bi.getHeight()));
+        this.setSize(new Dimension(bi.getWidth(), bi.getHeight()));
 
-    @Override
-    public Dimension getMinimumSize() {
-        return getPreferredSize();
-    }
-
-    @Override
-    public Dimension getMaximumSize() {
-        return getPreferredSize();
+        this.getParent().validate();
     }
 }
