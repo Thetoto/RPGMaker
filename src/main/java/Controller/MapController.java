@@ -1,5 +1,6 @@
 package Controller;
 
+import Editor.Editor;
 import Editor.MapPanel;
 import Model.Editor.EditorState;
 import Model.Editor.MapState;

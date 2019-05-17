@@ -34,8 +34,7 @@ public class MapState extends Observable {
         if (EditorState.getInstance().toolsState.currentTools == ToolsEnum.TILES) {
             currentMap.draw(EditorState.getInstance().tilesState.currentTile, selectionIn, selectionOut);
             mousePreview(null, null);
-            setChanged();
-            notifyObservers("Load Me");
+            updateMap();
         }
     }
 

@@ -1,14 +1,16 @@
 package Editor;
 
 import Model.Editor.EditorState;
-import Model.Editor.ImportedTile;
+import Model.World.ImportedTile;
 import Model.Editor.MapState;
 import Model.World.Map;
+import Model.World.Tile;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -41,6 +43,11 @@ public class MapPanel extends JLayeredPane implements Observer {
                 g.drawImage(tile, x * multiply, y * multiply, null);
             }
         }
+        HashMap<Point, Tile> foreSet = map.getForegroundSet();
+        for (Point pt : foreSet.keySet()) {
+            ImportedTile tile = (ImportedTile)foreSet.get(pt);
+            set_image(g, tile, pt);
+        }
         g.dispose();
         JLabel Mimg = new JLabel(new ImageIcon(bi));
         Mimg.setBounds(0, 0, bi.getWidth(), bi.getHeight());
@@ -49,25 +56,19 @@ public class MapPanel extends JLayeredPane implements Observer {
         this.repaint();
     }
 
-    public void set_image(ImportedTile img) {
-        this.remove(1);
-        this.remove(0);
-        int decalage_x = 0;
-        int decalage_y = 0;
-        Graphics2D g = bi.createGraphics();
+    public void set_image(Graphics2D g, ImportedTile img, Point top) {
+        boolean showGrid = EditorState.getInstance().showGrid;
+        int multiply = showGrid ? 17 : 16;
+        int decalage_x = top.x;
+        int decalage_y = top.y;
         for (int i = 0; i < img.getHeight(); i++) {
             for (int j = 0; j < img.getWidth(); j++) {
-                g.drawImage(img.getTile(i, j).get(), i * 16 + decalage_x, j * 16 + decalage_y, null);
+                g.drawImage(img.getTile(i, j).get(), i * multiply + decalage_x, j * multiply + decalage_y, null);
                 decalage_y += 1;
             }
-            decalage_y = 0;
+            decalage_y = top.x;
             decalage_x += 1;
         }
-        g.dispose();
-
-        JLabel Limg = new JLabel(new ImageIcon(bi));
-        this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT, 0);
-        this.repaint();
     }
 
     public void show_selection(Point in, Point out) {

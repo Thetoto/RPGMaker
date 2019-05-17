@@ -1,23 +1,22 @@
 package Model.World;
 
-import Model.Editor.ImportedTile;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Vector;
 
 public class Map {
     String name;
     Dimension dimension;
-    Vector<Tile> foreground;
     Vector<Tile> background;
+    HashMap<Point, Tile> foreground; // Tile but it's a ImportedTile. Point is top left corner.
 
     public Map(Dimension dimension, String name) {
         this.name = name;
         this.dimension = dimension;
-        this.foreground = new Vector<Tile>(dimension.width * dimension.height);
-        this.background = new Vector<Tile>(dimension.width * dimension.height);
+        this.background = new Vector<>(dimension.width * dimension.height);
+        this.foreground = new HashMap<>();
         BufferedImage placeholder = getPlaceholder();
         for (int i = 0; i < dimension.width * dimension.height; i++) {
             background.add(i, new Tile("PlaceHolder", placeholder));
@@ -43,8 +42,7 @@ public class Map {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
                     if (currentTile instanceof ImportedTile) {
-                        // Foreground tile handling
-                        // TODO : Need to change vector to another thing
+                        foreground.put(new Point(x, y), currentTile);
                     } else {
                         System.out.println(x + " - " + y);
                         if (x < 0 || y < 0)
@@ -61,6 +59,10 @@ public class Map {
 
     public Tile getTile(int x, int y) {
         return background.get(x + dimension.width * y);
+    }
+
+    public HashMap<Point, Tile> getForegroundSet() {
+        return foreground;
     }
 
     public Dimension getDim() {

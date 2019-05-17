@@ -1,4 +1,4 @@
-package Model.Editor;
+package Model.World;
 
 import Model.World.Tile;
 

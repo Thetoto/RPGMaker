@@ -1,6 +1,6 @@
 package Editor;
 
-import Model.Editor.ImportedTile;
+import Model.World.ImportedTile;
 import Model.Editor.TilesState;
 
 import javax.swing.*;
