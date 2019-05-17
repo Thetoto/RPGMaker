@@ -24,11 +24,11 @@ public class ImportedTile extends Tile {
             System.err.println("Invalid dimension");
         height /= 16;
         width /= 16;
-        dimension = new Dimension(height, width);
+        dimension = new Dimension(width, height);
         image = new Vector<Tile>();
-        for (int i  = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                Tile t = new Tile(fullImage.getSubimage(i * 16,j * 16,16, 16));
+        for (int i  = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                Tile t = new Tile(fullImage.getSubimage(j * 16,i * 16,16, 16));
                 image.add(t);
             }
         }
@@ -43,7 +43,7 @@ public class ImportedTile extends Tile {
     }
 
     public Tile getTile(int x, int y) {
-        return image.get(x * dimension.width + y);
+        return image.get(x + y * dimension.width);
     }
 
     public Dimension getDimention() {

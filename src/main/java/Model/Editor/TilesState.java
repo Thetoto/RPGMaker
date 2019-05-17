@@ -31,6 +31,8 @@ public class TilesState extends Observable {
         if (EditorState.getInstance().mapState.selectionIn != null) {
             EditorState.getInstance().mapState.mouseClick();
         }
+        setChanged();
+        notifyObservers("Change current tile");
     }
 
     public void addDefaultTiles() {
@@ -71,6 +73,6 @@ public class TilesState extends Observable {
 
     private void askUpdate() {
         setChanged();
-        notifyObservers();
+        notifyObservers("Tiles Update");
     }
 }

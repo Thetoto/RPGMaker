@@ -9,12 +9,15 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class ToolsPanel extends JPanel implements Observer {
-    ToolsEnum currentPanel;
-    ToolBoxPanel toolBoxPanel;
+    public ToolsEnum currentPanel;
+    public ToolBoxPanel toolBoxPanel;
+    public ToolTilePanel toolTilePanel;
 
     public ToolsPanel() {
         toolBoxPanel = new ToolBoxPanel();
+        toolTilePanel = new ToolTilePanel();
         this.add(toolBoxPanel);
+        this.add(toolTilePanel);
 
         this.setVisible(false);
     }
@@ -34,12 +37,14 @@ public class ToolsPanel extends JPanel implements Observer {
             return;
 
         toolBoxPanel.setVisible(false);
+        toolTilePanel.setVisible(false);
 
         switch (currentPanel) {
             case TOOLBOX:
                 toolBoxPanel.setVisible(true);
                 break;
             case TILES:
+                toolTilePanel.setVisible(true);
                 break;
             case NONE:
                 setVisible(false);

@@ -16,6 +16,7 @@ public class TilesController {
         this.tilesPanel = tilesPanel;
         this.tilesState = tilesState;
         this.toolsController = toolsController;
+        tilesState.addObserver(toolsController.toolsPanel.toolTilePanel);
         tilesState.addObserver(tilesPanel);
         tilesState.addDefaultTiles();
         setupListener();

@@ -44,15 +44,15 @@ public class Map {
         if (in != null) {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
+                    if (x < 0 || y < 0)
+                        continue;
+                    if (x >= dimension.width || y >= dimension.height)
+                        continue;
                     if (currentTile instanceof ImportedTile) {
                         if (isOccupied(x, y, ((ImportedTile)currentTile).getDimention()))
                             continue;
                         foreground.put(new Point(x, y), currentTile);
                     } else {
-                        if (x < 0 || y < 0)
-                            continue;
-                        if (x >= dimension.width || y >= dimension.height)
-                            continue;
                         int pos = x + y * dimension.width;
                         background.set(pos, currentTile);
                     }

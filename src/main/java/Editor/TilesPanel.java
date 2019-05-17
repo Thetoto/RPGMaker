@@ -50,35 +50,39 @@ public class TilesPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable observable, Object o) {
-        if (observable instanceof TilesState) {
-            backgroundTab.clean();
-            foregroundTab.clean();
-            TilesState obj = (TilesState)observable;
-            for (String k : obj.backgroundTiles.keySet()) {
-                BufferedImage icon = obj.backgroundTiles.get(k).get();
+        if (observable instanceof TilesState && o instanceof String) {
+            TilesState obj = (TilesState) observable;
+            String str = (String) o;
 
-                JButton button = new JButton();
-                button.setIcon(new ImageIcon(icon));
-                button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));
+            if (str.equals("Tiles Update")) {
+                backgroundTab.clean();
+                foregroundTab.clean();
+                for (String k : obj.backgroundTiles.keySet()) {
+                    BufferedImage icon = obj.backgroundTiles.get(k).get();
 
-                backgroundTab.addTile(k, button);
+                    JButton button = new JButton();
+                    button.setIcon(new ImageIcon(icon));
+                    button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));
+
+                    backgroundTab.addTile(k, button);
+                }
+                for (String k : obj.foregroundTiles.keySet()) {
+                    ImportedTile fore = obj.foregroundTiles.get(k);
+                    BufferedImage icon = fore.get();
+
+                    JButton button = new JButton();
+                    button.setIcon(new ImageIcon(icon));
+                    button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));
+
+                    foregroundTab.addTile(k, button);
+                }
+                tilesTypePanel.setSelectedIndex(1);
+                foregroundTab.validate();
+                backgroundTab.validate();
+                tilesTypePanel.validate();
+                this.validate();
+                this.getParent().validate();
             }
-            for (String k : obj.foregroundTiles.keySet()) {
-                ImportedTile fore = obj.foregroundTiles.get(k);
-                BufferedImage icon = fore.get();
-
-                JButton button = new JButton();
-                button.setIcon(new ImageIcon(icon));
-                button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));
-
-                foregroundTab.addTile(k, button);
-            }
-            tilesTypePanel.setSelectedIndex(1);
-            foregroundTab.validate();
-            backgroundTab.validate();
-            tilesTypePanel.validate();
-            this.validate();
-            this.getParent().validate();
         }
     }
 }
