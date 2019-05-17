@@ -30,13 +30,17 @@ public class MapPanel extends JLayeredPane implements Observer {
     }
 
     public void drawMap(Map map) {
+        boolean showGrid = true; // TODO: Need dynamic bool
         this.remove(1);
         bi = new BufferedImage(map.getDim().width * 16, map.getDim().height * 16, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = bi.createGraphics();
         for (int x = 0; x < map.getDim().width; x++) {
             for (int y = 0; y < map.getDim().height; y++) {
                 BufferedImage tile = map.getTile(x , y).get();
-                g.drawImage(tile, x * 16, y * 16, null);
+                if (showGrid)
+                    g.drawImage(tile, x * 16 + x, y * 16 + y, null);
+                else
+                    g.drawImage(tile, x * 16, y * 16, null);
             }
         }
         g.dispose();
@@ -69,19 +73,25 @@ public class MapPanel extends JLayeredPane implements Observer {
     }
 
     public void show_selection(Point in, Point out) {
+        boolean showGrid = true; // TODO : Dynamic bool
         this.remove(0);
         selection_layout = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = selection_layout.createGraphics();
         if (in != null && out != null) {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
-                    Graphics2D g = selection_layout.createGraphics();
                     g.setColor(new Color(200, 0, 0, 50));
-                    g.drawRect(x * 16, y * 16, 16, 16);
-                    g.fillRect(x * 16, y * 16, 16, 16);
-                    g.dispose();
+                    if (showGrid) {
+                        g.drawRect(x * 16 + x, y * 16 + y, 16, 16);
+                        g.fillRect(x * 16 + x, y * 16 + y, 16, 16);
+                    } else {
+                        g.drawRect(x * 16, y * 16, 16, 16);
+                        g.fillRect(x * 16, y * 16, 16, 16);
+                    }
                 }
             }
         }
+        g.dispose();
         JLabel Limg = new JLabel(new ImageIcon(selection_layout));
         Limg.setBounds(0, 0, this.getWidth(), this.getHeight());
 
