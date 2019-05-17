@@ -11,6 +11,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeCellRenderer;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 
 public class TreePanel extends JTree {
@@ -39,6 +40,8 @@ public class TreePanel extends JTree {
         }
         this.setModel(model);
         this.setShowsRootHandles(true);
+
+        this.expandPath(new TreePath(Tmaps.getPath()));
     }
 }
 

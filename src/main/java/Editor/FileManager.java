@@ -1,6 +1,7 @@
 package Editor;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.swing.*;
 import java.io.File;
@@ -30,7 +31,8 @@ public class FileManager {
             file = fc.getSelectedFile();
             if (file == null)
                 return;
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
+                    .setPrettyPrinting().create();
             String world_json = gson.toJson(o);
             try {
                 file.createNewFile();
