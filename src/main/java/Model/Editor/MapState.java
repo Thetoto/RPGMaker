@@ -12,6 +12,8 @@ public class MapState extends Observable {
     public Point selectionIn;
     public Point selectionOut;
 
+    public Point mousePos;
+
     public MapState() {
     }
 
@@ -50,5 +52,11 @@ public class MapState extends Observable {
     public void updateMap(Map map) {
         this.currentMap = map;
         updateMap();
+    }
+
+    public void mouseOver(Point over) {
+        mousePos = over;
+        setChanged();
+        notifyObservers("mouseOver");
     }
 }

@@ -106,8 +106,7 @@ public class MapPanel extends JLayeredPane implements Observer {
             MapState mapState = (MapState) observable;
             String arg = (String) o;
             if (arg.equals("mouseOver")) {
-                EditorState coords = (EditorState) observable;
-                //mapPane.show_selection(coords.selectionIn);
+                // this.show_selection(mapState.mousePos, mapState.mousePos); TODO
             }
             if (arg.equals("mousePreview")) {
                 this.show_selection(mapState.selectionIn, mapState.selectionOut);

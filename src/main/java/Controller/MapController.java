@@ -23,6 +23,19 @@ public class MapController {
             Point mouseEnter = null;
             Point mouseOut = null;
 
+            public void mouseEntered(MouseEvent e) {
+                mouseMoved(e);
+            }
+
+            public void mouseExited(MouseEvent e) {
+                mapState.mouseOver(null);
+            }
+
+            public void mouseMoved(MouseEvent e) {
+                Point over = getPointCoords(e.getX(), e.getY());
+                mapState.mouseOver(over);
+            }
+
             public void mousePressed(MouseEvent e) {
                 if (mapState.currentMap == null)
                     return;
@@ -32,8 +45,7 @@ public class MapController {
                     mapState.mousePreview(null, null);
                     return;
                 }
-                int divdeBy = EditorState.getInstance().showGrid ? 17 : 16;
-                mouseEnter = new Point(e.getX() / divdeBy, e.getY() / divdeBy);
+                mouseEnter = getPointCoords(e.getX(), e.getY());
                 mapState.mousePreview(mouseEnter, mouseEnter);
             }
 
@@ -48,10 +60,14 @@ public class MapController {
             public void mouseDragged(MouseEvent e) {
                 if (mouseEnter == null)
                     return;
-                int divdeBy = EditorState.getInstance().showGrid ? 17 : 16;
-                Point mouseOut =  new Point(e.getX() / divdeBy, e.getY() / divdeBy);
+                Point mouseOut = getPointCoords(e.getX(), e.getY());
                 mapState.mousePreview(mouseEnter, mouseOut);
             }
         });
+    }
+
+    public static Point getPointCoords(int x, int y) {
+        int divdeBy = EditorState.getInstance().showGrid ? 17 : 16;
+        return new Point(x / divdeBy, y / divdeBy);
     }
 }
