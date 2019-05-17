@@ -4,6 +4,8 @@ import Model.World.Map;
 import Model.World.World;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -30,11 +32,7 @@ public class TreePanel extends JTree {
             DefaultMutableTreeNode Tmap = new DefaultMutableTreeNode(map);
             Tmaps.add(Tmap);
         }
-
         this.setModel(model);
         this.setShowsRootHandles(true);
-
-        //CreateChildNodes ccn = new CreateChildNodes(dir, root);
-        //new Thread(ccn).start();
     }
 }

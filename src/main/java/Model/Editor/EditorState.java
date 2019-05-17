@@ -54,6 +54,12 @@ public class EditorState extends Observable {
         notifyObservers("New World");
     }
 
+    public void addMap(Map map) {
+        world.addMap(map);
+        setChanged();
+        notifyObservers("New Map");
+    }
+
     public void saveWorld() {
         FileManager.saveFile(world);
     }

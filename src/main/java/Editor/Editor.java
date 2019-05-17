@@ -81,7 +81,7 @@ public class Editor extends JFrame implements Observer {
         if (o instanceof String && observable instanceof EditorState){
             String arg = (String) o;
             EditorState obs = (EditorState) observable;
-            if (arg.equals("New World")) {
+            if (arg.equals("New World") || arg.equals("New Map")) {
                 tilesPane.treePanel.show_world(obs.world);
             }
         }

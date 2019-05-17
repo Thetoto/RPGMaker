@@ -7,6 +7,9 @@ import Model.World.Map;
 import Model.World.World;
 import com.google.gson.Gson;
 
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -39,12 +42,20 @@ public class MainController {
             if (editorState.world == null) {
                 editorState.defaultWorld();
             } else {
-                editorState.world.addMap(new Map(new Dimension(100, 100), "Nice"));
+                editorState.addMap(new Map(new Dimension(100, 100), "Nice"));
             }
         });
 
         editor.topBar.saveButton.addActionListener(e -> editorState.saveWorld());
 
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
+        editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
+            DefaultMutableTreeNode o = (DefaultMutableTreeNode) e.getNewLeadSelectionPath().getLastPathComponent();
+            Object obj = o.getUserObject();
+            if (obj instanceof Map) {
+                Map map = (Map) obj;
+                editorState.mapState.updateMap(map);
+            }
+        });
     }
 }
