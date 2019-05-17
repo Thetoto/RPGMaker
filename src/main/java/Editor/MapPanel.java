@@ -112,4 +112,19 @@ public class MapPanel extends JLayeredPane implements Observer {
             }
         }
     }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(bi.getWidth(), bi.getHeight());
+    }
+
+    @Override
+    public Dimension getMinimumSize() {
+        return getPreferredSize();
+    }
+
+    @Override
+    public Dimension getMaximumSize() {
+        return getPreferredSize();
+    }
 }

@@ -50,11 +50,6 @@ public class Editor extends JFrame implements Observer {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
-
-        mapPane.setPreferredSize(new Dimension(326,326));
-        mapPane.setMinimumSize(new Dimension(326,326));
-        mapPane.setMaximumSize(new Dimension(326,326));
-
         panel.add(mapPane);
 
         mainPane = new JPanel();
