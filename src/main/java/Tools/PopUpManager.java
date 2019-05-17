@@ -19,6 +19,7 @@ public class PopUpManager {
         JLabel height_panel = new JLabel("Height");
 
         JButton validate = new JButton( "Validate");
+        JButton cancel = new JButton( "Cancel");
         JTextField name = new JTextField();
         JSpinner width = new JSpinner();
         JSpinner height = new JSpinner();
@@ -30,6 +31,7 @@ public class PopUpManager {
         width.setVisible(true);
         height.setModel(new SpinnerNumberModel(20, 1, 800, 1));
         height.setVisible(true);
+
         validate.addActionListener(e -> {
             int Mwidth = (int) width.getModel().getValue();
             int Mheight = (int) height.getModel().getValue();
@@ -42,6 +44,7 @@ public class PopUpManager {
                 editorState.addMap(map);
             }
         });
+        cancel.addActionListener(e -> frame.dispose());
 
 
         frame.add(name_panel);
@@ -50,6 +53,7 @@ public class PopUpManager {
         frame.add(width);
         frame.add(height_panel);
         frame.add(height);
+        frame.add(cancel);
         frame.add(validate);
 
         frame.validate();
