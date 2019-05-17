@@ -44,7 +44,6 @@ public class Map {
                     if (currentTile instanceof ImportedTile) {
                         foreground.put(new Point(x, y), currentTile);
                     } else {
-                        System.out.println(x + " - " + y);
                         if (x < 0 || y < 0)
                             continue;
                         if (x >= dimension.width || y >= dimension.height)
