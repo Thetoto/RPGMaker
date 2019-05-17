@@ -1,6 +1,7 @@
 package Model.Editor;
 
 import Model.World.Map;
+import Tools.ActionManager;
 import Tools.ThreadLauncher;
 
 import java.awt.*;
@@ -58,5 +59,17 @@ public class MapState extends Observable {
         mousePos = over;
         setChanged();
         notifyObservers("mouseOver");
+    }
+
+    public void undo() {
+        Map map = ActionManager.undo(new Map(currentMap));
+        if (map != null)
+            updateMap(map);
+    }
+
+    public void redo() {
+        Map map = ActionManager.redo(new Map(currentMap));
+        if (map != null)
+            updateMap(map);
     }
 }

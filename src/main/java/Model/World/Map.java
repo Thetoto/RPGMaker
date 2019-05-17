@@ -1,10 +1,9 @@
 package Model.World;
 
-import javax.swing.border.TitledBorder;
+import Tools.ActionManager;
+
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Vector;
 
 public class Map {
@@ -23,12 +22,20 @@ public class Map {
         }
     }
 
+    public Map(Map map) {
+        this.name = map.name;
+        this.dimension = new Dimension(map.dimension);
+        this.background = new Vector<Tile>(map.background);
+        this.foreground = new HashMap<Point, Tile>(map.foreground);
+    }
+
     @Override
     public String toString() {
         return name;
     }
 
     public void draw(Tile currentTile, Point in, Point out) {
+        ActionManager.saveAction(new Map(this));
         if (out == null)
             out = in;
         if (in != null) {
@@ -85,6 +92,9 @@ public class Map {
 
     public HashMap<Point, Tile> getForegroundSet() {
         return foreground;
+    }
+    public Vector<Tile> getBackgroundSet() {
+        return background;
     }
 
     public Dimension getDim() {

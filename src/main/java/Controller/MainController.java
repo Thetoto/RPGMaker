@@ -4,21 +4,10 @@ import Editor.Editor;
 import Model.Editor.EditorState;
 import Model.Editor.ToolsEnum;
 import Model.World.Map;
-import Model.World.World;
 import Tools.PopUpManager;
 import Tools.ThreadLauncher;
-import com.google.gson.Gson;
 
-import javax.swing.*;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.text.JTextComponent;
 import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class MainController {
     Editor editor;
@@ -47,6 +36,9 @@ public class MainController {
         editor.topBar.saveButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.saveWorld()));
 
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
+
+        editor.topBar.undoButton.addActionListener(e -> editorState.mapState.undo());
+        editor.topBar.redoButton.addActionListener(e -> editorState.mapState.redo());
 
         editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
             var tp = e.getNewLeadSelectionPath();
