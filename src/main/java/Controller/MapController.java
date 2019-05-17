@@ -64,6 +64,12 @@ public class MapController {
                 mapState.mousePreview(mouseEnter, mouseOut);
             }
         });
+
+        mapPanel.getParent().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                mapState.mousePreview(null, null);
+            }
+        });
     }
 
     public static Point getPointCoords(int x, int y) {

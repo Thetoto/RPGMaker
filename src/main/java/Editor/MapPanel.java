@@ -1,11 +1,13 @@
 package Editor;
 
 import Model.Editor.EditorState;
+import Model.Editor.ToolsEnum;
 import Model.World.ImportedTile;
 import Model.Editor.MapState;
 import Model.World.Map;
 import Model.World.Tile;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -72,18 +74,34 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
     }
 
-    public void show_selection(Point in, Point out) {
+    public void show_selection(MapState mapState) {
+        Point in = mapState.selectionIn;
+        Point out = mapState.selectionOut;
+        Tile cur = null;
+        if (EditorState.getInstance().toolsState.currentTools == ToolsEnum.TILES) {
+            cur = EditorState.getInstance().tilesState.currentTile;
+            if (in == null && mapState.mousePos != null) {
+                in = mapState.mousePos;
+                out = mapState.mousePos;
+            }
+        }
+
         boolean showGrid = EditorState.getInstance().showGrid;
         int multiply = showGrid ? 17 : 16;
         this.remove(0);
         selection_layout = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = selection_layout.createGraphics();
+        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
         if (in != null && out != null) {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
-                    g.setColor(new Color(200, 0, 0, 50));
-                    g.drawRect(x * multiply, y * multiply, 16, 16);
-                    g.fillRect(x * multiply, y * multiply, 16, 16);
+                    if (cur != null) {
+                        g.drawImage(cur.get(), x * multiply, y * multiply, null);
+                    } else {
+                        g.setColor(new Color(200, 0, 0, 100));
+                        g.drawRect(x * multiply, y * multiply, 16, 16);
+                        g.fillRect(x * multiply, y * multiply, 16, 16);
+                    }
                 }
             }
         }
@@ -106,10 +124,10 @@ public class MapPanel extends JLayeredPane implements Observer {
             MapState mapState = (MapState) observable;
             String arg = (String) o;
             if (arg.equals("mouseOver")) {
-                // this.show_selection(mapState.mousePos, mapState.mousePos); TODO
+                this.show_selection(mapState);
             }
             if (arg.equals("mousePreview")) {
-                this.show_selection(mapState.selectionIn, mapState.selectionOut);
+                this.show_selection(mapState);
             }
             if (arg.equals("Load Me")) {
                 System.out.println("Try to display");

@@ -56,6 +56,8 @@ public class MapState extends Observable {
     }
 
     public void mouseOver(Point over) {
+        if (selectionIn != null)
+            return;
         mousePos = over;
         setChanged();
         notifyObservers("mouseOver");
