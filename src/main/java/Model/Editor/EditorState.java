@@ -49,9 +49,9 @@ public class EditorState extends Observable {
         notifyObservers("New World");
     }
 
-    public void defaultWorld() {
+    public void defaultWorld(Map map) {
         world = new World("New World");
-        world.addMap(new Map(new Dimension(20, 20), "Nice"));
+        world.addMap(map);
         mapState.updateMap(world.getMaps().get(0));
         setChanged();
         notifyObservers("New World");
