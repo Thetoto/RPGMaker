@@ -1,6 +1,7 @@
 package Model.Editor;
 
 import Model.World.Map;
+import Tools.ThreadLauncher;
 
 import java.awt.*;
 import java.util.Observable;
@@ -39,9 +40,11 @@ public class MapState extends Observable {
     }
 
     public void updateMap() {
-        mousePreview(null, null);
-        setChanged();
-        notifyObservers("Load Me");
+        ThreadLauncher.execute(() -> {
+            mousePreview(null, null);
+            setChanged();
+            notifyObservers("Load Me");
+        });
     }
 
     public void updateMap(Map map) {

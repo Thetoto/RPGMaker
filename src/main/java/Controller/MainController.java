@@ -6,6 +6,7 @@ import Model.Editor.ToolsEnum;
 import Model.World.Map;
 import Model.World.World;
 import Tools.PopUpManager;
+import Tools.ThreadLauncher;
 import com.google.gson.Gson;
 
 import javax.swing.*;
@@ -37,17 +38,16 @@ public class MainController {
         tilesController = new TilesController(editor.tilesPane, editorState.tilesState, toolsController);
         mapController = new MapController(editor.mapPane, editorState.mapState);
 
-        editor.topBar.loadButton.addActionListener(e -> editorState.getWorld());
+        editor.topBar.loadButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.getWorld()));
 
         editor.topBar.toolsButton.addActionListener(actionEvent -> toolsController.setTool(ToolsEnum.TOOLBOX));
 
-        editor.topBar.createButton.addActionListener(e -> {
-            PopUpManager.askNewMap(editorState);
-        });
+        editor.topBar.createButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState)));
 
-        editor.topBar.saveButton.addActionListener(e -> editorState.saveWorld());
+        editor.topBar.saveButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.saveWorld()));
 
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
+
         editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
             var tp = e.getNewLeadSelectionPath();
             if (tp == null)
