@@ -1,5 +1,6 @@
 package Model.World;
 
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -38,10 +39,14 @@ public class Map {
     }
 
     public void draw(Tile currentTile, Point in, Point out) {
-        if (in != null && out != null) {
+        if (out == null)
+            out = in;
+        if (in != null) {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
                     if (currentTile instanceof ImportedTile) {
+                        if (isOccupied(x, y, ((ImportedTile)currentTile).getDimention()))
+                            continue;
                         foreground.put(new Point(x, y), currentTile);
                     } else {
                         if (x < 0 || y < 0)
@@ -56,6 +61,24 @@ public class Map {
         }
     }
 
+    public boolean isOccupied(int x, int y, Dimension dimension) {
+        for (int i = x; i < x + dimension.width; i++) {
+            for (int j = y; j < y + dimension.height; j++) {
+                for (var item : foreground.entrySet()) {
+                    ImportedTile tile = (ImportedTile)item.getValue();
+                    Point pt = item.getKey();
+                    if (i >= pt.x && i < pt.x + tile.getWidth() && j >= pt.y && j < pt.y + tile.getHeight()) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public Tile getTile(Point pt) {
+        return getTile(pt.x, pt.y);
+    }
     public Tile getTile(int x, int y) {
         return background.get(x + dimension.width * y);
     }

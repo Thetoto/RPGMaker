@@ -45,4 +45,8 @@ public class ImportedTile extends Tile {
     public Tile getTile(int x, int y) {
         return image.get(x * dimension.width + y);
     }
+
+    public Dimension getDimention() {
+        return dimension;
+    }
 }
