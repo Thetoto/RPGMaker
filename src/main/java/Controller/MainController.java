@@ -44,5 +44,7 @@ public class MainController {
         });
 
         editor.topBar.saveButton.addActionListener(e -> editorState.saveWorld());
+
+        editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
     }
 }

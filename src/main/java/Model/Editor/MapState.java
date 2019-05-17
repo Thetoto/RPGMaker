@@ -39,9 +39,13 @@ public class MapState extends Observable {
         }
     }
 
-    public void setNewMap(Map map) {
-        this.currentMap = map;
+    public void updateMap() {
         setChanged();
         notifyObservers("Load Me");
+    }
+
+    public void updateMap(Map map) {
+        this.currentMap = map;
+        updateMap();
     }
 }

@@ -30,17 +30,15 @@ public class MapPanel extends JLayeredPane implements Observer {
     }
 
     public void drawMap(Map map) {
-        boolean showGrid = true; // TODO: Need dynamic bool
+        boolean showGrid = EditorState.getInstance().showGrid;
+        int multiply = showGrid ? 17 : 16;
         this.remove(1);
-        bi = new BufferedImage(map.getDim().width * 16, map.getDim().height * 16, BufferedImage.TYPE_INT_ARGB);
+        bi = new BufferedImage(map.getDim().width * multiply, map.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = bi.createGraphics();
         for (int x = 0; x < map.getDim().width; x++) {
             for (int y = 0; y < map.getDim().height; y++) {
-                BufferedImage tile = map.getTile(x , y).get();
-                if (showGrid)
-                    g.drawImage(tile, x * 16 + x, y * 16 + y, null);
-                else
-                    g.drawImage(tile, x * 16, y * 16, null);
+                BufferedImage tile = map.getTile(x, y).get();
+                g.drawImage(tile, x * multiply, y * multiply, null);
             }
         }
         g.dispose();
@@ -73,7 +71,8 @@ public class MapPanel extends JLayeredPane implements Observer {
     }
 
     public void show_selection(Point in, Point out) {
-        boolean showGrid = true; // TODO : Dynamic bool
+        boolean showGrid = EditorState.getInstance().showGrid;
+        int multiply = showGrid ? 17 : 16;
         this.remove(0);
         selection_layout = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = selection_layout.createGraphics();
@@ -81,13 +80,8 @@ public class MapPanel extends JLayeredPane implements Observer {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
                     g.setColor(new Color(200, 0, 0, 50));
-                    if (showGrid) {
-                        g.drawRect(x * 16 + x, y * 16 + y, 16, 16);
-                        g.fillRect(x * 16 + x, y * 16 + y, 16, 16);
-                    } else {
-                        g.drawRect(x * 16, y * 16, 16, 16);
-                        g.fillRect(x * 16, y * 16, 16, 16);
-                    }
+                    g.drawRect(x * multiply, y * multiply, 16, 16);
+                    g.fillRect(x * multiply, y * multiply, 16, 16);
                 }
             }
         }

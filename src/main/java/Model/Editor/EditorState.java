@@ -5,12 +5,9 @@ import Model.World.Map;
 import Model.World.World;
 import com.google.gson.Gson;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Observable;
 
 public class EditorState extends Observable {
@@ -21,6 +18,8 @@ public class EditorState extends Observable {
     public MapState mapState;
 
     public World world;
+
+    public boolean showGrid = true;
 
     public EditorState() {
         instance = this;
@@ -49,7 +48,7 @@ public class EditorState extends Observable {
     public void defaultWorld() {
         world = new World("New World");
         world.addMap(new Map(new Dimension(20, 20), "Nice"));
-        mapState.setNewMap(world.getMaps().get(0));
+        mapState.updateMap(world.getMaps().get(0));
         setChanged();
         notifyObservers("New World");
     }
@@ -58,4 +57,9 @@ public class EditorState extends Observable {
         FileManager.saveFile(world);
     }
 
+    public void invertGrid() {
+        showGrid = !showGrid;
+        mapState.mousePreview(mapState.selectionIn, mapState.selectionOut);
+        mapState.updateMap();
+    }
 }
