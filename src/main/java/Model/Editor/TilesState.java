@@ -36,6 +36,8 @@ public class TilesState extends Observable {
     }
 
     public void addDefaultTiles() {
+        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), false);
+        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), true);
         addDirectoryTiles(Tools.getPathFromRessources("background"), false);
         addDirectoryTiles(Tools.getPathFromRessources("foreground"), true);
     }

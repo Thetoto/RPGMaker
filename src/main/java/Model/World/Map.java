@@ -18,19 +18,9 @@ public class Map {
         this.dimension = dimension;
         this.background = new Vector<>(dimension.width * dimension.height);
         this.foreground = new HashMap<>();
-        BufferedImage placeholder = getPlaceholder();
         for (int i = 0; i < dimension.width * dimension.height; i++) {
-            background.add(i, new Tile("PlaceHolder", placeholder));
+            background.add(i, Tile.getPlaceholder());
         }
-    }
-
-    public BufferedImage getPlaceholder() {
-        BufferedImage bi = new BufferedImage(16, 16,
-                BufferedImage.TYPE_INT_ARGB);
-        Graphics2D ig2 = bi.createGraphics();
-        ig2.setBackground(Color.WHITE);
-        ig2.clearRect(0, 0, 16, 16);
-        return bi;
     }
 
     @Override
@@ -49,31 +39,41 @@ public class Map {
                     if (x >= dimension.width || y >= dimension.height)
                         continue;
                     if (currentTile instanceof ImportedTile) {
-                        if (isOccupied(x, y, ((ImportedTile)currentTile).getDimention()))
+                        Point isOccupied = isOccupied(x, y, ((ImportedTile)currentTile).getDimention());
+                        if (currentTile.geName().equals("eraser.png")) {
+                            if (isOccupied != null)
+                                foreground.remove(isOccupied);
                             continue;
+                        }
+                        if (isOccupied != null) {
+                            continue;
+                        }
                         foreground.put(new Point(x, y), currentTile);
                     } else {
                         int pos = x + y * dimension.width;
-                        background.set(pos, currentTile);
+                        if (currentTile.geName().equals("eraser.png"))
+                            background.set(pos, Tile.getPlaceholder());
+                        else
+                            background.set(pos, currentTile);
                     }
                 }
             }
         }
     }
 
-    public boolean isOccupied(int x, int y, Dimension dimension) {
+    public Point isOccupied(int x, int y, Dimension dimension) {
         for (int i = x; i < x + dimension.width; i++) {
             for (int j = y; j < y + dimension.height; j++) {
                 for (var item : foreground.entrySet()) {
                     ImportedTile tile = (ImportedTile)item.getValue();
                     Point pt = item.getKey();
                     if (i >= pt.x && i < pt.x + tile.getWidth() && j >= pt.y && j < pt.y + tile.getHeight()) {
-                        return true;
+                        return pt;
                     }
                 }
             }
         }
-        return false;
+        return null;
     }
 
     public Tile getTile(Point pt) {
