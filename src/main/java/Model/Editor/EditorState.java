@@ -34,6 +34,8 @@ public class EditorState extends Observable {
 
     public void getWorld() {
         File file = FileManager.getFile();
+        if (file == null)
+            return;
         Gson gson = new Gson();
         System.out.println(file.toString() + " " + gson);
         try {
@@ -42,6 +44,7 @@ public class EditorState extends Observable {
             e.printStackTrace();
         }
         world.setUpLoad();
+        mapState.updateMap(world.getMaps().get(0));
         setChanged();
         notifyObservers("New World");
     }

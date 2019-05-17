@@ -28,6 +28,8 @@ public class FileManager {
         int res = fc.showSaveDialog(frame);
         if (res == JFileChooser.APPROVE_OPTION) {
             file = fc.getSelectedFile();
+            if (file == null)
+                return;
             Gson gson = new Gson();
             String world_json = gson.toJson(o);
             try {

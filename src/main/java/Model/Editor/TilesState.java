@@ -28,6 +28,9 @@ public class TilesState extends Observable {
         } else {
             this.currentTile = backgroundTiles.get(currentTile);
         }
+        if (EditorState.getInstance().mapState.selectionIn != null) {
+            EditorState.getInstance().mapState.mouseClick();
+        }
     }
 
     public void addDefaultTiles() {
