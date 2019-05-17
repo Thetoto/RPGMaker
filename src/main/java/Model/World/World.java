@@ -22,6 +22,10 @@ public class World extends Observable {
         return maps;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public void addMap(Map maps) {
         this.maps.add(maps);
     }
