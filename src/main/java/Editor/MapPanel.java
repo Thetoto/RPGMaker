@@ -18,12 +18,12 @@ public class MapPanel extends JLayeredPane implements Observer {
     BufferedImage selection_layout;
 
     public MapPanel() {
-        bi = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
+        bi = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         JLabel Mimg = new JLabel(new ImageIcon(bi));
         Mimg.setBounds(0, 0, this.getWidth(), this.getHeight());
         this.addImpl(Mimg, JLayeredPane.TOP_ALIGNMENT, 1);
 
-        selection_layout = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
+        selection_layout = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         JLabel Limg = new JLabel(new ImageIcon(selection_layout));
         Limg.setBounds(0, 0, this.getWidth(), this.getHeight());
         this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT, 0);
@@ -45,7 +45,7 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
         g.dispose();
         JLabel Mimg = new JLabel(new ImageIcon(bi));
-        Mimg.setBounds(0, 0, this.getWidth(), this.getHeight());
+        Mimg.setBounds(0, 0, bi.getWidth(), bi.getHeight());
 
         this.addImpl(Mimg, JLayeredPane.TOP_ALIGNMENT, 1);
         this.repaint();
@@ -93,7 +93,7 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
         g.dispose();
         JLabel Limg = new JLabel(new ImageIcon(selection_layout));
-        Limg.setBounds(0, 0, this.getWidth(), this.getHeight());
+        Limg.setBounds(0, 0, bi.getWidth(), bi.getHeight());
 
         this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT, 0);
         this.repaint();
