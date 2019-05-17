@@ -47,7 +47,9 @@ public class Map {
                         // TODO : Need to change vector to another thing
                     } else {
                         System.out.println(x + " - " + y);
-                        if (x > dimension.width || y > dimension.height)
+                        if (x < 0 || y < 0)
+                            continue;
+                        if (x >= dimension.width || y >= dimension.height)
                             continue;
                         int pos = x + y * dimension.width;
                         background.set(pos, currentTile);
