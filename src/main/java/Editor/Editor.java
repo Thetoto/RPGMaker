@@ -48,10 +48,19 @@ public class Editor extends JFrame implements Observer {
         toolsPane = new ToolsPanel();
         toolsPane.setBackground(Color.GREEN);
 
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+
+        mapPane.setPreferredSize(new Dimension(326,326));
+        mapPane.setMinimumSize(new Dimension(326,326));
+        mapPane.setMaximumSize(new Dimension(326,326));
+
+        panel.add(mapPane);
+
         mainPane = new JPanel();
         mainPane.setLayout(new BorderLayout());
         mainPane.add(tilesPane, BorderLayout.WEST);
-        mainPane.add(mapPane, BorderLayout.CENTER);
+        mainPane.add(panel, BorderLayout.CENTER);
         mainPane.add(toolsPane, BorderLayout.EAST);
         mainPane.add(topBar, BorderLayout.NORTH);
 
