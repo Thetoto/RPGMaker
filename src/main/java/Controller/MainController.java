@@ -50,7 +50,10 @@ public class MainController {
 
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
         editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
-            DefaultMutableTreeNode o = (DefaultMutableTreeNode) e.getNewLeadSelectionPath().getLastPathComponent();
+            var tp = e.getNewLeadSelectionPath();
+            if (tp == null)
+                return;
+            DefaultMutableTreeNode o = (DefaultMutableTreeNode) tp.getLastPathComponent();
             Object obj = o.getUserObject();
             if (obj instanceof Map) {
                 Map map = (Map) obj;
