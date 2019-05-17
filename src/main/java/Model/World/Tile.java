@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Tile {
-    public static Tile placeholder = null;
+    transient public static Tile placeholder = null;
     String image;
     // transient = not serialized in Gson
     transient BufferedImage refImage = null;

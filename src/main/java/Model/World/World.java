@@ -40,7 +40,11 @@ public class World extends Observable {
         var foreTiles = EditorState.getInstance().tilesState.foregroundTiles;
         for (Map map: maps) {
             for (int i = 0; i < map.background.size(); i++) {
-                map.background.set(i, backTiles.get(map.background.get(i).geName()));
+                String name = map.background.get(i).geName();
+                if (name.equals("PlaceHolder"))
+                    map.background.set(i, Tile.getPlaceholder());
+                else
+                    map.background.set(i, backTiles.get(name));
             }
             for (Point pt : map.foreground.keySet()) {
                 map.foreground.put(pt, foreTiles.get(map.foreground.get(pt).geName()));
