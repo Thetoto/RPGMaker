@@ -51,11 +51,12 @@ public class Editor extends JFrame implements Observer {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.add(mapPane);
+        JScrollPane scrollFrame = new JScrollPane(panel);
 
         mainPane = new JPanel();
         mainPane.setLayout(new BorderLayout());
         mainPane.add(tilesPane, BorderLayout.WEST);
-        mainPane.add(panel, BorderLayout.CENTER);
+        mainPane.add(scrollFrame, BorderLayout.CENTER);
         mainPane.add(toolsPane, BorderLayout.EAST);
         mainPane.add(topBar, BorderLayout.NORTH);
 

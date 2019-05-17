@@ -42,7 +42,7 @@ public class MainController {
             if (editorState.world == null) {
                 editorState.defaultWorld();
             } else {
-                editorState.addMap(new Map(new Dimension(100, 100), "Nice"));
+                editorState.addMap(new Map(new Dimension(50, 50), "Nice"));
             }
         });
 

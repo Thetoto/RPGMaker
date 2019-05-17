@@ -39,6 +39,7 @@ public class MapState extends Observable {
     }
 
     public void updateMap() {
+        mousePreview(null, null);
         setChanged();
         notifyObservers("Load Me");
     }

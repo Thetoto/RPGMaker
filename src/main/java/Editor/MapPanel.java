@@ -124,5 +124,7 @@ public class MapPanel extends JLayeredPane implements Observer {
         this.setSize(new Dimension(bi.getWidth(), bi.getHeight()));
 
         this.getParent().validate();
+        this.getParent().getParent().validate();
+
     }
 }
