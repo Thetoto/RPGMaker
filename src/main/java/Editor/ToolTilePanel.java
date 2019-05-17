@@ -31,9 +31,7 @@ public class ToolTilePanel extends JPanel implements Observer {
             if (str.equals("Change current tile")) {
                 setUp(obj.currentTile.get());
             }
-            this.validate();
-            this.getParent().validate();
-            this.getParent().getParent().validate();
+            Editor.validateAll(this);
         }
     }
 }

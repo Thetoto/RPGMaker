@@ -51,9 +51,7 @@ public class Editor extends JFrame implements Observer {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.add(mapPane);
-        JScrollPane scrollFrame = new JScrollPane(panel);
-        scrollFrame.getVerticalScrollBar().setUnitIncrement(16);
-        scrollFrame.getHorizontalScrollBar().setUnitIncrement(16);
+        JScrollPane scrollFrame = addScrollBar(panel);
 
         mainPane = new JPanel();
         mainPane.setLayout(new BorderLayout());
@@ -66,6 +64,20 @@ public class Editor extends JFrame implements Observer {
 
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    public static JScrollPane addScrollBar(JComponent panel) {
+        JScrollPane scrollFrame = new JScrollPane(panel);
+        scrollFrame.getVerticalScrollBar().setUnitIncrement(16);
+        scrollFrame.getHorizontalScrollBar().setUnitIncrement(16);
+        return scrollFrame;
+    }
+
+    public static void validateAll(Container j) {
+        while (j != null) {
+            j.validate();
+            j = j.getParent();
+        }
     }
 
     @Override

@@ -27,13 +27,13 @@ public class TilesPanel extends JPanel implements Observer {
         backgroundTab.setBackground(Color.MAGENTA);
 
         tilesTypePanel = new JTabbedPane();
-        tilesTypePanel.add("Foreground", foregroundTab);
-        tilesTypePanel.add("Background", backgroundTab);
+        tilesTypePanel.add("Foreground", Editor.addScrollBar(foregroundTab));
+        tilesTypePanel.add("Back", Editor.addScrollBar(backgroundTab));
 
         treePanel = new TreePanel();
 
         this.add(tilesTypePanel);
-        this.add(treePanel);
+        this.add(Editor.addScrollBar(treePanel));
     }
 
     @Override
@@ -78,10 +78,7 @@ public class TilesPanel extends JPanel implements Observer {
                 }
                 tilesTypePanel.setSelectedIndex(1);
                 foregroundTab.validate();
-                backgroundTab.validate();
-                tilesTypePanel.validate();
-                this.validate();
-                this.getParent().validate();
+                Editor.validateAll(backgroundTab);
             }
         }
     }
