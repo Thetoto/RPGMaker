@@ -41,6 +41,7 @@ public class EditorState extends Observable {
         } catch(Exception e) {
             e.printStackTrace();
         }
+        world.setUpLoad();
         setChanged();
         notifyObservers("New World");
     }

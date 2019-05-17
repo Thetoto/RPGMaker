@@ -25,4 +25,8 @@ public class Tile {
     public BufferedImage get() {
         return refImage;
     }
+
+    public void setRefImage(BufferedImage refImage) {
+        this.refImage = refImage;
+    }
 }
