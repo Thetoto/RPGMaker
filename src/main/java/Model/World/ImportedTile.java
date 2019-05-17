@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.Vector;
 
 public class ImportedTile extends Tile {
-    private Dimension dimension;
+    transient private Dimension dimension;
 
-    private Vector<Tile> image;
+    transient private Vector<Tile> image;
     //private boolean IsWalkable; Est-ce qu'un foreground est unwalkable par défaut ?
 
     public ImportedTile(String name, BufferedImage fullImage) {
