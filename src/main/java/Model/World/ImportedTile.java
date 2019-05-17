@@ -26,9 +26,9 @@ public class ImportedTile extends Tile {
         width /= 16;
         dimension = new Dimension(height, width);
         image = new Vector<Tile>();
-        for (int i  = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                Tile t = new Tile(fullImage.getSubimage(j * 16,i * 16,16, 16));
+        for (int i  = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Tile t = new Tile(fullImage.getSubimage(i * 16,j * 16,16, 16));
                 image.add(t);
             }
         }

@@ -56,7 +56,7 @@ public class TilesPanel extends JPanel implements Observer {
             TilesState obj = (TilesState)observable;
             for (String k : obj.backgroundTiles.keySet()) {
                 BufferedImage icon = obj.backgroundTiles.get(k).get();
-                System.out.println(k);
+
                 JButton button = new JButton();
                 button.setIcon(new ImageIcon(icon));
                 button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));

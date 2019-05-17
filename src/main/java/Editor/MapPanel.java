@@ -63,11 +63,8 @@ public class MapPanel extends JLayeredPane implements Observer {
         int decalage_y = top.y;
         for (int i = 0; i < img.getHeight(); i++) {
             for (int j = 0; j < img.getWidth(); j++) {
-                g.drawImage(img.getTile(i, j).get(), i * multiply + decalage_x, j * multiply + decalage_y, null);
-                decalage_y += 1;
+                g.drawImage(img.getTile(i, j).get(), (i + decalage_x) * multiply, (j + decalage_y) * multiply , null);
             }
-            decalage_y = top.x;
-            decalage_x += 1;
         }
     }
 
