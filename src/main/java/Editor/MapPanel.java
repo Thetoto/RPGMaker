@@ -33,7 +33,7 @@ public class MapPanel extends JLayeredPane implements Observer {
         this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT, 0);
     }
 
-    public void drawMap(Map map) {
+    public synchronized void drawMap(Map map) {
         boolean showGrid = EditorState.getInstance().showGrid;
         int multiply = showGrid ? 17 : 16;
         this.remove(1);
@@ -62,7 +62,7 @@ public class MapPanel extends JLayeredPane implements Observer {
         this.repaint();
     }
 
-    public void set_image(Graphics2D g, ImportedTile img, Point top) {
+    public synchronized void set_image(Graphics2D g, ImportedTile img, Point top) {
         boolean showGrid = EditorState.getInstance().showGrid;
         int multiply = showGrid ? 17 : 16;
         int decalage_x = top.x;
@@ -74,12 +74,12 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
     }
 
-    public void show_selection(MapState mapState) {
+    public synchronized void show_selection(MapState mapState) {
         Point in = mapState.selectionIn;
         Point out = mapState.selectionOut;
-        Tile cur = null;
+        BufferedImage cur = null;
         if (EditorState.getInstance().toolsState.currentTools == ToolsEnum.TILES) {
-            cur = EditorState.getInstance().tilesState.currentTile;
+            cur = EditorState.getInstance().tilesState.currentTile.get();
             if (in == null && mapState.mousePos != null) {
                 in = mapState.mousePos;
                 out = mapState.mousePos;
@@ -95,8 +95,8 @@ public class MapPanel extends JLayeredPane implements Observer {
         if (in != null && out != null) {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
-                    if (cur != null) {
-                        g.drawImage(cur.get(), x * multiply, y * multiply, null);
+                    if (cur != null && ((cur.getWidth() == 16 && cur.getHeight() == 16) || in.equals(out))) {
+                        g.drawImage(cur, x * multiply, y * multiply, null);
                     } else {
                         g.setColor(new Color(200, 0, 0, 100));
                         g.drawRect(x * multiply, y * multiply, 16, 16);
@@ -119,7 +119,7 @@ public class MapPanel extends JLayeredPane implements Observer {
     }
 
     @Override
-    public void update(Observable observable, Object o) {
+    public synchronized void update(Observable observable, Object o) {
         if (o instanceof String && observable instanceof MapState){
             MapState mapState = (MapState) observable;
             String arg = (String) o;
