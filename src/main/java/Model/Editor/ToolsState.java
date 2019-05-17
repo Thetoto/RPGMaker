@@ -5,7 +5,7 @@ import java.util.Observable;
 import static Model.Editor.ToolsEnum.NONE;
 
 public class ToolsState extends Observable {
-    ToolsEnum currentTools;
+    public ToolsEnum currentTools;
     public ToolsState() {
         currentTools = NONE;
     }

@@ -14,6 +14,10 @@ public class ToolsController {
         toolsState.addObserver(toolsPanel);
     }
 
+    public ToolsEnum getCurrentTool() {
+        return toolsState.currentTools;
+    }
+
     public void setTool(ToolsEnum e) {
         toolsState.setCurrentTools(e);
     }

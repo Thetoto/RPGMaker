@@ -24,13 +24,15 @@ public class TilesController {
     public void setupListener() {
         for(Map.Entry<String, JButton> entry : tilesPanel.foregroundTab.buttons.entrySet()) {
             entry.getValue().addActionListener((e) -> {
-                toolsController.setTool(ToolsEnum.TILES);
+                if (toolsController.getCurrentTool() != ToolsEnum.TILES)
+                    toolsController.setTool(ToolsEnum.TILES);
                 tilesState.setCurrentTile(entry.getKey(), true);
             });
         }
         for(Map.Entry<String, JButton> entry : tilesPanel.backgroundTab.buttons.entrySet()) {
             entry.getValue().addActionListener((e) -> {
-                toolsController.setTool(ToolsEnum.TILES);
+                if (toolsController.getCurrentTool() != ToolsEnum.TILES)
+                    toolsController.setTool(ToolsEnum.TILES);
                 tilesState.setCurrentTile(entry.getKey(), false);
             });
         }

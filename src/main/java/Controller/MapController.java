@@ -32,7 +32,8 @@ public class MapController {
                     mapState.mousePreview(null, null);
                     return;
                 }
-                mouseEnter = new Point(e.getX() / 16, e.getY() / 16);
+                int divdeBy = EditorState.getInstance().showGrid ? 17 : 16;
+                mouseEnter = new Point(e.getX() / divdeBy, e.getY() / divdeBy);
                 System.out.println("In  | X: " + mouseEnter.x + ", Y: " + mouseEnter.y);
                 mapState.mousePreview(mouseEnter, mouseEnter);
             }
@@ -48,7 +49,8 @@ public class MapController {
             public void mouseDragged(MouseEvent e) {
                 if (mouseEnter == null)
                     return;
-                Point mouseOut =  new Point(e.getX() / 16, e.getY() / 16);
+                int divdeBy = EditorState.getInstance().showGrid ? 17 : 16;
+                Point mouseOut =  new Point(e.getX() / divdeBy, e.getY() / divdeBy);
                 System.out.println("Out  | X: " + mouseOut.x + ", Y: " + mouseOut.y);
                 mapState.mousePreview(mouseEnter, mouseOut);
             }
