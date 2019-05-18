@@ -9,13 +9,20 @@ public class ToolBoxPanel extends JPanel {
     public JCheckBox showWalkable;
 
     public ToolBoxPanel() {
-        this.setBackground(Color.BLACK);
+        this.setLayout(new GridBagLayout());
+        this.setBackground(Color.YELLOW);
         setSpawnButton = new JButton("Set Player Spawn");
         addTeleporterButton = new JButton("Add Teleporter");
         showWalkable = new JCheckBox("Show walkable on map");
-        this.add(setSpawnButton);
-        this.add(addTeleporterButton);
-        this.add(showWalkable);
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        this.add(setSpawnButton, c);
+        c.gridy += 1;
+        this.add(addTeleporterButton, c);
+        c.gridy += 1;
+        this.add(showWalkable, c);
     }
 
     @Override
