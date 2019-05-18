@@ -3,6 +3,8 @@ package Controller;
 import Editor.MapPanel;
 import Model.Editor.EditorState;
 import Model.Editor.MapState;
+import Model.Editor.Mode;
+import Tools.CursorManager;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -23,10 +25,16 @@ public class MapController {
             Point mouseOut = null;
 
             public void mouseEntered(MouseEvent e) {
+                if (mapState.getMode() == Mode.PLAYER) {
+                    CursorManager.setCursor(Cursor.CROSSHAIR_CURSOR);
+                }
                 mouseMoved(e);
             }
 
             public void mouseExited(MouseEvent e) {
+                if (mapState.getMode() == Mode.PLAYER) {
+                    CursorManager.setCursor(Cursor.DEFAULT_CURSOR);
+                }
                 mapState.mouseOver(null);
             }
 

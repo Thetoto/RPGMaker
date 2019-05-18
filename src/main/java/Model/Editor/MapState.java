@@ -88,10 +88,9 @@ public class MapState extends Observable {
     }
 
     public void setMode(Mode mode) {
-        if (mode == Mode.PLAYER)
-            CursorManager.setCursor(Cursor.CROSSHAIR_CURSOR);
-        else
+        if (mode == Mode.DEFAULT) {
             CursorManager.setCursor(Cursor.DEFAULT_CURSOR);
+        }
         this.mode = mode;
     }
 
