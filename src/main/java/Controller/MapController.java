@@ -1,10 +1,9 @@
 package Controller;
 
-import Editor.Editor;
 import Editor.MapPanel;
 import Model.Editor.EditorState;
 import Model.Editor.MapState;
-import Model.World.Map;
+import Model.World.Player;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -17,6 +16,7 @@ public class MapController {
     public MapController(MapPanel mapPanel, MapState mapState) {
         this.mapPanel = mapPanel;
         this.mapState = mapState;
+
         mapState.addObserver(mapPanel);
 
         mapPanel.addMouseCompleteListener(new MouseAdapter() {

@@ -1,6 +1,7 @@
 package Model.Editor;
 
 import Model.World.Map;
+import Model.World.Player;
 import Tools.ActionManager;
 import Tools.ThreadLauncher;
 
@@ -14,8 +15,11 @@ public class MapState extends Observable {
     public Point selectionOut;
 
     public Point mousePos;
+    private Mode mode;
+    private Player player;
 
     public MapState() {
+        player = null;
     }
 
     public void mousePreview(Point in, Point out) {
@@ -35,6 +39,13 @@ public class MapState extends Observable {
     }
 
     public void mouseClick() {
+        if (mode == Mode.PLAYER) {
+            if (selectionIn.equals(selectionOut)) {
+                player.setPosition(new Point(selectionIn), currentMap);
+                mode = Mode.DEFAULT;
+            }
+            return;
+        }
         if (EditorState.getInstance().toolsState.currentTools == ToolsEnum.TILES) {
             currentMap.draw(EditorState.getInstance().tilesState.currentTile, selectionIn, selectionOut);
             mousePreview(null, null);
@@ -73,5 +84,18 @@ public class MapState extends Observable {
         Map map = ActionManager.redo(new Map(currentMap));
         if (map != null)
             updateMap(map);
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
+    }
+
+    public Mode getMode() {
+        return mode;
+    }
+
+    public void setPlayer(Player player) {
+        System.out.println("PLAYER");
+        this.player = player;
     }
 }

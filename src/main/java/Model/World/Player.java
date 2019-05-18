@@ -20,4 +20,9 @@ public class Player {
     public Map getMap() {
         return map;
     }
+
+    public void setPosition(Point point, Map map) {
+        position = point;
+        this.map = map;
+    }
 }

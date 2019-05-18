@@ -4,16 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ToolBoxPanel extends JPanel {
-    JButton test;
+    public JButton setSpawn;
+
     public ToolBoxPanel() {
         this.setBackground(Color.BLACK);
-        test = new JButton("Test");
-        this.add(test);
+        setSpawn = new JButton("Set Player Spawn");
+        this.add(setSpawn);
     }
 
     @Override
     public void setVisible(boolean aFlag) {
         super.setVisible(aFlag);
-        test.setVisible(aFlag);
+        setSpawn.setVisible(aFlag);
     }
 }

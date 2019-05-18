@@ -44,6 +44,7 @@ public class EditorState extends Observable {
         }
         world.setUpLoad();
         mapState.updateMap(world.getMaps().get(0));
+        mapState.setPlayer(world.getPlayer());
         setChanged();
         notifyObservers("New World");
     }
@@ -52,6 +53,7 @@ public class EditorState extends Observable {
         world = new World("New World");
         world.addMap(map);
         mapState.updateMap(world.getMaps().get(0));
+        mapState.setPlayer(world.getPlayer());
         setChanged();
         notifyObservers("New World");
     }

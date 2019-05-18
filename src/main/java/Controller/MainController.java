@@ -2,6 +2,7 @@ package Controller;
 
 import Editor.Editor;
 import Model.Editor.EditorState;
+import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.World.Map;
 import Model.World.Player;
@@ -40,6 +41,8 @@ public class MainController {
 
         editor.topBar.undoButton.addActionListener(e -> editorState.mapState.undo());
         editor.topBar.redoButton.addActionListener(e -> editorState.mapState.redo());
+
+        editor.toolsPane.toolBoxPanel.setSpawn.addActionListener(e -> editorState.mapState.setMode(Mode.PLAYER));
 
         editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
             var tp = e.getNewLeadSelectionPath();
