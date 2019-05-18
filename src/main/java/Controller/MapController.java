@@ -25,14 +25,14 @@ public class MapController {
             Point mouseOut = null;
 
             public void mouseEntered(MouseEvent e) {
-                if (mapState.getMode() == Mode.PLAYER) {
+                if (mapState.getMode() != Mode.DEFAULT) {
                     CursorManager.setCursor(Cursor.CROSSHAIR_CURSOR);
                 }
                 mouseMoved(e);
             }
 
             public void mouseExited(MouseEvent e) {
-                if (mapState.getMode() == Mode.PLAYER) {
+                if (mapState.getMode() != Mode.DEFAULT) {
                     CursorManager.setCursor(Cursor.DEFAULT_CURSOR);
                 }
                 mapState.mouseOver(null);

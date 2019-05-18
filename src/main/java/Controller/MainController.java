@@ -42,7 +42,8 @@ public class MainController {
         editor.topBar.undoButton.addActionListener(e -> editorState.mapState.undo());
         editor.topBar.redoButton.addActionListener(e -> editorState.mapState.redo());
 
-        editor.toolsPane.toolBoxPanel.setSpawn.addActionListener(e -> editorState.mapState.setMode(Mode.PLAYER));
+        editor.toolsPane.toolBoxPanel.setSpawnButton.addActionListener(e -> editorState.mapState.setMode(Mode.PLAYER));
+        editor.toolsPane.toolBoxPanel.addTeleporterButton.addActionListener(e -> editorState.mapState.setMode(Mode.TELEPORTER));
 
         editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
             var tp = e.getNewLeadSelectionPath();

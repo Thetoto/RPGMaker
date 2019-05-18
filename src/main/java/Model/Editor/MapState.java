@@ -20,6 +20,7 @@ public class MapState extends Observable {
     private Player player;
 
     public MapState() {
+        mode = Mode.DEFAULT;
         player = null;
     }
 
@@ -43,6 +44,13 @@ public class MapState extends Observable {
         if (mode == Mode.PLAYER) {
             if (selectionIn.equals(selectionOut)) {
                 player.setPosition(new Point(selectionIn), currentMap);
+                setMode(Mode.DEFAULT);
+            }
+            return;
+        }
+        if (mode == Mode.TELEPORTER) {
+            if (selectionIn.equals(selectionOut)) {
+                currentMap.addTeleporter(selectionIn);
                 setMode(Mode.DEFAULT);
             }
             return;

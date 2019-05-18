@@ -11,12 +11,14 @@ public class Map {
     Dimension dimension;
     Vector<Tile> background;
     HashMap<Point, Tile> foreground; // Tile but it's a ImportedTile. Point is top left corner.
+    Vector<Teleporter> teleporters;
 
     public Map(Dimension dimension, String name) {
         this.name = name;
         this.dimension = dimension;
         this.background = new Vector<>(dimension.width * dimension.height);
         this.foreground = new HashMap<>();
+        this.teleporters = new Vector<>();
         for (int i = 0; i < dimension.width * dimension.height; i++) {
             background.add(i, Tile.getPlaceholder());
         }
@@ -27,6 +29,7 @@ public class Map {
         this.dimension = new Dimension(map.dimension);
         this.background = new Vector<Tile>(map.background);
         this.foreground = new HashMap<Point, Tile>(map.foreground);
+        this.teleporters = new Vector<Teleporter>(map.teleporters);
     }
 
     @Override
@@ -99,5 +102,9 @@ public class Map {
 
     public Dimension getDim() {
         return dimension;
+    }
+
+    public void addTeleporter(Point point) {
+        teleporters.add(new Teleporter(this, "first", point));
     }
 }
