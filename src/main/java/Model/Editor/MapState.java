@@ -47,6 +47,7 @@ public class MapState extends Observable {
             if (selectionIn.equals(selectionOut)) {
                 player.setPosition(new Point(selectionIn), currentMap);
                 setMode(Mode.DEFAULT);
+                deselect();
             }
             return;
         }
@@ -54,6 +55,7 @@ public class MapState extends Observable {
             if (selectionIn.equals(selectionOut)) {
                 currentMap.addTeleporter(selectionIn);
                 setMode(Mode.DEFAULT);
+                deselect();
                 setChanged();
                 notifyObservers("Update Map");
             }
@@ -63,6 +65,7 @@ public class MapState extends Observable {
             if (selectionIn.equals(selectionOut) && currentTeleporter != null) {
                 currentTeleporter.setDest(currentMap, selectionIn);
                 setMode(Mode.DEFAULT);
+                deselect();
                 setChanged();
                 notifyObservers("Set Teleporter Dest");
             }
@@ -117,6 +120,12 @@ public class MapState extends Observable {
         Map map = ActionManager.redo(new Map(currentMap));
         if (map != null)
             updateMap(map);
+    }
+
+    public void deselect() {
+        selectionIn = null;
+        selectionOut = null;
+        mousePreview(null, null);
     }
 
     public void setMode(Mode mode) {
