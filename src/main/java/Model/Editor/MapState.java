@@ -52,6 +52,8 @@ public class MapState extends Observable {
             if (selectionIn.equals(selectionOut)) {
                 currentMap.addTeleporter(selectionIn);
                 setMode(Mode.DEFAULT);
+                setChanged();
+                notifyObservers("Update Map");
             }
             return;
         }

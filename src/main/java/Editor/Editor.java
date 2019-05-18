@@ -1,6 +1,7 @@
 package Editor;
 
 import Model.Editor.EditorState;
+import Model.Editor.MapState;
 import Tools.Tools;
 import Tools.CursorManager;
 
@@ -20,8 +21,6 @@ public class Editor extends JFrame implements Observer {
     public ToolsPanel toolsPane;
 
     public TopBar topBar;
-
-    public JButton tmpButton;
 
     public Editor() {
         CursorManager.init(this);
@@ -101,6 +100,13 @@ public class Editor extends JFrame implements Observer {
             EditorState obs = (EditorState) observable;
             if (arg.equals("New World") || arg.equals("New Map")) {
                 tilesPane.treePanel.show_world(obs.world);
+            }
+        }
+        else if (o instanceof String && observable instanceof MapState) {
+            String arg = (String) o;
+            MapState obs = (MapState) observable;
+            if (arg.equals("Update Map")) {
+                tilesPane.treePanel.update_map(obs.currentMap);
             }
         }
     }

@@ -2,6 +2,7 @@ package Editor;
 
 import Model.World.Map;
 import Model.World.Player;
+import Model.World.Teleporter;
 import Model.World.World;
 import Tools.Tools;
 
@@ -34,12 +35,21 @@ public class TreePanel extends JTree {
 
         for (Map map : world.getMaps()) {
             DefaultMutableTreeNode Tmap = new DefaultMutableTreeNode(map);
+            for (Teleporter t : map.getTeleporters()) {
+                DefaultMutableTreeNode teleporter = new DefaultMutableTreeNode(t);
+                Tmap.add(teleporter);
+            }
             Tmaps.add(Tmap);
         }
         this.setModel(model);
         this.setShowsRootHandles(true);
-
         this.expandPath(new TreePath(Tmaps.getPath()));
+    }
+
+    public void update_map(Map map) {
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) getModel().getRoot();
+        World w = (World) root.getUserObject();
+        show_world(w);
     }
 }
 
@@ -47,6 +57,7 @@ class WorldTreeCellRenderer implements TreeCellRenderer {
     Icon map_icon = new ImageIcon(Tools.getPathFromRessources("map_icon.png"));
     Icon world_icon = new ImageIcon(Tools.getPathFromRessources("world_icon.png"));
     Icon player_icon = new ImageIcon(Tools.getPathFromRessources("player_icon.png"));
+    Icon teleporter_icon = new ImageIcon(Tools.getPathFromRessources("teleporter_icon.png"));
 
     @Override
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
@@ -64,6 +75,10 @@ class WorldTreeCellRenderer implements TreeCellRenderer {
         } else if (o instanceof Player) {
             label.setText("Player");
             label.setIcon(player_icon);
+        } else if (o instanceof Teleporter) {
+            Teleporter t = (Teleporter) o;
+            label.setText(t.toString());
+            label.setIcon(teleporter_icon);
         } else {
                 label.setText(o.toString());
         }

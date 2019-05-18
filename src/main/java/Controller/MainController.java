@@ -24,6 +24,7 @@ public class MainController {
         editorState = new EditorState();
 
         editorState.addObserver(editor);
+        editorState.mapState.addObserver(editor);
 
         toolsController = new ToolsController(editor.toolsPane, editorState.toolsState);
         tilesController = new TilesController(editor.tilesPane, editorState.tilesState, toolsController);

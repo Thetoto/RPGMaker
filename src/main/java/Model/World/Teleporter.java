@@ -4,18 +4,18 @@ import java.awt.*;
 
 public class Teleporter {
     String name;
+    String map_dest_name;
     Point position;
-    Teleporter dest;
+    Point dest_position;
 
     public Teleporter(Map map, String name, Point p) {
-        this.name = map.toString() + "_" + name;
+        this.name = map.toString() + " | " + name;
         this.position = p;
-        this.dest = null;
+        this.dest_position = null;
     }
 
-    public Teleporter(Map map, String name, Point p, Teleporter t) {
-        this.name = map.toString() + "_" + name;
-        this.position = p;
-        this.dest = t;
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

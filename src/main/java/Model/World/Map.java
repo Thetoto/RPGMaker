@@ -107,4 +107,8 @@ public class Map {
     public void addTeleporter(Point point) {
         teleporters.add(new Teleporter(this, "first", point));
     }
+
+    public Vector<Teleporter> getTeleporters() {
+        return this.teleporters;
+    }
 }
