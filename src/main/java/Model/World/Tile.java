@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 public class Tile {
     transient public static Tile placeholder = null;
     String image;
+    public boolean walkable = true;
     // transient = not serialized in Gson
     transient BufferedImage refImage = null;
 
@@ -19,7 +20,7 @@ public class Tile {
         this.refImage = image;
     }
 
-    public String geName() {
+    public String getName() {
         return image;
     }
 

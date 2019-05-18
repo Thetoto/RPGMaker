@@ -50,7 +50,7 @@ public class Map {
                         continue;
                     if (currentTile instanceof ImportedTile) {
                         Point isOccupied = isOccupied(x, y, ((ImportedTile)currentTile).getDimention());
-                        if (currentTile.geName().equals("eraser.png")) {
+                        if (currentTile.getName().equals("eraser.png")) {
                             if (isOccupied != null)
                                 foreground.remove(isOccupied);
                             continue;
@@ -61,7 +61,7 @@ public class Map {
                         foreground.put(new Point(x, y), currentTile);
                     } else {
                         int pos = x + y * dimension.width;
-                        if (currentTile.geName().equals("eraser.png"))
+                        if (currentTile.getName().equals("eraser.png"))
                             background.set(pos, Tile.getPlaceholder());
                         else
                             background.set(pos, currentTile);

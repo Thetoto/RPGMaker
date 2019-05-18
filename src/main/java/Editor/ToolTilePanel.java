@@ -1,6 +1,7 @@
 package Editor;
 
 import Model.Editor.TilesState;
+import Model.World.Tile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,18 +10,32 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class ToolTilePanel extends JPanel implements Observer {
+    public JCheckBox walkCheckbox;
+
     public ToolTilePanel() {
         this.setBackground(Color.MAGENTA);
-        this.add(new JButton("Test"));
+        this.setLayout(new GridBagLayout());
     }
 
-    public void setUp(BufferedImage tile) {
+    public void setUp(Tile tile) {
         removeAll();
-        add(new JLabel("Selected tile :"));
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+
+        add(new JLabel("Selected tile :"), c);
         var label = new JLabel();
-        label.setIcon(new ImageIcon(tile));
-        add(label);
+        label.setIcon(new ImageIcon(tile.get()));
+        c.gridx += 1;
+        add(label, c);
         label.setVisible(true);
+
+        c.gridx = 0;
+        c.gridy += 1;
+        walkCheckbox = new JCheckBox("Set walkable");
+        walkCheckbox.setSelected(tile.walkable);
+        add(walkCheckbox, c);
+        walkCheckbox.setVisible(true);
     }
 
     @Override
@@ -29,7 +44,7 @@ public class ToolTilePanel extends JPanel implements Observer {
             String str = (String)o;
             TilesState obj = (TilesState)observable;
             if (str.equals("Change current tile")) {
-                setUp(obj.currentTile.get());
+                setUp(obj.currentTile);
             }
             Editor.validateAll(this);
         }

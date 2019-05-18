@@ -5,6 +5,9 @@ import Model.Editor.TilesState;
 import Model.Editor.ToolsEnum;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Map;
 
 public class TilesController {
@@ -28,6 +31,7 @@ public class TilesController {
                 if (toolsController.getCurrentTool() != ToolsEnum.TILES)
                     toolsController.setTool(ToolsEnum.TILES);
                 tilesState.setCurrentTile(entry.getKey(), true);
+                setupCheckbox();
             });
         }
         for(Map.Entry<String, JButton> entry : tilesPanel.backgroundTab.buttons.entrySet()) {
@@ -35,7 +39,14 @@ public class TilesController {
                 if (toolsController.getCurrentTool() != ToolsEnum.TILES)
                     toolsController.setTool(ToolsEnum.TILES);
                 tilesState.setCurrentTile(entry.getKey(), false);
+                setupCheckbox();
             });
         }
+    }
+
+    public void setupCheckbox() {
+        toolsController.toolsPanel.toolTilePanel.walkCheckbox.addItemListener((e) -> {
+            tilesState.currentTile.walkable = e.getStateChange() == ItemEvent.SELECTED;
+        });
     }
 }
