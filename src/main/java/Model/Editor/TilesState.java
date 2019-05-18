@@ -78,8 +78,8 @@ public class TilesState extends Observable {
         width /= 16;
         Vector<Tile> backVector = ImportedTile.cutInTiles(back, new Dimension(width, height));
         for (int i = 0; i < backVector.size(); i++) {
-            Tile tile = new Tile(name + "_i", backVector.get(i).get());
-            backgroundTiles.put(name, tile);
+            Tile tile = new Tile(name + "_" + i, backVector.get(i).get());
+            backgroundTiles.put(name + "_" + i, tile);
         }
     }
 
@@ -109,7 +109,10 @@ public class TilesState extends Observable {
         else {
             try (Stream<Path> paths = Files.walk(fileOrDir.toPath())) {
                 paths.filter(Files::isDirectory)
-                        .forEach((file) -> autoAddTiles(file.toFile()));
+                        .forEach((file) -> {
+                            if (file.toFile().getName() != fileOrDir.getName())
+                                autoAddTiles(file.toFile());
+                        });
             } catch (IOException e) {
                 e.printStackTrace();
             }
