@@ -1,4 +1,4 @@
-package Editor;
+package Tools;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,7 +11,17 @@ import java.io.IOException;
 public class FileManager {
     public static File getFile() {
         File file = null;
-        JFileChooser fc = setUpFileChooser();
+        JFileChooser fc = setUpFileChooser(JFileChooser.FILES_ONLY);
+        return getElement(file, fc);
+    }
+
+    public static File getFileOrDir() {
+        File file = null;
+        JFileChooser fc = setUpFileChooser(JFileChooser.FILES_AND_DIRECTORIES);
+        return getElement(file, fc);
+    }
+
+    private static File getElement(File file, JFileChooser fc) {
         JFrame frame = setUpFrame(fc);
         int res = fc.showOpenDialog(frame);
         if (res == JFileChooser.APPROVE_OPTION) {
@@ -24,7 +34,7 @@ public class FileManager {
 
     public static void saveFile(Object o) {
         File file = null;
-        JFileChooser fc = setUpFileChooser();
+        JFileChooser fc = setUpFileChooser(JFileChooser.FILES_ONLY);
         JFrame frame = setUpFrame(fc);
         int res = fc.showSaveDialog(frame);
         if (res == JFileChooser.APPROVE_OPTION) {
@@ -52,11 +62,11 @@ public class FileManager {
         return frame;
     }
 
-    private static JFileChooser setUpFileChooser() {
+    private static JFileChooser setUpFileChooser(int type) {
         File current = new File(System.getProperty("user.dir"));
         JFileChooser fc = new JFileChooser();
         fc.setCurrentDirectory(current);
-        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.setFileSelectionMode(type);
         return fc;
     }
 }

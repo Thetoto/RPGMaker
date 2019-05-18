@@ -6,6 +6,7 @@ import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.World.Map;
 import Model.World.Player;
+import Tools.FileManager;
 import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
@@ -32,17 +33,18 @@ public class MainController {
         mapController = new MapController(editor.mapPane, editorState.mapState);
 
         editor.topBar.loadButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.getWorld()));
-
         editor.topBar.toolsButton.addActionListener(actionEvent -> toolsController.setTool(ToolsEnum.TOOLBOX));
-
         editor.topBar.createButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState)));
-
         editor.topBar.saveButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.saveWorld()));
-
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
 
         editor.topBar.undoButton.addActionListener(e -> editorState.mapState.undo());
         editor.topBar.redoButton.addActionListener(e -> editorState.mapState.redo());
+
+        editor.topBar.addNewTiles.addActionListener(e -> {
+            editorState.tilesState.autoAddTiles(FileManager.getFileOrDir());
+            tilesController.setupListener();
+        });
 
         editor.toolsPane.toolBoxPanel.setSpawnButton.addActionListener(e -> editorState.mapState.setMode(Mode.PLAYER));
         editor.toolsPane.toolBoxPanel.addTeleporterButton.addActionListener(e -> editorState.mapState.setMode(Mode.TELEPORTER));

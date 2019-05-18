@@ -1,6 +1,6 @@
 package Model.Editor;
 
-import Editor.FileManager;
+import Tools.FileManager;
 import Model.World.Map;
 import Model.World.World;
 import com.google.gson.Gson;

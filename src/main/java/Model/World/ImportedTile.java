@@ -25,13 +25,18 @@ public class ImportedTile extends Tile {
         height /= 16;
         width /= 16;
         dimension = new Dimension(width, height);
-        image = new Vector<Tile>();
-        for (int i  = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                Tile t = new Tile(fullImage.getSubimage(j * 16,i * 16,16, 16));
-                image.add(t);
+        image = cutInTiles(fullImage, dimension);
+    }
+
+    public static Vector<Tile> cutInTiles(BufferedImage image, Dimension dim) {
+        var res = new Vector<Tile>();
+        for (int i  = 0; i < dim.height; i++) {
+            for (int j = 0; j < dim.width; j++) {
+                Tile t = new Tile(image.getSubimage(j * 16,i * 16,16, 16));
+                res.add(t);
             }
         }
+        return res;
     }
 
     public int getHeight() {

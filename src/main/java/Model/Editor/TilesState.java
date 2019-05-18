@@ -5,7 +5,9 @@ import Model.World.Tile;
 import Tools.Tools;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,14 +55,32 @@ public class TilesState extends Observable {
                 ImportedTile fore = new ImportedTile(file.getFileName().toString(), img);
                 foregroundTiles.put(file.getFileName().toString(), fore);
             } else {
-                Tile back = new Tile(file.getFileName().toString(), img);
-                backgroundTiles.put(file.getFileName().toString(), back);
+                cutAndAddBackTile(img, file.getFileName().toString());
             }
         } catch (IOException e) {
             System.err.println("Can't load this file : " + file.getFileName());
         }
         if (askUpdate)
             askUpdate();
+    }
+
+    public void cutAndAddBackTile(BufferedImage back, String name) {
+        int height = back.getHeight();
+        int width = back.getWidth();
+        if (name.equals("eraser.png") || (height == 16 && width == 16)) {
+            Tile tile = new Tile(name, back);
+            backgroundTiles.put(name, tile);
+            return;
+        }
+        if (height % 16 != 0 || width % 16 != 0)
+            System.err.println("Invalid dimension");
+        height /= 16;
+        width /= 16;
+        Vector<Tile> backVector = ImportedTile.cutInTiles(back, new Dimension(width, height));
+        for (int i = 0; i < backVector.size(); i++) {
+            Tile tile = new Tile(name + "_i", backVector.get(i).get());
+            backgroundTiles.put(name, tile);
+        }
     }
 
     public void addDirectoryTiles(String path, boolean isForeground) {
@@ -76,5 +96,23 @@ public class TilesState extends Observable {
     private void askUpdate() {
         setChanged();
         notifyObservers("Tiles Update");
+    }
+
+    public void autoAddTiles(File fileOrDir) {
+        // TODO : Better algo
+        if (fileOrDir.isFile())
+            addTile(fileOrDir.toPath(), false);
+        else if (fileOrDir.getName().contains("fore"))
+            addDirectoryTiles(fileOrDir.toPath().toString(), true);
+        else if (fileOrDir.getName().contains("back"))
+            addDirectoryTiles(fileOrDir.toPath().toString(), false);
+        else {
+            try (Stream<Path> paths = Files.walk(fileOrDir.toPath())) {
+                paths.filter(Files::isDirectory)
+                        .forEach((file) -> autoAddTiles(file.toFile()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
