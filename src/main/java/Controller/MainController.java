@@ -7,6 +7,7 @@ import Model.Editor.ToolsEnum;
 import Model.World.Map;
 import Model.World.Player;
 import Tools.FileManager;
+import Model.World.Teleporter;
 import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
@@ -52,6 +53,8 @@ public class MainController {
             editorState.mapState.setShowWalk(e.getStateChange() == ItemEvent.SELECTED);
         });
 
+        editor.toolsPane.toolTeleporterPanel.setDestButton.addActionListener(e -> editorState.mapState.setMode(Mode.TELEPORTERDEST));
+
         editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
             var tp = e.getNewLeadSelectionPath();
             if (tp == null)
@@ -65,6 +68,11 @@ public class MainController {
             if (obj instanceof Player) {
                 Player p = (Player) obj;
                 editor.toolsPane.updateToPlayer(p);
+            }
+            if (obj instanceof Teleporter) {
+                Teleporter t = (Teleporter) obj;
+                editor.toolsPane.updateToTeleporter(t);
+                editorState.mapState.setCurrentTeleporter(t);
             }
         });
     }

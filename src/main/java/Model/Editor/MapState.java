@@ -2,6 +2,7 @@ package Model.Editor;
 
 import Model.World.Map;
 import Model.World.Player;
+import Model.World.Teleporter;
 import Tools.ActionManager;
 import Tools.CursorManager;
 import Tools.ThreadLauncher;
@@ -18,6 +19,7 @@ public class MapState extends Observable {
     public Point mousePos;
     private Mode mode;
     private Player player;
+    private Teleporter currentTeleporter;
 
     public MapState() {
         mode = Mode.DEFAULT;
@@ -54,6 +56,15 @@ public class MapState extends Observable {
                 setMode(Mode.DEFAULT);
                 setChanged();
                 notifyObservers("Update Map");
+            }
+            return;
+        }
+        if (mode == Mode.TELEPORTERDEST) {
+            if (selectionIn.equals(selectionOut) && currentTeleporter != null) {
+                currentTeleporter.setDest(currentMap, selectionIn);
+                setMode(Mode.DEFAULT);
+                setChanged();
+                notifyObservers("Set Teleporter Dest");
             }
             return;
         }
@@ -121,5 +132,12 @@ public class MapState extends Observable {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+    public void setCurrentTeleporter(Teleporter teleporter) {
+        currentTeleporter = teleporter;
+    }
+
+    public Teleporter getCurrentTeleporter() {
+        return currentTeleporter;
     }
 }

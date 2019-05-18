@@ -4,5 +4,6 @@ public enum ToolsEnum {
     TOOLBOX,
     TILES,
     NONE,
-    PLAYER;
+    PLAYER,
+    TELEPORTER;
 }

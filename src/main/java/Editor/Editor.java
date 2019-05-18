@@ -108,6 +108,9 @@ public class Editor extends JFrame implements Observer {
             if (arg.equals("Update Map")) {
                 tilesPane.treePanel.update_map(obs.currentMap);
             }
+            else if (arg.equals("Set Teleporter Dest")) {
+                toolsPane.toolTeleporterPanel.update(obs.getCurrentTeleporter());
+            }
         }
     }
 

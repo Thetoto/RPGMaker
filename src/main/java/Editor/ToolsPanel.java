@@ -4,6 +4,7 @@ import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
 import Model.World.Map;
 import Model.World.Player;
+import Model.World.Teleporter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,14 +16,17 @@ public class ToolsPanel extends JPanel implements Observer {
     public ToolBoxPanel toolBoxPanel;
     public ToolTilePanel toolTilePanel;
     public ToolPlayerPanel toolPlayerPanel;
+    public ToolTeleporterPanel toolTeleporterPanel;
 
     public ToolsPanel() {
         toolBoxPanel = new ToolBoxPanel();
         toolTilePanel = new ToolTilePanel();
         toolPlayerPanel = new ToolPlayerPanel();
+        toolTeleporterPanel = new ToolTeleporterPanel();
         this.add(toolBoxPanel);
         this.add(toolTilePanel);
         this.add(toolPlayerPanel);
+        this.add(toolTeleporterPanel);
 
         this.setVisible(false);
     }
@@ -44,6 +48,7 @@ public class ToolsPanel extends JPanel implements Observer {
         toolBoxPanel.setVisible(false);
         toolTilePanel.setVisible(false);
         toolPlayerPanel.setVisible(false);
+        toolTeleporterPanel.setVisible(false);
 
         switch (currentPanel) {
             case TOOLBOX:
@@ -55,6 +60,9 @@ public class ToolsPanel extends JPanel implements Observer {
             case PLAYER:
                 toolPlayerPanel.setVisible(true);
                 break;
+            case TELEPORTER:
+                toolTeleporterPanel.setVisible(true);
+                break;
             case NONE:
                 setVisible(false);
                 break;
@@ -64,6 +72,12 @@ public class ToolsPanel extends JPanel implements Observer {
     public void updateToPlayer(Player p) {
         currentPanel = ToolsEnum.PLAYER;
         toolPlayerPanel.updateInfo(p);
+        this.setVisible(true);
+    }
+
+    public void updateToTeleporter(Teleporter t) {
+        currentPanel = ToolsEnum.TELEPORTER;
+        toolTeleporterPanel.update(t);
         this.setVisible(true);
     }
 }
