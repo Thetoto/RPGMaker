@@ -7,7 +7,6 @@ import Model.Editor.MapState;
 import Model.World.Map;
 import Model.World.Tile;
 
-import javax.annotation.processing.SupportedSourceVersion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

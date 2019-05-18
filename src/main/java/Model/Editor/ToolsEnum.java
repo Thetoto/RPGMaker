@@ -3,5 +3,6 @@ package Model.Editor;
 public enum ToolsEnum {
     TOOLBOX,
     TILES,
-    NONE;
+    NONE,
+    PLAYER;
 }

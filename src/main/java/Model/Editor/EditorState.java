@@ -5,7 +5,6 @@ import Model.World.Map;
 import Model.World.World;
 import com.google.gson.Gson;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileReader;
 import java.util.Observable;

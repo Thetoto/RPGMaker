@@ -2,6 +2,8 @@ package Editor;
 
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
+import Model.World.Map;
+import Model.World.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,12 +14,15 @@ public class ToolsPanel extends JPanel implements Observer {
     public ToolsEnum currentPanel;
     public ToolBoxPanel toolBoxPanel;
     public ToolTilePanel toolTilePanel;
+    public ToolPlayerPanel toolPlayerPanel;
 
     public ToolsPanel() {
         toolBoxPanel = new ToolBoxPanel();
         toolTilePanel = new ToolTilePanel();
+        toolPlayerPanel = new ToolPlayerPanel();
         this.add(toolBoxPanel);
         this.add(toolTilePanel);
+        this.add(toolPlayerPanel);
 
         this.setVisible(false);
     }
@@ -38,6 +43,7 @@ public class ToolsPanel extends JPanel implements Observer {
 
         toolBoxPanel.setVisible(false);
         toolTilePanel.setVisible(false);
+        toolPlayerPanel.setVisible(false);
 
         switch (currentPanel) {
             case TOOLBOX:
@@ -46,9 +52,18 @@ public class ToolsPanel extends JPanel implements Observer {
             case TILES:
                 toolTilePanel.setVisible(true);
                 break;
+            case PLAYER:
+                toolPlayerPanel.setVisible(true);
+                break;
             case NONE:
                 setVisible(false);
                 break;
         }
+    }
+
+    public void updateToPlayer(Player p) {
+        currentPanel = ToolsEnum.PLAYER;
+        toolPlayerPanel.updateInfo(p);
+        this.setVisible(true);
     }
 }

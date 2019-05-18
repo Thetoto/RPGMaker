@@ -4,6 +4,7 @@ import Editor.Editor;
 import Model.Editor.EditorState;
 import Model.Editor.ToolsEnum;
 import Model.World.Map;
+import Model.World.Player;
 import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
@@ -49,6 +50,10 @@ public class MainController {
             if (obj instanceof Map) {
                 Map map = (Map) obj;
                 editorState.mapState.updateMap(map);
+            }
+            if (obj instanceof Player) {
+                Player p = (Player) obj;
+                editor.toolsPane.updateToPlayer(p);
             }
         });
     }
