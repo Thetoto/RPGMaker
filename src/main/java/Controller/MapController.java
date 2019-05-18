@@ -3,7 +3,6 @@ package Controller;
 import Editor.MapPanel;
 import Model.Editor.EditorState;
 import Model.Editor.MapState;
-import Model.World.Player;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;

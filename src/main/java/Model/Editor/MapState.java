@@ -3,6 +3,7 @@ package Model.Editor;
 import Model.World.Map;
 import Model.World.Player;
 import Tools.ActionManager;
+import Tools.CursorManager;
 import Tools.ThreadLauncher;
 
 import java.awt.*;
@@ -42,7 +43,7 @@ public class MapState extends Observable {
         if (mode == Mode.PLAYER) {
             if (selectionIn.equals(selectionOut)) {
                 player.setPosition(new Point(selectionIn), currentMap);
-                mode = Mode.DEFAULT;
+                setMode(Mode.DEFAULT);
             }
             return;
         }
@@ -87,6 +88,10 @@ public class MapState extends Observable {
     }
 
     public void setMode(Mode mode) {
+        if (mode == Mode.PLAYER)
+            CursorManager.setCursor(Cursor.CROSSHAIR_CURSOR);
+        else
+            CursorManager.setCursor(Cursor.DEFAULT_CURSOR);
         this.mode = mode;
     }
 
@@ -95,7 +100,6 @@ public class MapState extends Observable {
     }
 
     public void setPlayer(Player player) {
-        System.out.println("PLAYER");
         this.player = player;
     }
 }

@@ -2,13 +2,11 @@ package Tools;
 
 import Model.World.Map;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
 import java.util.Stack;
 
 public class ActionManager {
-    static Stack<Map> undo = new Stack<Map>();
-    static Stack<Map> redo = new Stack<Map>();
+    static Stack<Map> undo = new Stack<>();
+    static Stack<Map> redo = new Stack<>();
 
     public static void saveAction(Map map) {
         undo.add(map);

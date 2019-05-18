@@ -2,6 +2,7 @@ package Editor;
 
 import Model.Editor.EditorState;
 import Tools.Tools;
+import Tools.CursorManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -23,6 +24,7 @@ public class Editor extends JFrame implements Observer {
     public JButton tmpButton;
 
     public Editor() {
+        CursorManager.init(this);
         this.setSize(1080,720);
         this.setTitle("BibleRPG - Premium ULTIMATE ++ AllInclusive Remake Edition Deluxe");
         try {
