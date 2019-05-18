@@ -10,6 +10,7 @@ import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.event.ItemEvent;
 
 public class MainController {
     Editor editor;
@@ -45,6 +46,9 @@ public class MainController {
 
         editor.toolsPane.toolBoxPanel.setSpawnButton.addActionListener(e -> editorState.mapState.setMode(Mode.PLAYER));
         editor.toolsPane.toolBoxPanel.addTeleporterButton.addActionListener(e -> editorState.mapState.setMode(Mode.TELEPORTER));
+        editor.toolsPane.toolBoxPanel.showWalkable.addItemListener(e -> {
+            editorState.mapState.setShowWalk(e.getStateChange() == ItemEvent.SELECTED);
+        });
 
         editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
             var tp = e.getNewLeadSelectionPath();

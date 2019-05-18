@@ -6,9 +6,9 @@ import java.awt.image.BufferedImage;
 public class Tile {
     transient public static Tile placeholder = null;
     String image;
-    public boolean walkable = true;
     // transient = not serialized in Gson
     transient BufferedImage refImage = null;
+    public transient boolean defaultWalkable = true;
 
     public Tile(String name, BufferedImage image) {
         this.image = name;

@@ -77,6 +77,17 @@ public class MapState extends Observable {
         updateMap();
     }
 
+    public void setShowWalk(boolean b) {
+        EditorState.getInstance().showWalk = b;
+        if (currentMap == null)
+            return;
+        setChanged();
+        if (b)
+            notifyObservers("Show Walk");
+        else
+            notifyObservers("Hide Walk");
+    }
+
     public void mouseOver(Point over) {
         if (selectionIn != null)
             return;

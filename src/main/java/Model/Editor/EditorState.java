@@ -19,6 +19,7 @@ public class EditorState extends Observable {
     public World world;
 
     public boolean showGrid = true;
+    public boolean showWalk = false;
 
     public EditorState() {
         instance = this;

@@ -33,7 +33,7 @@ public class ToolTilePanel extends JPanel implements Observer {
         c.gridx = 0;
         c.gridy += 1;
         walkCheckbox = new JCheckBox("Set walkable");
-        walkCheckbox.setSelected(tile.walkable);
+        walkCheckbox.setSelected(tile.defaultWalkable);
         add(walkCheckbox, c);
         walkCheckbox.setVisible(true);
     }

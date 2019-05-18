@@ -10,6 +10,7 @@ public class Map {
     String name;
     Dimension dimension;
     Vector<Tile> background;
+    Vector<Boolean> walkable;
     HashMap<Point, Tile> foreground; // Tile but it's a ImportedTile. Point is top left corner.
     Vector<Teleporter> teleporters;
 
@@ -17,10 +18,12 @@ public class Map {
         this.name = name;
         this.dimension = dimension;
         this.background = new Vector<>(dimension.width * dimension.height);
+        this.walkable = new Vector<>(dimension.width * dimension.height);
         this.foreground = new HashMap<>();
         this.teleporters = new Vector<>();
         for (int i = 0; i < dimension.width * dimension.height; i++) {
             background.add(i, Tile.getPlaceholder());
+            walkable.add(true);
         }
     }
 
@@ -52,19 +55,18 @@ public class Map {
                         Point isOccupied = isOccupied(x, y, ((ImportedTile)currentTile).getDimention());
                         if (currentTile.getName().equals("eraser.png")) {
                             if (isOccupied != null)
-                                foreground.remove(isOccupied);
+                                removeFore(isOccupied);
                             continue;
                         }
                         if (isOccupied != null) {
                             continue;
                         }
-                        foreground.put(new Point(x, y), currentTile);
+                        setFore(x, y, (ImportedTile)currentTile);
                     } else {
-                        int pos = x + y * dimension.width;
                         if (currentTile.getName().equals("eraser.png"))
-                            background.set(pos, Tile.getPlaceholder());
+                            setTile(x, y, Tile.getPlaceholder());
                         else
-                            background.set(pos, currentTile);
+                            setTile(x, y, currentTile);
                     }
                 }
             }
@@ -86,11 +88,42 @@ public class Map {
         return null;
     }
 
-    public Tile getTile(Point pt) {
-        return getTile(pt.x, pt.y);
-    }
     public Tile getTile(int x, int y) {
         return background.get(x + dimension.width * y);
+    }
+    public void setTile(int x, int y, Tile tile) {
+        background.set(x + dimension.width * y, tile);
+        setWalkable(x, y, tile.defaultWalkable);
+    }
+
+    public void setFore(int x, int y, ImportedTile tile) {
+        foreground.put(new Point(x, y), tile);
+
+        for (int i = x; i < x + tile.getWidth(); i++) {
+            for (int j = y; j < y + tile.getHeight(); j++) {
+                setWalkable(i, j, false);
+            }
+        }
+    }
+    private void removeFore(Point pt) {
+        ImportedTile imp = (ImportedTile)foreground.get(pt);
+        Dimension dim = new Dimension(imp.getWidth(), imp.getHeight());
+        foreground.remove(pt);
+
+        for (int i = pt.x; i < pt.x + dim.getWidth(); i++) {
+            for (int j = pt.y; j < pt.y + dim.getHeight(); j++) {
+                setWalkable(i, j, true);
+            }
+        }
+    }
+
+
+    public boolean getWalkable(int x, int y) {
+        return walkable.get(x + dimension.width * y);
+    }
+
+    public void setWalkable(int x, int y, boolean bool) {
+        walkable.set(x + dimension.width * y, bool);
     }
 
     public HashMap<Point, Tile> getForegroundSet() {

@@ -16,26 +16,32 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class MapPanel extends JLayeredPane implements Observer {
+    static Integer MAP_LAYER = 1;
+    static Integer MID_LAYER = 2;
+    static Integer SELECT_LAYER = 3;
 
-    BufferedImage bi;
-    BufferedImage selection_layout;
+    JLabel mapLayer;
+    JLabel midLayer;
+    JLabel selectLayer;
+
+    static int multiply;
+
+    BufferedImage bi = Tile.getPlaceholder().get();
+    BufferedImage selection_layout = Tile.getPlaceholder().get();
 
     public MapPanel() {
-        bi = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-        JLabel Mimg = new JLabel(new ImageIcon(bi));
-        Mimg.setBounds(0, 0, this.getWidth(), this.getHeight());
-        this.addImpl(Mimg, JLayeredPane.TOP_ALIGNMENT, 1);
+        mapLayer = new JLabel();
+        this.add(mapLayer, MAP_LAYER);
 
-        selection_layout = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-        JLabel Limg = new JLabel(new ImageIcon(selection_layout));
-        Limg.setBounds(0, 0, this.getWidth(), this.getHeight());
-        this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT, 0);
+        midLayer = new JLabel();
+        this.add(midLayer, MID_LAYER);
+
+        selectLayer = new JLabel();
+        this.add(selectLayer, SELECT_LAYER);
     }
 
     public synchronized void drawMap(Map map) {
-        boolean showGrid = EditorState.getInstance().showGrid;
-        int multiply = showGrid ? 17 : 16;
-        this.remove(1);
+        this.remove(mapLayer);
         bi = new BufferedImage(map.getDim().width * multiply, map.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D g = bi.createGraphics();
@@ -52,18 +58,16 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
         g.dispose();
 
-        JLabel Mimg = new JLabel(new ImageIcon(bi));
+        mapLayer = new JLabel(new ImageIcon(bi));
 
-        Mimg.setBounds(0, 0, bi.getWidth(), bi.getHeight());
-        this.addImpl(Mimg, JLayeredPane.TOP_ALIGNMENT, 1);
+        mapLayer.setBounds(0, 0, bi.getWidth(), bi.getHeight());
+        this.add(mapLayer, MAP_LAYER);
 
         this.setSizeMap();
         this.repaint();
     }
 
     public synchronized void set_image(Graphics2D g, ImportedTile img, Point top) {
-        boolean showGrid = EditorState.getInstance().showGrid;
-        int multiply = showGrid ? 17 : 16;
         int decalage_x = top.x;
         int decalage_y = top.y;
         for (int i = 0; i < img.getWidth(); i++) {
@@ -71,6 +75,38 @@ public class MapPanel extends JLayeredPane implements Observer {
                 g.drawImage(img.getTile(i, j).get(), (i + decalage_x) * multiply, (j + decalage_y) * multiply , null);
             }
         }
+    }
+
+    public synchronized void show_walkable(MapState mapState) {
+        this.remove(midLayer);
+        if (mapState == null) {
+            midLayer = new JLabel();
+            this.add(midLayer, MID_LAYER);
+            this.repaint();
+            return;
+        }
+        BufferedImage tmp = new BufferedImage(mapState.currentMap.getDim().width * multiply, mapState.currentMap.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g = tmp.createGraphics();
+        for (int x = 0; x < mapState.currentMap.getDim().width; x++) {
+            for (int y = 0; y < mapState.currentMap.getDim().height; y++) {
+                if (mapState.currentMap.getWalkable(x, y))
+                    g.setColor(new Color(0, 200, 0, 100));
+                else
+                    g.setColor(new Color(200, 0, 0, 100));
+
+                g.drawRect(x * multiply, y * multiply, 16, 16);
+            }
+        }
+
+        g.dispose();
+
+        midLayer = new JLabel(new ImageIcon(tmp));
+
+        midLayer.setBounds(0, 0, tmp.getWidth(), tmp.getHeight());
+        this.add(midLayer, MID_LAYER);
+
+        this.repaint();
     }
 
     public synchronized void show_selection(MapState mapState) {
@@ -85,9 +121,7 @@ public class MapPanel extends JLayeredPane implements Observer {
             }
         }
 
-        boolean showGrid = EditorState.getInstance().showGrid;
-        int multiply = showGrid ? 17 : 16;
-        this.remove(0);
+        this.remove(selectLayer);
         selection_layout = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = selection_layout.createGraphics();
         g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
@@ -105,10 +139,10 @@ public class MapPanel extends JLayeredPane implements Observer {
             }
         }
         g.dispose();
-        JLabel Limg = new JLabel(new ImageIcon(selection_layout));
-        Limg.setBounds(0, 0, bi.getWidth(), bi.getHeight());
+        selectLayer = new JLabel(new ImageIcon(selection_layout));
+        selectLayer.setBounds(0, 0, bi.getWidth(), bi.getHeight());
 
-        this.addImpl(Limg, JLayeredPane.TOP_ALIGNMENT, 0);
+        this.add(selectLayer, SELECT_LAYER);
         this.repaint();
     }
 
@@ -119,6 +153,10 @@ public class MapPanel extends JLayeredPane implements Observer {
 
     @Override
     public synchronized void update(Observable observable, Object o) {
+        boolean showGrid = EditorState.getInstance().showGrid;
+        boolean showWalk = EditorState.getInstance().showWalk;
+        multiply = showGrid ? 17 : 16;
+
         if (o instanceof String && observable instanceof MapState){
             MapState mapState = (MapState) observable;
             String arg = (String) o;
@@ -128,7 +166,16 @@ public class MapPanel extends JLayeredPane implements Observer {
             if (arg.equals("mousePreview")) {
                 this.show_selection(mapState);
             }
+            if (arg.equals("Show Walk")) {
+                this.midLayer.setOpaque(true);
+                this.show_walkable(mapState);
+            }
+            if (arg.equals("Hide Walk")) {
+                this.show_walkable(null);
+            }
             if (arg.equals("Load Me")) {
+                if (showWalk)
+                    show_walkable(mapState);
                 System.out.println("Try to display");
                 drawMap(mapState.currentMap);
             }

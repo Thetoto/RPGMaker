@@ -46,7 +46,7 @@ public class TilesController {
 
     public void setupCheckbox() {
         toolsController.toolsPanel.toolTilePanel.walkCheckbox.addItemListener((e) -> {
-            tilesState.currentTile.walkable = e.getStateChange() == ItemEvent.SELECTED;
+            tilesState.currentTile.defaultWalkable = e.getStateChange() == ItemEvent.SELECTED;
         });
     }
 }
