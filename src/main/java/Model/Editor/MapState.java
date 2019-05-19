@@ -94,6 +94,16 @@ public class MapState extends Observable {
     }
 
     public void updateMap(Map map) {
+
+        if (currentMap != null && currentMap.toString() == map.toString()) {
+            var world = EditorState.getInstance().world;
+            int i = world.maps.indexOf(currentMap);
+            world.maps.set(i, map);
+            setChanged();
+            notifyObservers("Update Map");
+        } else {
+            ActionManager.reset();
+        }
         this.currentMap = map;
         updateMap();
         setChanged();

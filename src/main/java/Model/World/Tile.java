@@ -9,7 +9,8 @@ public class Tile {
     String image;
     // transient = not serialized in Gson
     transient BufferedImage refImage = null;
-    public transient boolean defaultWalkable = true;
+
+    transient boolean defaultWalkable = true;
 
     public Tile(String name, BufferedImage image) {
         this.image = name;
@@ -60,5 +61,13 @@ public class Tile {
             transplaceholder = new Tile("TransPlaceHolder", bi);
         }
         return transplaceholder;
+    }
+
+    public void setDefaultWalkable(boolean defaultWalkable) {
+        this.defaultWalkable = defaultWalkable;
+    }
+
+    public boolean isDefaultWalkable() {
+        return defaultWalkable;
     }
 }

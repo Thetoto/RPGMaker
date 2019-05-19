@@ -49,7 +49,7 @@ public class TilesController {
 
     public void setupCheckboxAndBigTile() {
         toolsController.toolsPanel.toolTilePanel.walkCheckbox.addItemListener((e) -> {
-            tilesState.currentTile.defaultWalkable = e.getStateChange() == ItemEvent.SELECTED;
+            tilesState.currentTile.setDefaultWalkable(e.getStateChange() == ItemEvent.SELECTED);
         });
         toolsController.toolsPanel.toolTilePanel.bigTileAll.addActionListener((e) -> {
             ((BigTile)tilesState.currentTile).setCur(-1);

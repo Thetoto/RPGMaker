@@ -8,6 +8,11 @@ public class ActionManager {
     static Stack<Map> undo = new Stack<>();
     static Stack<Map> redo = new Stack<>();
 
+    public static void reset() {
+        redo.clear();
+        undo.clear();
+    }
+
     public static void saveAction(Map map) {
         undo.add(map);
         redo.clear();

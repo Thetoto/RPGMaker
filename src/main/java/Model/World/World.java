@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class World extends Observable {
     String name;
-    List<Map> maps;
+    public List<Map> maps;
     Player player;
 
     public World(String name) {

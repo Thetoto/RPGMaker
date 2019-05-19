@@ -85,7 +85,7 @@ public class Map {
     }
 
     private void drawBigTile(BigTile bt, Point in, Point out) {
-        if (in.equals(out))
+        if (in.equals(out) && bt.cur == -1)
             out = new Point(out.x + bt.getWidth() - 1, out.y + bt.getHeight() - 1);
         for (int x = in.x; x <= out.x; x++) {
             for (int y = in.y; y <= out.y; y++) {

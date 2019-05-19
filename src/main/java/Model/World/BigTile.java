@@ -45,6 +45,14 @@ public class BigTile extends Tile {
         return dimension;
     }
 
+    @Override
+    public void setDefaultWalkable(boolean defaultWalkable) {
+        super.setDefaultWalkable(defaultWalkable);
+        for (Tile tile : image) {
+            tile.setDefaultWalkable(defaultWalkable);
+        }
+    }
+
     public void setCur(Integer j) {
         cur = j;
     }
