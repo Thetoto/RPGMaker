@@ -14,6 +14,8 @@ public class ActionManager {
     }
 
     public static Map undo(Map cur_map) {
+        if (undo.empty())
+            return cur_map;
         Map map = undo.pop();
         if (map != null)
             redo.add(cur_map);
@@ -21,6 +23,8 @@ public class ActionManager {
     }
 
     public static Map redo(Map cur_map) {
+        if (redo.empty())
+            return cur_map;
         Map map = redo.pop();
         if (map != null) {
             undo.add(cur_map);

@@ -5,7 +5,6 @@ import Model.Editor.EditorState;
 import Model.World.Map;
 
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
 
 public class PopUpManager {
@@ -67,5 +66,9 @@ public class PopUpManager {
         frame.pack();
         frame.setSize(250, 150);
         frame.setVisible(true);
+    }
+
+    public static boolean Confirm(String s) {
+        return JOptionPane.showConfirmDialog(Editor.getInstance(), s) == 0;
     }
 }

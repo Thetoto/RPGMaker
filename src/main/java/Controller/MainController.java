@@ -15,6 +15,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.io.File;
 
 public class MainController {
     Editor editor;
@@ -45,8 +46,14 @@ public class MainController {
         editor.topBar.redoButton.addActionListener(e -> editorState.mapState.redo());
 
         editor.topBar.addNewTiles.addActionListener(e -> {
-            editorState.tilesState.autoAddTiles(FileManager.getFileOrDir());
+            int sizeBefore = editorState.tilesState.foregroundTiles.size() + editorState.tilesState.backgroundTiles.size();
+            File f = FileManager.getFileOrDir();
+            if (f == null)
+                return;
+            editorState.tilesState.autoAddTiles(f);
             tilesController.setupListener();
+            int sizeAfter = editorState.tilesState.foregroundTiles.size() + editorState.tilesState.backgroundTiles.size();
+            Tools.PopUpManager.Alert((sizeAfter - sizeBefore) + " tiles loaded");
         });
 
         editor.toolsPane.toolBoxPanel.setSpawnButton.addActionListener(e -> editorState.mapState.setMode(Mode.PLAYER));

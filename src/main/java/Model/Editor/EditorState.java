@@ -37,6 +37,10 @@ public class EditorState extends Observable {
         File file = FileManager.getFile();
         if (file == null)
             return;
+        if (world != null && !PopUpManager.Confirm("Do you really want to load this world ?\n" +
+                "You will loose your current World."))
+            return;
+        World backup = world;
         Gson gson = new Gson();
         System.out.println(file.toString() + " " + gson);
         try {
@@ -46,7 +50,7 @@ public class EditorState extends Observable {
         }
         boolean res = world.setUpLoad();
         if (!res) {
-            world = null;
+            world = backup;
             // Error
             PopUpManager.Alert("Cetaines tiles n'ont pas été trouvés.");
             return;

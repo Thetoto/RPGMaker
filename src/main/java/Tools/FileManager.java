@@ -33,6 +33,10 @@ public class FileManager {
     }
 
     public static void saveFile(Object o) {
+        if (o == null) {
+            PopUpManager.Alert("Nothing to save.");
+            return;
+        }
         File file = null;
         JFileChooser fc = setUpFileChooser(JFileChooser.FILES_ONLY);
         JFrame frame = setUpFrame(fc);
@@ -48,6 +52,7 @@ public class FileManager {
                 file.createNewFile();
                 FileOutputStream writer = new FileOutputStream(file);
                 writer.write(world_json.getBytes());
+                PopUpManager.Alert("World saved !");
             } catch (IOException e) {
                 e.printStackTrace();
             }
