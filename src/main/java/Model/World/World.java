@@ -37,18 +37,25 @@ public class World extends Observable {
         return name;
     }
 
-    public void setUpLoad() {
+    public boolean setUpLoad() {
         var backTiles = EditorState.getInstance().tilesState.backgroundTiles;
         var foreTiles = EditorState.getInstance().tilesState.foregroundTiles;
         for (Map map: maps) {
             for (int i = 0; i < map.background.size(); i++) {
                 String name = map.background.get(i).getName();
-                map.background.set(i, getTileByName(backTiles, name));
+                Tile tile = getTileByName(backTiles, name);
+                if (tile == null)
+                    return false;
+                map.background.set(i, tile);
             }
             for (Point pt : map.foreground.keySet()) {
-                map.foreground.put(pt, foreTiles.get(map.foreground.get(pt).getName()));
+                Tile tile = foreTiles.get(map.foreground.get(pt).getName());
+                if (tile == null)
+                    return false;
+                map.foreground.put(pt, tile);
             }
         }
+        return true;
     }
 
     public Tile getTileByName(java.util.Map<String, Tile> map, String name) {
@@ -65,7 +72,7 @@ public class World extends Observable {
                 }
             }
         }
-        return Tile.getPlaceholder();
+        return null;
     }
 
     public int getIntFromName(String name) {

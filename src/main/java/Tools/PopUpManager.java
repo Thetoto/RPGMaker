@@ -4,9 +4,30 @@ import Model.Editor.EditorState;
 import Model.World.Map;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 
 public class PopUpManager {
+
+    public static void Alert(String text) {
+        JFrame frame = new JFrame();
+        frame.setLocationRelativeTo(null);
+        frame.setTitle("Alert");
+
+        frame.setLayout(new GridLayout(2, 1));
+
+        JLabel label = new JLabel(text);
+        frame.add(label);
+
+        JButton button = new JButton("Ok");
+        frame.add(button);
+
+        frame.pack();
+        frame.setSize(new Dimension(frame.getWidth(), 100));
+        frame.setVisible(true);
+
+        button.addActionListener(evt -> frame.dispose());
+    }
 
     public static void askNewMap(EditorState editorState) {
         JFrame frame = new JFrame();

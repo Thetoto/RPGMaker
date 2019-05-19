@@ -151,7 +151,7 @@ public class MapState extends Observable {
     }
 
     public void forceWalkable(boolean b) {
-        if (currentMap == null)
+        if (currentMap == null || selectionIn == null || selectionOut == null)
             return;
         for (int x = selectionIn.x; x <= selectionOut.x; x++) {
             for (int y = selectionIn.y; y <= selectionOut.y; y++) {

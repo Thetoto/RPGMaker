@@ -3,6 +3,7 @@ package Model.Editor;
 import Tools.FileManager;
 import Model.World.Map;
 import Model.World.World;
+import Tools.PopUpManager;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -43,7 +44,13 @@ public class EditorState extends Observable {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        world.setUpLoad();
+        boolean res = world.setUpLoad();
+        if (!res) {
+            world = null;
+            // Error
+            PopUpManager.Alert("Cetaines tiles n'ont pas été trouvés.");
+            return;
+        }
         mapState.updateMap(world.getMaps().get(0));
         mapState.setPlayer(world.getPlayer());
         setChanged();
