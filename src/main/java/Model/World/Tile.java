@@ -24,6 +24,10 @@ public class Tile {
         return image;
     }
 
+    public void setName(String image) {
+        this.image = image;
+    }
+
     public BufferedImage get() {
         return refImage;
     }

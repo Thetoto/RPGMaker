@@ -47,12 +47,10 @@ public class Map {
         if (in != null) {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
-                    if (x < 0 || y < 0)
-                        continue;
-                    if (x >= dimension.width || y >= dimension.height)
+                    if (checkBounds(x, y))
                         continue;
                     if (currentTile instanceof ImportedTile) {
-                        Point isOccupied = isOccupied(x, y, ((ImportedTile)currentTile).getDimention());
+                        Point isOccupied = isOccupied(x, y, ((ImportedTile) currentTile).getDimention());
                         if (currentTile.getName().equals("eraser.png")) {
                             if (isOccupied != null)
                                 removeFore(isOccupied);
@@ -61,7 +59,18 @@ public class Map {
                         if (isOccupied != null) {
                             continue;
                         }
-                        setFore(x, y, (ImportedTile)currentTile);
+                        setFore(x, y, (ImportedTile) currentTile);
+                    } else if (currentTile instanceof BigTile) {
+                        BigTile bt = (BigTile)currentTile;
+                        if (bt.cur == -1) {
+                            for (int i = 0; i < bt.getWidth(); i++) {
+                                for (int j = 0; j < bt.getHeight(); j++) {
+                                    setTile(x + i, y + j, bt.getTile(i, j));
+                                }
+                            }
+                        } else {
+                            setTile(x, y, bt.getTile(bt.cur));
+                        }
                     } else {
                         if (currentTile.getName().equals("eraser.png"))
                             setTile(x, y, Tile.getPlaceholder());
@@ -88,16 +97,31 @@ public class Map {
         return null;
     }
 
+    public boolean checkBounds(int x, int y) {
+        if (x < 0 || y < 0)
+            return true;
+        if (x >= dimension.width || y >= dimension.height)
+            return true;
+        return false;
+    }
+
     public Tile getTile(int x, int y) {
+        if (checkBounds(x, y))
+            return Tile.getPlaceholder();
         return background.get(x + dimension.width * y);
     }
     public void setTile(int x, int y, Tile tile) {
+        if (checkBounds(x, y))
+            return;
         background.set(x + dimension.width * y, tile);
         if (isOccupied(x, y, new Dimension(1, 1)) == null)
             setWalkable(x, y, tile.defaultWalkable);
     }
 
     public void setFore(int x, int y, ImportedTile tile) {
+        if (checkBounds(x, y))
+            return;
+
         foreground.put(new Point(x, y), tile);
 
         for (int i = x; i < x + tile.getWidth(); i++) {
@@ -107,6 +131,8 @@ public class Map {
         }
     }
     private void removeFore(Point pt) {
+        if (checkBounds(pt.x, pt.y))
+            return;
         ImportedTile imp = (ImportedTile)foreground.get(pt);
         Dimension dim = new Dimension(imp.getWidth(), imp.getHeight());
         foreground.remove(pt);
@@ -120,13 +146,13 @@ public class Map {
 
 
     public boolean getWalkable(int x, int y) {
+        if (checkBounds(x, y))
+            return false;
         return walkable.get(x + dimension.width * y);
     }
 
     public void setWalkable(int x, int y, boolean bool) {
-        if (x < 0 || y < 0)
-            return;
-        if (x >= dimension.width || y >= dimension.height)
+        if (checkBounds(x, y))
             return;
         walkable.set(x + dimension.width * y, bool);
     }
@@ -143,6 +169,8 @@ public class Map {
     }
 
     public void addTeleporter(Point point) {
+        if (checkBounds(point.x, point.y))
+            return;
         teleporters.add(new Teleporter(this, "first", point));
     }
 

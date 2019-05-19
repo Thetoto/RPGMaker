@@ -1,8 +1,10 @@
 package Controller;
 
+import Editor.Editor;
 import Editor.TilesPanel;
 import Model.Editor.TilesState;
 import Model.Editor.ToolsEnum;
+import Model.World.BigTile;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -31,7 +33,7 @@ public class TilesController {
                 if (toolsController.getCurrentTool() != ToolsEnum.TILES)
                     toolsController.setTool(ToolsEnum.TILES);
                 tilesState.setCurrentTile(entry.getKey(), true);
-                setupCheckbox();
+                setupCheckboxAndBigTile();
             });
         }
         for(Map.Entry<String, JButton> entry : tilesPanel.backgroundTab.buttons.entrySet()) {
@@ -39,14 +41,23 @@ public class TilesController {
                 if (toolsController.getCurrentTool() != ToolsEnum.TILES)
                     toolsController.setTool(ToolsEnum.TILES);
                 tilesState.setCurrentTile(entry.getKey(), false);
-                setupCheckbox();
+                setupCheckboxAndBigTile();
             });
         }
     }
 
-    public void setupCheckbox() {
+    public void setupCheckboxAndBigTile() {
         toolsController.toolsPanel.toolTilePanel.walkCheckbox.addItemListener((e) -> {
             tilesState.currentTile.defaultWalkable = e.getStateChange() == ItemEvent.SELECTED;
         });
+        toolsController.toolsPanel.toolTilePanel.bigTileAll.addActionListener((e) -> {
+            ((BigTile)tilesState.currentTile).setCur(-1);
+        });
+        for (int i = 0;  i < toolsController.toolsPanel.toolTilePanel.bigTileSeclector.size(); i++) {
+            final Integer j = i;
+            toolsController.toolsPanel.toolTilePanel.bigTileSeclector.get(i).addActionListener((e) -> {
+                ((BigTile)tilesState.currentTile).setCur(j);
+            });
+        }
     }
 }

@@ -1,5 +1,6 @@
 package Model.Editor;
 
+import Model.World.BigTile;
 import Model.World.ImportedTile;
 import Model.World.Tile;
 import Tools.Tools;
@@ -74,15 +75,8 @@ public class TilesState extends Observable {
             backgroundTiles.put(name, tile);
             return;
         }
-        if (height % 16 != 0 || width % 16 != 0)
-            System.err.println("Invalid dimension");
-        height /= 16;
-        width /= 16;
-        Vector<Tile> backVector = ImportedTile.cutInTiles(back, new Dimension(width, height));
-        for (int i = 0; i < backVector.size(); i++) {
-            Tile tile = new Tile(name + "_" + i, backVector.get(i).get());
-            backgroundTiles.put(name + "_" + i, tile);
-        }
+        Tile tile = new BigTile(name, back);
+        backgroundTiles.put(name, tile);
     }
 
     public void addDirectoryTiles(String path, boolean isForeground) {

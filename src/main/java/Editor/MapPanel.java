@@ -2,6 +2,7 @@ package Editor;
 
 import Model.Editor.EditorState;
 import Model.Editor.ToolsEnum;
+import Model.World.BigTile;
 import Model.World.ImportedTile;
 import Model.Editor.MapState;
 import Model.World.Map;
@@ -112,9 +113,14 @@ public class MapPanel extends JLayeredPane implements Observer {
     public synchronized void show_selection(MapState mapState) {
         Point in = mapState.selectionIn;
         Point out = mapState.selectionOut;
-        BufferedImage cur = null;
+        Tile cur = null;
         if (EditorState.getInstance().toolsState.currentTools == ToolsEnum.TILES) {
-            cur = EditorState.getInstance().tilesState.currentTile.get();
+            cur = EditorState.getInstance().tilesState.currentTile;
+            if (cur instanceof BigTile) {
+                BigTile bt = (BigTile)cur;
+                if (bt.cur != -1)
+                    cur = bt.getTile(bt.cur);
+            }
             if (in == null && mapState.mousePos != null) {
                 in = mapState.mousePos;
                 out = mapState.mousePos;
@@ -128,8 +134,8 @@ public class MapPanel extends JLayeredPane implements Observer {
         if (in != null && out != null) {
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
-                    if (cur != null && ((cur.getWidth() == 16 && cur.getHeight() == 16) || in.equals(out))) {
-                        g.drawImage(cur, x * multiply, y * multiply, null);
+                    if (cur != null && ((cur.get().getWidth() == 16 && cur.get().getHeight() == 16) || in.equals(out))) {
+                        g.drawImage(cur.get(), x * multiply, y * multiply, null);
                     } else {
                         g.setColor(new Color(200, 0, 0, 100));
                         g.drawRect(x * multiply, y * multiply, 16, 16);

@@ -6,6 +6,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class World extends Observable {
     String name;
@@ -41,15 +43,36 @@ public class World extends Observable {
         for (Map map: maps) {
             for (int i = 0; i < map.background.size(); i++) {
                 String name = map.background.get(i).getName();
-                if (name.equals("PlaceHolder"))
-                    map.background.set(i, Tile.getPlaceholder());
-                else
-                    map.background.set(i, backTiles.get(name));
+                map.background.set(i, getTileByName(backTiles, name));
             }
             for (Point pt : map.foreground.keySet()) {
                 map.foreground.put(pt, foreTiles.get(map.foreground.get(pt).getName()));
             }
         }
+    }
 
+    public Tile getTileByName(java.util.Map<String, Tile> map, String name) {
+        if (name.equals("PlaceHolder"))
+            return Tile.getPlaceholder();
+        Tile tile = map.get(name);
+        if (tile == null) {
+            if (name.matches(".*_[0-9]+$")) {
+                String newName = name.replaceAll("_[0-9]+$", "");
+                tile = map.get(newName);
+                if (tile != null && tile instanceof BigTile) {
+                    int num = getIntFromName(name);
+                    return ((BigTile) tile).getTile(num);
+                }
+            }
+        }
+        return Tile.getPlaceholder();
+    }
+
+    public int getIntFromName(String name) {
+        Pattern pattern = Pattern.compile("_([0-9]+)$");
+        Matcher matcher = pattern.matcher(name);
+        if (matcher.find())
+            return Integer.parseInt(matcher.group(1));
+        return 0;
     }
 }
