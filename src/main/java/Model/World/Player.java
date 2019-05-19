@@ -6,7 +6,7 @@ import java.util.Vector;
 public class Player {
     private Map map;
     private Point position;
-    private Vector<Tile> anim;
+    private Animation anim;
 
     public Player() {
         position = new Point(0,0);
@@ -24,5 +24,11 @@ public class Player {
     public void setPosition(Point point, Map map) {
         position = point;
         this.map = map;
+    }
+
+    public void setAnim() {
+        anim = new Animation();
+        if (anim != null && anim.tiles == null)
+            anim = null;
     }
 }

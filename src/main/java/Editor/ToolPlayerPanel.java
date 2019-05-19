@@ -13,20 +13,24 @@ public class ToolPlayerPanel extends JPanel {
     JLabel mapName = new JLabel();
     JLabel Xcoord = new JLabel();
     JLabel Ycoord = new JLabel();
+    public JButton setAnim = new JButton("Set animation");
 
     public ToolPlayerPanel() {
-        this.setLayout(new GridLayout(3,1));
+        this.setLayout(new GridLayout(4,1));
 
         this.add(mapName);
         this.add(Xcoord);
         this.add(Ycoord);
+        this.add(setAnim);
     }
 
     @Override
     public void setVisible(boolean aFlag) {
         super.setVisible(aFlag);
+        mapName.setVisible(aFlag);
         Xcoord.setVisible(aFlag);
         Ycoord.setVisible(aFlag);
+        setAnim.setVisible(aFlag);
     }
 
     public void updateInfo(Player p) {
@@ -36,7 +40,7 @@ public class ToolPlayerPanel extends JPanel {
             mapName.setText("Map : null");
         else
             mapName.setText("Map :" + map.toString());
-        Xcoord.setText("Coord X: " + String.valueOf(coord.x));
-        Ycoord.setText("Coord Y: " + String.valueOf(coord.y));
+        Xcoord.setText("Coord X: " + coord.x);
+        Ycoord.setText("Coord Y: " + coord.y);
     }
 }

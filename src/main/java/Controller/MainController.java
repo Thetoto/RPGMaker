@@ -12,6 +12,8 @@ import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 public class MainController {
@@ -56,6 +58,8 @@ public class MainController {
         editor.toolsPane.toolBoxPanel.forceUnwalkable.addActionListener(e -> editorState.mapState.forceWalkable(false));
 
         editor.toolsPane.toolTeleporterPanel.setDestButton.addActionListener(e -> editorState.mapState.setMode(Mode.TELEPORTERDEST));
+
+        editor.toolsPane.toolPlayerPanel.setAnim.addActionListener(e -> editorState.world.getPlayer().setAnim());
 
         editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
             var tp = e.getNewLeadSelectionPath();
