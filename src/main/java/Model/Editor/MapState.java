@@ -5,6 +5,7 @@ import Model.World.Player;
 import Model.World.Teleporter;
 import Tools.ActionManager;
 import Tools.CursorManager;
+import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
 import java.awt.*;

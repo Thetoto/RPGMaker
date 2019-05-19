@@ -6,15 +6,16 @@ import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.World.Map;
 import Model.World.Player;
+import Model.World.World;
 import Tools.FileManager;
 import Model.World.Teleporter;
 import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
+import javax.swing.tree.TreePath;
+import java.awt.event.*;
 import java.io.File;
 
 public class MainController {
@@ -56,36 +57,36 @@ public class MainController {
             Tools.PopUpManager.Alert((sizeAfter - sizeBefore) + " tiles loaded");
         });
 
-        editor.toolsPane.toolBoxPanel.setSpawnButton.addActionListener(e -> editorState.mapState.setMode(Mode.PLAYER));
-        editor.toolsPane.toolBoxPanel.addTeleporterButton.addActionListener(e -> editorState.mapState.setMode(Mode.TELEPORTER));
-        editor.toolsPane.toolBoxPanel.showWalkable.addItemListener(e -> {
-            editorState.mapState.setShowWalk(e.getStateChange() == ItemEvent.SELECTED);
-        });
-        editor.toolsPane.toolBoxPanel.forceWalkable.addActionListener(e -> editorState.mapState.forceWalkable(true));
-        editor.toolsPane.toolBoxPanel.forceUnwalkable.addActionListener(e -> editorState.mapState.forceWalkable(false));
-
-        editor.toolsPane.toolTeleporterPanel.setDestButton.addActionListener(e -> editorState.mapState.setMode(Mode.TELEPORTERDEST));
-
-        editor.toolsPane.toolPlayerPanel.setAnim.addActionListener(e -> editorState.world.getPlayer().setAnim());
-
-        editor.tilesPane.treePanel.addTreeSelectionListener(e -> {
-            var tp = e.getNewLeadSelectionPath();
-            if (tp == null)
-                return;
-            DefaultMutableTreeNode o = (DefaultMutableTreeNode) tp.getLastPathComponent();
-            Object obj = o.getUserObject();
-            if (obj instanceof Map) {
-                Map map = (Map) obj;
-                editorState.mapState.updateMap(map);
-            }
-            if (obj instanceof Player) {
-                Player p = (Player) obj;
-                editor.toolsPane.updateToPlayer(p);
-            }
-            if (obj instanceof Teleporter) {
-                Teleporter t = (Teleporter) obj;
-                editor.toolsPane.updateToTeleporter(t);
-                editorState.mapState.setCurrentTeleporter(t);
+        editor.tilesPane.treePanel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                TreePath tp = editor.tilesPane.treePanel.getPathForLocation(e.getX(), e.getY());
+                if (tp == null)
+                    return;
+                DefaultMutableTreeNode o = (DefaultMutableTreeNode) tp.getLastPathComponent();
+                Object obj = o.getUserObject();
+                if (obj instanceof Map) {
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        editorState.renameMap();
+                        return;
+                    }
+                    Map map = (Map) obj;
+                    editorState.mapState.updateMap(map);
+                }
+                if (obj instanceof Player) {
+                    Player p = (Player) obj;
+                    editor.toolsPane.updateToPlayer(p);
+                }
+                if (obj instanceof Teleporter) {
+                    Teleporter t = (Teleporter) obj;
+                    editor.toolsPane.updateToTeleporter(t);
+                    editorState.mapState.setCurrentTeleporter(t);
+                }
+                if (obj instanceof World) {
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        editorState.renameWorld();
+                        return;
+                    }
+                }
             }
         });
     }

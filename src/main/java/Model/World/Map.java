@@ -33,6 +33,7 @@ public class Map {
         this.background = new Vector<>(map.background);
         this.foreground = new HashMap<>(map.foreground);
         this.teleporters = new Vector<>(map.teleporters);
+        this.walkable = new Vector<>(map.walkable);
     }
 
     @Override
@@ -207,5 +208,9 @@ public class Map {
 
     public Vector<Teleporter> getTeleporters() {
         return this.teleporters;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

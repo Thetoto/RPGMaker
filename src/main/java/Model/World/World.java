@@ -82,4 +82,8 @@ public class World extends Observable {
             return Integer.parseInt(matcher.group(1));
         return 0;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

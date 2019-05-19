@@ -65,10 +65,15 @@ public class PopUpManager {
         frame.validate();
         frame.pack();
         frame.setSize(250, 150);
+        frame.getRootPane().setDefaultButton(validate);
         frame.setVisible(true);
     }
 
     public static boolean Confirm(String s) {
         return JOptionPane.showConfirmDialog(Editor.getInstance(), s) == 0;
+    }
+
+    public static String askString(String s) {
+        return JOptionPane.showInputDialog(s);
     }
 }

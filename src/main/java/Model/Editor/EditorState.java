@@ -87,4 +87,20 @@ public class EditorState extends Observable {
         mapState.mousePreview(mapState.selectionIn, mapState.selectionOut);
         mapState.updateMap();
     }
+
+    public void renameMap() {
+        String s = PopUpManager.askString("Choose a new name for " + mapState.currentMap.toString());
+        if (s != null)
+            mapState.currentMap.setName(s);
+        setChanged();
+        notifyObservers("New Map");
+    }
+
+    public void renameWorld() {
+        String s = PopUpManager.askString("Choose a new name for " + world.toString());
+        if (s != null)
+            world.setName(s);
+        setChanged();
+        notifyObservers("New World");
+    }
 }
