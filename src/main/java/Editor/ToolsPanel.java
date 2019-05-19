@@ -1,5 +1,6 @@
 package Editor;
 
+import Model.Editor.EditorState;
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
 import Model.World.Map;
@@ -58,26 +59,16 @@ public class ToolsPanel extends JPanel implements Observer {
                 toolTilePanel.setVisible(true);
                 break;
             case PLAYER:
+                toolPlayerPanel.updateInfo(EditorState.getInstance().world.getPlayer());
                 toolPlayerPanel.setVisible(true);
                 break;
             case TELEPORTER:
+                toolTeleporterPanel.update(EditorState.getInstance().mapState.getCurrentTeleporter());
                 toolTeleporterPanel.setVisible(true);
                 break;
             case NONE:
                 setVisible(false);
                 break;
         }
-    }
-
-    public void updateToPlayer(Player p) {
-        currentPanel = ToolsEnum.PLAYER;
-        toolPlayerPanel.updateInfo(p);
-        this.setVisible(true);
-    }
-
-    public void updateToTeleporter(Teleporter t) {
-        currentPanel = ToolsEnum.TELEPORTER;
-        toolTeleporterPanel.update(t);
-        this.setVisible(true);
     }
 }

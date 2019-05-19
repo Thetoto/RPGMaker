@@ -200,10 +200,12 @@ public class Map {
         return dimension;
     }
 
-    public void addTeleporter(Point point) {
+    public Teleporter addTeleporter(Point point) {
         if (checkBounds(point.x, point.y))
-            return;
-        teleporters.add(new Teleporter(this, String.valueOf(teleporters.size()), point));
+            return null;
+        Teleporter res = new Teleporter(this, String.valueOf(teleporters.size()), point);
+        teleporters.add(res);
+        return res;
     }
 
     public Vector<Teleporter> getTeleporters() {

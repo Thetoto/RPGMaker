@@ -1,5 +1,6 @@
 package Model.Editor;
 
+import Editor.Editor;
 import Model.World.Map;
 import Model.World.Player;
 import Model.World.Teleporter;
@@ -49,16 +50,21 @@ public class MapState extends Observable {
                 player.setPosition(new Point(selectionIn), currentMap);
                 setMode(Mode.DEFAULT);
                 deselect();
+                EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.PLAYER);
             }
             return;
         }
         if (mode == Mode.TELEPORTER) {
             if (selectionIn.equals(selectionOut)) {
-                currentMap.addTeleporter(selectionIn);
+                Teleporter res = currentMap.addTeleporter(selectionIn);
                 setMode(Mode.DEFAULT);
                 deselect();
                 setChanged();
                 notifyObservers("Update Map");
+                if (res != null) {
+                    setCurrentTeleporter(res);
+                    EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.TELEPORTER);
+                }
             }
             return;
         }

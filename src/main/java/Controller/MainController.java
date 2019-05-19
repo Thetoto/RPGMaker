@@ -73,13 +73,13 @@ public class MainController {
                     editorState.mapState.updateMap(map);
                 }
                 if (obj instanceof Player) {
-                    Player p = (Player) obj;
-                    editor.toolsPane.updateToPlayer(p);
+                    //Player p = (Player) obj;
+                    editorState.toolsState.setCurrentTools(ToolsEnum.PLAYER);
                 }
                 if (obj instanceof Teleporter) {
                     Teleporter t = (Teleporter) obj;
-                    editor.toolsPane.updateToTeleporter(t);
                     editorState.mapState.setCurrentTeleporter(t);
+                    editorState.toolsState.setCurrentTools(ToolsEnum.TELEPORTER);
                 }
                 if (obj instanceof World) {
                     if (SwingUtilities.isRightMouseButton(e)) {
