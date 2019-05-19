@@ -45,6 +45,10 @@ public class Map {
         if (out == null)
             out = in;
         if (in != null) {
+            if (currentTile instanceof BigTile) {
+                drawBigTile((BigTile)currentTile, in, out);
+                return;
+            }
             for (int x = in.x; x <= out.x; x++) {
                 for (int y = in.y; y <= out.y; y++) {
                     if (checkBounds(x, y))
@@ -60,17 +64,6 @@ public class Map {
                             continue;
                         }
                         setFore(x, y, (ImportedTile) currentTile);
-                    } else if (currentTile instanceof BigTile) {
-                        BigTile bt = (BigTile)currentTile;
-                        if (bt.cur == -1) {
-                            for (int i = 0; i < bt.getWidth(); i++) {
-                                for (int j = 0; j < bt.getHeight(); j++) {
-                                    setTile(x + i, y + j, bt.getTile(i, j));
-                                }
-                            }
-                        } else {
-                            setTile(x, y, bt.getTile(bt.cur));
-                        }
                     } else {
                         if (currentTile.getName().equals("eraser.png"))
                             setTile(x, y, Tile.getPlaceholder());
@@ -79,6 +72,44 @@ public class Map {
                     }
                 }
             }
+        }
+    }
+
+    private void drawBigTile(BigTile bt, Point in, Point out) {
+        if (in.equals(out))
+            out = new Point(out.x + bt.getWidth(), out.y + bt.getHeight());
+        for (int x = in.x; x <= out.x; x++) {
+            for (int y = in.y; y <= out.y; y++) {
+                if (bt.cur == -1) {
+                    if (bt.getWidth() == 3 && bt.getHeight() == 3) {
+                        setTile(x, y, bt.getTile(1, 1));
+                    } else {
+                        for (int i = 0; i < bt.getWidth(); i++) {
+                            for (int j = 0; j < bt.getHeight(); j++) {
+                                setTile(x + i, y + j, bt.getTile(i, j));
+                            }
+                        }
+                        x += bt.getWidth();
+                        y += bt.getHeight();
+                    }
+                } else {
+                    setTile(x, y, bt.getTile(bt.cur));
+                }
+            }
+        }
+        if (bt.getWidth() == 3 && bt.getHeight() == 3) {
+            for (int x = in.x + 1; x < out.x; x++) {
+                setTile(x, in.y, bt.getTile(1,0));
+                setTile(x, out.y, bt.getTile(1,2));
+            }
+            for (int y = in.y + 1; y < out.y; y++) {
+                setTile(in.x, y, bt.getTile(0,1));
+                setTile(out.x, y, bt.getTile(2,1));
+            }
+            setTile(in.x, in.y, bt.getTile(0, 0));
+            setTile(in.x, out.y, bt.getTile(0, 2));
+            setTile(out.x, in.y, bt.getTile(2, 0));
+            setTile(out.x, out.y, bt.getTile(2, 2));
         }
     }
 
