@@ -1,0 +1,3618 @@
+{
+  "name": "New World",
+  "maps": [
+    {
+      "name": "Map",
+      "dimension": {
+        "width": 22,
+        "height": 22
+      },
+      "background": [
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        }
+      ],
+      "walkable": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "foreground": {},
+      "teleporters": [],
+      "backgroundTile": {
+        "image": "PlaceHolder"
+      }
+    },
+    {
+      "name": "New map",
+      "dimension": {
+        "width": 20,
+        "height": 20
+      },
+      "background": [
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        }
+      ],
+      "walkable": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "foreground": [
+        [
+          {
+            "x": 7,
+            "y": 10
+          },
+          {
+            "image": "tapis.png"
+          }
+        ],
+        [
+          {
+            "x": 12,
+            "y": 5
+          },
+          {
+            "image": "lit.png"
+          }
+        ],
+        [
+          {
+            "x": 13,
+            "y": 10
+          },
+          {
+            "image": "stairs_down.png"
+          }
+        ],
+        [
+          {
+            "x": 6,
+            "y": 4
+          },
+          {
+            "image": "center.png"
+          }
+        ]
+      ],
+      "teleporters": [],
+      "backgroundTile": {
+        "image": "ground5.png"
+      }
+    }
+  ],
+  "player": {
+    "position": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "changed": false,
+  "obs": []
+}

@@ -118,22 +118,51 @@ public class MapPanel extends JLayeredPane implements Observer {
     private void drawBack(MapState mapState) {
         this.remove(backLayer);
         BufferedImage tmp = new BufferedImage(mapState.currentMap.getDim().width * multiply, mapState.currentMap.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
-
-        Graphics2D g = tmp.createGraphics();
-        for (int x = 0; x < mapState.currentMap.getDim().width; x++) {
-            for (int y = 0; y < mapState.currentMap.getDim().height; y++) {
-                BufferedImage tile = mapState.currentMap.getBackgroundTile().get();
-                g.drawImage(tile, x * multiply, y * multiply, null);
+        Dimension d = mapState.currentMap.getDim();
+        Point init = new Point(0, 0);
+        Tile back = mapState.currentMap.getBackgroundTile();
+        BigTile bt = null;
+        if (back instanceof BigTile) {
+            bt = (BigTile)back;
+            if (bt.getHeight() == 3 && bt.getWidth() == 3) {
+                back = bt.getTile(1, 1);
+                d = new Dimension(d.width - 1, d.height - 1);
+                init = new Point(1, 1);
             }
         }
 
+        Graphics2D g = tmp.createGraphics();
+        for (int x = init.x; x < d.width; x++) {
+            for (int y = init.y; y < d.height; y++) {
+                if (back instanceof BigTile && (bt.getWidth() != 3 || bt.getHeight() != 3)) {
+                    Tile t = bt.getTile(x % bt.getWidth(), y % bt.getHeight());
+                    g.drawImage(t.get(), x * multiply, y * multiply, null);
+                } else {
+                    BufferedImage tile = back.get();
+                    g.drawImage(tile, x * multiply, y * multiply, null);
+                }
+            }
+        }
+        if (bt != null && bt.getWidth() == 3 && bt.getHeight() == 3) {
+            d = mapState.currentMap.getDim();
+            for (int x = 1; x < d.width - 1; x++) {
+                g.drawImage(bt.getTile(1,0).get(), x * multiply, 0, null);
+                g.drawImage(bt.getTile(1,2).get(), x * multiply, (d.height - 1)* multiply, null);
+            }
+            for (int y = 1; y < d.height - 1; y++) {
+                g.drawImage(bt.getTile(0,1).get(), 0, y * multiply, null);
+                g.drawImage(bt.getTile(2,1).get(), (d.width - 1) * multiply, y * multiply, null);
+            }
+            g.drawImage(bt.getTile(0, 0).get(), 0, 0, null);
+            g.drawImage(bt.getTile(0, 2).get(), 0, (d.height - 1) * multiply, null);
+            g.drawImage(bt.getTile(2, 0).get(), (d.width - 1) * multiply, 0, null);
+            g.drawImage(bt.getTile(2, 2).get(), (d.width - 1) * multiply, (d.height - 1) * multiply, null);
+        }
+
         g.dispose();
-
         backLayer = new JLabel(new ImageIcon(tmp));
-
         backLayer.setBounds(0, 0, tmp.getWidth(), tmp.getHeight());
         this.add(backLayer, BACK_LAYER);
-
         this.repaint();
     }
 

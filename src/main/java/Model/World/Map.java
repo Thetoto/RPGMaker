@@ -93,13 +93,7 @@ public class Map {
                     if (bt.getWidth() == 3 && bt.getHeight() == 3) {
                         setTile(x, y, bt.getTile(1, 1));
                     } else {
-                        for (int i = 0; i < bt.getWidth(); i++) {
-                            for (int j = 0; j < bt.getHeight(); j++) {
-                                setTile(x + i, y + j, bt.getTile(i, j));
-                            }
-                        }
-                        x += bt.getWidth();
-                        y += bt.getHeight();
+                        setTile(x, y, bt.getTile(x % bt.getWidth(), y % bt.getHeight()));
                     }
                 } else {
                     setTile(x, y, bt.getTile(bt.cur));
