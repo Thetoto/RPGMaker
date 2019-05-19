@@ -12,6 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Editor extends JFrame implements Observer {
+    private static Editor editor;
 
     public JMenuBar menuBar;
     public JPanel mainPane;
@@ -23,6 +24,7 @@ public class Editor extends JFrame implements Observer {
     public TopBar topBar;
 
     public Editor() {
+        this.editor = this;
         CursorManager.init(this);
         this.setSize(1080,720);
         this.setTitle("BibleRPG - Premium ULTIMATE ++ AllInclusive Remake Edition Deluxe");
@@ -127,5 +129,9 @@ public class Editor extends JFrame implements Observer {
             panel.add(button);
         button.setPreferredSize(new Dimension(32,32));
         return button;
+    }
+
+    public static Editor getInstance() {
+        return editor;
     }
 }

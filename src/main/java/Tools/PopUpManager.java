@@ -1,5 +1,6 @@
 package Tools;
 
+import Editor.Editor;
 import Model.Editor.EditorState;
 import Model.World.Map;
 
@@ -10,27 +11,12 @@ import java.awt.*;
 public class PopUpManager {
 
     public static void Alert(String text) {
-        JFrame frame = new JFrame();
-        frame.setLocationRelativeTo(null);
-        frame.setTitle("Alert");
-
-        frame.setLayout(new GridLayout(2, 1));
-
-        JLabel label = new JLabel(text);
-        frame.add(label);
-
-        JButton button = new JButton("Ok");
-        frame.add(button);
-
-        frame.pack();
-        frame.setSize(new Dimension(frame.getWidth(), 100));
-        frame.setVisible(true);
-
-        button.addActionListener(evt -> frame.dispose());
+        JOptionPane.showMessageDialog(Editor.getInstance(), text, "Warning",
+                JOptionPane.WARNING_MESSAGE);
     }
 
     public static void askNewMap(EditorState editorState) {
-        JFrame frame = new JFrame();
+        JDialog frame = new JDialog(Editor.getInstance(), true);
         frame.setLayout(new GridLayout(4,2));
         frame.setLocationRelativeTo(null);
         frame.setTitle("Choose the configuration");
@@ -78,8 +64,8 @@ public class PopUpManager {
         frame.add(validate);
 
         frame.validate();
-        frame.setVisible(true);
         frame.pack();
         frame.setSize(250, 150);
+        frame.setVisible(true);
     }
 }

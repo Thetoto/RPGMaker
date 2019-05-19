@@ -4,6 +4,7 @@ import Tools.FileManager;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -13,7 +14,10 @@ public class Animation {
 
     public Animation() {
         try {
-            BufferedImage tmp = ImageIO.read(FileManager.getFile());
+            File f = FileManager.getFile();
+            if (f == null)
+                return;
+            BufferedImage tmp = ImageIO.read(f);
             if (tmp == null)
                 return;
             segmentation(tmp);
