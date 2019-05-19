@@ -30,9 +30,9 @@ public class Map {
     public Map(Map map) {
         this.name = map.name;
         this.dimension = new Dimension(map.dimension);
-        this.background = new Vector<Tile>(map.background);
-        this.foreground = new HashMap<Point, Tile>(map.foreground);
-        this.teleporters = new Vector<Teleporter>(map.teleporters);
+        this.background = new Vector<>(map.background);
+        this.foreground = new HashMap<>(map.foreground);
+        this.teleporters = new Vector<>(map.teleporters);
     }
 
     @Override
@@ -93,7 +93,8 @@ public class Map {
     }
     public void setTile(int x, int y, Tile tile) {
         background.set(x + dimension.width * y, tile);
-        setWalkable(x, y, tile.defaultWalkable);
+        if (isOccupied(x, y, new Dimension(1, 1)) == null)
+            setWalkable(x, y, tile.defaultWalkable);
     }
 
     public void setFore(int x, int y, ImportedTile tile) {
@@ -101,7 +102,7 @@ public class Map {
 
         for (int i = x; i < x + tile.getWidth(); i++) {
             for (int j = y; j < y + tile.getHeight(); j++) {
-                setWalkable(i, j, false);
+                setWalkable(i, j, tile.defaultWalkable);
             }
         }
     }
@@ -112,7 +113,7 @@ public class Map {
 
         for (int i = pt.x; i < pt.x + dim.getWidth(); i++) {
             for (int j = pt.y; j < pt.y + dim.getHeight(); j++) {
-                setWalkable(i, j, true);
+                setWalkable(i, j, getTile(i, j).defaultWalkable);
             }
         }
     }

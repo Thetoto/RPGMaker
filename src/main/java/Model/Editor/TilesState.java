@@ -51,6 +51,8 @@ public class TilesState extends Observable {
     public void addTile(Path file, boolean isForeground, boolean askUpdate) {
         try {
             BufferedImage img = ImageIO.read(file.toFile());
+            if (img == null)
+                return;
             if (isForeground) {
                 ImportedTile fore = new ImportedTile(file.getFileName().toString(), img);
                 foregroundTiles.put(file.getFileName().toString(), fore);
