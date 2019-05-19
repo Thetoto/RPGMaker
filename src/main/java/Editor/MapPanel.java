@@ -17,10 +17,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class MapPanel extends JLayeredPane implements Observer {
+    static Integer BACK_LAYER = 0;
     static Integer MAP_LAYER = 1;
     static Integer MID_LAYER = 2;
     static Integer SELECT_LAYER = 3;
 
+    JLabel backLayer;
     JLabel mapLayer;
     JLabel midLayer;
     JLabel selectLayer;
@@ -31,6 +33,9 @@ public class MapPanel extends JLayeredPane implements Observer {
     BufferedImage selection_layout = Tile.getPlaceholder().get();
 
     public MapPanel() {
+        backLayer = new JLabel();
+        this.add(backLayer, BACK_LAYER);
+
         mapLayer = new JLabel();
         this.add(mapLayer, MAP_LAYER);
 
@@ -110,6 +115,28 @@ public class MapPanel extends JLayeredPane implements Observer {
         this.repaint();
     }
 
+    private void drawBack(MapState mapState) {
+        this.remove(backLayer);
+        BufferedImage tmp = new BufferedImage(mapState.currentMap.getDim().width * multiply, mapState.currentMap.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
+
+        Graphics2D g = tmp.createGraphics();
+        for (int x = 0; x < mapState.currentMap.getDim().width; x++) {
+            for (int y = 0; y < mapState.currentMap.getDim().height; y++) {
+                BufferedImage tile = mapState.currentMap.getBackgroundTile().get();
+                g.drawImage(tile, x * multiply, y * multiply, null);
+            }
+        }
+
+        g.dispose();
+
+        backLayer = new JLabel(new ImageIcon(tmp));
+
+        backLayer.setBounds(0, 0, tmp.getWidth(), tmp.getHeight());
+        this.add(backLayer, BACK_LAYER);
+
+        this.repaint();
+    }
+
     public synchronized void show_selection(MapState mapState) {
         Point in = mapState.selectionIn;
         Point out = mapState.selectionOut;
@@ -183,7 +210,11 @@ public class MapPanel extends JLayeredPane implements Observer {
                 if (showWalk)
                     show_walkable(mapState);
                 System.out.println("Try to display");
+                drawBack(mapState);
                 drawMap(mapState.currentMap);
+            }
+            if (arg.equals("Update Background")) {
+                drawBack(mapState);
             }
         }
     }

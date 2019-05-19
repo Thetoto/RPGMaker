@@ -1,0 +1,1675 @@
+{
+  "name": "New World",
+  "maps": [
+    {
+      "name": "New map",
+      "dimension": {
+        "width": 20,
+        "height": 20
+      },
+      "background": [
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "hole.png_0"
+        },
+        {
+          "image": "hole.png_1"
+        },
+        {
+          "image": "hole.png_1"
+        },
+        {
+          "image": "hole.png_2"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "hole.png_3"
+        },
+        {
+          "image": "hole.png_4"
+        },
+        {
+          "image": "hole.png_4"
+        },
+        {
+          "image": "hole.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_0"
+        },
+        {
+          "image": "ground2.png_1"
+        },
+        {
+          "image": "ground2.png_2"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "hole.png_3"
+        },
+        {
+          "image": "hole.png_4"
+        },
+        {
+          "image": "hole.png_4"
+        },
+        {
+          "image": "hole.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_3"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "hole.png_6"
+        },
+        {
+          "image": "hole.png_7"
+        },
+        {
+          "image": "hole.png_7"
+        },
+        {
+          "image": "hole.png_8"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_6"
+        },
+        {
+          "image": "ground2.png_7"
+        },
+        {
+          "image": "ground2.png_8"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_0"
+        },
+        {
+          "image": "ground2.png_1"
+        },
+        {
+          "image": "ground2.png_1"
+        },
+        {
+          "image": "ground2.png_1"
+        },
+        {
+          "image": "ground2.png_1"
+        },
+        {
+          "image": "ground2.png_1"
+        },
+        {
+          "image": "ground2.png_1"
+        },
+        {
+          "image": "ground2.png_2"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_3"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "ground2.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_3"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground5.png_0"
+        },
+        {
+          "image": "ground5.png_1"
+        },
+        {
+          "image": "ground5.png_2"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_3"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground5.png_3"
+        },
+        {
+          "image": "ground5.png_4"
+        },
+        {
+          "image": "ground5.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_3"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground5.png_6"
+        },
+        {
+          "image": "ground5.png_7"
+        },
+        {
+          "image": "ground5.png_8"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_3"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_3"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_4"
+        },
+        {
+          "image": "ground2.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "ground2.png_6"
+        },
+        {
+          "image": "ground2.png_7"
+        },
+        {
+          "image": "ground2.png_7"
+        },
+        {
+          "image": "ground2.png_7"
+        },
+        {
+          "image": "ground2.png_7"
+        },
+        {
+          "image": "ground2.png_7"
+        },
+        {
+          "image": "ground2.png_7"
+        },
+        {
+          "image": "ground2.png_8"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        }
+      ],
+      "walkable": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "foreground": [
+        [
+          {
+            "x": 10,
+            "y": 14
+          },
+          {
+            "image": "axe.png"
+          }
+        ],
+        [
+          {
+            "x": 12,
+            "y": 4
+          },
+          {
+            "image": "stairs_down.png"
+          }
+        ],
+        [
+          {
+            "x": 10,
+            "y": 10
+          },
+          {
+            "image": "stairs_up.png"
+          }
+        ],
+        [
+          {
+            "x": 15,
+            "y": 14
+          },
+          {
+            "image": "lit.png"
+          }
+        ],
+        [
+          {
+            "x": 12,
+            "y": 14
+          },
+          {
+            "image": "tapis.png"
+          }
+        ]
+      ],
+      "teleporters": [],
+      "backgroundTile": {
+        "image": "sea.png"
+      }
+    }
+  ],
+  "player": {
+    "position": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "changed": false,
+  "obs": []
+}

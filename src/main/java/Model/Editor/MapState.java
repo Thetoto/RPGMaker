@@ -96,6 +96,8 @@ public class MapState extends Observable {
     public void updateMap(Map map) {
         this.currentMap = map;
         updateMap();
+        setChanged();
+        notifyObservers("Update Background");
     }
 
     public void setShowWalk(boolean b) {
@@ -170,5 +172,11 @@ public class MapState extends Observable {
             notifyObservers("Show Walk");
         }
         mousePreview(null, null);
+    }
+
+    public void setBackgroundCurrentTile() {
+        currentMap.setBackgroundTile(EditorState.getInstance().tilesState.currentTile);
+        setChanged();
+        notifyObservers("Update Background");
     }
 }

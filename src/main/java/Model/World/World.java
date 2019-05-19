@@ -41,6 +41,9 @@ public class World extends Observable {
         var backTiles = EditorState.getInstance().tilesState.backgroundTiles;
         var foreTiles = EditorState.getInstance().tilesState.foregroundTiles;
         for (Map map: maps) {
+            map.backgroundTile = getTileByName(backTiles, map.backgroundTile.getName());
+            if (map.backgroundTile == null)
+                return false;
             for (int i = 0; i < map.background.size(); i++) {
                 String name = map.background.get(i).getName();
                 Tile tile = getTileByName(backTiles, name);
@@ -61,6 +64,8 @@ public class World extends Observable {
     public Tile getTileByName(java.util.Map<String, Tile> map, String name) {
         if (name.equals("PlaceHolder"))
             return Tile.getPlaceholder();
+        if (name.equals("TransPlaceHolder"))
+            return Tile.getTransPlaceholder();
         Tile tile = map.get(name);
         if (tile == null) {
             if (name.matches(".*_[0-9]+$")) {
@@ -72,7 +77,7 @@ public class World extends Observable {
                 }
             }
         }
-        return null;
+        return tile;
     }
 
     public int getIntFromName(String name) {

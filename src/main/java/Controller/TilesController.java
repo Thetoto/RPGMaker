@@ -2,6 +2,7 @@ package Controller;
 
 import Editor.Editor;
 import Editor.TilesPanel;
+import Model.Editor.EditorState;
 import Model.Editor.TilesState;
 import Model.Editor.ToolsEnum;
 import Model.World.BigTile;
@@ -52,6 +53,9 @@ public class TilesController {
         });
         toolsController.toolsPanel.toolTilePanel.bigTileAll.addActionListener((e) -> {
             ((BigTile)tilesState.currentTile).setCur(-1);
+        });
+        toolsController.toolsPanel.toolTilePanel.setAsBackground.addActionListener(e -> {
+            EditorState.getInstance().mapState.setBackgroundCurrentTile();
         });
         for (int i = 0;  i < toolsController.toolsPanel.toolTilePanel.bigTileSeclector.size(); i++) {
             final Integer j = i;

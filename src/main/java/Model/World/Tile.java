@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class Tile {
     transient public static Tile placeholder = null;
+    transient public static Tile transplaceholder = null;
     String image;
     // transient = not serialized in Gson
     transient BufferedImage refImage = null;
@@ -46,5 +47,18 @@ public class Tile {
             placeholder = new Tile("PlaceHolder", bi);
         }
         return placeholder;
+    }
+
+    public static Tile getTransPlaceholder() {
+        if (transplaceholder == null) {
+            BufferedImage bi = new BufferedImage(16, 16,
+                    BufferedImage.TYPE_INT_ARGB);
+            Graphics2D ig2 = bi.createGraphics();
+
+            ig2.setBackground(new Color(0,0,0,0));
+            ig2.clearRect(0, 0, 16, 16);
+            transplaceholder = new Tile("TransPlaceHolder", bi);
+        }
+        return transplaceholder;
     }
 }

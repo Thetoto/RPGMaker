@@ -3,6 +3,7 @@ package Model.World;
 import Tools.ActionManager;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -13,6 +14,7 @@ public class Map {
     Vector<Boolean> walkable;
     HashMap<Point, Tile> foreground; // Tile but it's a ImportedTile. Point is top left corner.
     Vector<Teleporter> teleporters;
+    Tile backgroundTile;
 
     public Map(Dimension dimension, String name) {
         this.name = name;
@@ -22,9 +24,14 @@ public class Map {
         this.foreground = new HashMap<>();
         this.teleporters = new Vector<>();
         for (int i = 0; i < dimension.width * dimension.height; i++) {
-            background.add(i, Tile.getPlaceholder());
+            background.add(i, Tile.getTransPlaceholder());
             walkable.add(true);
         }
+        this.backgroundTile = Tile.getPlaceholder();
+    }
+
+    public void setBackgroundTile(Tile backgroundTile) {
+        this.backgroundTile = backgroundTile;
     }
 
     public Map(Map map) {
@@ -34,6 +41,7 @@ public class Map {
         this.foreground = new HashMap<>(map.foreground);
         this.teleporters = new Vector<>(map.teleporters);
         this.walkable = new Vector<>(map.walkable);
+        this.backgroundTile = map.backgroundTile;
     }
 
     @Override
@@ -67,7 +75,7 @@ public class Map {
                         setFore(x, y, (ImportedTile) currentTile);
                     } else {
                         if (currentTile.getName().equals("eraser.png"))
-                            setTile(x, y, Tile.getPlaceholder());
+                            setTile(x, y, Tile.getTransPlaceholder());
                         else
                             setTile(x, y, currentTile);
                     }
@@ -78,7 +86,7 @@ public class Map {
 
     private void drawBigTile(BigTile bt, Point in, Point out) {
         if (in.equals(out))
-            out = new Point(out.x + bt.getWidth(), out.y + bt.getHeight());
+            out = new Point(out.x + bt.getWidth() - 1, out.y + bt.getHeight() - 1);
         for (int x = in.x; x <= out.x; x++) {
             for (int y = in.y; y <= out.y; y++) {
                 if (bt.cur == -1) {
@@ -139,7 +147,7 @@ public class Map {
 
     public Tile getTile(int x, int y) {
         if (checkBounds(x, y))
-            return Tile.getPlaceholder();
+            return Tile.getTransPlaceholder();
         return background.get(x + dimension.width * y);
     }
     public void setTile(int x, int y, Tile tile) {
@@ -214,5 +222,9 @@ public class Map {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Tile getBackgroundTile() {
+        return backgroundTile;
     }
 }

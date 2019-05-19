@@ -2,6 +2,7 @@ package Editor;
 
 import Model.Editor.TilesState;
 import Model.World.BigTile;
+import Model.World.ImportedTile;
 import Model.World.Tile;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ import java.util.Vector;
 public class ToolTilePanel extends JPanel implements Observer {
     public JCheckBox walkCheckbox;
     public JButton bigTileAll;
+    public JButton setAsBackground;
     public Vector<JButton> bigTileSeclector = new Vector<>();
 
     public ToolTilePanel() {
@@ -41,6 +43,13 @@ public class ToolTilePanel extends JPanel implements Observer {
         walkCheckbox.setSelected(tile.defaultWalkable);
         add(walkCheckbox, c);
         walkCheckbox.setVisible(true);
+
+        setAsBackground = new JButton("Set as background");
+        if (tile instanceof ImportedTile) {} else {
+            c.gridx = 0;
+            c.gridy += 1;
+            add(setAsBackground, c);
+        }
 
         bigTileAll = new JButton("Select full Tile");
         if (tile instanceof BigTile) {
