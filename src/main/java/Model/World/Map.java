@@ -202,7 +202,7 @@ public class Map {
     public void addTeleporter(Point point) {
         if (checkBounds(point.x, point.y))
             return;
-        teleporters.add(new Teleporter(this, "first", point));
+        teleporters.add(new Teleporter(this, String.valueOf(teleporters.size()), point));
     }
 
     public Vector<Teleporter> getTeleporters() {
