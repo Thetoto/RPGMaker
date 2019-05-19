@@ -52,6 +52,8 @@ public class MainController {
         editor.toolsPane.toolBoxPanel.showWalkable.addItemListener(e -> {
             editorState.mapState.setShowWalk(e.getStateChange() == ItemEvent.SELECTED);
         });
+        editor.toolsPane.toolBoxPanel.forceWalkable.addActionListener(e -> editorState.mapState.forceWalkable(true));
+        editor.toolsPane.toolBoxPanel.forceUnwalkable.addActionListener(e -> editorState.mapState.forceWalkable(false));
 
         editor.toolsPane.toolTeleporterPanel.setDestButton.addActionListener(e -> editorState.mapState.setMode(Mode.TELEPORTERDEST));
 

@@ -6,7 +6,10 @@ import java.awt.*;
 public class ToolBoxPanel extends JPanel {
     public JButton setSpawnButton;
     public JButton addTeleporterButton;
+
     public JCheckBox showWalkable;
+    public JButton forceWalkable;
+    public JButton forceUnwalkable;
 
     public ToolBoxPanel() {
         this.setLayout(new GridBagLayout());
@@ -14,6 +17,8 @@ public class ToolBoxPanel extends JPanel {
         setSpawnButton = new JButton("Set Player Spawn");
         addTeleporterButton = new JButton("Add Teleporter");
         showWalkable = new JCheckBox("Show walkable on map");
+        forceWalkable = new JButton("Set selection walkable");
+        forceUnwalkable = new JButton("Set selection not walkable");
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -23,6 +28,10 @@ public class ToolBoxPanel extends JPanel {
         this.add(addTeleporterButton, c);
         c.gridy += 1;
         this.add(showWalkable, c);
+        c.gridy += 1;
+        this.add(forceWalkable, c);
+        c.gridy += 1;
+        this.add(forceUnwalkable, c);
     }
 
     @Override

@@ -97,7 +97,7 @@ public class Map {
                 }
             }
         }
-        if (bt.getWidth() == 3 && bt.getHeight() == 3) {
+        if (bt.cur == -1 && bt.getWidth() == 3 && bt.getHeight() == 3) {
             for (int x = in.x + 1; x < out.x; x++) {
                 setTile(x, in.y, bt.getTile(1,0));
                 setTile(x, out.y, bt.getTile(1,2));

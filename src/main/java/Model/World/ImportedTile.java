@@ -26,6 +26,8 @@ public class ImportedTile extends Tile {
         width /= 16;
         dimension = new Dimension(width, height);
         image = cutInTiles(fullImage, dimension);
+
+        defaultWalkable = false;
     }
 
     public static Vector<Tile> cutInTiles(BufferedImage image, Dimension dim) {

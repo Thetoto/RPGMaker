@@ -149,4 +149,19 @@ public class MapState extends Observable {
     public Teleporter getCurrentTeleporter() {
         return currentTeleporter;
     }
+
+    public void forceWalkable(boolean b) {
+        if (currentMap == null)
+            return;
+        for (int x = selectionIn.x; x <= selectionOut.x; x++) {
+            for (int y = selectionIn.y; y <= selectionOut.y; y++) {
+                currentMap.setWalkable(x, y, b);
+            }
+        }
+        if (EditorState.getInstance().showWalk) {
+            setChanged();
+            notifyObservers("Show Walk");
+        }
+        mousePreview(null, null);
+    }
 }
