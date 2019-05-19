@@ -110,7 +110,7 @@ public class TilesState extends Observable {
             try (Stream<Path> paths = Files.walk(fileOrDir.toPath())) {
                 paths.filter(Files::isDirectory)
                         .forEach((file) -> {
-                            if (file.toFile().getName() != fileOrDir.getName())
+                            if (!file.toFile().getName().equals(fileOrDir.getName()))
                                 autoAddTiles(file.toFile());
                         });
             } catch (IOException e) {

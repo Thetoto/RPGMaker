@@ -123,6 +123,10 @@ public class Map {
     }
 
     public void setWalkable(int x, int y, boolean bool) {
+        if (x < 0 || y < 0)
+            return;
+        if (x >= dimension.width || y >= dimension.height)
+            return;
         walkable.set(x + dimension.width * y, bool);
     }
 
