@@ -23,6 +23,8 @@ public class MapState extends Observable {
     private Player player;
     private Teleporter currentTeleporter;
 
+    public double zoomPercent = 1.;
+
     public MapState() {
         mode = Mode.DEFAULT;
         player = null;
@@ -188,5 +190,14 @@ public class MapState extends Observable {
         currentMap.setBackgroundTile(EditorState.getInstance().tilesState.currentTile);
         setChanged();
         notifyObservers("Update Background");
+    }
+
+    public void zoomChange(boolean positive) {
+        if (positive)
+            zoomPercent *= 1.3;
+        else
+            zoomPercent *= 0.7;
+        setChanged();
+        notifyObservers("Zoom Update");
     }
 }

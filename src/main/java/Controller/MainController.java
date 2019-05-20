@@ -43,6 +43,9 @@ public class MainController {
         editor.topBar.saveButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.saveWorld()));
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
 
+        editor.topBar.zoomMinus.addActionListener(e -> editorState.mapState.zoomChange(false));
+        editor.topBar.zoomPlus.addActionListener(e -> editorState.mapState.zoomChange(true));
+
         editor.topBar.undoButton.addActionListener(e -> editorState.mapState.undo());
         editor.topBar.redoButton.addActionListener(e -> editorState.mapState.redo());
 

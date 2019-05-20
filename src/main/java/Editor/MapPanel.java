@@ -11,6 +11,7 @@ import Model.World.Tile;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Observable;
@@ -28,6 +29,7 @@ public class MapPanel extends JLayeredPane implements Observer {
     JLabel selectLayer;
 
     static int multiply;
+    public double currentZoom = 1.;
 
     BufferedImage bi = Tile.getPlaceholder().get();
     BufferedImage selection_layout = Tile.getPlaceholder().get();
@@ -208,6 +210,15 @@ public class MapPanel extends JLayeredPane implements Observer {
         this.repaint();
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        AffineTransform at = new AffineTransform();
+        at.scale(currentZoom, currentZoom);
+        g2.transform(at);
+    }
+
     public void addMouseCompleteListener(MouseAdapter listener) {
         this.addMouseListener(listener);
         this.addMouseMotionListener(listener);
@@ -245,12 +256,17 @@ public class MapPanel extends JLayeredPane implements Observer {
             if (arg.equals("Update Background")) {
                 drawBack(mapState);
             }
+            if (arg.equals("Zoom Update")) {
+                currentZoom = mapState.zoomPercent;
+                setSizeMap();
+                this.repaint();
+            }
         }
     }
 
     private void setSizeMap() {
-        this.setPreferredSize(new Dimension(bi.getWidth(), bi.getHeight()));
-        this.setSize(new Dimension(bi.getWidth(), bi.getHeight()));
+        this.setPreferredSize(new Dimension((int)(bi.getWidth() * currentZoom), (int)(bi.getHeight() * currentZoom)));
+        this.setSize(new Dimension((int)(bi.getWidth() * currentZoom), (int)(bi.getHeight() * currentZoom)));
 
         Editor.validateAll(this);
     }

@@ -12,6 +12,8 @@ public class TopBar extends JPanel {
     public JButton toolsButton;
     public JButton showGridButton;
     public JButton addNewTiles;
+    public JButton zoomMinus;
+    public JButton zoomPlus;
 
     public TopBar() {
         this.setBackground(Color.LIGHT_GRAY);
@@ -22,6 +24,8 @@ public class TopBar extends JPanel {
         createButton = Editor.initIconButton("create.png", this);
         toolsButton = Editor.initIconButton("tools.png", this);
         showGridButton = Editor.initIconButton("grid.png", this);
+        zoomMinus = Editor.initIconButton("zoom_minus.png", this);
+        zoomPlus = Editor.initIconButton("zoom_plus.png", this);
         addNewTiles = Editor.initIconButton("newtile.png", this);
     }
 
