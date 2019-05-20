@@ -14,6 +14,7 @@ public class TilesPanel extends JPanel implements Observer {
 
     public TilesSelectPanel foregroundTab;
     public TilesSelectPanel backgroundTab;
+    public TilesSelectPanel NPCTab;
 
     public TreePanel treePanel;
 
@@ -25,10 +26,13 @@ public class TilesPanel extends JPanel implements Observer {
         foregroundTab.setBackground(Color.CYAN);
         backgroundTab = new TilesSelectPanel();
         backgroundTab.setBackground(Color.MAGENTA);
+        NPCTab = new TilesSelectPanel();
+        NPCTab.setBackground(Color.PINK);
 
         tilesTypePanel = new JTabbedPane();
         tilesTypePanel.add("Foreground", Editor.addScrollBar(foregroundTab));
         tilesTypePanel.add("Back", Editor.addScrollBar(backgroundTab));
+        tilesTypePanel.add("NPC", Editor.addScrollBar(NPCTab));
 
         treePanel = new TreePanel();
 

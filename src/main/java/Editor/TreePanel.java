@@ -1,5 +1,6 @@
 package Editor;
 
+import Model.Editor.EditorState;
 import Model.World.Map;
 import Model.World.Player;
 import Model.World.Teleporter;
@@ -33,6 +34,8 @@ public class TreePanel extends JTree {
         Tworld.add(Tmaps);
         Tworld.add(Tplayer);
 
+        TreePath curPath = null;
+
         for (Map map : world.getMaps()) {
             DefaultMutableTreeNode Tmap = new DefaultMutableTreeNode(map);
             for (Teleporter t : map.getTeleporters()) {
@@ -40,10 +43,15 @@ public class TreePanel extends JTree {
                 Tmap.add(teleporter);
             }
             Tmaps.add(Tmap);
+            if (map == EditorState.getInstance().mapState.currentMap)
+                curPath = new TreePath(Tmap.getPath());
         }
         this.setModel(model);
         this.setShowsRootHandles(true);
         this.expandPath(new TreePath(Tmaps.getPath()));
+        if (curPath != null)
+            this.expandPath(curPath);
+
     }
 
     public void update_map(Map map) {
