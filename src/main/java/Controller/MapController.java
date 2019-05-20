@@ -80,7 +80,8 @@ public class MapController {
     }
 
     public static Point getPointCoords(int x, int y) {
-        int divdeBy = EditorState.getInstance().showGrid ? 17 : 16;
-        return new Point(x / divdeBy, y / divdeBy);
+        int divideBy = EditorState.getInstance().showGrid ? 17 : 16;
+        divideBy *= EditorState.getInstance().mapState.zoomPercent;
+        return new Point(x / divideBy, y / divideBy);
     }
 }
