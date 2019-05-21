@@ -14,7 +14,7 @@ public class Map {
     Vector<Tile> background;
     Vector<Boolean> walkable;
     HashMap<Point, Tile> foreground; // Tile but it's a ImportedTile. Point is top left corner.
-    HashMap<Point, Tile> npc;
+    HashMap<Point, NPC> npc;
     Vector<Teleporter> teleporters;
     Tile backgroundTile;
 
@@ -55,7 +55,7 @@ public class Map {
 
     public void draw(Tile currentTile, Point in, Point out) {
         if (currentTile.getType() == TileType.NPC) {
-            setNpc((Animation) currentTile, in);
+            setNpc((NPC) currentTile, in);
             return;
         }
         ActionManager.saveAction(new Map(this));
@@ -92,7 +92,7 @@ public class Map {
         }
     }
 
-    private void setNpc(Animation currentTile, Point in) {
+    private void setNpc(NPC currentTile, Point in) {
         if (currentTile.getName().equals("eraser.png")) {
             npc.remove(in);
         } else {
@@ -210,7 +210,7 @@ public class Map {
     public HashMap<Point, Tile> getForegroundSet() {
         return foreground;
     }
-    public HashMap<Point, Tile> getNpcSet() {
+    public HashMap<Point, NPC> getNpcSet() {
         return npc;
     }
     public Vector<Tile> getBackgroundSet() {

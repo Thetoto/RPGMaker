@@ -61,9 +61,9 @@ public class MapPanel extends JLayeredPane implements Observer {
             ImportedTile tile = (ImportedTile)foreSet.get(pt);
             set_image(g, tile, pt);
         }
-        HashMap<Point, Tile> npcSet = map.getNpcSet();
+        HashMap<Point, NPC> npcSet = map.getNpcSet();
         for (Point pt : npcSet.keySet()) {
-            Animation tile = (Animation)npcSet.get(pt);
+            Animation tile = npcSet.get(pt);
             set_image(g, tile.toImportedTile(), pt);
         }
         g.dispose();

@@ -74,7 +74,7 @@ public class Tile {
     }
 
     public TileType getType() {
-        if (this instanceof Animation)
+        if (this instanceof NPC)
             return TileType.NPC;
         if (this instanceof ImportedTile)
             return TileType.FOREGROUND;

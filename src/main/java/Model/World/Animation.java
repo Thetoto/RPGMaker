@@ -1,11 +1,6 @@
 package Model.World;
 
-import Tools.FileManager;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Vector;
 
 public class Animation extends Tile {

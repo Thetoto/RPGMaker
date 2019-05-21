@@ -1,9 +1,6 @@
 package Model.Editor;
 
-import Model.World.Animation;
-import Model.World.BigTile;
-import Model.World.ImportedTile;
-import Model.World.Tile;
+import Model.World.*;
 import Tools.Tools;
 
 import javax.imageio.ImageIO;
@@ -15,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public class TilesState extends Observable {
@@ -22,7 +20,7 @@ public class TilesState extends Observable {
 
     public Map<String, Tile> backgroundTiles = new HashMap<>();
     public Map<String, ImportedTile> foregroundTiles = new HashMap<>();
-    public Map<String, Animation> npcTile = new HashMap<>();
+    public Map<String, NPC> npcTile = new HashMap<>();
 
     public TilesState() {
     }
@@ -63,7 +61,7 @@ public class TilesState extends Observable {
                 ImportedTile fore = new ImportedTile(file.getFileName().toString(), img);
                 foregroundTiles.put(file.getFileName().toString(), fore);
             } else if (type == TileType.NPC) {
-                Animation npc = new Animation(file.getFileName().toString(), img);
+                NPC npc = new NPC(file.getFileName().toString(), img);
                 npcTile.put(file.getFileName().toString(), npc);
             } else {
                 cutAndAddBackTile(img, file.getFileName().toString());
