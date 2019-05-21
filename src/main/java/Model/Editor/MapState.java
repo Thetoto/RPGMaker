@@ -1,12 +1,11 @@
 package Model.Editor;
 
-import Editor.Editor;
 import Model.World.Map;
+import Model.World.NPC;
 import Model.World.Player;
 import Model.World.Teleporter;
 import Tools.ActionManager;
 import Tools.CursorManager;
-import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
 import java.awt.*;
@@ -84,6 +83,10 @@ public class MapState extends Observable {
             currentMap.draw(EditorState.getInstance().tilesState.currentTile, selectionIn, selectionOut);
             mousePreview(null, null);
             updateMap();
+            if (EditorState.getInstance().tilesState.currentTile instanceof NPC) {
+                setChanged();
+                notifyObservers("Update Map");
+            }
         }
     }
 

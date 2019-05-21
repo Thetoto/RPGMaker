@@ -9,4 +9,9 @@ public class NPC extends Animation {
         super(name, bi);
         message = "Hello!";
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

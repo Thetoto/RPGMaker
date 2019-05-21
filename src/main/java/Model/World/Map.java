@@ -213,9 +213,6 @@ public class Map {
     public HashMap<Point, NPC> getNpcSet() {
         return npc;
     }
-    public Vector<Tile> getBackgroundSet() {
-        return background;
-    }
 
     public Dimension getDim() {
         return dimension;

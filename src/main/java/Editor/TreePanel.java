@@ -1,10 +1,7 @@
 package Editor;
 
 import Model.Editor.EditorState;
-import Model.World.Map;
-import Model.World.Player;
-import Model.World.Teleporter;
-import Model.World.World;
+import Model.World.*;
 import Tools.Tools;
 
 import javax.swing.*;
@@ -42,6 +39,12 @@ public class TreePanel extends JTree {
                 DefaultMutableTreeNode teleporter = new DefaultMutableTreeNode(t);
                 Tmap.add(teleporter);
             }
+            DefaultMutableTreeNode Tnpcs = new DefaultMutableTreeNode("NPCs");
+            for (NPC npc : map.getNpcSet().values()) {
+                DefaultMutableTreeNode Tnpc = new DefaultMutableTreeNode(npc);
+                Tnpcs.add(Tnpc);
+            }
+            Tmap.add(Tnpcs);
             Tmaps.add(Tmap);
             if (map == EditorState.getInstance().mapState.currentMap)
                 curPath = new TreePath(Tmap.getPath());
