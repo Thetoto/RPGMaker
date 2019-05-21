@@ -1,5 +1,6 @@
 package Editor;
 
+import Model.World.Animation;
 import Model.World.ImportedTile;
 import Model.Editor.TilesState;
 
@@ -48,6 +49,7 @@ public class TilesPanel extends JPanel implements Observer {
 
         foregroundTab.setVisible(aFlag);
         backgroundTab.setVisible(aFlag);
+        NPCTab.setVisible(aFlag);
 
         treePanel.setVisible(aFlag);
     }
@@ -61,6 +63,7 @@ public class TilesPanel extends JPanel implements Observer {
             if (str.equals("Tiles Update")) {
                 backgroundTab.clean();
                 foregroundTab.clean();
+                NPCTab.clean();
                 for (String k : obj.backgroundTiles.keySet()) {
                     BufferedImage icon = obj.backgroundTiles.get(k).get();
 
@@ -79,6 +82,16 @@ public class TilesPanel extends JPanel implements Observer {
                     button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));
 
                     foregroundTab.addTile(k, button);
+                }
+                for (String k : obj.npcTile.keySet()) {
+                    Animation anim = obj.npcTile.get(k);
+                    BufferedImage icon = anim.get();
+
+                    JButton button = new JButton();
+                    button.setIcon(new ImageIcon(icon));
+                    button.setPreferredSize(new Dimension(icon.getWidth(), icon.getHeight()));
+
+                    NPCTab.addTile(k, button);
                 }
                 tilesTypePanel.setSelectedIndex(1);
                 foregroundTab.validate();

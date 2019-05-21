@@ -1,5 +1,7 @@
 package Model.World;
 
+import Model.Editor.TileType;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -69,5 +71,14 @@ public class Tile {
 
     public boolean isDefaultWalkable() {
         return defaultWalkable;
+    }
+
+    public TileType getType() {
+        if (this instanceof Animation)
+            return TileType.NPC;
+        if (this instanceof ImportedTile)
+            return TileType.FOREGROUND;
+        else
+            return TileType.BACKGROUND;
     }
 }

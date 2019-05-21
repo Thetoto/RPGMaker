@@ -2,11 +2,8 @@ package Editor;
 
 import Model.Editor.EditorState;
 import Model.Editor.ToolsEnum;
-import Model.World.BigTile;
-import Model.World.ImportedTile;
+import Model.World.*;
 import Model.Editor.MapState;
-import Model.World.Map;
-import Model.World.Tile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,6 +60,11 @@ public class MapPanel extends JLayeredPane implements Observer {
         for (Point pt : foreSet.keySet()) {
             ImportedTile tile = (ImportedTile)foreSet.get(pt);
             set_image(g, tile, pt);
+        }
+        HashMap<Point, Tile> npcSet = map.getNpcSet();
+        for (Point pt : npcSet.keySet()) {
+            Animation tile = (Animation)npcSet.get(pt);
+            set_image(g, tile.toImportedTile(), pt);
         }
         g.dispose();
 

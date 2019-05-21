@@ -1,5 +1,7 @@
 package Model.World;
 
+import Model.Editor.EditorState;
+
 import java.awt.*;
 import java.util.Vector;
 
@@ -27,8 +29,7 @@ public class Player {
     }
 
     public void setAnim() {
-        anim = new Animation();
-        if (anim != null && anim.tiles == null)
-            anim = null;
+        if (EditorState.getInstance().tilesState.currentTile instanceof Animation)
+            anim = (Animation)EditorState.getInstance().tilesState.currentTile;
     }
 }

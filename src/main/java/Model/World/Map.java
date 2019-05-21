@@ -1,5 +1,6 @@
 package Model.World;
 
+import Model.Editor.TileType;
 import Tools.ActionManager;
 
 import java.awt.*;
@@ -13,6 +14,7 @@ public class Map {
     Vector<Tile> background;
     Vector<Boolean> walkable;
     HashMap<Point, Tile> foreground; // Tile but it's a ImportedTile. Point is top left corner.
+    HashMap<Point, Tile> npc;
     Vector<Teleporter> teleporters;
     Tile backgroundTile;
 
@@ -22,6 +24,7 @@ public class Map {
         this.background = new Vector<>(dimension.width * dimension.height);
         this.walkable = new Vector<>(dimension.width * dimension.height);
         this.foreground = new HashMap<>();
+        this.npc = new HashMap<>();
         this.teleporters = new Vector<>();
         for (int i = 0; i < dimension.width * dimension.height; i++) {
             background.add(i, Tile.getTransPlaceholder());
@@ -42,6 +45,7 @@ public class Map {
         this.teleporters = new Vector<>(map.teleporters);
         this.walkable = new Vector<>(map.walkable);
         this.backgroundTile = map.backgroundTile;
+        this.npc = new HashMap<>(map.npc);
     }
 
     @Override
@@ -50,6 +54,10 @@ public class Map {
     }
 
     public void draw(Tile currentTile, Point in, Point out) {
+        if (currentTile.getType() == TileType.NPC) {
+            setNpc((Animation) currentTile, in);
+            return;
+        }
         ActionManager.saveAction(new Map(this));
         if (out == null)
             out = in;
@@ -82,6 +90,10 @@ public class Map {
                 }
             }
         }
+    }
+
+    private void setNpc(Animation currentTile, Point in) {
+        npc.put(in, currentTile);
     }
 
     private void drawBigTile(BigTile bt, Point in, Point out) {
@@ -193,6 +205,9 @@ public class Map {
 
     public HashMap<Point, Tile> getForegroundSet() {
         return foreground;
+    }
+    public HashMap<Point, Tile> getNpcSet() {
+        return npc;
     }
     public Vector<Tile> getBackgroundSet() {
         return background;

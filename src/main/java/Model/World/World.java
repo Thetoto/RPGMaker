@@ -40,6 +40,7 @@ public class World extends Observable {
     public boolean setUpLoad() {
         var backTiles = EditorState.getInstance().tilesState.backgroundTiles;
         var foreTiles = EditorState.getInstance().tilesState.foregroundTiles;
+        var npcTiles = EditorState.getInstance().tilesState.npcTile;
         for (Map map: maps) {
             map.backgroundTile = getTileByName(backTiles, map.backgroundTile.getName());
             if (map.backgroundTile == null)
@@ -56,6 +57,12 @@ public class World extends Observable {
                 if (tile == null)
                     return false;
                 map.foreground.put(pt, tile);
+            }
+            for (Point pt : map.npc.keySet()) {
+                Tile tile = npcTiles.get(map.npc.get(pt).getName());
+                if (tile == null)
+                    return false;
+                map.npc.put(pt, tile);
             }
         }
         return true;

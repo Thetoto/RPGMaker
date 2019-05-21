@@ -3,6 +3,7 @@ package Controller;
 import Editor.Editor;
 import Editor.TilesPanel;
 import Model.Editor.EditorState;
+import Model.Editor.TileType;
 import Model.Editor.TilesState;
 import Model.Editor.ToolsEnum;
 import Model.World.BigTile;
@@ -33,7 +34,7 @@ public class TilesController {
             entry.getValue().addActionListener((e) -> {
                 if (toolsController.getCurrentTool() != ToolsEnum.TILES)
                     toolsController.setTool(ToolsEnum.TILES);
-                tilesState.setCurrentTile(entry.getKey(), true);
+                tilesState.setCurrentTile(entry.getKey(), TileType.FOREGROUND);
                 setupCheckboxAndBigTile();
             });
         }
@@ -41,7 +42,15 @@ public class TilesController {
             entry.getValue().addActionListener((e) -> {
                 if (toolsController.getCurrentTool() != ToolsEnum.TILES)
                     toolsController.setTool(ToolsEnum.TILES);
-                tilesState.setCurrentTile(entry.getKey(), false);
+                tilesState.setCurrentTile(entry.getKey(), TileType.BACKGROUND);
+                setupCheckboxAndBigTile();
+            });
+        }
+        for(Map.Entry<String, JButton> entry : tilesPanel.NPCTab.buttons.entrySet()) {
+            entry.getValue().addActionListener((e) -> {
+                if (toolsController.getCurrentTool() != ToolsEnum.TILES)
+                    toolsController.setTool(ToolsEnum.TILES);
+                tilesState.setCurrentTile(entry.getKey(), TileType.NPC);
                 setupCheckboxAndBigTile();
             });
         }

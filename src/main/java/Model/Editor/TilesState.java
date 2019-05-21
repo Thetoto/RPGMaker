@@ -1,5 +1,6 @@
 package Model.Editor;
 
+import Model.World.Animation;
 import Model.World.BigTile;
 import Model.World.ImportedTile;
 import Model.World.Tile;
@@ -21,13 +22,16 @@ public class TilesState extends Observable {
 
     public Map<String, Tile> backgroundTiles = new HashMap<>();
     public Map<String, ImportedTile> foregroundTiles = new HashMap<>();
+    public Map<String, Animation> npcTile = new HashMap<>();
 
     public TilesState() {
     }
 
-    public void setCurrentTile(String currentTile, boolean isForeground) {
-        if (isForeground) {
+    public void setCurrentTile(String currentTile, TileType type) {
+        if (type == TileType.FOREGROUND) {
             this.currentTile = foregroundTiles.get(currentTile);
+        } else if (type == TileType.NPC) {
+            this.currentTile = npcTile.get(currentTile);
         } else {
             this.currentTile = backgroundTiles.get(currentTile);
         }
@@ -39,24 +43,28 @@ public class TilesState extends Observable {
     }
 
     public void addDefaultTiles() {
-        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), false);
-        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), true);
-        addDirectoryTiles(Tools.getPathFromRessources("background"), false);
-        addDirectoryTiles(Tools.getPathFromRessources("foreground"), true);
+        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), TileType.BACKGROUND);
+        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), TileType.FOREGROUND);
+        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), TileType.NPC);
+        addDirectoryTiles(Tools.getPathFromRessources("background"), TileType.BACKGROUND);
+        addDirectoryTiles(Tools.getPathFromRessources("foreground"), TileType.FOREGROUND);
     }
 
-    public void addTile(Path file, boolean isForeground) {
-        addTile(file, isForeground, true);
+    public void addTile(Path file, TileType type) {
+        addTile(file, type, true);
     }
 
-    public void addTile(Path file, boolean isForeground, boolean askUpdate) {
+    public void addTile(Path file, TileType type, boolean askUpdate) {
         try {
             BufferedImage img = ImageIO.read(file.toFile());
             if (img == null)
                 return;
-            if (isForeground) {
+            if (type == TileType.FOREGROUND) {
                 ImportedTile fore = new ImportedTile(file.getFileName().toString(), img);
                 foregroundTiles.put(file.getFileName().toString(), fore);
+            } else if (type == TileType.NPC) {
+                Animation npc = new Animation(file.getFileName().toString(), img);
+                npcTile.put(file.getFileName().toString(), npc);
             } else {
                 cutAndAddBackTile(img, file.getFileName().toString());
             }
@@ -79,10 +87,10 @@ public class TilesState extends Observable {
         backgroundTiles.put(name, tile);
     }
 
-    public void addDirectoryTiles(String path, boolean isForeground) {
+    public void addDirectoryTiles(String path, TileType type) {
         try (Stream<Path> paths = Files.walk(Paths.get(path))) {
             paths.filter(Files::isRegularFile)
-                    .forEach((file) -> addTile(file, isForeground, false));
+                    .forEach((file) -> addTile(file, type, false));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,11 +105,13 @@ public class TilesState extends Observable {
     public void autoAddTiles(File fileOrDir) {
         // TODO : Better algo
         if (fileOrDir.isFile())
-            addTile(fileOrDir.toPath(), false);
+            addTile(fileOrDir.toPath(), TileType.BACKGROUND);
         else if (fileOrDir.getName().contains("fore"))
-            addDirectoryTiles(fileOrDir.toPath().toString(), true);
+            addDirectoryTiles(fileOrDir.toPath().toString(), TileType.FOREGROUND);
         else if (fileOrDir.getName().contains("back"))
-            addDirectoryTiles(fileOrDir.toPath().toString(), false);
+            addDirectoryTiles(fileOrDir.toPath().toString(), TileType.BACKGROUND);
+        else if (fileOrDir.getName().contains("npc"))
+            addDirectoryTiles(fileOrDir.toPath().toString(), TileType.NPC);
         else {
             try (Stream<Path> paths = Files.walk(fileOrDir.toPath())) {
                 paths.filter(Files::isDirectory)

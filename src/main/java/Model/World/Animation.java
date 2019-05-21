@@ -8,27 +8,25 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
-public class Animation {
-    public Vector<Tile> tiles;
+public class Animation extends Tile {
+    transient public Vector<Tile> tiles;
     public Direction direction;
 
-    public Animation() {
-        try {
-            File f = FileManager.getFile();
-            if (f == null)
-                return;
-            BufferedImage tmp = ImageIO.read(f);
-            if (tmp == null)
-                return;
-            segmentation(tmp);
-        } catch (IOException e) {
-            e.printStackTrace();
-            tiles = null;
-            return;
-        }
+    public Animation(String name, BufferedImage img) {
+        super(name, img);
+        segmentation(img);
         if (tiles == null)
             System.err.println("Invalid Animation File Dimension");
         setDirection(Direction.UP);
+    }
+
+    @Override
+    public BufferedImage get() {
+        // TODO : Get by direction
+        if (tiles.size() >= 2)
+            return tiles.get(1).get();
+        else
+            return tiles.get(0).get();
     }
 
     private void segmentation(BufferedImage bi) {
@@ -46,5 +44,9 @@ public class Animation {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public ImportedTile toImportedTile() {
+        return new ImportedTile("tmp", get());
     }
 }
