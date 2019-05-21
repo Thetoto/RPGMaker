@@ -4,11 +4,8 @@ import Editor.Editor;
 import Model.Editor.EditorState;
 import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
-import Model.World.Map;
-import Model.World.Player;
-import Model.World.World;
+import Model.World.*;
 import Tools.FileManager;
-import Model.World.Teleporter;
 import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
@@ -89,6 +86,11 @@ public class MainController {
                         editorState.renameWorld();
                         return;
                     }
+                }
+                if (obj instanceof NPC) {
+                    NPC npc = (NPC) obj;
+                    editorState.mapState.setCurrentNPC(npc);
+                    editorState.toolsState.setCurrentTools(ToolsEnum.PNC);
                 }
             }
         });

@@ -21,12 +21,15 @@ public class MapState extends Observable {
     private Mode mode;
     private Player player;
     private Teleporter currentTeleporter;
+    private NPC currentNPC;
 
     public double zoomPercent = 1.;
 
     public MapState() {
         mode = Mode.DEFAULT;
         player = null;
+        currentTeleporter = null;
+        currentNPC = null;
     }
 
     public void mousePreview(Point in, Point out) {
@@ -202,5 +205,13 @@ public class MapState extends Observable {
             zoomPercent *= 0.7;
         setChanged();
         notifyObservers("Zoom Update");
+    }
+
+    public NPC getCurrentNPC() {
+        return currentNPC;
+    }
+
+    public void setCurrentNPC(NPC npc) {
+        currentNPC = npc;
     }
 }
