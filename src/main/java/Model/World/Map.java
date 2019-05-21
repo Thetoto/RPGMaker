@@ -93,7 +93,11 @@ public class Map {
     }
 
     private void setNpc(Animation currentTile, Point in) {
-        npc.put(in, currentTile);
+        if (currentTile.getName().equals("eraser.png")) {
+            npc.remove(in);
+        } else {
+            npc.put(in, currentTile);
+        }
     }
 
     private void drawBigTile(BigTile bt, Point in, Point out) {
