@@ -30,7 +30,7 @@ public class ToolNPCPanel extends JPanel {
     }
 
     public void updateInfo(NPC npc) {
-        Point coord = new Point(0,0);
+        Point coord = npc.getPoint();
         Name.setText("Name :" + npc.getName());
         Xcoord.setText("Coord X: " + coord.x);
         Ycoord.setText("Coord Y: " + coord.y);

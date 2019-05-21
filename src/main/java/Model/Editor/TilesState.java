@@ -20,7 +20,7 @@ public class TilesState extends Observable {
 
     public Map<String, Tile> backgroundTiles = new HashMap<>();
     public Map<String, ImportedTile> foregroundTiles = new HashMap<>();
-    public Map<String, NPC> npcTile = new HashMap<>();
+    public Map<String, Animation> npcTile = new HashMap<>();
 
     public TilesState() {
     }
@@ -61,7 +61,7 @@ public class TilesState extends Observable {
                 ImportedTile fore = new ImportedTile(file.getFileName().toString(), img);
                 foregroundTiles.put(file.getFileName().toString(), fore);
             } else if (type == TileType.NPC) {
-                NPC npc = new NPC(file.getFileName().toString(), img);
+                Animation npc = new Animation(file.getFileName().toString(), img);
                 npcTile.put(file.getFileName().toString(), npc);
             } else {
                 cutAndAddBackTile(img, file.getFileName().toString());

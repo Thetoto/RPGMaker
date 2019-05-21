@@ -55,7 +55,7 @@ public class Map {
 
     public void draw(Tile currentTile, Point in, Point out) {
         if (currentTile.getType() == TileType.NPC) {
-            setNpc((NPC) currentTile, in);
+            setNpc(currentTile, in);
             return;
         }
         ActionManager.saveAction(new Map(this));
@@ -92,11 +92,11 @@ public class Map {
         }
     }
 
-    private void setNpc(NPC currentTile, Point in) {
+    private void setNpc(Tile currentTile, Point in) {
         if (currentTile.getName().equals("eraser.png")) {
             npc.remove(in);
         } else {
-            npc.put(in, currentTile);
+            npc.put(in, new NPC((Animation)currentTile, in));
         }
     }
 

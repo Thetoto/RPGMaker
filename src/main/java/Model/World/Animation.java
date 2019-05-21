@@ -5,14 +5,12 @@ import java.util.Vector;
 
 public class Animation extends Tile {
     transient public Vector<Tile> tiles;
-    public Direction direction;
 
     public Animation(String name, BufferedImage img) {
         super(name, img);
         segmentation(img);
         if (tiles == null)
             System.err.println("Invalid Animation File Dimension");
-        setDirection(Direction.UP);
     }
 
     @Override
@@ -35,10 +33,6 @@ public class Animation extends Tile {
         for (int i = 0; i < biW; i += biH) {
             tiles.add(new Tile("animation", bi.getSubimage(i, 0, biH, biH)));
         }
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
     }
 
     public ImportedTile toImportedTile() {

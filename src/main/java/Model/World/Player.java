@@ -9,6 +9,7 @@ public class Player {
     private Map map;
     private Point position;
     private Animation anim;
+    private Direction direction;
 
     public Player() {
         position = new Point(0,0);

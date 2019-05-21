@@ -59,10 +59,10 @@ public class World extends Observable {
                 map.foreground.put(pt, tile);
             }
             for (Point pt : map.npc.keySet()) {
-                NPC tile = npcTiles.get(map.npc.get(pt).getName());
-                if (tile == null)
+                NPC npc = map.npc.get(pt);
+                if (npc == null)
                     return false;
-                map.npc.put(pt, tile);
+                map.npc.put(pt, npc);
             }
         }
         return true;
