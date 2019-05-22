@@ -2,6 +2,7 @@
   "name": "New World",
   "maps": [
     {
+      "id": 0,
       "name": "New map",
       "dimension": {
         "width": 20,
@@ -147,28 +148,28 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_0"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_2"
         },
         {
           "image": "TransPlaceHolder"
@@ -207,28 +208,28 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -267,28 +268,28 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -327,28 +328,28 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -387,28 +388,28 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -447,28 +448,28 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -507,28 +508,28 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -567,28 +568,28 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_6"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_8"
         },
         {
           "image": "TransPlaceHolder"
@@ -678,22 +679,22 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_0"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_2"
         },
         {
           "image": "TransPlaceHolder"
@@ -738,22 +739,22 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -765,16 +766,16 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_0"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_1"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_2"
         },
         {
           "image": "TransPlaceHolder"
@@ -798,22 +799,22 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -825,16 +826,16 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -858,22 +859,22 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -885,16 +886,16 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_3"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_4"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -918,22 +919,22 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_6"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_8"
         },
         {
           "image": "TransPlaceHolder"
@@ -945,16 +946,16 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_6"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_7"
         },
         {
-          "image": "TransPlaceHolder"
+          "image": "lava.png_8"
         },
         {
           "image": "TransPlaceHolder"
@@ -1615,36 +1616,39 @@
       "npc": [
         [
           {
-            "x": 2,
-            "y": 2
+            "x": 1,
+            "y": 1
           },
           {
-            "direction": "UP",
-            "image": "death.png"
-          }
-        ],
-        [
-          {
-            "x": 11,
-            "y": 8
-          },
-          {
-            "direction": "UP",
-            "image": "death.png"
+            "message": "Hello!",
+            "direction": "DOWN",
+            "anim": {
+              "image": "women.png"
+            },
+            "coordinates": {
+              "x": 1,
+              "y": 1
+            }
           }
         ]
       ],
       "teleporters": [],
       "backgroundTile": {
-        "image": "PlaceHolder"
+        "image": "ground4.png"
       }
     }
   ],
+  "curIdMap": 1,
   "player": {
+    "mapId": 0,
     "position": {
       "x": 0,
       "y": 0
-    }
+    },
+    "anim": {
+      "image": "poseidon.png"
+    },
+    "direction": "UP"
   },
   "changed": false,
   "obs": []

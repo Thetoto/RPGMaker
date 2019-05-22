@@ -19,8 +19,20 @@ public class Engine extends JFrame {
         this.setLocationRelativeTo(null);
 
         mapPanel = new Display();
-        this.setLayeredPane(mapPanel);
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        panel.add(mapPanel);
+
+        panel.setVisible(true);
+        this.add(panel);
 
         this.setVisible(true);
+    }
+
+    public static void validateAll(Container j) {
+        while (j != null) {
+            j.validate();
+            j = j.getParent();
+        }
     }
 }

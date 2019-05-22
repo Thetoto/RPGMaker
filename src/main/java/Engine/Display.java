@@ -82,9 +82,8 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawImported(g, t, state.player.getPosition(), 16);
         g.dispose();
 
-        npcLayer.setIcon(new ImageIcon(player));
-        npcLayer.setBounds(0, 0, player.getWidth(), player.getHeight());
-
+        playerLayer.setIcon(new ImageIcon(player));
+        playerLayer.setBounds(0, 0, player.getWidth(), player.getHeight());
     }
 
     public void drawAll(EngineState state) {
@@ -102,8 +101,17 @@ public class Display extends JLayeredPane implements Observer {
             String str = (String)o;
             if (str.equals("Change Map")) {
                 drawAll(state);
+                setSizeMap();
                 repaint();
             }
         }
+    }
+
+    private void setSizeMap() {
+        Image image = ((ImageIcon) backLayer.getIcon()).getImage();
+        this.setPreferredSize(new Dimension((int)(image.getWidth(null)), (int)(image.getHeight(null))));
+        this.setSize(new Dimension((int)(image.getWidth(null)), (int)(image.getHeight(null))));
+
+        Engine.validateAll(this);
     }
 }
