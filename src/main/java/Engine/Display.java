@@ -78,7 +78,7 @@ public class Display extends JLayeredPane implements Observer {
         BufferedImage player = createImage(state.currentMap.getDim());
 
         Graphics2D g = player.createGraphics();
-        ImportedTile t = state.player.getAnim().toImportedTile();
+        ImportedTile t = state.player.getAnim().toImportedTile(state.player.getDirection());
         Draw.drawImported(g, t, state.player.getPosition(), 16);
         System.out.println("Draw player : " + state.player.getPosition());
         g.dispose();

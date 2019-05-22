@@ -61,4 +61,8 @@ public class Player {
         }
         System.out.println("After move " + dir + " : " + position);
     }
+
+    public Direction getDirection() {
+        return direction;
+    }
 }
