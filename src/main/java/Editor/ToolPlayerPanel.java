@@ -1,5 +1,6 @@
 package Editor;
 
+import Model.Editor.EditorState;
 import Model.World.Map;
 import Model.World.Player;
 
@@ -35,7 +36,7 @@ public class ToolPlayerPanel extends JPanel {
 
     public void updateInfo(Player p) {
         Point coord = p.getPosition();
-        Map map = p.getMap();
+        Map map = EditorState.getInstance().world.getMapById(p.getMapId());
         if (map == null)
             mapName.setText("Map : null");
         else

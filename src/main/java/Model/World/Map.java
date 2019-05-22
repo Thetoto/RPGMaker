@@ -9,7 +9,9 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class Map {
+    public int id;
     String name;
+
     Dimension dimension;
     Vector<Tile> background;
     Vector<Boolean> walkable;

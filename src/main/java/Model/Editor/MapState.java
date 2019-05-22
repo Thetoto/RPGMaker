@@ -48,7 +48,7 @@ public class MapState extends Observable {
     public void mouseClick() {
         if (mode == Mode.PLAYER) {
             if (selectionIn.equals(selectionOut)) {
-                player.setPosition(new Point(selectionIn), currentMap);
+                player.setPosition(new Point(selectionIn), currentMap.id);
                 setMode(Mode.DEFAULT);
                 deselect();
                 EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.PLAYER);

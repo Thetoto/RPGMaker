@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.Vector;
 
 public class Player {
-    private Map map;
+    private int mapId;
     private Point position;
     private Animation anim;
     private Direction direction;
@@ -20,13 +20,13 @@ public class Player {
         return position;
     }
 
-    public Map getMap() {
-        return map;
+    public int getMapId() {
+        return mapId;
     }
 
-    public void setPosition(Point point, Map map) {
+    public void setPosition(Point point, int map) {
         position = point;
-        this.map = map;
+        this.mapId = map;
     }
 
     public void setAnim() {

@@ -36,4 +36,8 @@ public class NPC {
     public Point getPoint() {
         return this.coordinates;
     }
+
+    public void setAnimation(Animation animation) {
+        anim = animation;
+    }
 }

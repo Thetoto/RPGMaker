@@ -1,5 +1,6 @@
 package Editor;
 
+import Model.Editor.EditorState;
 import Model.World.Map;
 import Model.World.Player;
 import Model.World.Teleporter;
@@ -37,9 +38,9 @@ public class ToolTeleporterPanel extends JPanel {
     }
 
     public void update(Teleporter t) {
-        String map = t.getMapDestName();
-        if (map != null)
-            mapDest.setText("Destination map: " + map);
+        int mapId = t.getMapDestId();
+        if (mapId != -1)
+            mapDest.setText("Destination map: " + EditorState.getInstance().world.getMapById(mapId).toString());
         else
             mapDest.setText("Destination map: null");
 

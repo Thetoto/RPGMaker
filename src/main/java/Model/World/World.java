@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 public class World extends Observable {
     String name;
     public List<Map> maps;
+    public int curIdMap = 0;
     Player player;
 
     public World(String name) {
@@ -28,8 +29,10 @@ public class World extends Observable {
         return player;
     }
 
-    public void addMap(Map maps) {
-        this.maps.add(maps);
+    public void addMap(Map map) {
+        map.id = curIdMap;
+        curIdMap++;
+        this.maps.add(map);
     }
 
     @Override
@@ -59,10 +62,10 @@ public class World extends Observable {
                 map.foreground.put(pt, tile);
             }
             for (Point pt : map.npc.keySet()) {
-                NPC npc = map.npc.get(pt);
-                if (npc == null)
+                Animation anim = npcTiles.get(map.npc.get(pt).getName());
+                if (anim == null)
                     return false;
-                map.npc.put(pt, npc);
+                map.npc.get(pt).setAnimation(anim);
             }
         }
         return true;
@@ -97,5 +100,13 @@ public class World extends Observable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Map getMapById(int id) {
+        for (Map m: maps) {
+            if (m.id == id)
+                return m;
+        }
+        return null;
     }
 }

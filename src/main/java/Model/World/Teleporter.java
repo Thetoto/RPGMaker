@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Teleporter {
     String name;
-    String mapDestName;
+    int mapDestId;
     Point position;
     Point destPosition;
 
@@ -12,7 +12,7 @@ public class Teleporter {
         this.name = map.toString() + " | " + name;
         this.position = p;
         this.destPosition = null;
-        this.mapDestName = null;
+        this.mapDestId = -1;
     }
 
     @Override
@@ -21,12 +21,12 @@ public class Teleporter {
     }
 
     public void setDest(Map map, Point point) {
-        mapDestName = map.toString();
+        mapDestId = map.id;
         destPosition = new Point(point);
     }
 
-    public String getMapDestName() {
-        return mapDestName;
+    public int getMapDestId() {
+        return mapDestId;
     }
 
     public Point getPointDest() {
