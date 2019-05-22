@@ -41,7 +41,7 @@ public class EngineState extends Observable {
     }
 
     public boolean movePerso(Direction dir, int delta_time) {
-        if (!currentMap.checkBoundsPerso(player, dir, player.getPosition())) {
+        if (!currentMap.checkBoundsPerso(player, dir, player.getPosition(), delta_time)) {
             player.move(dir, delta_time);
             return true;
         }

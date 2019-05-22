@@ -151,16 +151,16 @@ public class Map {
     }
 
 
-    public boolean checkBoundsPerso(Player perso, Direction dir, Point2D p) {
+    public boolean checkBoundsPerso(Player perso, Direction dir, Point2D p, int delta_time) {
         switch (dir) {
             case DOWN:
-                return checkBoundsPerso(perso, p.getX(), p.getY() + 1);
+                return checkBoundsPerso(perso, p.getX(), p.getY() + 0.01 * delta_time);
             case LEFT:
-                return checkBoundsPerso(perso, p.getX() - 1, p.getY());
+                return checkBoundsPerso(perso, p.getX() - 0.01 * delta_time, p.getY());
             case RIGHT:
-                return checkBoundsPerso(perso, p.getX() + 1, p.getY());
+                return checkBoundsPerso(perso, p.getX() + 0.01 * delta_time, p.getY());
             case UP:
-                return checkBoundsPerso(perso, p.getX(), p.getY() - 1);
+                return checkBoundsPerso(perso, p.getX(), p.getY() - 0.01 * delta_time);
         }
         return false;
     }
@@ -170,8 +170,13 @@ public class Map {
         int dy = size / 2;
         for (double iy = y + dy; iy < y + size; iy++) {
             for (double ix = x + 0; ix < x + size; ix++) {
-                boolean res = checkBounds((int)ix, (int)iy);
+                int intx = (int) Math.round(ix);
+                int inty = (int) Math.round(iy);
+                boolean res = checkBounds(intx, inty);
                 if (res)
+                    return true;
+                boolean walkable = getWalkable(intx, inty);
+                if (!walkable)
                     return true;
             }
         }
