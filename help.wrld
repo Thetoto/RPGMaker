@@ -1639,7 +1639,7 @@
             "y": 12
           },
           {
-            "message": "I\u0027m the princess of Hyrul",
+            "message": "I\u0027m the princess of Hyrule",
             "direction": "DOWN",
             "anim": {
               "image": "princess.png"
@@ -1656,7 +1656,7 @@
             "y": 12
           },
           {
-            "message": "I will kill you ",
+            "message": "I will kill you !",
             "direction": "DOWN",
             "anim": {
               "image": "death.png"

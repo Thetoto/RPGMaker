@@ -42,6 +42,7 @@ public class EngineController {
 
         ThreadLauncher.execute(() -> {
             new Game(this);
+            frame.dispose();
         });
     }
 }

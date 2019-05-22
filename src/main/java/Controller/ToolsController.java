@@ -43,7 +43,7 @@ public class ToolsController {
     public void setNpcMessageListener() {
         toolsPanel.toolNPCPanel.message.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 String newMessage = toolsPanel.toolNPCPanel.message.getText();
                 EditorState.getInstance().mapState.getCurrentNPC().setMessage(newMessage);
             }
