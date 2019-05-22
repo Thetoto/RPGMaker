@@ -6,6 +6,7 @@ import Tools.CursorManager;
 import Tools.ThreadLauncher;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.Observable;
 
 public class MapState extends Observable {
@@ -48,7 +49,7 @@ public class MapState extends Observable {
     public void mouseClick() {
         if (mode == Mode.PLAYER) {
             if (selectionIn.equals(selectionOut)) {
-                player.setPosition(new Point(selectionIn), currentMap.id);
+                player.setPosition(new Point2D.Double(selectionIn.x, selectionIn.y), currentMap.id);
                 setMode(Mode.DEFAULT);
                 deselect();
                 EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.PLAYER);

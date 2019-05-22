@@ -1,19 +1,20 @@
 package Model.World;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class NPC {
     private String name;
     private String message;
     private Direction direction;
     private Animation anim;
-    private Point coordinates;
+    private Point2D.Double coordinates;
 
     public NPC(Animation anim, Point coordinates) {
         this.anim = anim;
         this.direction = Direction.DOWN;
         this.message = "Hello!";
-        this.coordinates = coordinates;
+        this.coordinates = new Point2D.Double(coordinates.x, coordinates.y);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class NPC {
         return name;
     }
 
-    public Point getPoint() {
+    public Point2D.Double getPoint() {
         return this.coordinates;
     }
 

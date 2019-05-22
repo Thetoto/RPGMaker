@@ -4,6 +4,7 @@ import Model.Editor.TileType;
 import Tools.ActionManager;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Vector;
@@ -150,26 +151,26 @@ public class Map {
     }
 
 
-    public boolean checkBoundsPerso(Player perso, Direction dir, Point p) {
+    public boolean checkBoundsPerso(Player perso, Direction dir, Point2D p) {
         switch (dir) {
             case DOWN:
-                return checkBoundsPerso(perso, p.x, p.y + 1);
+                return checkBoundsPerso(perso, p.getX(), p.getY() + 1);
             case LEFT:
-                return checkBoundsPerso(perso, p.x - 1, p.y);
+                return checkBoundsPerso(perso, p.getX() - 1, p.getY());
             case RIGHT:
-                return checkBoundsPerso(perso, p.x + 1, p.y);
+                return checkBoundsPerso(perso, p.getX() + 1, p.getY());
             case UP:
-                return checkBoundsPerso(perso, p.x, p.y - 1);
+                return checkBoundsPerso(perso, p.getX(), p.getY() - 1);
         }
         return false;
     }
 
-    private boolean checkBoundsPerso(Player perso, int x, int y) {
+    private boolean checkBoundsPerso(Player perso, double x, double y) {
         int size = perso.getAnim().getSize();
         int dy = size / 2;
-        for (int iy = y + dy; iy < y + size; iy++) {
-            for (int ix = x + 0; ix < x + size; ix++) {
-                boolean res = checkBounds(ix, iy);
+        for (double iy = y + dy; iy < y + size; iy++) {
+            for (double ix = x + 0; ix < x + size; ix++) {
+                boolean res = checkBounds((int)ix, (int)iy);
                 if (res)
                     return true;
             }

@@ -35,10 +35,16 @@ public class EngineState extends Observable {
         notifyObservers("Change Map");
     }
 
-    public void redrawPerso(Direction dir) {
-        if (!currentMap.checkBoundsPerso(player, dir, player.getPosition()))
-            player.move(dir);
+    public void redrawPerso() {
         setChanged();
         notifyObservers("Update Perso");
+    }
+
+    public boolean movePerso(Direction dir, int delta_time) {
+        if (!currentMap.checkBoundsPerso(player, dir, player.getPosition())) {
+            player.move(dir, delta_time);
+            return true;
+        }
+        return false;
     }
 }

@@ -1,23 +1,23 @@
 package Model.World;
 
 import Model.Editor.EditorState;
+import Tools.Tools;
 
-import java.awt.*;
-import java.util.Vector;
+import java.awt.geom.Point2D;
 
 public class Player {
     private int mapId;
-    private Point position;
+    private Point2D.Double position;
     private Animation anim;
     private Direction direction;
 
     public Player() {
-        position = new Point(0,0);
+        position = new Point2D.Double(0,0);
         direction = Direction.UP;
         anim = null;
     }
 
-    public Point getPosition() {
+    public Point2D getPosition() {
         return position;
     }
 
@@ -25,7 +25,7 @@ public class Player {
         return mapId;
     }
 
-    public void setPosition(Point point, int map) {
+    public void setPosition(Point2D.Double point, int map) {
         position = point;
         this.mapId = map;
     }
@@ -42,21 +42,21 @@ public class Player {
         return anim;
     }
 
-    public void move(Direction dir) {
+    public void move(Direction dir, int delta_time) {
         System.out.println(dir + " : " + position);
         this.direction = dir;
         switch (dir) {
             case DOWN:
-                position.translate(0, 1);
+                Tools.translate2D(position, 0, 0.01 * delta_time);
                 break;
             case LEFT:
-                position.translate(-1, 0);
+                Tools.translate2D(position,-0.01 * delta_time, 0);
                 break;
             case RIGHT:
-                position.translate(1, 0);
+                Tools.translate2D(position,0.01 * delta_time, 0);
                 break;
             case UP:
-                position.translate(0, -1);
+                Tools.translate2D(position,0, -0.01 * delta_time);
                 break;
         }
         System.out.println("After move " + dir + " : " + position);

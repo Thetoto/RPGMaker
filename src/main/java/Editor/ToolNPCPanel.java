@@ -7,6 +7,7 @@ import Model.World.Player;
 import javax.swing.*;
 import javax.swing.text.Position;
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class ToolNPCPanel extends JPanel {
     JLabel Name = new JLabel();
@@ -30,9 +31,9 @@ public class ToolNPCPanel extends JPanel {
     }
 
     public void updateInfo(NPC npc) {
-        Point coord = npc.getPoint();
+        Point2D.Double coord = npc.getPoint();
         Name.setText("Name :" + npc.getName());
-        Xcoord.setText("Coord X: " + coord.x);
-        Ycoord.setText("Coord Y: " + coord.y);
+        Xcoord.setText("Coord X: " + coord.getX());
+        Ycoord.setText("Coord Y: " + coord.getY());
     }
 }

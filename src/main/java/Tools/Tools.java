@@ -1,5 +1,7 @@
 package Tools;
 
+import java.awt.*;
+import java.awt.geom.Point2D;
 import java.io.File;
 
 public class Tools {
@@ -8,5 +10,8 @@ public class Tools {
     }
     public static String getPathFromRessources(String path) {
         return ClassLoader.getSystemClassLoader().getResource(path).getPath();
+    }
+    public static void translate2D(Point2D.Double pt, double x, double y) {
+        pt.setLocation(pt.getX() + x, pt.getY() + y);
     }
 }

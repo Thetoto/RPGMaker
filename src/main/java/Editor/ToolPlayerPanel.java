@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.Observable;
 
 public class ToolPlayerPanel extends JPanel {
@@ -35,14 +36,14 @@ public class ToolPlayerPanel extends JPanel {
     }
 
     public void updateInfo(Player p) {
-        Point coord = p.getPosition();
+        Point2D coord = p.getPosition();
         Map map = EditorState.getInstance().world.getMapById(p.getMapId());
         if (map == null)
             mapName.setText("Map : null");
         else
             mapName.setText("Map :" + map.toString());
-        Xcoord.setText("Coord X: " + coord.x);
-        Ycoord.setText("Coord Y: " + coord.y);
+        Xcoord.setText("Coord X: " + coord.getX());
+        Ycoord.setText("Coord Y: " + coord.getY());
         if (p.getAnim() != null)
             playerAnim.setIcon(new ImageIcon(p.getAnim().get()));
     }

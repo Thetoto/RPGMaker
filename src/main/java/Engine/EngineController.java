@@ -2,15 +2,21 @@ package Engine;
 
 import Model.World.Direction;
 import Model.World.World;
+import Tools.ThreadLauncher;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Vector;
 
 public class EngineController {
     Engine frame;
     EngineState state;
+    Vector<Boolean> keyState = new Vector<>();
 
     public EngineController(World world) {
+        for (int i = 0; i < 256; i++) {
+            keyState.add(false);
+        }
         frame = new Engine();
         state = new EngineState(world);
         state.addObserver(frame.mapPanel);
@@ -18,30 +24,24 @@ public class EngineController {
 
         frame.addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent keyEvent) {
-
+            public synchronized void keyTyped(KeyEvent keyEvent) {
             }
 
             @Override
-            public void keyPressed(KeyEvent keyEvent) {
-                System.out.println("Key pressed " + keyEvent.getKeyCode());
-                Direction dir = null;
-                if (keyEvent.getKeyCode() == KeyEvent.VK_Z)
-                    dir = Direction.UP;
-                else if (keyEvent.getKeyCode() == KeyEvent.VK_Q)
-                    dir = Direction.LEFT;
-                else if (keyEvent.getKeyCode() == KeyEvent.VK_S)
-                    dir = Direction.DOWN;
-                else if (keyEvent.getKeyCode() == KeyEvent.VK_D)
-                    dir = Direction.RIGHT;
-                if (dir != null)
-                    state.redrawPerso(dir);
+            public synchronized void keyPressed(KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() < 256)
+                    keyState.set(keyEvent.getKeyCode(), true);
             }
 
             @Override
-            public void keyReleased(KeyEvent keyEvent) {
-
+            public synchronized void keyReleased(KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() < 256)
+                    keyState.set(keyEvent.getKeyCode(), false);
             }
+        });
+
+        ThreadLauncher.execute(() -> {
+            new Game(this);
         });
     }
 }

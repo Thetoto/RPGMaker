@@ -3,6 +3,7 @@ package Tools;
 import Model.World.*;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
@@ -33,10 +34,10 @@ public class Draw {
         }
     }
 
-    public static synchronized void drawImported(Graphics2D g, ImportedTile img, Point top, int multiply) {
+    public static synchronized void drawImported(Graphics2D g, ImportedTile img, Point2D top, int multiply) {
         for (int i = 0; i < img.getWidth(); i++) {
             for (int j = 0; j < img.getHeight(); j++) {
-                g.drawImage(img.getTile(i, j).get(), (i + top.x) * multiply, (j + top.y) * multiply , null);
+                g.drawImage(img.getTile(i, j).get(), (int)((i + top.getX()) * multiply), (int)((j + top.getY()) * multiply), null);
             }
         }
     }
