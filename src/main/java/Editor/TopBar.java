@@ -14,6 +14,7 @@ public class TopBar extends JPanel {
     public JButton addNewTiles;
     public JButton zoomMinus;
     public JButton zoomPlus;
+    public JButton play;
 
     public TopBar() {
         this.setBackground(Color.LIGHT_GRAY);
@@ -27,6 +28,7 @@ public class TopBar extends JPanel {
         zoomMinus = Editor.initIconButton("zoom_minus.png", this);
         zoomPlus = Editor.initIconButton("zoom_plus.png", this);
         addNewTiles = Editor.initIconButton("newtile.png", this);
+        play = Editor.initIconButton("play.png", this);
     }
 
     @Override

@@ -1,9 +1,11 @@
 package Model.Editor;
 
+import Engine.EngineController;
 import Tools.FileManager;
 import Model.World.Map;
 import Model.World.World;
 import Tools.PopUpManager;
+import Tools.ThreadLauncher;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -102,5 +104,13 @@ public class EditorState extends Observable {
             world.setName(s);
         setChanged();
         notifyObservers("New World");
+    }
+
+    public void launchGame() {
+        if (world == null) {
+            Tools.PopUpManager.Alert("Please create or load a world before.");
+            return;
+        }
+        ThreadLauncher.execute(() -> new EngineController(world));
     }
 }

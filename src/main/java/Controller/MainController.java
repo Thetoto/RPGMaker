@@ -1,8 +1,8 @@
 package Controller;
 
 import Editor.Editor;
+import Engine.EngineController;
 import Model.Editor.EditorState;
-import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.World.*;
 import Tools.FileManager;
@@ -39,6 +39,8 @@ public class MainController {
         editor.topBar.createButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState)));
         editor.topBar.saveButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.saveWorld()));
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
+
+        editor.topBar.play.addActionListener(e -> editorState.launchGame());
 
         editor.topBar.zoomMinus.addActionListener(e -> editorState.mapState.zoomChange(false));
         editor.topBar.zoomPlus.addActionListener(e -> editorState.mapState.zoomChange(true));
