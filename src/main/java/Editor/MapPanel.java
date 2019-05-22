@@ -4,8 +4,10 @@ import Model.Editor.EditorState;
 import Model.Editor.ToolsEnum;
 import Model.World.*;
 import Model.Editor.MapState;
+import Tools.Draw;
 
 import javax.swing.*;
+import javax.swing.text.IconView;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.geom.AffineTransform;
@@ -46,55 +48,24 @@ public class MapPanel extends JLayeredPane implements Observer {
     }
 
     public synchronized void drawMap(Map map) {
-        this.remove(mapLayer);
         bi = new BufferedImage(map.getDim().width * multiply, map.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D g = bi.createGraphics();
-        for (int x = 0; x < map.getDim().width; x++) {
-            for (int y = 0; y < map.getDim().height; y++) {
-                BufferedImage tile = map.getTile(x, y).get();
-                g.drawImage(tile, x * multiply, y * multiply, null);
-            }
-        }
-        HashMap<Point, Tile> foreSet = map.getForegroundSet();
-        for (Point pt : foreSet.keySet()) {
-            ImportedTile tile = (ImportedTile)foreSet.get(pt);
-            set_image(g, tile, pt);
-        }
-        HashMap<Point, NPC> npcSet = map.getNpcSet();
-        for (Point pt : npcSet.keySet()) {
-            Animation tile = npcSet.get(pt).getAnimation();
-            set_image(g, tile.toImportedTile(), pt);
-        }
+        Draw.drawBackTiles(g, map, multiply);
+        Draw.drawForeTiles(g, map, multiply);
+        Draw.drawNPC(g, map, multiply);
         g.dispose();
 
-        mapLayer = new JLabel(new ImageIcon(bi));
-
+        mapLayer.setIcon(new ImageIcon(bi));
         mapLayer.setBounds(0, 0, bi.getWidth(), bi.getHeight());
-        this.add(mapLayer, MAP_LAYER);
 
         this.setSizeMap();
         this.repaint();
     }
 
-    public synchronized void set_image(Graphics2D g, ImportedTile img, Point top) {
-        int decalage_x = top.x;
-        int decalage_y = top.y;
-        for (int i = 0; i < img.getWidth(); i++) {
-            for (int j = 0; j < img.getHeight(); j++) {
-                g.drawImage(img.getTile(i, j).get(), (i + decalage_x) * multiply, (j + decalage_y) * multiply , null);
-            }
-        }
-    }
+
 
     public synchronized void show_walkable(MapState mapState) {
-        this.remove(midLayer);
-        if (mapState == null) {
-            midLayer = new JLabel();
-            this.add(midLayer, MID_LAYER);
-            this.repaint();
-            return;
-        }
         BufferedImage tmp = new BufferedImage(mapState.currentMap.getDim().width * multiply, mapState.currentMap.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
 
         Graphics2D g = tmp.createGraphics();
@@ -108,65 +79,24 @@ public class MapPanel extends JLayeredPane implements Observer {
                 g.drawRect(x * multiply, y * multiply, 16, 16);
             }
         }
-
         g.dispose();
 
-        midLayer = new JLabel(new ImageIcon(tmp));
-
+        midLayer.setVisible(true);
+        midLayer.setIcon(new ImageIcon(tmp));
         midLayer.setBounds(0, 0, tmp.getWidth(), tmp.getHeight());
-        this.add(midLayer, MID_LAYER);
 
         this.repaint();
     }
 
     private void drawBack(MapState mapState) {
-        this.remove(backLayer);
         BufferedImage tmp = new BufferedImage(mapState.currentMap.getDim().width * multiply, mapState.currentMap.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
-        Dimension d = mapState.currentMap.getDim();
-        Point init = new Point(0, 0);
-        Tile back = mapState.currentMap.getBackgroundTile();
-        BigTile bt = null;
-        if (back instanceof BigTile) {
-            bt = (BigTile)back;
-            if (bt.getHeight() == 3 && bt.getWidth() == 3) {
-                back = bt.getTile(1, 1);
-                d = new Dimension(d.width - 1, d.height - 1);
-                init = new Point(1, 1);
-            }
-        }
 
         Graphics2D g = tmp.createGraphics();
-        for (int x = init.x; x < d.width; x++) {
-            for (int y = init.y; y < d.height; y++) {
-                if (back instanceof BigTile && (bt.getWidth() != 3 || bt.getHeight() != 3)) {
-                    Tile t = bt.getTile(x % bt.getWidth(), y % bt.getHeight());
-                    g.drawImage(t.get(), x * multiply, y * multiply, null);
-                } else {
-                    BufferedImage tile = back.get();
-                    g.drawImage(tile, x * multiply, y * multiply, null);
-                }
-            }
-        }
-        if (bt != null && bt.getWidth() == 3 && bt.getHeight() == 3) {
-            d = mapState.currentMap.getDim();
-            for (int x = 1; x < d.width - 1; x++) {
-                g.drawImage(bt.getTile(1,0).get(), x * multiply, 0, null);
-                g.drawImage(bt.getTile(1,2).get(), x * multiply, (d.height - 1)* multiply, null);
-            }
-            for (int y = 1; y < d.height - 1; y++) {
-                g.drawImage(bt.getTile(0,1).get(), 0, y * multiply, null);
-                g.drawImage(bt.getTile(2,1).get(), (d.width - 1) * multiply, y * multiply, null);
-            }
-            g.drawImage(bt.getTile(0, 0).get(), 0, 0, null);
-            g.drawImage(bt.getTile(0, 2).get(), 0, (d.height - 1) * multiply, null);
-            g.drawImage(bt.getTile(2, 0).get(), (d.width - 1) * multiply, 0, null);
-            g.drawImage(bt.getTile(2, 2).get(), (d.width - 1) * multiply, (d.height - 1) * multiply, null);
-        }
-
+        Draw.drawBackground(g, mapState.currentMap.getBackgroundTile(), mapState.currentMap.getDim(), multiply);
         g.dispose();
-        backLayer = new JLabel(new ImageIcon(tmp));
+
+        backLayer.setIcon(new ImageIcon(tmp));
         backLayer.setBounds(0, 0, tmp.getWidth(), tmp.getHeight());
-        this.add(backLayer, BACK_LAYER);
         this.repaint();
     }
 
@@ -174,6 +104,7 @@ public class MapPanel extends JLayeredPane implements Observer {
         Point in = mapState.selectionIn;
         Point out = mapState.selectionOut;
         Tile cur = null;
+
         if (EditorState.getInstance().toolsState.currentTools == ToolsEnum.TILES) {
             cur = EditorState.getInstance().tilesState.currentTile;
             if (cur instanceof BigTile) {
@@ -187,7 +118,6 @@ public class MapPanel extends JLayeredPane implements Observer {
             }
         }
 
-        this.remove(selectLayer);
         selection_layout = new BufferedImage(bi.getWidth(), bi.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = selection_layout.createGraphics();
         g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
@@ -205,10 +135,9 @@ public class MapPanel extends JLayeredPane implements Observer {
             }
         }
         g.dispose();
-        selectLayer = new JLabel(new ImageIcon(selection_layout));
+        selectLayer.setIcon(new ImageIcon(selection_layout));
         selectLayer.setBounds(0, 0, bi.getWidth(), bi.getHeight());
 
-        this.add(selectLayer, SELECT_LAYER);
         this.repaint();
     }
 
@@ -234,6 +163,7 @@ public class MapPanel extends JLayeredPane implements Observer {
 
         if (o instanceof String && observable instanceof MapState){
             MapState mapState = (MapState) observable;
+
             String arg = (String) o;
             if (arg.equals("mouseOver")) {
                 this.show_selection(mapState);
