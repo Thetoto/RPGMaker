@@ -34,6 +34,9 @@ public class Player {
         if (EditorState.getInstance().tilesState.currentTile instanceof Animation)
             anim = (Animation)EditorState.getInstance().tilesState.currentTile;
     }
+    public void setAnim(Animation anim) {
+        this.anim = anim;
+    }
 
     public Animation getAnim() {
         return anim;

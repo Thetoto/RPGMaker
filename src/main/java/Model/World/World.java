@@ -68,6 +68,10 @@ public class World extends Observable {
                 map.npc.get(pt).setAnimation(anim);
             }
         }
+        Animation anim = npcTiles.get(player.getAnim().getName());
+        if (anim == null)
+            return false;
+        player.setAnim(anim);
         return true;
     }
 
