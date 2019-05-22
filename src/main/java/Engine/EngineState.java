@@ -36,7 +36,7 @@ public class EngineState extends Observable {
     }
 
     public void redrawPerso(Direction dir) {
-        if (!currentMap.checkBounds(dir, player.getPosition()))
+        if (!currentMap.checkBoundsPerso(player, dir, player.getPosition()))
             player.move(dir);
         setChanged();
         notifyObservers("Update Perso");

@@ -35,6 +35,10 @@ public class Animation extends Tile {
         }
     }
 
+    public int getSize() {
+        return tiles.get(0).get().getWidth() / 16;
+    }
+
     public ImportedTile toImportedTile() {
         return new ImportedTile("tmp", get());
     }

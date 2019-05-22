@@ -150,19 +150,33 @@ public class Map {
     }
 
 
-    public boolean checkBounds(Direction dir, Point p) {
+    public boolean checkBoundsPerso(Player perso, Direction dir, Point p) {
         switch (dir) {
             case DOWN:
-                return checkBounds(p.x, p.y + 1);
+                return checkBoundsPerso(perso, p.x, p.y + 1);
             case LEFT:
-                return checkBounds(p.x - 1, p.y);
+                return checkBoundsPerso(perso, p.x - 1, p.y);
             case RIGHT:
-                return checkBounds(p.x + 1, p.y);
+                return checkBoundsPerso(perso, p.x + 1, p.y);
             case UP:
-                return checkBounds(p.x, p.y - 1);
+                return checkBoundsPerso(perso, p.x, p.y - 1);
         }
         return false;
     }
+
+    private boolean checkBoundsPerso(Player perso, int x, int y) {
+        int size = perso.getAnim().getSize();
+        int dy = size / 2;
+        for (int iy = y + dy; iy < y + size; iy++) {
+            for (int ix = x + 0; ix < x + size; ix++) {
+                boolean res = checkBounds(ix, iy);
+                if (res)
+                    return true;
+            }
+        }
+        return false;
+    }
+
     public boolean checkBounds(int x, int y) {
         if (x < 0 || y < 0)
             return true;
