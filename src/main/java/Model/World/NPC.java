@@ -49,8 +49,4 @@ public class NPC {
     public void setAnimation(Animation animation) {
         anim = animation;
     }
-
-    public String getMessage() {
-        return message;
-    }
 }

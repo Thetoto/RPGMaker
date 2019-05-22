@@ -7,7 +7,6 @@ import java.awt.event.KeyEvent;
 public class Game {
     public Game(EngineController controller) {
         long last_time = System.nanoTime();
-        boolean does_action = false;
 
         while (!controller.keyState.get(KeyEvent.VK_ESCAPE)) {
             long time = System.nanoTime();
