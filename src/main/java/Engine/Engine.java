@@ -58,6 +58,11 @@ public class Engine extends JFrame implements Observer {
                     dialog.setVisible(true);
                     validateAll(dialog);
                 }
+                else if (s.equals("Remove Message")) {
+                    dialog.setText("");
+                    dialog.setVisible(false);
+                    validateAll(dialog);
+                }
             }
         }
     }

@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 public class Game {
     public Game(EngineController controller) {
         long last_time = System.nanoTime();
+        boolean does_action = false;
 
         while (!controller.keyState.get(KeyEvent.VK_ESCAPE)) {
             long time = System.nanoTime();
@@ -14,18 +15,25 @@ public class Game {
             last_time = time;
 
             boolean hasMoved = false;
-            if (controller.keyState.get(KeyEvent.VK_Z))
+            if (!does_action && controller.keyState.get(KeyEvent.VK_Z))
                 hasMoved |= controller.state.movePerso(Direction.UP, delta_time);
-            if (controller.keyState.get(KeyEvent.VK_Q))
+            if (!does_action && controller.keyState.get(KeyEvent.VK_Q))
                 hasMoved |= controller.state.movePerso(Direction.LEFT, delta_time);
-            if (controller.keyState.get(KeyEvent.VK_S))
+            if (!does_action && controller.keyState.get(KeyEvent.VK_S))
                 hasMoved |= controller.state.movePerso(Direction.DOWN, delta_time);
-            if (controller.keyState.get(KeyEvent.VK_D))
+            if (!does_action && controller.keyState.get(KeyEvent.VK_D))
                 hasMoved |= controller.state.movePerso(Direction.RIGHT, delta_time);
             if (hasMoved)
                 controller.state.redrawPerso();
-            if (controller.keyState.get(KeyEvent.VK_E))
-                controller.state.talk();
+            if (controller.keyState.get(KeyEvent.VK_E)) {
+                controller.keyState.set(KeyEvent.VK_E, false);
+                if (does_action) {
+                    controller.state.shutUp();
+                    does_action = false;
+                    continue;
+                }
+                does_action = controller.state.talk();
+            }
             try {
                 Thread.sleep(10, 0);
             } catch (InterruptedException e) {

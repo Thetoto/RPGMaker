@@ -3,7 +3,9 @@ package Engine;
 import Model.World.*;
 
 import java.awt.*;
+import java.util.Comparator;
 import java.util.Observable;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 public class EngineState extends Observable {
@@ -49,13 +51,24 @@ public class EngineState extends Observable {
         return false;
     }
 
-    public void talk() {
-        currentMap.getNpcSet().forEach((point, npc) -> {
-            if (point.distance(player.getPosition()) < 1) {
-                currentMessage = npc.getMessage();
-                setChanged();
-                notifyObservers("Update Message");
-            }
+    public boolean talk() {
+        boolean does_action = false;
+        Optional<java.util.Map.Entry<Point, NPC>> npc = currentMap.getNpcSet().entrySet().stream().min((o1, o2) -> {
+            double dist1 = o1.getKey().distance(player.getPosition());
+            double dist2 = o2.getKey().distance(player.getPosition());
+            return (int) (dist1 - dist2);
         });
+        if (npc.isPresent() && npc.get().getKey().distance(player.getPosition()) < 1) {
+            currentMessage = npc.get().getValue().getMessage();
+            setChanged();
+            notifyObservers("Update Message");
+            does_action = true;
+        }
+        return does_action;
+    }
+
+    public void shutUp() {
+        setChanged();
+        notifyObservers("Remove Message");
     }
 }
