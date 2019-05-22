@@ -6,7 +6,11 @@ import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ToolsController {
     ToolsPanel toolsPanel;
@@ -34,5 +38,15 @@ public class ToolsController {
 
     public void setTool(ToolsEnum e) {
         toolsState.setCurrentTools(e);
+    }
+
+    public void setNpcMessageListener() {
+        toolsPanel.toolNPCPanel.message.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                String newMessage = toolsPanel.toolNPCPanel.message.getText();
+                EditorState.getInstance().mapState.getCurrentNPC().setMessage(newMessage);
+            }
+        });
     }
 }

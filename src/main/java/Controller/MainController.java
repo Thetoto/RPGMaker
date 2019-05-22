@@ -93,6 +93,7 @@ public class MainController {
                     NPC npc = (NPC) obj;
                     editorState.mapState.setCurrentNPC(npc);
                     editorState.toolsState.setCurrentTools(ToolsEnum.PNC);
+                    toolsController.setNpcMessageListener();
                 }
             }
         });

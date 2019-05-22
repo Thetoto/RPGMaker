@@ -34,6 +34,14 @@ public class NPC {
         return name;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
     public Point2D.Double getPoint() {
         return this.coordinates;
     }
