@@ -81,7 +81,6 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
         g.dispose();
 
-        midLayer.setVisible(true);
         midLayer.setIcon(new ImageIcon(tmp));
         midLayer.setBounds(0, 0, tmp.getWidth(), tmp.getHeight());
 
@@ -172,11 +171,11 @@ public class MapPanel extends JLayeredPane implements Observer {
                 this.show_selection(mapState);
             }
             if (arg.equals("Show Walk")) {
-                this.midLayer.setOpaque(true);
+                this.midLayer.setVisible(true);
                 this.show_walkable(mapState);
             }
             if (arg.equals("Hide Walk")) {
-                this.show_walkable(null);
+                midLayer.setVisible(false);
             }
             if (arg.equals("Load Me")) {
                 if (showWalk)

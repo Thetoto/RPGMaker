@@ -127,7 +127,7 @@ public class Editor extends JFrame implements Observer {
         }
         if (panel != null)
             panel.add(button);
-        button.setPreferredSize(new Dimension(32,32));
+        button.setPreferredSize(new Dimension(42,42));
         return button;
     }
 
