@@ -59,6 +59,7 @@ public class EditorState extends Observable {
         }
         mapState.updateMap(world.getMaps().get(0));
         mapState.setPlayer(world.getPlayer());
+        this.showGrid = false;
         setChanged();
         notifyObservers("New World");
     }

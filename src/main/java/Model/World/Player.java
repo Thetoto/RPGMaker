@@ -13,8 +13,15 @@ public class Player {
 
     public Player() {
         position = new Point2D.Double(0,0);
-        direction = Direction.UP;
+        direction = Direction.DOWN;
         anim = null;
+    }
+
+    public Player(Player player) {
+        this.mapId = player.mapId;
+        this.position = (Point2D.Double)player.position.clone();
+        this.anim = player.anim;
+        this.direction = player.direction;
     }
 
     public Point2D getPosition() {

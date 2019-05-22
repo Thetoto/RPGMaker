@@ -17,7 +17,7 @@ public class EngineState extends Observable {
     public EngineState(World world) {
         engineState = this;
         this.world = world;
-        this.player = world.getPlayer();
+        this.player = new Player(world.getPlayer());
         this.currentMessage = "";
     }
 

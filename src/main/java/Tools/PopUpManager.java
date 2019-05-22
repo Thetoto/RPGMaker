@@ -33,9 +33,9 @@ public class PopUpManager {
         name.setSize(50, 1);
         name.setText("New map");
         name.setVisible(true);
-        width.setModel(new SpinnerNumberModel(20, 1, 800, 1));
+        width.setModel(new SpinnerNumberModel(35, 1, 800, 1));
         width.setVisible(true);
-        height.setModel(new SpinnerNumberModel(20, 1, 800, 1));
+        height.setModel(new SpinnerNumberModel(35, 1, 800, 1));
         height.setVisible(true);
 
         validate.addActionListener(e -> {
