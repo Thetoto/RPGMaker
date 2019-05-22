@@ -66,6 +66,9 @@ public class TilesController {
         toolsController.toolsPanel.toolTilePanel.setAsBackground.addActionListener(e -> {
             EditorState.getInstance().mapState.setBackgroundCurrentTile();
         });
+        toolsController.toolsPanel.toolTilePanel.setPlayerAnim.addActionListener(e -> {
+            EditorState.getInstance().world.getPlayer().setAnim();
+        });
         for (int i = 0;  i < toolsController.toolsPanel.toolTilePanel.bigTileSeclector.size(); i++) {
             final Integer j = i;
             toolsController.toolsPanel.toolTilePanel.bigTileSeclector.get(i).addActionListener((e) -> {

@@ -21,7 +21,7 @@ public class Draw {
         HashMap<Point, Tile> foreSet = map.getForegroundSet();
         for (Point pt : foreSet.keySet()) {
             ImportedTile tile = (ImportedTile)foreSet.get(pt);
-            set_image(g, tile, pt, multiply);
+            drawImported(g, tile, pt, multiply);
         }
     }
 
@@ -29,11 +29,11 @@ public class Draw {
         HashMap<Point, NPC> npcSet = map.getNpcSet();
         for (Point pt : npcSet.keySet()) {
             Animation tile = npcSet.get(pt).getAnimation();
-            set_image(g, tile.toImportedTile(), pt, multiply);
+            drawImported(g, tile.toImportedTile(), pt, multiply);
         }
     }
 
-    public static synchronized void set_image(Graphics2D g, ImportedTile img, Point top, int multiply) {
+    public static synchronized void drawImported(Graphics2D g, ImportedTile img, Point top, int multiply) {
         for (int i = 0; i < img.getWidth(); i++) {
             for (int j = 0; j < img.getHeight(); j++) {
                 g.drawImage(img.getTile(i, j).get(), (i + top.x) * multiply, (j + top.y) * multiply , null);

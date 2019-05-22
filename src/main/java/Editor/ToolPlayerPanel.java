@@ -14,7 +14,7 @@ public class ToolPlayerPanel extends JPanel {
     JLabel mapName = new JLabel();
     JLabel Xcoord = new JLabel();
     JLabel Ycoord = new JLabel();
-    public JButton setAnim = new JButton("Set animation");
+    JLabel playerAnim = new JLabel();
 
     public ToolPlayerPanel() {
         this.setLayout(new GridLayout(4,1));
@@ -22,7 +22,7 @@ public class ToolPlayerPanel extends JPanel {
         this.add(mapName);
         this.add(Xcoord);
         this.add(Ycoord);
-        this.add(setAnim);
+        this.add(playerAnim);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class ToolPlayerPanel extends JPanel {
         mapName.setVisible(aFlag);
         Xcoord.setVisible(aFlag);
         Ycoord.setVisible(aFlag);
-        setAnim.setVisible(aFlag);
+        playerAnim.setVisible(aFlag);
     }
 
     public void updateInfo(Player p) {
@@ -43,5 +43,7 @@ public class ToolPlayerPanel extends JPanel {
             mapName.setText("Map :" + map.toString());
         Xcoord.setText("Coord X: " + coord.x);
         Ycoord.setText("Coord Y: " + coord.y);
+        if (p.getAnim() != null)
+            playerAnim.setIcon(new ImageIcon(p.getAnim().get()));
     }
 }

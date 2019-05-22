@@ -13,6 +13,7 @@ public class Player {
 
     public Player() {
         position = new Point(0,0);
+        direction = Direction.UP;
         anim = null;
     }
 
@@ -32,5 +33,9 @@ public class Player {
     public void setAnim() {
         if (EditorState.getInstance().tilesState.currentTile instanceof Animation)
             anim = (Animation)EditorState.getInstance().tilesState.currentTile;
+    }
+
+    public Animation getAnim() {
+        return anim;
     }
 }

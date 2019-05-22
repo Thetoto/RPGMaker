@@ -1,5 +1,6 @@
 package Engine;
 
+import Model.World.ImportedTile;
 import Model.World.Map;
 import Tools.Draw;
 
@@ -73,10 +74,24 @@ public class Display extends JLayeredPane implements Observer {
         npcLayer.setBounds(0, 0, npc.getWidth(), npc.getHeight());
     }
 
+    public void drawPlayerLayer(EngineState state) {
+        BufferedImage player = createImage(state.currentMap.getDim());
+
+        Graphics2D g = player.createGraphics();
+        ImportedTile t = state.player.getAnim().toImportedTile();
+        Draw.drawImported(g, t, state.player.getPosition(), 16);
+        g.dispose();
+
+        npcLayer.setIcon(new ImageIcon(player));
+        npcLayer.setBounds(0, 0, player.getWidth(), player.getHeight());
+
+    }
+
     public void drawAll(EngineState state) {
         drawBackLayer(state.currentMap);
         drawForeLayer(state.currentMap);
         drawNpcLayer(state.currentMap);
+        drawPlayerLayer(state);
     }
 
 

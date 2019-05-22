@@ -111,6 +111,10 @@ public class EditorState extends Observable {
             Tools.PopUpManager.Alert("Please create or load a world before.");
             return;
         }
+        if (world.getPlayer().getAnim() == null) {
+            Tools.PopUpManager.Alert("Please set a player animation before.");
+            return;
+        }
         ThreadLauncher.execute(() -> new EngineController(world));
     }
 }

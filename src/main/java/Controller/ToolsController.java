@@ -26,8 +26,6 @@ public class ToolsController {
         toolsPanel.toolBoxPanel.forceUnwalkable.addActionListener(e -> EditorState.getInstance().mapState.forceWalkable(false));
 
         toolsPanel.toolTeleporterPanel.setDestButton.addActionListener(e -> EditorState.getInstance().mapState.setMode(Mode.TELEPORTERDEST));
-
-        toolsPanel.toolPlayerPanel.setAnim.addActionListener(e -> EditorState.getInstance().world.getPlayer().setAnim());
     }
 
     public ToolsEnum getCurrentTool() {
