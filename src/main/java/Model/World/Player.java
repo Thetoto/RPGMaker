@@ -41,4 +41,24 @@ public class Player {
     public Animation getAnim() {
         return anim;
     }
+
+    public void move(Direction dir) {
+        System.out.println(dir + " : " + position);
+        this.direction = dir;
+        switch (dir) {
+            case DOWN:
+                position.translate(0, 1);
+                break;
+            case LEFT:
+                position.translate(-1, 0);
+                break;
+            case RIGHT:
+                position.translate(1, 0);
+                break;
+            case UP:
+                position.translate(0, -1);
+                break;
+        }
+        System.out.println("After move " + dir + " : " + position);
+    }
 }

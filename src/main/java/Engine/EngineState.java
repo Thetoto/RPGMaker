@@ -33,4 +33,9 @@ public class EngineState extends Observable {
         setChanged();
         notifyObservers("Change Map");
     }
+
+    public void redrawPerso() {
+        setChanged();
+        notifyObservers("Update Perso");
+    }
 }

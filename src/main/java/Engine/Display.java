@@ -80,6 +80,7 @@ public class Display extends JLayeredPane implements Observer {
         Graphics2D g = player.createGraphics();
         ImportedTile t = state.player.getAnim().toImportedTile();
         Draw.drawImported(g, t, state.player.getPosition(), 16);
+        System.out.println("Draw player : " + state.player.getPosition());
         g.dispose();
 
         playerLayer.setIcon(new ImageIcon(player));
@@ -102,6 +103,10 @@ public class Display extends JLayeredPane implements Observer {
             if (str.equals("Change Map")) {
                 drawAll(state);
                 setSizeMap();
+                repaint();
+            }
+            if (str.equals("Update Perso")) {
+                drawPlayerLayer(state);
                 repaint();
             }
         }
