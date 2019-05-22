@@ -25,15 +25,17 @@ public class EngineController {
             @Override
             public void keyPressed(KeyEvent keyEvent) {
                 System.out.println("Key pressed " + keyEvent.getKeyCode());
+                Direction dir = null;
                 if (keyEvent.getKeyCode() == KeyEvent.VK_Z)
-                    state.player.move(Direction.UP);
+                    dir = Direction.UP;
                 else if (keyEvent.getKeyCode() == KeyEvent.VK_Q)
-                    state.player.move(Direction.LEFT);
+                    dir = Direction.LEFT;
                 else if (keyEvent.getKeyCode() == KeyEvent.VK_S)
-                    state.player.move(Direction.DOWN);
+                    dir = Direction.DOWN;
                 else if (keyEvent.getKeyCode() == KeyEvent.VK_D)
-                    state.player.move(Direction.RIGHT);
-                state.redrawPerso();
+                    dir = Direction.RIGHT;
+                if (dir != null)
+                    state.redrawPerso(dir);
             }
 
             @Override

@@ -1,5 +1,6 @@
 package Engine;
 
+import Model.World.Direction;
 import Model.World.Map;
 import Model.World.Player;
 import Model.World.World;
@@ -34,7 +35,9 @@ public class EngineState extends Observable {
         notifyObservers("Change Map");
     }
 
-    public void redrawPerso() {
+    public void redrawPerso(Direction dir) {
+        if (!currentMap.checkBounds(dir, player.getPosition()))
+            player.move(dir);
         setChanged();
         notifyObservers("Update Perso");
     }

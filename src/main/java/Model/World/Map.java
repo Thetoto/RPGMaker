@@ -149,6 +149,20 @@ public class Map {
         return null;
     }
 
+
+    public boolean checkBounds(Direction dir, Point p) {
+        switch (dir) {
+            case DOWN:
+                return checkBounds(p.x, p.y + 1);
+            case LEFT:
+                return checkBounds(p.x - 1, p.y);
+            case RIGHT:
+                return checkBounds(p.x + 1, p.y);
+            case UP:
+                return checkBounds(p.x, p.y - 1);
+        }
+        return false;
+    }
     public boolean checkBounds(int x, int y) {
         if (x < 0 || y < 0)
             return true;
@@ -239,4 +253,5 @@ public class Map {
     public Tile getBackgroundTile() {
         return backgroundTile;
     }
+
 }
