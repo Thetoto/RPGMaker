@@ -1,12 +1,14 @@
 package Engine;
 
-import Model.World.World;
-
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Engine extends JFrame {
+public class Engine extends JFrame implements Observer {
     public Display mapPanel;
+    public Dialog dialog;
+
     public Engine() {
         this.setSize(1080,720);
         this.setTitle("BibleEngine");
@@ -18,14 +20,24 @@ public class Engine extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
+
         mapPanel = new Display();
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.add(mapPanel);
-
         panel.setVisible(true);
-        this.add(panel);
 
+        dialog = new Dialog();
+        dialog.setSize(100, 100);
+        dialog.setVisible(false);
+
+        JPanel level = new JPanel();
+        level.setLayout(new BorderLayout());
+        level.add(panel, BorderLayout.CENTER);
+        level.add(dialog,  BorderLayout.PAGE_END);
+        level.setVisible(true);
+
+        this.add(level);
         this.setVisible(true);
     }
 
@@ -33,6 +45,20 @@ public class Engine extends JFrame {
         while (j != null) {
             j.validate();
             j = j.getParent();
+        }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (o instanceof EngineState) {
+            if (arg instanceof String) {
+                String s = (String) arg;
+                if (s.equals("Update Message")) {
+                    dialog.setText(EngineState.getInstance().currentMessage);
+                    dialog.setVisible(true);
+                    validateAll(dialog);
+                }
+            }
         }
     }
 }

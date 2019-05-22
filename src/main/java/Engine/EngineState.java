@@ -1,16 +1,16 @@
 package Engine;
 
-import Model.World.Direction;
-import Model.World.Map;
-import Model.World.Player;
-import Model.World.World;
+import Model.World.*;
 
+import java.awt.*;
 import java.util.Observable;
+import java.util.function.BiConsumer;
 
 public class EngineState extends Observable {
     public World world;
     public Map currentMap;
     public Player player;
+    public String currentMessage;
 
     static EngineState engineState;
 
@@ -18,6 +18,7 @@ public class EngineState extends Observable {
         engineState = this;
         this.world = world;
         this.player = world.getPlayer();
+        this.currentMessage = "";
     }
 
     public static EngineState getInstance() {
@@ -46,5 +47,15 @@ public class EngineState extends Observable {
             return true;
         }
         return false;
+    }
+
+    public void talk() {
+        currentMap.getNpcSet().forEach((point, npc) -> {
+            if (point.distance(player.getPosition()) < 1) {
+                currentMessage = npc.getMessage();
+                setChanged();
+                notifyObservers("Update Message");
+            }
+        });
     }
 }

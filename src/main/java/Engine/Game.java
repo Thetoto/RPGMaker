@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 public class Game {
     public Game(EngineController controller) {
         long last_time = System.nanoTime();
+        boolean does_action = false;
 
         while (!controller.keyState.get(KeyEvent.VK_ESCAPE)) {
             long time = System.nanoTime();
@@ -24,7 +25,8 @@ public class Game {
                 hasMoved |= controller.state.movePerso(Direction.RIGHT, delta_time);
             if (hasMoved)
                 controller.state.redrawPerso();
-
+            if (controller.keyState.get(KeyEvent.VK_E))
+                controller.state.talk();
             try {
                 Thread.sleep(10, 0);
             } catch (InterruptedException e) {

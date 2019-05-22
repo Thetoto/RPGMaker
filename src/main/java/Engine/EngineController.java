@@ -1,6 +1,5 @@
 package Engine;
 
-import Model.World.Direction;
 import Model.World.World;
 import Tools.ThreadLauncher;
 
@@ -20,6 +19,7 @@ public class EngineController {
         frame = new Engine();
         state = new EngineState(world);
         state.addObserver(frame.mapPanel);
+        state.addObserver(frame);
         state.init();
 
         frame.addKeyListener(new KeyListener() {
