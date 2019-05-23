@@ -3,6 +3,7 @@ package Engine;
 import Model.World.*;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.Comparator;
 import java.util.Observable;
 import java.util.Optional;
@@ -70,5 +71,16 @@ public class EngineState extends Observable {
     public void shutUp() {
         setChanged();
         notifyObservers("Remove Message");
+    }
+
+    public void checkTeleporter() {
+        for (Teleporter t : currentMap.getTeleporters()) {
+            if (t.getPosition().distance(player.getPosition()) < 1) {
+                player.setPosition(new Point2D.Double(t.getPointDest().getX(), t.getPointDest().getY()), t.getMapDestId());
+                if (currentMap.id != t.getMapDestId())
+                    changeMap(world.getMapById(t.getMapDestId()));
+                System.out.println("Teleport to : " + currentMap.toString());
+            }
+        }
     }
 }

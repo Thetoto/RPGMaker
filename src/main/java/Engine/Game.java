@@ -34,6 +34,7 @@ public class Game {
                 }
                 does_action = controller.state.talk();
             }
+            controller.state.checkTeleporter();
             try {
                 Thread.sleep(10, 0);
             } catch (InterruptedException e) {

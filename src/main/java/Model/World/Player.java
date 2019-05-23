@@ -50,7 +50,6 @@ public class Player {
     }
 
     public void move(Direction dir, int delta_time) {
-        System.out.println(dir + " : " + position);
         this.direction = dir;
         switch (dir) {
             case DOWN:
@@ -66,7 +65,6 @@ public class Player {
                 Tools.translate2D(position,0, -0.01 * delta_time);
                 break;
         }
-        System.out.println("After move " + dir + " : " + position);
     }
 
     public Direction getDirection() {

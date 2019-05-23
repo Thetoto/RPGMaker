@@ -1,10 +1,12 @@
 package Engine;
 
+import Model.World.Teleporter;
 import Model.World.World;
 import Tools.ThreadLauncher;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.Point2D;
 import java.util.Vector;
 
 public class EngineController {

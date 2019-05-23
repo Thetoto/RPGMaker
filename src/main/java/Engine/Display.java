@@ -56,6 +56,7 @@ public class Display extends JLayeredPane implements Observer {
         BufferedImage fore = createImage(map.getDim());
 
         Graphics2D g = fore.createGraphics();
+
         Draw.drawForeTiles(g, map, 16);
         g.dispose();
 
@@ -80,7 +81,6 @@ public class Display extends JLayeredPane implements Observer {
         Graphics2D g = player.createGraphics();
         ImportedTile t = state.player.getAnim().toImportedTile(state.player.getDirection());
         Draw.drawImported(g, t, state.player.getPosition(), 16);
-        System.out.println("Draw player : " + state.player.getPosition());
         g.dispose();
 
         playerLayer.setIcon(new ImageIcon(player));
@@ -93,7 +93,6 @@ public class Display extends JLayeredPane implements Observer {
         drawNpcLayer(state.currentMap);
         drawPlayerLayer(state);
     }
-
 
     @Override
     public void update(Observable observable, Object o) {

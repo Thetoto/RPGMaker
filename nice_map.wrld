@@ -4957,15 +4957,6 @@
           {
             "image": "lit.png"
           }
-        ],
-        [
-          {
-            "x": 28,
-            "y": 15
-          },
-          {
-            "image": "stairs_down.png"
-          }
         ]
       ],
       "npc": [
@@ -5030,16 +5021,8 @@
             "y": 26
           },
           "destPosition": {
-            "x": 13,
-            "y": 7
-          }
-        },
-        {
-          "name": "New map | 1",
-          "mapDestId": -1,
-          "position": {
-            "x": 28,
-            "y": 15
+            "x": 17,
+            "y": 18
           }
         }
       ],
@@ -5048,7 +5031,7 @@
       }
     },
     {
-      "id": 0,
+      "id": 1,
       "name": "New map",
       "dimension": {
         "width": 35,
@@ -9020,7 +9003,7 @@
         false,
         false,
         true,
-        true,
+        false,
         true,
         false,
         false,
@@ -9961,6 +9944,15 @@
       "foreground": [
         [
           {
+            "x": 8,
+            "y": 8
+          },
+          {
+            "image": "stairs_down.png"
+          }
+        ],
+        [
+          {
             "x": 10,
             "y": 4
           },
@@ -10024,13 +10016,26 @@
         ]
       ],
       "npc": {},
-      "teleporters": [],
+      "teleporters": [
+        {
+          "name": "New map | 0",
+          "mapDestId": 0,
+          "position": {
+            "x": 8,
+            "y": 8
+          },
+          "destPosition": {
+            "x": 17,
+            "y": 27
+          }
+        }
+      ],
       "backgroundTile": {
         "image": "hole.png"
       }
     }
   ],
-  "curIdMap": 2,
+  "curIdMap": 3,
   "player": {
     "mapId": 0,
     "position": {
