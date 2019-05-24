@@ -23,6 +23,8 @@ public class Editor extends JFrame implements Observer {
 
     public TopBar topBar;
 
+    public JLabel infos;
+
     public Editor() {
         this.editor = this;
         CursorManager.init(this);
@@ -51,15 +53,25 @@ public class Editor extends JFrame implements Observer {
         toolsPane = new ToolsPanel();
         toolsPane.setBackground(Color.GREEN);
 
+        JPanel infosPannel = new JPanel();
+        infos = new JLabel("");
+        infosPannel.add(infos);
+
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
         panel.add(mapPane);
         JScrollPane scrollFrame = addScrollBar(panel);
+
+        JPanel another = new JPanel();
+        another.setLayout(new BorderLayout());
+        another.add(scrollFrame, BorderLayout.CENTER);
+        another.add(infos, BorderLayout.PAGE_END);
 
         mainPane = new JPanel();
         mainPane.setLayout(new BorderLayout());
         mainPane.add(tilesPane, BorderLayout.WEST);
-        mainPane.add(scrollFrame, BorderLayout.CENTER);
+        mainPane.add(another, BorderLayout.CENTER);
         mainPane.add(toolsPane, BorderLayout.EAST);
         mainPane.add(topBar, BorderLayout.NORTH);
 
@@ -112,6 +124,14 @@ public class Editor extends JFrame implements Observer {
             }
             else if (arg.equals("Set Teleporter Dest")) {
                 toolsPane.toolTeleporterPanel.update(obs.getCurrentTeleporter());
+            }
+            else if (arg.equals("mouseOver") || arg.equals("mousePreview")) {
+                if (obs.selectionIn != null && obs.selectionOut != null)
+                    infos.setText("Selected : x=" + obs.selectionIn.x + " y=" + obs.selectionIn.y + " => x=" + obs.selectionOut.x + " y=" + obs.selectionOut.y);
+                else if (obs.mousePos != null)
+                    infos.setText("Mouse : x=" + obs.mousePos.x + " y=" + obs.mousePos.y);
+                else
+                    infos.setText("Mouse : not in map");
             }
         }
     }
