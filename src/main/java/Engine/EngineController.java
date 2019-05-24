@@ -47,4 +47,19 @@ public class EngineController {
             frame.dispose();
         });
     }
+
+    public void pauseGame() {
+        System.out.println("Pause...");
+        state.setPause(true);
+        while (!keyState.get(KeyEvent.VK_P)) {
+            try {
+                Thread.sleep(10, 0);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        state.setPause(false);
+        System.out.println("Resume...");
+        keyState.set(KeyEvent.VK_P, false);
+    }
 }

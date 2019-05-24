@@ -25,6 +25,7 @@ public class Game {
                 hasMoved |= controller.state.movePerso(Direction.RIGHT, delta_time);
             if (hasMoved)
                 controller.state.redrawPerso();
+
             if (controller.keyState.get(KeyEvent.VK_E)) {
                 controller.keyState.set(KeyEvent.VK_E, false);
                 if (does_action) {
@@ -34,7 +35,15 @@ public class Game {
                 }
                 does_action = controller.state.talk();
             }
+
+            if (controller.keyState.get(KeyEvent.VK_P)) {
+                controller.keyState.set(KeyEvent.VK_P, false);
+                controller.pauseGame();
+                last_time = System.nanoTime();
+            }
+
             controller.state.checkTeleporter();
+
             try {
                 Thread.sleep(10, 0);
             } catch (InterruptedException e) {

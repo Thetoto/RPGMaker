@@ -84,4 +84,12 @@ public class EngineState extends Observable {
             }
         }
     }
+
+    public void setPause(boolean b) {
+        setChanged();
+        if (b)
+            notifyObservers("Pause");
+        else
+            notifyObservers("Resume");
+    }
 }

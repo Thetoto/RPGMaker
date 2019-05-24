@@ -7,6 +7,7 @@ import java.util.Observer;
 
 public class Engine extends JFrame implements Observer {
     public Display mapPanel;
+    public Dialog pause;
     public Dialog dialog;
 
     public Engine() {
@@ -20,6 +21,8 @@ public class Engine extends JFrame implements Observer {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
+        pause = new Dialog();
+        pause.setText("Game paused.");
 
         mapPanel = new Display();
         JPanel panel = new JPanel();
@@ -34,11 +37,14 @@ public class Engine extends JFrame implements Observer {
         JPanel level = new JPanel();
         level.setLayout(new BorderLayout());
         level.add(panel, BorderLayout.CENTER);
+        level.add(pause, BorderLayout.PAGE_START);
         level.add(dialog,  BorderLayout.PAGE_END);
         level.setVisible(true);
 
         this.add(level);
+
         this.setVisible(true);
+        pause.setVisible(false);
     }
 
     public static void validateAll(Container j) {
@@ -62,6 +68,12 @@ public class Engine extends JFrame implements Observer {
                     dialog.setText("");
                     dialog.setVisible(false);
                     validateAll(dialog);
+                }
+                else if (s.equals("Pause")) {
+                    pause.setVisible(true);
+                }
+                else if (s.equals("Resume")) {
+                    pause.setVisible(false);
                 }
             }
         }
