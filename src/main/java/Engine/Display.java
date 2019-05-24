@@ -14,12 +14,14 @@ public class Display extends JLayeredPane implements Observer {
     static Integer BACK_LAYER = 0;
     static Integer FORE_LAYER = 1;
     static Integer NPC_LAYER = 2;
-    static Integer PLAYER_PLAYER = 3;
+    static Integer PLAYER_LAYER = 3;
+    static Integer TIME_CYCLE_LAYER = 4;
 
     JLabel backLayer;
     JLabel foreLayer;
     JLabel npcLayer;
     JLabel playerLayer;
+    JLabel timeCycleLayer;
 
     public static BufferedImage createImage(Dimension dim) {
         return new BufferedImage(dim.width * 16, dim.height * 16, BufferedImage.TYPE_INT_ARGB);
@@ -36,7 +38,10 @@ public class Display extends JLayeredPane implements Observer {
         this.add(npcLayer, NPC_LAYER);
 
         playerLayer = new JLabel();
-        this.add(playerLayer, PLAYER_PLAYER);
+        this.add(playerLayer, PLAYER_LAYER);
+
+        timeCycleLayer = new JLabel();
+        this.add(timeCycleLayer, TIME_CYCLE_LAYER);
     }
 
     public void drawBackLayer(Map map) {
@@ -87,11 +92,28 @@ public class Display extends JLayeredPane implements Observer {
         playerLayer.setBounds(0, 0, player.getWidth(), player.getHeight());
     }
 
+    public void drawTimeCycleLayer(Map map, boolean isNight) {
+        BufferedImage time = createImage(map.getDim());
+
+        Graphics2D g = time.createGraphics();
+        int alpha = 0;
+        if (isNight)
+            alpha = 100;
+        g.setColor(new Color(100, 100, 100, alpha));
+        g.fillRect(0,0,time.getWidth(), time.getHeight());
+        g.dispose();
+
+        timeCycleLayer.setIcon(new ImageIcon(time));
+        timeCycleLayer.setBounds(0, 0, time.getWidth(), time.getHeight());
+    }
+
     public void drawAll(EngineState state) {
         drawBackLayer(state.currentMap);
         drawForeLayer(state.currentMap);
         drawNpcLayer(state.currentMap);
         drawPlayerLayer(state);
+        if (state.world.timeCycle.isActive());
+            drawTimeCycleLayer(state.currentMap, state.world.timeCycle.isNight());
     }
 
     @Override

@@ -92,4 +92,10 @@ public class EngineState extends Observable {
         else
             notifyObservers("Resume");
     }
+
+    public void switchTime() {
+        world.timeCycle.switchTime();
+        setChanged();
+        notifyObservers("Switch Time");
+    }
 }

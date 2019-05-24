@@ -2,11 +2,13 @@ package Model.World;
 
 public class TimeCycle {
     boolean active;
+    boolean isNight;
     int nightDuration;
     int dayDuration;
 
     public TimeCycle() {
         active = false;
+        isNight = false;
         nightDuration = 10;
         dayDuration = 10;
     }
@@ -37,5 +39,13 @@ public class TimeCycle {
 
     public void reverseActive() {
         active = !active;
+    }
+
+    public boolean isNight() {
+        return isNight;
+    }
+
+    public void switchTime() {
+        isNight = ! isNight;
     }
 }

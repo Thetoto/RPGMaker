@@ -75,6 +75,10 @@ public class Engine extends JFrame implements Observer {
                 else if (s.equals("Resume")) {
                     pause.setVisible(false);
                 }
+                else if (s.equals("Switch Time")) {
+                    mapPanel.drawTimeCycleLayer(EngineState.getInstance().currentMap,
+                                                EngineState.getInstance().world.timeCycle.isNight());
+                }
             }
         }
     }

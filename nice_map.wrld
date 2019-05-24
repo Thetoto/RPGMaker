@@ -10047,6 +10047,11 @@
     },
     "direction": "DOWN"
   },
+  "timeCycle": {
+      "active": false,
+      "nightDuration": 10,
+      "dayDuration": 10
+  },
   "changed": false,
   "obs": []
 }

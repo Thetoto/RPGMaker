@@ -1,12 +1,11 @@
 package Engine;
 
-import Model.World.Teleporter;
 import Model.World.World;
 import Tools.ThreadLauncher;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.geom.Point2D;
 import java.util.Vector;
 
 public class EngineController {
@@ -23,6 +22,12 @@ public class EngineController {
         state.addObserver(frame.mapPanel);
         state.addObserver(frame);
         state.init();
+
+        if (state.world.timeCycle.isActive()) {
+            Timer t = new Timer(state.world.timeCycle.getDayDuration() * 1000,
+                                e -> state.switchTime());
+            t.start();
+        }
 
         frame.addKeyListener(new KeyListener() {
             @Override
