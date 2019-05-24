@@ -14,7 +14,7 @@ public class World extends Observable {
     public List<Map> maps;
     public int curIdMap = 0;
     Player player;
-    TimeCycle timeCycle;
+    public TimeCycle timeCycle;
 
     public World(String name) {
         this.name = name;

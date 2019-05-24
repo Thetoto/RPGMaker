@@ -6,8 +6,9 @@ import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
 
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -28,6 +29,15 @@ public class ToolsController {
         });
         toolsPanel.toolBoxPanel.forceWalkable.addActionListener(e -> EditorState.getInstance().mapState.forceWalkable(true));
         toolsPanel.toolBoxPanel.forceUnwalkable.addActionListener(e -> EditorState.getInstance().mapState.forceWalkable(false));
+        toolsPanel.toolBoxPanel.activeTimeCycle.addActionListener(e -> EditorState.getInstance().reverseTimeCycleSetting());
+        toolsPanel.toolBoxPanel.dayTime.addChangeListener(e -> {
+            JSpinner spinner = (JSpinner) e.getSource();
+            EditorState.getInstance().world.timeCycle.setDayDuration((int)spinner.getModel().getValue());
+        });
+        toolsPanel.toolBoxPanel.nightTime.addChangeListener(e -> {
+            JSpinner spinner = (JSpinner) e.getSource();
+            EditorState.getInstance().world.timeCycle.setNightDuration((int)spinner.getModel().getValue());
+        });
 
         toolsPanel.toolTeleporterPanel.setDestButton.addActionListener(e -> EditorState.getInstance().mapState.setMode(Mode.TELEPORTERDEST));
         toolsPanel.toolTeleporterPanel.deleteMe.addActionListener(e -> EditorState.getInstance().mapState.deleteTeleport());

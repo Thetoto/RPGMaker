@@ -118,4 +118,12 @@ public class EditorState extends Observable {
         }
         ThreadLauncher.execute(() -> new EngineController(world));
     }
+
+    public void reverseTimeCycleSetting() {
+        if (world == null)
+            return;
+        world.timeCycle.reverseActive();
+        setChanged();
+        notifyObservers("Time Cycle Update");
+    }
 }

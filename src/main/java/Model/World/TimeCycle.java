@@ -2,13 +2,13 @@ package Model.World;
 
 public class TimeCycle {
     boolean active;
-    int night_duration;
-    int day_duration;
+    int nightDuration;
+    int dayDuration;
 
     public TimeCycle() {
         active = false;
-        night_duration = 0;
-        day_duration = 0;
+        nightDuration = 10;
+        dayDuration = 10;
     }
 
     public boolean isActive() {
@@ -19,19 +19,23 @@ public class TimeCycle {
         this.active = active;
     }
 
-    public int getNight_duration() {
-        return night_duration;
+    public int getNightDuration() {
+        return nightDuration;
     }
 
-    public void setNight_duration(int night_duration) {
-        this.night_duration = night_duration;
+    public void setNightDuration(int nightDuration) {
+        this.nightDuration = nightDuration;
     }
 
-    public int getDay_duration() {
-        return day_duration;
+    public int getDayDuration() {
+        return dayDuration;
     }
 
-    public void setDay_duration(int day_duration) {
-        this.day_duration = day_duration;
+    public void setDayDuration(int dayDuration) {
+        this.dayDuration = dayDuration;
+    }
+
+    public void reverseActive() {
+        active = !active;
     }
 }

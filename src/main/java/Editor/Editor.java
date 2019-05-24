@@ -115,6 +115,9 @@ public class Editor extends JFrame implements Observer {
             if (arg.equals("New World") || arg.equals("New Map")) {
                 tilesPane.treePanel.show_world(obs.world);
             }
+            else if (arg.equals("Time Cycle Update")) {
+                toolsPane.toolBoxPanel.showCycleSetting(obs.world.timeCycle);
+            }
         }
         else if (o instanceof String && observable instanceof MapState) {
             String arg = (String) o;
