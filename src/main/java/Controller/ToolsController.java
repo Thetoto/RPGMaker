@@ -30,6 +30,7 @@ public class ToolsController {
         toolsPanel.toolBoxPanel.forceUnwalkable.addActionListener(e -> EditorState.getInstance().mapState.forceWalkable(false));
 
         toolsPanel.toolTeleporterPanel.setDestButton.addActionListener(e -> EditorState.getInstance().mapState.setMode(Mode.TELEPORTERDEST));
+        toolsPanel.toolTeleporterPanel.deleteMe.addActionListener(e -> EditorState.getInstance().mapState.deleteTeleport());
     }
 
     public ToolsEnum getCurrentTool() {
@@ -48,5 +49,6 @@ public class ToolsController {
                 EditorState.getInstance().mapState.getCurrentNPC().setMessage(newMessage);
             }
         });
+        toolsPanel.toolNPCPanel.deleteMe.addActionListener(e -> EditorState.getInstance().mapState.deleteNPC());
     }
 }

@@ -10,22 +10,31 @@ import java.awt.*;
 
 public class ToolTeleporterPanel extends JPanel {
     public JLabel mapDest;
+    public JLabel pointX;
+    public JLabel pointY;
     public JLabel pointDestX;
     public JLabel pointDestY;
     public JButton setDestButton;
+    public JButton deleteMe;
 
     public ToolTeleporterPanel() {
-        this.setLayout(new GridLayout(4,1));
+        this.setLayout(new GridLayout(7,1));
 
+        this.pointX = new JLabel("X: null");
+        this.pointY = new JLabel("Y: null");
         this.mapDest = new JLabel("Destination map: null");
-        this.pointDestX = new JLabel("X: null");
-        this.pointDestY = new JLabel("Y: null");
+        this.pointDestX = new JLabel("Dest X: null");
+        this.pointDestY = new JLabel("Dest Y: null");
         this.setDestButton = new JButton("Set destination");
+        this.deleteMe = new JButton("Delete");
 
+        this.add(pointX);
+        this.add(pointY);
         this.add(mapDest);
         this.add(pointDestX);
         this.add(pointDestY);
         this.add(setDestButton);
+        this.add(deleteMe);
     }
 
     @Override
@@ -43,14 +52,16 @@ public class ToolTeleporterPanel extends JPanel {
             mapDest.setText("Destination map: " + EditorState.getInstance().world.getMapById(mapId).toString());
         else
             mapDest.setText("Destination map: null");
-
+        Point pt = t.getPosition();
+        pointX.setText("X: " + pt.x);
+        pointY.setText("Y: " + pt.y);
         Point point = t.getPointDest();
         if (point != null) {
             pointDestX.setText("X: " + point.x);
             pointDestY.setText("Y: " + point.y);
         } else {
-            pointDestX.setText("X: null");
-            pointDestY.setText("Y: null");
+            pointDestX.setText("Dest X: null");
+            pointDestY.setText("Dest Y: null");
         }
     }
 }

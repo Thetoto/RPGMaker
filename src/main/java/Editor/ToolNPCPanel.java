@@ -15,17 +15,20 @@ public class ToolNPCPanel extends JPanel {
     JLabel Xcoord = new JLabel();
     JLabel Ycoord = new JLabel();
     public JTextArea message = new JTextArea();
+    public JButton deleteMe = new JButton("Delete");
 
     public ToolNPCPanel() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JPanel grid = new JPanel();
-        grid.setLayout(new GridLayout(3,1));
+        grid.setLayout(new GridLayout(4,1));
         grid.add(Name);
         grid.add(Xcoord);
         grid.add(Ycoord);
+        grid.add(deleteMe);
         grid.setVisible(true);
         this.add(grid);
         this.add(message);
+
     }
 
     @Override

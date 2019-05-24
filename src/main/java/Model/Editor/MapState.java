@@ -1,5 +1,6 @@
 package Model.Editor;
 
+import Editor.Editor;
 import Model.World.*;
 import Tools.ActionManager;
 import Tools.CursorManager;
@@ -211,5 +212,20 @@ public class MapState extends Observable {
 
     public void setCurrentNPC(NPC npc) {
         currentNPC = npc;
+    }
+
+    public void deleteTeleport() {
+        currentMap.getTeleporters().remove(currentTeleporter);
+        EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.NONE);
+        setChanged();
+        notifyObservers("Update Map");
+    }
+
+    public void deleteNPC() {
+        currentMap.getNpcSet().values().remove(currentNPC);
+        EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.NONE);
+        setChanged();
+        notifyObservers("Update Map");
+        updateMap();
     }
 }
