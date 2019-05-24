@@ -14,11 +14,13 @@ public class World extends Observable {
     public List<Map> maps;
     public int curIdMap = 0;
     Player player;
+    TimeCycle timeCycle;
 
     public World(String name) {
         this.name = name;
         maps = new ArrayList<Map>();
         player = new Player();
+        timeCycle = new TimeCycle();
     }
 
     public List<Map> getMaps() {
