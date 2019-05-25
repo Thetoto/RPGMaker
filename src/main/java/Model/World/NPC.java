@@ -9,12 +9,14 @@ public class NPC {
     private Direction direction;
     private Animation anim;
     private Point2D.Double coordinates;
+    private boolean isMoving;
 
     public NPC(Animation anim, Point coordinates) {
         this.anim = anim;
         this.direction = Direction.DOWN;
         this.message = "Hello!";
         this.coordinates = new Point2D.Double(coordinates.x, coordinates.y);
+        isMoving = false;
     }
 
     @Override
@@ -48,5 +50,14 @@ public class NPC {
 
     public void setAnimation(Animation animation) {
         anim = animation;
+    }
+
+    public boolean isMoving() {
+        return isMoving;
+    }
+
+    public void setMoving(boolean moving) {
+        isMoving = moving;
+        System.out.println(moving);
     }
 }

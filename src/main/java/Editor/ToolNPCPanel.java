@@ -1,12 +1,8 @@
 package Editor;
 
-import Model.World.Map;
 import Model.World.NPC;
-import Model.World.Player;
-import org.w3c.dom.Text;
 
 import javax.swing.*;
-import javax.swing.text.Position;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
@@ -15,15 +11,17 @@ public class ToolNPCPanel extends JPanel {
     JLabel Xcoord = new JLabel();
     JLabel Ycoord = new JLabel();
     public JTextArea message = new JTextArea();
+    public JCheckBox isMoving = new JCheckBox("Is moving");
     public JButton deleteMe = new JButton("Delete");
 
     public ToolNPCPanel() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JPanel grid = new JPanel();
-        grid.setLayout(new GridLayout(4,1));
+        grid.setLayout(new GridLayout(5,1));
         grid.add(Name);
         grid.add(Xcoord);
         grid.add(Ycoord);
+        grid.add(isMoving);
         grid.add(deleteMe);
         grid.setVisible(true);
         this.add(grid);
@@ -45,6 +43,7 @@ public class ToolNPCPanel extends JPanel {
         Name.setText("Name :" + npc.getName());
         Xcoord.setText("Coord X: " + coord.getX());
         Ycoord.setText("Coord Y: " + coord.getY());
+        isMoving.setSelected(npc.isMoving());
         message.setText(npc.getMessage());
     }
 }

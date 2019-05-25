@@ -1,5 +1,6 @@
 package Controller;
 
+import Editor.Editor;
 import Editor.ToolsPanel;
 import Model.Editor.EditorState;
 import Model.Editor.Mode;
@@ -9,9 +10,7 @@ import Model.Editor.ToolsState;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class ToolsController {
     ToolsPanel toolsPanel;
@@ -41,6 +40,11 @@ public class ToolsController {
 
         toolsPanel.toolTeleporterPanel.setDestButton.addActionListener(e -> EditorState.getInstance().mapState.setMode(Mode.TELEPORTERDEST));
         toolsPanel.toolTeleporterPanel.deleteMe.addActionListener(e -> EditorState.getInstance().mapState.deleteTeleport());
+
+        toolsPanel.toolNPCPanel.isMoving.addActionListener(e -> {
+            JCheckBox tmp = (JCheckBox) e.getSource();
+            EditorState.getInstance().mapState.getCurrentNPC().setMoving(tmp.isSelected());
+        });
     }
 
     public ToolsEnum getCurrentTool() {
