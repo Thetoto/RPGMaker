@@ -12,6 +12,7 @@ public class EngineController {
     Engine frame;
     EngineState state;
     Vector<Boolean> keyState = new Vector<>();
+    Timer timeCycle;
 
     public EngineController(World world) {
         for (int i = 0; i < 256; i++) {
@@ -24,9 +25,10 @@ public class EngineController {
         state.init();
 
         if (state.world.timeCycle.isActive()) {
-            Timer t = new Timer(state.world.timeCycle.getDayDuration() * 1000,
-                                e -> state.switchTime());
-            t.start();
+            timeCycle = new Timer(state.world.timeCycle.getDelay() * 1000,
+                                         e -> timeCycle.setDelay(state.switchTime() * 1000));
+            timeCycle.start();
+            timeCycle.setDelay(state.world.timeCycle.getNextDelay() * 1000);
         }
 
         frame.addKeyListener(new KeyListener() {

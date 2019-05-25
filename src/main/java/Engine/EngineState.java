@@ -93,9 +93,10 @@ public class EngineState extends Observable {
             notifyObservers("Resume");
     }
 
-    public void switchTime() {
+    public int switchTime() {
         world.timeCycle.switchTime();
         setChanged();
         notifyObservers("Switch Time");
+        return  world.timeCycle.getNextDelay();
     }
 }

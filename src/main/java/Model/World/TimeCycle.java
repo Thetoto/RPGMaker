@@ -48,4 +48,16 @@ public class TimeCycle {
     public void switchTime() {
         isNight = ! isNight;
     }
+
+    public int getDelay() {
+        if (isNight)
+            return getNightDuration();
+        return getDayDuration();
+    }
+
+    public int getNextDelay() {
+        if (isNight)
+            return getDayDuration();
+        return getNightDuration();
+    }
 }
