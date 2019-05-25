@@ -6,6 +6,8 @@ import Tools.ThreadLauncher;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Vector;
 
 public class EngineController {
@@ -26,7 +28,7 @@ public class EngineController {
 
         if (state.world.timeCycle.isActive()) {
             timeCycle = new Timer(state.world.timeCycle.getDelay() * 1000,
-                                         e -> timeCycle.setDelay(state.switchTime() * 1000));
+                    e -> timeCycle.setDelay(state.switchTime() * 1000));
             timeCycle.start();
             timeCycle.setDelay(state.world.timeCycle.getNextDelay() * 1000);
         }
@@ -52,6 +54,13 @@ public class EngineController {
         ThreadLauncher.execute(() -> {
             new Game(this);
             frame.dispose();
+        });
+
+
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                keyState.set(KeyEvent.VK_ESCAPE, true);
+            }
         });
     }
 

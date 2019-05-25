@@ -18,7 +18,6 @@ public class Engine extends JFrame implements Observer {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
         pause = new Dialog();
