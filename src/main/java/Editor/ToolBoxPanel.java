@@ -2,6 +2,7 @@ package Editor;
 
 import Model.World.TimeCycle;
 
+import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,6 +15,7 @@ public class ToolBoxPanel extends JPanel {
     public JButton forceUnwalkable;
 
     public JButton activeTimeCycle;
+    public JPanel timeCyclePanel;
     public JSpinner dayTime;
     public JSpinner nightTime;
 
@@ -26,8 +28,18 @@ public class ToolBoxPanel extends JPanel {
         forceWalkable = new JButton("Set selection walkable");
         forceUnwalkable = new JButton("Set selection not walkable");
         activeTimeCycle = new JButton("Set time cycle");
+
+        timeCyclePanel = new JPanel();
+        timeCyclePanel.setLayout(new GridLayout(2,2));
+        JLabel dayTimeLabel = new JLabel("Set day time value");
+        JLabel nightTimeLabel = new JLabel("Set night time value");
         dayTime = new JSpinner();
         nightTime = new JSpinner();
+
+        timeCyclePanel.add(dayTimeLabel);
+        timeCyclePanel.add(dayTime);
+        timeCyclePanel.add(nightTimeLabel);
+        timeCyclePanel.add(nightTime);
 
         dayTime.setModel(new SpinnerNumberModel(10, 10, 800, 1));
         nightTime.setModel(new SpinnerNumberModel(10, 10, 800, 1));
@@ -47,12 +59,9 @@ public class ToolBoxPanel extends JPanel {
         c.gridy += 1;
         this.add(activeTimeCycle, c);
         c.gridy += 1;
-        this.add(dayTime, c);
-        c.gridy += 1;
-        this.add(nightTime, c);
+        this.add(timeCyclePanel, c);
 
-        dayTime.setVisible(false);
-        nightTime.setVisible(false);
+        timeCyclePanel.setVisible(false);
     }
 
     @Override
@@ -65,6 +74,7 @@ public class ToolBoxPanel extends JPanel {
     }
 
     public void showCycleSetting(TimeCycle timeCycle) {
+        timeCyclePanel.setVisible(timeCycle.isActive());
         dayTime.setVisible(timeCycle.isActive());
         nightTime.setVisible(timeCycle.isActive());
         if (timeCycle.isActive()) {
