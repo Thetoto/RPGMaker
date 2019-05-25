@@ -1,9 +1,9 @@
 package Engine;
 
+import Model.Engine.Timer;
 import Model.World.World;
 import Tools.ThreadLauncher;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
@@ -14,7 +14,7 @@ public class EngineController {
     Engine frame;
     EngineState state;
     Vector<Boolean> keyState = new Vector<>();
-    Timer timeCycle;
+    Model.Engine.Timer timeCycle;
 
     public EngineController(World world) {
         for (int i = 0; i < 256; i++) {
@@ -28,9 +28,9 @@ public class EngineController {
 
         if (state.world.timeCycle.isActive()) {
             timeCycle = new Timer(state.world.timeCycle.getDelay() * 1000,
-                    e -> timeCycle.setDelay(state.switchTime() * 1000));
+                                         e -> timeCycle.updateDelay(state.switchTime() * 1000));
             timeCycle.start();
-            timeCycle.setDelay(state.world.timeCycle.getNextDelay() * 1000);
+            timeCycle.updateDelay(state.world.timeCycle.getNextDelay() * 1000);
         }
 
         frame.addKeyListener(new KeyListener() {
@@ -67,6 +67,10 @@ public class EngineController {
     public void pauseGame() {
         System.out.println("Pause...");
         state.setPause(true);
+
+        if (timeCycle != null)
+            timeCycle.pause();
+
         while (!keyState.get(KeyEvent.VK_P)) {
             try {
                 Thread.sleep(10, 0);
@@ -74,6 +78,10 @@ public class EngineController {
                 e.printStackTrace();
             }
         }
+
+        if (timeCycle != null)
+            timeCycle.resume();
+
         state.setPause(false);
         System.out.println("Resume...");
         keyState.set(KeyEvent.VK_P, false);
