@@ -58,6 +58,7 @@ public class ToolsPanel extends JPanel implements Observer {
         switch (currentPanel) {
             case TOOLBOX:
                 toolBoxPanel.setVisible(true);
+                toolBoxPanel.showCycleSetting(EditorState.getInstance().world.timeCycle);
                 break;
             case TILES:
                 toolTilePanel.setVisible(true);

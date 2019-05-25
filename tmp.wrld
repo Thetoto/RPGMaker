@@ -4953,8 +4953,9 @@
   },
   "timeCycle": {
     "active": true,
+    "isNight": false,
     "nightDuration": 10,
-    "dayDuration": 10
+    "dayDuration": 30
   },
   "changed": false,
   "obs": []
