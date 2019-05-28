@@ -39,6 +39,7 @@ public class MainController {
         editor.topBar.createButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState)));
         editor.topBar.saveButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.saveWorld()));
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
+        editor.topBar.createJar.addActionListener(e -> editorState.createJar());
 
         editor.topBar.play.addActionListener(e -> editorState.launchGame());
 

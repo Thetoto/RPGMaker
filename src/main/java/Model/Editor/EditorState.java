@@ -126,4 +126,8 @@ public class EditorState extends Observable {
         setChanged();
         notifyObservers("Time Cycle Update");
     }
+
+    public void createJar() {
+        Tools.JarMaker.makeJar(world);
+    }
 }
