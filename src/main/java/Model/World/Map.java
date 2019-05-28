@@ -5,7 +5,6 @@ import Tools.ActionManager;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -274,4 +273,7 @@ public class Map {
         return backgroundTile;
     }
 
+    public Vector<Tile> getBackground() {
+        return background;
+    }
 }

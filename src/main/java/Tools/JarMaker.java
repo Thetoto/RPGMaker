@@ -1,9 +1,14 @@
 package Tools;
 
+import Model.World.Map;
+import Model.World.NPC;
+import Model.World.Tile;
 import Model.World.World;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -24,6 +29,7 @@ public class JarMaker {
             URL jar = JarMaker.class.getProtectionDomain().getCodeSource().getLocation();
             JarInputStream j = new JarInputStream(jar.openStream());
             addJar(j, target, wStream);
+            addImagesJar(target, w);
             target.close();
 
         } catch (IOException e) {
@@ -65,6 +71,34 @@ public class JarMaker {
         } finally {
             if (in != null)
                 in.close();
+        }
+    }
+
+    private static void addImagesJar(JarOutputStream target, World w) {
+        for (Map m : w.maps) {
+            for (Tile t : m.getForegroundSet().values()) {
+                addEntryImageJar(target, t.get(), "foreground/" + t.getName());
+            }
+            for (Tile t : m.getBackground()) {
+                addEntryImageJar(target, t.get(), "background/" + t.getName());
+            }
+            for (NPC npc : m.getNpcSet().values()) {
+                Tile t = npc.getAnimation();
+                addEntryImageJar(target, t.get(), "npc/" + t.getName());
+            }
+            addEntryImageJar(target, m.getBackgroundTile().get(), "background/" + m.getBackgroundTile().getName());
+        }
+    }
+
+    public static void addEntryImageJar(JarOutputStream target, BufferedImage obj, String name) {
+        try {
+            target.putNextEntry(new JarEntry(name));
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            ImageIO.write(obj, "png", out);
+
+            addStreamToJar(new BufferedInputStream(new ByteArrayInputStream(out.toByteArray())), target);
+        } catch (Exception e) {
         }
     }
 }
