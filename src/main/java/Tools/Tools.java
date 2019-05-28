@@ -1,5 +1,7 @@
 package Tools;
 
+import Controller.MainController;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.io.File;
@@ -13,5 +15,9 @@ public class Tools {
     }
     public static void translate2D(Point2D.Double pt, double x, double y) {
         pt.setLocation(pt.getX() + x, pt.getY() + y);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello Tools!");
     }
 }
