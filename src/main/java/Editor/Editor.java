@@ -142,7 +142,7 @@ public class Editor extends JFrame implements Observer {
     public static JButton initIconButton(String path, JPanel panel) {
         JButton button =  new JButton();
         try {
-            Image img = ImageIO.read(Tools.getFileFromRessources(path));
+            Image img = ImageIO.read(ClassLoader.getSystemResource(path));
 
             button.setIcon(new ImageIcon(img));
         } catch (Exception ex) {

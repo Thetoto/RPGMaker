@@ -8,12 +8,16 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.*;
+import java.security.CodeSource;
 import java.util.*;
 import java.util.Map;
 import java.util.stream.Stream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public class TilesState extends Observable {
     public Tile currentTile;
@@ -41,15 +45,19 @@ public class TilesState extends Observable {
     }
 
     public void addDefaultTiles() {
-        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), TileType.BACKGROUND);
-        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), TileType.FOREGROUND);
-        addTile(Paths.get(Tools.getPathFromRessources("eraser.png")), TileType.NPC);
-        addDirectoryTiles(Tools.getPathFromRessources("background"), TileType.BACKGROUND);
-        addDirectoryTiles(Tools.getPathFromRessources("foreground"), TileType.FOREGROUND);
+        addTile(ClassLoader.getSystemResource("eraser.png"), "eraser.png", TileType.BACKGROUND);
+        addTile(ClassLoader.getSystemResource("eraser.png"), "eraser.png", TileType.FOREGROUND);
+        addTile(ClassLoader.getSystemResource("eraser.png"), "eraser.png", TileType.NPC);
+        addDirectoryTilesResource("background", TileType.BACKGROUND);
+        addDirectoryTilesResource("foreground", TileType.FOREGROUND);
     }
 
     public void addTile(Path file, TileType type) {
         addTile(file, type, true);
+    }
+
+    void addTile(URL file, String fileName, TileType type) {
+        addTile(file, fileName, type, true);
     }
 
     public void addTile(Path file, TileType type, boolean askUpdate) {
@@ -73,6 +81,27 @@ public class TilesState extends Observable {
             askUpdate();
     }
 
+    void addTile(URL file, String fileName, TileType type, boolean askUpdate) {
+        try {
+            BufferedImage img = ImageIO.read(file);
+            if (img == null)
+                return;
+            if (type == TileType.FOREGROUND) {
+                ImportedTile fore = new ImportedTile(fileName, img);
+                foregroundTiles.put(fileName, fore);
+            } else if (type == TileType.NPC) {
+                Animation npc = new Animation(fileName, img);
+                npcTile.put(fileName, npc);
+            } else {
+                cutAndAddBackTile(img, fileName);
+            }
+        } catch (IOException e) {
+            System.err.println("Can't load this file : " + fileName);
+        }
+        if (askUpdate)
+            askUpdate();
+    }
+
     public void cutAndAddBackTile(BufferedImage back, String name) {
         int height = back.getHeight();
         int width = back.getWidth();
@@ -90,6 +119,30 @@ public class TilesState extends Observable {
             paths.filter(Files::isRegularFile)
                     .forEach((file) -> addTile(file, type, false));
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+        askUpdate();
+    }
+
+    public void addDirectoryTilesResource(String path, TileType type) {
+        try {
+            CodeSource src = TilesState.class.getProtectionDomain().getCodeSource();
+            if (src != null) {
+                URL jar = src.getLocation();
+                ZipInputStream zip = new ZipInputStream(jar.openStream());
+                while (true) {
+                    ZipEntry e = zip.getNextEntry();
+                    if (e == null)
+                        break;
+                    String name = e.getName();
+                    if (name.startsWith(path)) {
+                        addTile(ClassLoader.getSystemResource(name), Paths.get(name).getFileName().toString(), type, false);
+                    }
+                }
+            } else {
+                System.out.println("Can not load directory: " + path);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         askUpdate();

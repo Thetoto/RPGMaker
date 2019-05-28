@@ -65,10 +65,10 @@ public class TreePanel extends JTree {
 }
 
 class WorldTreeCellRenderer implements TreeCellRenderer {
-    Icon map_icon = new ImageIcon(Tools.getPathFromRessources("map_icon.png"));
-    Icon world_icon = new ImageIcon(Tools.getPathFromRessources("world_icon.png"));
-    Icon player_icon = new ImageIcon(Tools.getPathFromRessources("player_icon.png"));
-    Icon teleporter_icon = new ImageIcon(Tools.getPathFromRessources("teleporter_icon.png"));
+    Icon map_icon = new ImageIcon(ClassLoader.getSystemResource("map_icon.png"));
+    Icon world_icon = new ImageIcon(ClassLoader.getSystemResource("world_icon.png"));
+    Icon player_icon = new ImageIcon(ClassLoader.getSystemResource("player_icon.png"));
+    Icon teleporter_icon = new ImageIcon(ClassLoader.getSystemResource("teleporter_icon.png"));
 
     @Override
     public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
