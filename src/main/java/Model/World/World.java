@@ -44,8 +44,11 @@ public class World extends Observable {
 
     public boolean setUpLoad() {
         var backTiles = EditorState.getInstance().tilesState.backgroundTiles;
+        System.out.println(backTiles.entrySet());
         var foreTiles = EditorState.getInstance().tilesState.foregroundTiles;
+        System.out.println(foreTiles.entrySet());
         var npcTiles = EditorState.getInstance().tilesState.npcTile;
+        System.out.println(npcTiles.entrySet());
         for (Map map: maps) {
             map.backgroundTile = getTileByName(backTiles, map.backgroundTile.getName());
             if (map.backgroundTile == null)
@@ -53,26 +56,34 @@ public class World extends Observable {
             for (int i = 0; i < map.background.size(); i++) {
                 String name = map.background.get(i).getName();
                 Tile tile = getTileByName(backTiles, name);
-                if (tile == null)
+                if (tile == null) {
+                    System.out.println(name + " not found");
                     return false;
+                }
                 map.background.set(i, tile);
             }
             for (Point pt : map.foreground.keySet()) {
                 Tile tile = foreTiles.get(map.foreground.get(pt).getName());
-                if (tile == null)
+                if (tile == null) {
+                    System.out.println(map.foreground.get(pt).getName() + " not found");
                     return false;
+                }
                 map.foreground.put(pt, tile);
             }
             for (Point pt : map.npc.keySet()) {
                 Animation anim = npcTiles.get(map.npc.get(pt).getName());
-                if (anim == null)
+                if (anim == null) {
+                    System.out.println(map.npc.get(pt).getName() + " not found");
                     return false;
+                }
                 map.npc.get(pt).setAnimation(anim);
             }
         }
         Animation anim = npcTiles.get(player.getAnim().getName());
-        if (anim == null)
+        if (anim == null) {
+            System.out.println(player.getAnim().getName() + " not found");
             return false;
+        }
         player.setAnim(anim);
         return true;
     }

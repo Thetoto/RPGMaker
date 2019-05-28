@@ -10,6 +10,9 @@ import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.Observable;
 
 public class EditorState extends Observable {
@@ -129,5 +132,19 @@ public class EditorState extends Observable {
 
     public void createJar() {
         Tools.JarMaker.makeJar(world);
+    }
+
+    public World getWorldJAR() {
+        Gson gson = new Gson();
+        World w = null;
+        try {
+            InputStream in = ClassLoader.getSystemResourceAsStream("world.json");
+            w = gson.fromJson(new InputStreamReader(in), World.class);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        boolean res = w.setUpLoad();
+        System.out.println(res);
+        return w;
     }
 }

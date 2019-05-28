@@ -87,6 +87,7 @@ public class JarMaker {
                 addEntryImageJar(target, t.get(), "npc/" + t.getName());
             }
             addEntryImageJar(target, m.getBackgroundTile().get(), "background/" + m.getBackgroundTile().getName());
+            addEntryImageJar(target, w.getPlayer().getAnim().get(), "npc/" + w.getPlayer().getAnim().getName());
         }
     }
 
