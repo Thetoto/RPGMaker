@@ -131,7 +131,15 @@ public class EditorState extends Observable {
     }
 
     public void createJar() {
-        Tools.JarMaker.makeJar(world);
+        if (world == null) {
+            Tools.PopUpManager.Alert("Please create or load a world before.");
+            return;
+        }
+        if (world.getPlayer().getAnim() == null) {
+            Tools.PopUpManager.Alert("Please set a player animation before.");
+            return;
+        }
+        ThreadLauncher.execute(() -> Tools.JarMaker.makeJar(world));
     }
 
     public World getWorldJAR() {
