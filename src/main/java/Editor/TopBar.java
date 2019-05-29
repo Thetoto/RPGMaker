@@ -30,7 +30,7 @@ public class TopBar extends JPanel {
         zoomPlus = Editor.initIconButton("zoom_plus.png", this);
         addNewTiles = Editor.initIconButton("newtile.png", this);
         play = Editor.initIconButton("play.png", this);
-        createJar = Editor.initIconButton("play.png", this);
+        createJar = Editor.initIconButton("build.png", this);
     }
 
     @Override
