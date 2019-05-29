@@ -61,6 +61,19 @@ public class FileManager {
         frame.dispose();
     }
 
+    public static File saveJar() {
+        File file = null;
+        JFileChooser fc = setUpFileChooser(JFileChooser.FILES_ONLY);
+        JFrame frame = setUpFrame(fc);
+        int res = fc.showSaveDialog(frame);
+        if (res == JFileChooser.APPROVE_OPTION) {
+            file = fc.getSelectedFile();
+        }
+        frame.setVisible(false);
+        frame.dispose();
+        return file;
+    }
+
     private static JFrame setUpFrame(JFileChooser fc) {
         JFrame frame = new JFrame();
         frame.setContentPane(fc);

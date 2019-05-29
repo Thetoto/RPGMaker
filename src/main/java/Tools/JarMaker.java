@@ -16,6 +16,8 @@ import java.util.jar.*;
 
 public class JarMaker {
     public static void makeJar(World w) {
+        File tofile = FileManager.saveJar();
+
         Manifest manifest = new Manifest();
         manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
         manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, "Engine/Main");
@@ -25,7 +27,7 @@ public class JarMaker {
 
         try {
             JarOutputStream target =
-                    new JarOutputStream(new FileOutputStream("output.jar"), manifest);
+                    new JarOutputStream(new FileOutputStream(tofile), manifest);
             URL jar = JarMaker.class.getProtectionDomain().getCodeSource().getLocation();
             JarInputStream j = new JarInputStream(jar.openStream());
             addJar(j, target, wStream);
@@ -59,6 +61,10 @@ public class JarMaker {
         try {
             JarEntry j = jar.getNextJarEntry();
             while (j != null) {
+                if (j.getName().startsWith("Editor/")) {
+                    j = jar.getNextJarEntry();
+                    continue;
+                }
                 target.putNextEntry(j);
                 in = new BufferedInputStream(jar);
 
