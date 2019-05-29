@@ -8,6 +8,7 @@ import java.awt.geom.Point2D;
 public class NPC {
     private String name;
     private String message;
+    private Direction direction;
     transient private Point2D.Double dest;
     private Animation anim;
     private Point2D.Double coordinates;
@@ -18,7 +19,8 @@ public class NPC {
         this.dest = null;
         this.message = "Hello!";
         this.coordinates = new Point2D.Double(coordinates.x, coordinates.y);
-        isMoving = false;
+        this.direction = Direction.DOWN;
+        this.isMoving = false;
     }
 
     @Override
@@ -64,6 +66,7 @@ public class NPC {
     }
 
     public void move(Direction dir, int delta_time) {
+        this.direction = dir;
         double translation = 0.003 * delta_time;
         switch (dir) {
             case DOWN:
@@ -130,5 +133,9 @@ public class NPC {
         else if (res < 2)
             return 0;
         return 1;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 }

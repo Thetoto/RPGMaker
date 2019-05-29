@@ -28,10 +28,13 @@ public class Draw {
     }
 
     public static synchronized void drawNPC(Graphics2D g, Map map, int multiply) {
-        Vector<NPC> npcVect = map.getNpcs();
-        for (NPC npc : npcVect) {
+        Vector<NPC> npcV = map.getNpcs();
+        for (NPC npc : npcV) {
             Animation tile = npc.getAnimation();
-            drawImported(g, tile.toImportedTile(), npc.getPoint(), multiply);
+            if (npc.isMoving())
+                drawImported(g, tile.toImportedTile(npc.getDirection()), npc.getPoint(), multiply);
+            else
+                drawImported(g, tile.toImportedTile(), npc.getPoint(), multiply);
         }
     }
 
