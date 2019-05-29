@@ -45,6 +45,8 @@ public class FileManager {
             file = fc.getSelectedFile();
             if (file == null)
                 return;
+            if (!file.getName().endsWith(".wrld"))
+                file = new File(file.toString() + ".wrld");
             Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
                     .setPrettyPrinting().create();
             String world_json = gson.toJson(o);
@@ -68,6 +70,8 @@ public class FileManager {
         int res = fc.showSaveDialog(frame);
         if (res == JFileChooser.APPROVE_OPTION) {
             file = fc.getSelectedFile();
+            if (!file.getName().endsWith(".jar"))
+                file = new File(file.toString() + ".jar");
         }
         frame.setVisible(false);
         frame.dispose();

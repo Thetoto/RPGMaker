@@ -33,7 +33,7 @@ public class JarMaker {
             addJar(j, target, wStream);
             addImagesJar(target, w);
             target.close();
-
+            PopUpManager.Alert("JAR saved !");
         } catch (IOException e) {
             e.printStackTrace();
         }
