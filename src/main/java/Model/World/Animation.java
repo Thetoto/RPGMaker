@@ -9,6 +9,7 @@ public class Animation extends Tile {
     transient public Vector<Tile> tiles;
     transient Direction direction;
     transient int state;
+    transient int substate;
     transient int dir_size;
 
     public Animation(String name, BufferedImage img) {
@@ -18,6 +19,7 @@ public class Animation extends Tile {
             System.err.println("Invalid Animation File Dimension");
         direction = Direction.DOWN;
         state = 0;
+        substate = 0;
         dir_size = tiles.size() / 4;
     }
 
@@ -45,6 +47,7 @@ public class Animation extends Tile {
         BufferedImage res = tiles.get(0).get();
         if (direction != dir) {
             state = 0;
+            substate = 0;
             direction = dir;
         }
         if (tiles.size() >= 5) {
@@ -62,7 +65,9 @@ public class Animation extends Tile {
                     res = tiles.get(dir_size * 3 + state).get();
                     break;
             }
-            state = (state + 1) % dir_size;
+            substate += 1;
+            state = (state + (substate / 5)) % dir_size;
+            substate %= 5;
         }
         return res;
     }
