@@ -3,6 +3,7 @@ package Model.World;
 import Model.Editor.EditorState;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -70,13 +71,13 @@ public class World extends Observable {
                 }
                 map.foreground.put(pt, tile);
             }
-            for (Point pt : map.npc.keySet()) {
-                Animation anim = npcTiles.get(map.npc.get(pt).getName());
+            for (NPC npc : map.npc) {
+                Animation anim = npcTiles.get(npc.getName());
                 if (anim == null) {
-                    System.out.println(map.npc.get(pt).getName() + " not found");
+                    System.out.println(npc.getName() + " not found");
                     return false;
                 }
-                map.npc.get(pt).setAnimation(anim);
+                npc.setAnimation(anim);
             }
         }
         Animation anim = npcTiles.get(player.getAnim().getName());

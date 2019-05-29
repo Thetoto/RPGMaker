@@ -1,5 +1,7 @@
 package Model.World;
 
+import Tools.Tools;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 
@@ -59,5 +61,31 @@ public class NPC {
     public void setMoving(boolean moving) {
         isMoving = moving;
         System.out.println(moving);
+    }
+
+    public void move(Direction dir, int delta_time) {
+        this.direction = dir;
+        switch (dir) {
+            case DOWN:
+                Tools.translate2D(coordinates, 0, 0.01 * delta_time);
+                break;
+            case LEFT:
+                Tools.translate2D(coordinates,-0.01 * delta_time, 0);
+                break;
+            case RIGHT:
+                Tools.translate2D(coordinates,0.01 * delta_time, 0);
+                break;
+            case UP:
+                Tools.translate2D(coordinates,0, -0.01 * delta_time);
+                break;
+        }
+    }
+
+    public boolean moveNPC(Direction dir, int delta_time, Map map) {
+        if (!map.checkBoundsNPC(this, dir, coordinates, delta_time)) {
+            this.move(dir, delta_time);
+            return true;
+        }
+        return false;
     }
 }

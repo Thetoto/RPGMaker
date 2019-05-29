@@ -54,13 +54,13 @@ public class EngineState extends Observable {
 
     public boolean talk() {
         boolean does_action = false;
-        Optional<java.util.Map.Entry<Point, NPC>> npc = currentMap.getNpcSet().entrySet().stream().min((o1, o2) -> {
-            double dist1 = o1.getKey().distance(player.getPosition());
-            double dist2 = o2.getKey().distance(player.getPosition());
+        Optional<NPC> npc = currentMap.getNpcs().stream().min((o1, o2) -> {
+            double dist1 = o1.getPoint().distance(player.getPosition());
+            double dist2 = o2.getPoint().distance(player.getPosition());
             return (int) (dist1 - dist2);
         });
-        if (npc.isPresent() && npc.get().getKey().distance(player.getPosition()) < 1) {
-            currentMessage = npc.get().getValue().getMessage();
+        if (npc.isPresent() && npc.get().getPoint().distance(player.getPosition()) < 1) {
+            currentMessage = npc.get().getMessage();
             setChanged();
             notifyObservers("Update Message");
             does_action = true;
@@ -98,5 +98,10 @@ public class EngineState extends Observable {
         setChanged();
         notifyObservers("Switch Time");
         return  world.timeCycle.getNextDelay();
+    }
+
+    public void redrawNPC() {
+        setChanged();
+        notifyObservers("Update NPC");
     }
 }

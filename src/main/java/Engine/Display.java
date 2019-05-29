@@ -130,6 +130,10 @@ public class Display extends JLayeredPane implements Observer {
                 drawPlayerLayer(state);
                 repaint();
             }
+            if (str.equals("Update NPC")) {
+                drawNpcLayer(state.currentMap);
+                repaint();
+            }
         }
     }
 

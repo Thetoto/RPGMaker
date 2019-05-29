@@ -40,7 +40,7 @@ public class TreePanel extends JTree {
                 Tmap.add(teleporter);
             }
             DefaultMutableTreeNode Tnpcs = new DefaultMutableTreeNode("NPCs");
-            for (NPC npc : map.getNpcSet().values()) {
+            for (NPC npc : map.getNpcs()) {
                 DefaultMutableTreeNode Tnpc = new DefaultMutableTreeNode(npc);
                 Tnpcs.add(Tnpc);
             }

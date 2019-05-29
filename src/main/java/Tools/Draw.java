@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
+import java.util.Vector;
 
 public class Draw {
 
@@ -27,10 +28,10 @@ public class Draw {
     }
 
     public static synchronized void drawNPC(Graphics2D g, Map map, int multiply) {
-        HashMap<Point, NPC> npcSet = map.getNpcSet();
-        for (Point pt : npcSet.keySet()) {
-            Animation tile = npcSet.get(pt).getAnimation();
-            drawImported(g, tile.toImportedTile(), pt, multiply);
+        Vector<NPC> npcVect = map.getNpcs();
+        for (NPC npc : npcVect) {
+            Animation tile = npc.getAnimation();
+            drawImported(g, tile.toImportedTile(), npc.getPoint(), multiply);
         }
     }
 

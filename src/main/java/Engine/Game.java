@@ -1,8 +1,12 @@
 package Engine;
 
 import Model.World.Direction;
+import Model.World.Map;
+import Model.World.NPC;
 
 import java.awt.event.KeyEvent;
+
+import static Model.World.Direction.*;
 
 public class Game {
     public Game(EngineController controller) {
@@ -20,11 +24,14 @@ public class Game {
             if (!does_action && controller.keyState.get(KeyEvent.VK_Q))
                 hasMoved |= controller.state.movePerso(Direction.LEFT, delta_time);
             if (!does_action && controller.keyState.get(KeyEvent.VK_S))
-                hasMoved |= controller.state.movePerso(Direction.DOWN, delta_time);
+                hasMoved |= controller.state.movePerso(DOWN, delta_time);
             if (!does_action && controller.keyState.get(KeyEvent.VK_D))
                 hasMoved |= controller.state.movePerso(Direction.RIGHT, delta_time);
             if (hasMoved)
                 controller.state.redrawPerso();
+
+            moveNPCs(controller.state.currentMap, delta_time);
+            controller.state.redrawNPC();
 
             if (controller.keyState.get(KeyEvent.VK_E)) {
                 controller.keyState.set(KeyEvent.VK_E, false);
@@ -48,6 +55,27 @@ public class Game {
                 Thread.sleep(10, 0);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+    public void moveNPCs(Map map, int deltaTime) {
+        for (NPC npc : map.getNpcs()) {
+            if (npc.isMoving()) {
+                switch ((int)(Math.random() * 4)) {
+                    case 0:
+                        npc.moveNPC(DOWN, deltaTime, map);
+                        break;
+                    case 1:
+                        npc.moveNPC(LEFT, deltaTime, map);
+                        break;
+                    case 2:
+                        npc.moveNPC(RIGHT, deltaTime, map);
+                        break;
+                    case 3:
+                        npc.moveNPC(UP, deltaTime, map);
+                        break;
+                }
             }
         }
     }

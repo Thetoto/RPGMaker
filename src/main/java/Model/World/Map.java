@@ -16,7 +16,7 @@ public class Map {
     Vector<Tile> background;
     Vector<Boolean> walkable;
     HashMap<Point, Tile> foreground; // Tile but it's a ImportedTile. Point is top left corner.
-    HashMap<Point, NPC> npc;
+    Vector<NPC> npc;
     Vector<Teleporter> teleporters;
     Tile backgroundTile;
 
@@ -26,7 +26,7 @@ public class Map {
         this.background = new Vector<>(dimension.width * dimension.height);
         this.walkable = new Vector<>(dimension.width * dimension.height);
         this.foreground = new HashMap<>();
-        this.npc = new HashMap<>();
+        this.npc = new Vector<>();
         this.teleporters = new Vector<>();
         for (int i = 0; i < dimension.width * dimension.height; i++) {
             background.add(i, Tile.getTransPlaceholder());
@@ -47,7 +47,7 @@ public class Map {
         this.teleporters = new Vector<>(map.teleporters);
         this.walkable = new Vector<>(map.walkable);
         this.backgroundTile = map.backgroundTile;
-        this.npc = new HashMap<>(map.npc);
+        this.npc = new Vector<>(map.npc);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class Map {
         if (currentTile.getName().equals("eraser.png")) {
             npc.remove(in);
         } else {
-            npc.put(in, new NPC((Animation)currentTile, in));
+            npc.add(new NPC((Animation)currentTile, in));
         }
     }
 
@@ -149,7 +149,6 @@ public class Map {
         return null;
     }
 
-
     public boolean checkBoundsPerso(Player perso, Direction dir, Point2D p, int delta_time) {
         switch (dir) {
             case DOWN:
@@ -166,6 +165,38 @@ public class Map {
 
     private boolean checkBoundsPerso(Player perso, double x, double y) {
         int size = perso.getAnim().getSize();
+        int dy = size / 2;
+        for (double iy = y + dy; iy < y + size; iy++) {
+            for (double ix = x + 0; ix < x + size; ix++) {
+                int intx = (int) Math.round(ix);
+                int inty = (int) Math.round(iy);
+                boolean res = checkBounds(intx, inty);
+                if (res)
+                    return true;
+                boolean walkable = getWalkable(intx, inty);
+                if (!walkable)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkBoundsNPC(NPC npc, Direction dir, Point2D p, int delta_time) {
+        switch (dir) {
+            case DOWN:
+                return checkBoundsNPC(npc, p.getX(), p.getY() + 0.01 * delta_time);
+            case LEFT:
+                return checkBoundsNPC(npc, p.getX() - 0.01 * delta_time, p.getY());
+            case RIGHT:
+                return checkBoundsNPC(npc, p.getX() + 0.01 * delta_time, p.getY());
+            case UP:
+                return checkBoundsNPC(npc, p.getX(), p.getY() - 0.01 * delta_time);
+        }
+        return false;
+    }
+
+    private boolean checkBoundsNPC(NPC npc, double x, double y) {
+        int size = npc.getAnimation().getSize();
         int dy = size / 2;
         for (double iy = y + dy; iy < y + size; iy++) {
             for (double ix = x + 0; ix < x + size; ix++) {
@@ -245,7 +276,7 @@ public class Map {
     public HashMap<Point, Tile> getForegroundSet() {
         return foreground;
     }
-    public HashMap<Point, NPC> getNpcSet() {
+    public Vector<NPC> getNpcs() {
         return npc;
     }
 

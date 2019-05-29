@@ -82,7 +82,7 @@ public class JarMaker {
             for (Tile t : m.getBackground()) {
                 addEntryImageJar(target, t.get(), "background/" + t.getName());
             }
-            for (NPC npc : m.getNpcSet().values()) {
+            for (NPC npc : m.getNpcs()) {
                 Tile t = npc.getAnimation();
                 addEntryImageJar(target, t.get(), "npc/" + t.getName());
             }

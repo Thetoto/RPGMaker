@@ -222,7 +222,7 @@ public class MapState extends Observable {
     }
 
     public void deleteNPC() {
-        currentMap.getNpcSet().values().remove(currentNPC);
+        currentMap.getNpcs().remove(currentNPC);
         EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.NONE);
         setChanged();
         notifyObservers("Update Map");
