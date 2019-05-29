@@ -1,6 +1,5 @@
 package Model.Editor;
 
-import Editor.Editor;
 import Model.World.*;
 import Tools.ActionManager;
 import Tools.CursorManager;

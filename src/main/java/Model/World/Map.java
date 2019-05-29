@@ -96,7 +96,14 @@ public class Map {
 
     private void setNpc(Tile currentTile, Point in) {
         if (currentTile.getName().equals("eraser.png")) {
-            npc.remove(in);
+            NPC toDelete = null;
+            for (NPC thisNpc : npc) {
+                if (thisNpc != null && thisNpc.getPoint().equals(in)) {
+                    toDelete = thisNpc;
+                    break;
+                }
+            }
+            npc.remove(toDelete);
         } else {
             npc.add(new NPC((Animation)currentTile, in));
         }
