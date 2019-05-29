@@ -1,9 +1,6 @@
 package Tools;
 
-import Model.World.Map;
-import Model.World.NPC;
-import Model.World.Tile;
-import Model.World.World;
+import Model.World.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -89,11 +86,11 @@ public class JarMaker {
                 addEntryImageJar(target, t.get(), "background/" + t.getName());
             }
             for (NPC npc : m.getNpcs()) {
-                Tile t = npc.getAnimation();
-                addEntryImageJar(target, t.get(), "npc/" + t.getName());
+                Animation t = npc.getAnimation();
+                addEntryImageJar(target, t.getFull(), "npc/" + t.getName());
             }
             addEntryImageJar(target, m.getBackgroundTile().get(), "background/" + m.getBackgroundTile().getName());
-            addEntryImageJar(target, w.getPlayer().getAnim().get(), "npc/" + w.getPlayer().getAnim().getName());
+            addEntryImageJar(target, w.getPlayer().getAnim().getFull(), "npc/" + w.getPlayer().getAnim().getName());
         }
     }
 

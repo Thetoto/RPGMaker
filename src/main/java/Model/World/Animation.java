@@ -1,6 +1,8 @@
 package Model.World;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.sql.BatchUpdateException;
 import java.util.Vector;
 
 public class Animation extends Tile {
@@ -25,6 +27,17 @@ public class Animation extends Tile {
         if (tiles.size() >= 2) {
             res = tiles.get(1).get();
         }
+        return res;
+    }
+
+    public BufferedImage getFull() {
+        BufferedImage ref = tiles.get(0).get();
+        BufferedImage res = new BufferedImage(ref.getWidth() * tiles.size(), ref.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics g = res.getGraphics();
+        for (int i = 0; i < tiles.size(); i++) {
+            g.drawImage(tiles.get(i).get(), i * ref.getWidth(), 0, null);
+        }
+        g.dispose();
         return res;
     }
 
