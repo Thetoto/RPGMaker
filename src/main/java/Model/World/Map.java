@@ -202,7 +202,7 @@ public class Map {
         return false;
     }
 
-    private boolean checkBoundsNPC(NPC npc, double x, double y) {
+    public boolean checkBoundsNPC(NPC npc, double x, double y) {
         int size = npc.getAnimation().getSize();
         int dy = size / 2;
         for (double iy = y + dy; iy < y + size; iy++) {

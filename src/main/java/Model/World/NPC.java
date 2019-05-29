@@ -2,20 +2,21 @@ package Model.World;
 
 import Tools.Tools;
 
+import javax.tools.Tool;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
 public class NPC {
     private String name;
     private String message;
-    private Direction direction;
+    transient private Point2D.Double dest;
     private Animation anim;
     private Point2D.Double coordinates;
     private boolean isMoving;
 
     public NPC(Animation anim, Point coordinates) {
         this.anim = anim;
-        this.direction = Direction.DOWN;
+        this.dest = null;
         this.message = "Hello!";
         this.coordinates = new Point2D.Double(coordinates.x, coordinates.y);
         isMoving = false;
@@ -64,28 +65,73 @@ public class NPC {
     }
 
     public void move(Direction dir, int delta_time) {
-        this.direction = dir;
+        double translation = 0.003 * delta_time;
         switch (dir) {
             case DOWN:
-                Tools.translate2D(coordinates, 0, 0.01 * delta_time);
+                if (dest.y - coordinates.y < translation)
+                    coordinates.y = dest.y;
+                else
+                    Tools.translate2D(coordinates, 0, translation);
                 break;
             case LEFT:
-                Tools.translate2D(coordinates,-0.01 * delta_time, 0);
+                if (coordinates.x - dest.x < translation)
+                    coordinates.x = dest.x;
+                else
+                    Tools.translate2D(coordinates,-1 * translation, 0);
                 break;
             case RIGHT:
-                Tools.translate2D(coordinates,0.01 * delta_time, 0);
+                if (dest.x - coordinates.x < translation)
+                    coordinates.x = dest.x;
+                else
+                    Tools.translate2D(coordinates,translation, 0);
                 break;
             case UP:
-                Tools.translate2D(coordinates,0, -0.01 * delta_time);
+                if (coordinates.y - dest.y < translation)
+                    coordinates.y = dest.y;
+                else
+                    Tools.translate2D(coordinates,0, -1 * translation);
                 break;
         }
+        System.out.println(coordinates.distance(dest));
+        System.out.println();
     }
 
-    public boolean moveNPC(Direction dir, int delta_time, Map map) {
+    public boolean moveNPC(int delta_time, Map map) {
+        if (dest == null) {
+            do {
+                int deltaX = getMoveDelta();
+                int deltaY = getMoveDelta();
+                dest = new Point2D.Double(coordinates.x + deltaX, coordinates.y + deltaY);
+
+            } while (map.checkBoundsNPC(this, (int) dest.x, (int) dest.y));
+        }
+
+        Direction dir = Direction.UP;
+        if (dest.x - coordinates.x < 0) {
+            dir = Direction.LEFT;
+        } else if (dest.x - coordinates.x > 0) {
+            dir = Direction.RIGHT;
+        } else if (dest.y - coordinates.y < 0) {
+            dir = Direction.UP;
+        } else if (dest.y - coordinates.y > 0) {
+            dir = Direction.DOWN;
+        } else {
+            dest = null;
+            return false;
+        }
         if (!map.checkBoundsNPC(this, dir, coordinates, delta_time)) {
             this.move(dir, delta_time);
             return true;
         }
         return false;
+    }
+
+    private int getMoveDelta() {
+        double res = 3 * Math.random();
+        if (res < 1.0)
+            return -1;
+        else if (res < 2)
+            return 0;
+        return 1;
     }
 }

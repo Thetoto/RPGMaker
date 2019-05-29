@@ -29,9 +29,10 @@ public class Game {
                 hasMoved |= controller.state.movePerso(Direction.RIGHT, delta_time);
             if (hasMoved)
                 controller.state.redrawPerso();
-
-            moveNPCs(controller.state.currentMap, delta_time);
-            controller.state.redrawNPC();
+            if (!does_action) {
+                moveNPCs(controller.state.currentMap, delta_time);
+                controller.state.redrawNPC();
+            }
 
             if (controller.keyState.get(KeyEvent.VK_E)) {
                 controller.keyState.set(KeyEvent.VK_E, false);
@@ -61,22 +62,8 @@ public class Game {
 
     public void moveNPCs(Map map, int deltaTime) {
         for (NPC npc : map.getNpcs()) {
-            if (npc.isMoving()) {
-                switch ((int)(Math.random() * 4)) {
-                    case 0:
-                        npc.moveNPC(DOWN, deltaTime, map);
-                        break;
-                    case 1:
-                        npc.moveNPC(LEFT, deltaTime, map);
-                        break;
-                    case 2:
-                        npc.moveNPC(RIGHT, deltaTime, map);
-                        break;
-                    case 3:
-                        npc.moveNPC(UP, deltaTime, map);
-                        break;
-                }
-            }
+            if (npc.isMoving())
+                npc.moveNPC(deltaTime, map);
         }
     }
 }
