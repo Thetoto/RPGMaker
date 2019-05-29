@@ -4932,7 +4932,7 @@
           }
         ]
       ],
-      "npc": {},
+      "npc": [],
       "teleporters": [],
       "backgroundTile": {
         "image": "PlaceHolder"

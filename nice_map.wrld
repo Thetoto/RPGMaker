@@ -4960,57 +4960,42 @@
         ]
       ],
       "npc": [
-        [
-          {
-            "x": 16,
-            "y": 7
+        {
+          "message": "Hello i\u0027m the princess !",
+          "direction": "DOWN",
+          "anim": {
+            "image": "women.png"
           },
-          {
-            "message": "Hello i\u0027m the princess !",
-            "direction": "DOWN",
-            "anim": {
-              "image": "women.png"
-            },
-            "coordinates": {
-              "x": 16.0,
-              "y": 7.0
-            }
-          }
-        ],
-        [
-          {
-            "x": 7,
-            "y": 8
+          "coordinates": {
+            "x": 16.0,
+            "y": 7.0
           },
-          {
-            "message": "You should not pass !!!",
-            "direction": "DOWN",
-            "anim": {
-              "image": "death.png"
-            },
-            "coordinates": {
-              "x": 7.0,
-              "y": 8.0
-            }
-          }
-        ],
-        [
-          {
-            "x": 26,
-            "y": 27
+          "isMoving": false
+        },
+        {
+          "message": "You should not pass !!!",
+          "direction": "DOWN",
+          "anim": {
+            "image": "death.png"
           },
-          {
-            "message": "I\u0027m so tired.",
-            "direction": "DOWN",
-            "anim": {
-              "image": "poseidon.png"
-            },
-            "coordinates": {
-              "x": 26.0,
-              "y": 27.0
-            }
-          }
-        ]
+          "coordinates": {
+            "x": 7.0,
+            "y": 8.0
+          },
+          "isMoving": false
+        },
+        {
+          "message": "I\u0027m so tired.",
+          "direction": "DOWN",
+          "anim": {
+            "image": "poseidon.png"
+          },
+          "coordinates": {
+            "x": 26.0,
+            "y": 27.0
+          },
+          "isMoving": false
+        }
       ],
       "teleporters": [
         {
@@ -10015,7 +10000,7 @@
           }
         ]
       ],
-      "npc": {},
+      "npc": [],
       "teleporters": [
         {
           "name": "New map | 0",
@@ -10048,9 +10033,10 @@
     "direction": "DOWN"
   },
   "timeCycle": {
-      "active": false,
-      "nightDuration": 10,
-      "dayDuration": 10
+    "active": false,
+    "isNight": false,
+    "nightDuration": 10,
+    "dayDuration": 10
   },
   "changed": false,
   "obs": []
