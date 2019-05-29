@@ -54,12 +54,16 @@ public class EngineController {
         ThreadLauncher.execute(() -> {
             new Game(this);
             frame.dispose();
+            if (Main.standalone)
+                System.exit(0);
         });
 
 
         frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                keyState.set(KeyEvent.VK_ESCAPE, true);
+            keyState.set(KeyEvent.VK_ESCAPE, true);
+            if (Main.standalone)
+                System.exit(0);
             }
         });
     }
