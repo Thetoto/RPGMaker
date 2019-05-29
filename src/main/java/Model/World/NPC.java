@@ -2,7 +2,6 @@ package Model.World;
 
 import Tools.Tools;
 
-import javax.tools.Tool;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
@@ -92,8 +91,6 @@ public class NPC {
                     Tools.translate2D(coordinates,0, -1 * translation);
                 break;
         }
-        System.out.println(coordinates.distance(dest));
-        System.out.println();
     }
 
     public boolean moveNPC(int delta_time, Map map) {
