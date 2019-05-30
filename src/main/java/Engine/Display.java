@@ -1,11 +1,15 @@
 package Engine;
 
+import Model.Editor.EditorState;
 import Model.World.ImportedTile;
 import Model.World.Map;
+import Model.World.Player;
 import Tools.Draw;
+import Tools.ThreadLauncher;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
@@ -53,8 +57,10 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawBackTiles(g, map, 16);
         g.dispose();
 
-        backLayer.setIcon(new ImageIcon(back));
-        backLayer.setBounds(0, 0, back.getWidth(), back.getHeight());
+        BufferedImage resized = getResizedImage(back);
+
+        backLayer.setIcon(new ImageIcon(resized));
+        backLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
     }
 
     public void drawForeLayer(Map map) {
@@ -65,8 +71,10 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawForeTiles(g, map, 16);
         g.dispose();
 
-        foreLayer.setIcon(new ImageIcon(fore));
-        foreLayer.setBounds(0, 0, fore.getWidth(), fore.getHeight());
+        BufferedImage resized = getResizedImage(fore);
+
+        foreLayer.setIcon(new ImageIcon(resized));
+        foreLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
     }
 
     public void drawNpcLayer(Map map) {
@@ -76,8 +84,10 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawNPC(g, map, 16);
         g.dispose();
 
-        npcLayer.setIcon(new ImageIcon(npc));
-        npcLayer.setBounds(0, 0, npc.getWidth(), npc.getHeight());
+        BufferedImage resized = getResizedImage(npc);
+
+        npcLayer.setIcon(new ImageIcon(resized));
+        npcLayer.setBounds(0, 0,  resized.getWidth(), resized.getHeight());
     }
 
     public void drawPlayerLayer(EngineState state) {
@@ -88,8 +98,10 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawImported(g, t, state.player.getPosition(), 16);
         g.dispose();
 
-        playerLayer.setIcon(new ImageIcon(player));
-        playerLayer.setBounds(0, 0, player.getWidth(), player.getHeight());
+        BufferedImage resized = getResizedImage(player);
+
+        playerLayer.setIcon(new ImageIcon(resized));
+        playerLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
     }
 
     public void drawTimeCycleLayer(Map map, boolean isNight) {
@@ -103,17 +115,19 @@ public class Display extends JLayeredPane implements Observer {
         g.fillRect(0,0,time.getWidth(), time.getHeight());
         g.dispose();
 
-        timeCycleLayer.setIcon(new ImageIcon(time));
-        timeCycleLayer.setBounds(0, 0, time.getWidth(), time.getHeight());
+        BufferedImage resized = getResizedImage(time);
+
+        timeCycleLayer.setIcon(new ImageIcon(resized));
+        timeCycleLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
     }
 
     public void drawAll(EngineState state) {
-        drawBackLayer(state.currentMap);
-        drawForeLayer(state.currentMap);
-        drawNpcLayer(state.currentMap);
-        drawPlayerLayer(state);
+        ThreadLauncher.execute(() -> drawBackLayer(state.currentMap));
+        ThreadLauncher.execute(() -> drawForeLayer(state.currentMap));
+        ThreadLauncher.execute(() -> drawNpcLayer(state.currentMap));
+        ThreadLauncher.execute(() -> drawPlayerLayer(state));
         if (state.world.timeCycle.isActive());
-            drawTimeCycleLayer(state.currentMap, state.world.timeCycle.isNight());
+            ThreadLauncher.execute(() -> drawTimeCycleLayer(state.currentMap, state.world.timeCycle.isNight()));
     }
 
     @Override
@@ -127,7 +141,7 @@ public class Display extends JLayeredPane implements Observer {
                 repaint();
             }
             if (str.equals("Update Perso")) {
-                drawPlayerLayer(state);
+                drawAll(state);
                 repaint();
             }
             if (str.equals("Update NPC")) {
@@ -137,10 +151,50 @@ public class Display extends JLayeredPane implements Observer {
         }
     }
 
+    private BufferedImage getResizedImage(BufferedImage image) {
+        Map map = EditorState.getInstance().mapState.currentMap;
+        int width = Math.min(992, image.getWidth());
+        int height = Math.min(688, image.getHeight());
+
+        BufferedImage tmp = createImage(new Dimension(width / 16, height / 16));
+        Graphics2D g2 = tmp.createGraphics();
+
+        Player p = EngineState.getInstance().player;
+
+        int deltaX = 0;
+        int deltaY = 0;
+
+        Point2D pos = p.getPosition();
+
+        if (pos.getX() * 16 >= width / 2) {
+            if (pos.getX() * 16 > (map.getDim().width * 16) - width / 2)
+                deltaX = (map.getDim().width * 16) - width;
+            else
+                deltaX = (int) ((pos.getX() * 16) - (width / 2));
+        }
+        if (pos.getY() * 16 >= height / 2) {
+            if (pos.getY() * 16 > (map.getDim().height * 16) - height / 2)
+                deltaY = (map.getDim().height * 16) - height;
+            else
+                deltaY = (int) ((pos.getY() * 16) - (height / 2));
+        }
+
+        BufferedImage tmp2 = image.getSubimage(deltaX, deltaY, width, height);
+        g2.drawImage(tmp2, 0, 0, tmp2.getWidth(), tmp2.getHeight(), null);
+        g2.dispose();
+
+        return tmp;
+    }
+
     private void setSizeMap() {
-        Image image = ((ImageIcon) backLayer.getIcon()).getImage();
-        this.setPreferredSize(new Dimension((int)(image.getWidth(null)), (int)(image.getHeight(null))));
-        this.setSize(new Dimension((int)(image.getWidth(null)), (int)(image.getHeight(null))));
+        Map map = EngineState.getInstance().currentMap;
+
+        int width = Math.min(992, map.getDim().width * 16);
+        int height = Math.min(688, map.getDim().height * 16);
+
+        System.out.println(width + " " + height);
+        this.setPreferredSize(new Dimension(width, height));
+        this.setSize(new Dimension(width, height));
 
         Engine.validateAll(this);
     }

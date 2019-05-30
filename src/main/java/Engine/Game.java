@@ -3,6 +3,7 @@ package Engine;
 import Model.World.Direction;
 import Model.World.Map;
 import Model.World.NPC;
+import Tools.ThreadLauncher;
 
 import java.awt.event.KeyEvent;
 
@@ -28,7 +29,7 @@ public class Game {
             if (!does_action && controller.keyState.get(KeyEvent.VK_D))
                 hasMoved |= controller.state.movePerso(Direction.RIGHT, delta_time);
             if (hasMoved)
-                controller.state.redrawPerso();
+                ThreadLauncher.execute(() -> controller.state.redrawPerso());
             if (!does_action) {
                 moveNPCs(controller.state.currentMap, delta_time);
                 controller.state.redrawNPC();

@@ -24,6 +24,7 @@ public class Engine extends JFrame implements Observer {
         pause.setText("Game paused.");
 
         mapPanel = new Display();
+        mapPanel.setVisible(true);
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.add(mapPanel);
@@ -43,6 +44,12 @@ public class Engine extends JFrame implements Observer {
         this.add(level);
 
         this.setVisible(true);
+        System.out.println("FRAME: " + this.getWidth() + " " + this.getHeight());
+        System.out.println("\tLEVEL: " + level.getWidth() + " " + level.getHeight());
+        System.out.println("\t\tPAUSE: " + pause.getWidth() + " " + pause.getHeight());
+        System.out.println("\t\tPANEL: " + panel.getWidth() + " " + panel.getHeight());
+        System.out.println("\t\t\tMAP: " + mapPanel.getWidth() + " " + mapPanel.getHeight());
+        System.out.println("\t\tDIALOG: " + dialog.getWidth() + " " + dialog.getHeight());
         pause.setVisible(false);
     }
 
