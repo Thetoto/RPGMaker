@@ -30,10 +30,13 @@ public class Game {
                 hasMoved |= controller.state.movePerso(Direction.RIGHT, delta_time);
             if (hasMoved)
                 ThreadLauncher.execute(() -> controller.state.redrawPerso());
-            if (!does_action) {
+            if (!does_action)
                 moveNPCs(controller.state.currentMap, delta_time);
-                controller.state.redrawNPC();
-            }
+
+            if (hasMoved)
+                ThreadLauncher.execute(() -> controller.state.redrawPerso());
+            else
+                ThreadLauncher.execute(() -> controller.state.redrawNPC());
 
             if (controller.keyState.get(KeyEvent.VK_E)) {
                 controller.keyState.set(KeyEvent.VK_E, false);

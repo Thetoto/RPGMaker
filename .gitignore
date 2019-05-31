@@ -16,6 +16,7 @@
 # Intellij
 *.iml
 *.iws
+.idea
 .idea/compiler.xml
 .idea/misc.xml
 .idea/uiDesigner.xml
