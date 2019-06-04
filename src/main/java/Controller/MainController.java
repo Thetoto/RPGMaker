@@ -107,10 +107,16 @@ public class MainController {
                 if (e.getID() == KeyEvent.KEY_RELEASED) {
                     if (e.getKeyCode() == KeyEvent.VK_Z && e.isControlDown())
                         editorState.mapState.undo();
-                    else if (e.getKeyCode() == KeyEvent.VK_A && e.isControlDown())
+                    else if (e.getKeyCode() == KeyEvent.VK_Y && e.isControlDown())
                         editorState.mapState.redo();
+                    else if (e.getKeyCode() == KeyEvent.VK_N && e.isControlDown())
+                        ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState));
+                    else if (e.getKeyCode() == KeyEvent.VK_S && e.isControlDown())
+                        ThreadLauncher.execute(() -> editorState.saveWorld());
                     else if (e.getKeyCode() == KeyEvent.VK_F5)
                         editorState.launchGame();
+                    else if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+                        System.exit(0);
                     return true;
                 }
                 return false;
