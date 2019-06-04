@@ -30,8 +30,10 @@ public class MapPanel extends JLayeredPane implements Observer {
     static int multiply;
     public double currentZoom = 1.;
 
-    BufferedImage bi = Tile.getPlaceholder().get();
-    BufferedImage selection_layout = Tile.getPlaceholder().get();
+    BufferedImage backImage = Tile.getPlaceholder().get();
+    BufferedImage mapImage = Tile.getPlaceholder().get();
+    BufferedImage midImage = Tile.getTransPlaceholder().get();
+    BufferedImage selection_layout = Tile.getTransPlaceholder().get();
 
     public MapPanel() {
         backLayer = new JLabel();
@@ -47,28 +49,37 @@ public class MapPanel extends JLayeredPane implements Observer {
         this.add(selectLayer, SELECT_LAYER);
     }
 
-    public synchronized void drawMap(Map map) {
-        bi = new BufferedImage(map.getDim().width * multiply, map.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
+    public synchronized void drawMap(Map map, boolean newMap) {
+        if (newMap)
+            mapImage = createImage(map.getDim());
 
-        Graphics2D g = bi.createGraphics();
-        Draw.drawBackTiles(g, map, multiply);
-        Draw.drawForeTiles(g, map, multiply);
-        Draw.drawNPC(g, map, multiply);
+        MapState mapState = EditorState.getInstance().mapState;
+        if (mapState.updateRequestIn != null) {
+            clearRectBi(mapImage, mapState.updateRequestIn, mapState.updateRequestOut);
+        }
+
+        Graphics2D g = mapImage.createGraphics();
+        Draw.drawBackTiles(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
+        Draw.drawForeTiles(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
+        Draw.drawNPC(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
         g.dispose();
 
-        mapLayer.setIcon(new ImageIcon(bi));
-        mapLayer.setBounds(0, 0, bi.getWidth(), bi.getHeight());
+        if (newMap) {
+            mapLayer.setIcon(new ImageIcon(mapImage));
+            mapLayer.setBounds(0, 0, mapImage.getWidth(), mapImage.getHeight());
 
-        this.setSizeMap();
-        this.repaint();
+            this.setSizeMap();
+        }
+        repainRect(this, mapState);
     }
 
 
 
-    public synchronized void show_walkable(MapState mapState) {
-        BufferedImage tmp = new BufferedImage(mapState.currentMap.getDim().width * multiply, mapState.currentMap.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
+    public synchronized void show_walkable(MapState mapState, boolean newMap) {
+        if (newMap)
+            midImage = createImage(mapState.currentMap.getDim());
 
-        Graphics2D g = tmp.createGraphics();
+        Graphics2D g = midImage.createGraphics();
         for (int x = 0; x < mapState.currentMap.getDim().width; x++) {
             for (int y = 0; y < mapState.currentMap.getDim().height; y++) {
                 if (mapState.currentMap.getWalkable(x, y))
@@ -81,21 +92,22 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
         g.dispose();
 
-        midLayer.setIcon(new ImageIcon(tmp));
-        midLayer.setBounds(0, 0, tmp.getWidth(), tmp.getHeight());
+        midLayer.setIcon(new ImageIcon(midImage));
+        midLayer.setBounds(0, 0, midImage.getWidth(), midImage.getHeight());
 
         this.repaint();
     }
 
-    private void drawBack(MapState mapState) {
-        BufferedImage tmp = new BufferedImage(mapState.currentMap.getDim().width * multiply, mapState.currentMap.getDim().height * multiply, BufferedImage.TYPE_INT_ARGB);
+    private void drawBack(MapState mapState, boolean newMap) {
+        if (newMap)
+            backImage = createImage(mapState.currentMap.getDim());
 
-        Graphics2D g = tmp.createGraphics();
+        Graphics2D g = backImage.createGraphics();
         Draw.drawBackground(g, mapState.currentMap.getBackgroundTile(), mapState.currentMap.getDim(), multiply);
         g.dispose();
 
-        backLayer.setIcon(new ImageIcon(tmp));
-        backLayer.setBounds(0, 0, tmp.getWidth(), tmp.getHeight());
+        backLayer.setIcon(new ImageIcon(backImage));
+        backLayer.setBounds(0, 0, backImage.getWidth(), backImage.getHeight());
         this.repaint();
     }
 
@@ -130,16 +142,14 @@ public class MapPanel extends JLayeredPane implements Observer {
                                                     BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = selection_layout.createGraphics();
         g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
-        if (in != null && out != null) {
-            for (int x = 0; x <= selection_layout.getWidth() / 16; x += sizeX) {
-                for (int y = 0; y <= selection_layout.getHeight() / 16; y += sizeY) {
-                    if (cur != null && ((cur.get().getWidth() == 16 && cur.get().getHeight() == 16) || in.equals(out))) {
-                        g.drawImage(cur.get(), x * multiply, y * multiply, null);
-                    } else {
-                        g.setColor(new Color(200, 0, 0, 100));
-                        g.drawRect(x * multiply, y * multiply, 16, 16);
-                        g.fillRect(x * multiply, y * multiply, 16, 16);
-                    }
+        for (int x = 0; x <= selection_layout.getWidth() / 16; x += sizeX) {
+            for (int y = 0; y <= selection_layout.getHeight() / 16; y += sizeY) {
+                if (cur != null && ((cur.get().getWidth() == 16 && cur.get().getHeight() == 16) || in.equals(out))) {
+                    g.drawImage(cur.get(), x * multiply, y * multiply, null);
+                } else {
+                    g.setColor(new Color(200, 0, 0, 100));
+                    g.drawRect(x * multiply, y * multiply, 16, 16);
+                    g.fillRect(x * multiply, y * multiply, 16, 16);
                 }
             }
         }
@@ -149,6 +159,30 @@ public class MapPanel extends JLayeredPane implements Observer {
                                   selection_layout.getWidth(), selection_layout.getHeight());
 
         this.repaint();
+    }
+
+    public static BufferedImage createImage(Dimension dim) {
+        BufferedImage bi = new BufferedImage(dim.width * multiply, dim.height * multiply, BufferedImage.TYPE_INT_ARGB);
+        Color transparent = new Color(255, 255, 255, 255);
+        return bi;
+    }
+
+    public static void clearRectBi(BufferedImage bi, Point in, Point out) {
+        Graphics2D g = bi.createGraphics();
+        g.setComposite(AlphaComposite.Src);
+        g.setColor(new Color(0, 255, 0, 0));
+        g.fillRect(in.x * multiply, in.y * multiply, (out.x - in.x + 1) * multiply, (out.y - in.y + 1) * multiply);
+        g.dispose();
+    }
+
+    public static void repainRect(MapPanel instance, MapState mapState) {
+        if (mapState.updateRequestIn == null)
+            instance.repaint();
+        else
+            instance.repaint(mapState.updateRequestIn.x * multiply,
+                    mapState.updateRequestIn.y * multiply,
+                    (mapState.updateRequestOut.x - mapState.updateRequestIn.x + 1) * multiply,
+                    (mapState.updateRequestOut.y - mapState.updateRequestIn.y + 1) * multiply);
     }
 
     @Override
@@ -183,20 +217,26 @@ public class MapPanel extends JLayeredPane implements Observer {
             }
             if (arg.equals("Show Walk")) {
                 this.midLayer.setVisible(true);
-                this.show_walkable(mapState);
+                this.show_walkable(mapState, true);
             }
             if (arg.equals("Hide Walk")) {
                 midLayer.setVisible(false);
             }
             if (arg.equals("Load Me")) {
                 if (showWalk)
-                    show_walkable(mapState);
-                System.out.println("Try to display");
-                drawBack(mapState);
-                drawMap(mapState.currentMap);
+                    show_walkable(mapState, true);
+                System.out.println("Display Map");
+                drawBack(mapState, true);
+                drawMap(mapState.currentMap, true);
+            }
+            if (arg.equals("Update Me")) {
+                if (showWalk)
+                    show_walkable(mapState, false);
+                System.out.println("Update map");
+                drawMap(mapState.currentMap, false);
             }
             if (arg.equals("Update Background")) {
-                drawBack(mapState);
+                drawBack(mapState, false);
             }
             if (arg.equals("Zoom Update")) {
                 currentZoom = mapState.zoomPercent;
@@ -207,8 +247,8 @@ public class MapPanel extends JLayeredPane implements Observer {
     }
 
     private void setSizeMap() {
-        this.setPreferredSize(new Dimension((int)(bi.getWidth() * currentZoom), (int)(bi.getHeight() * currentZoom)));
-        this.setSize(new Dimension((int)(bi.getWidth() * currentZoom), (int)(bi.getHeight() * currentZoom)));
+        this.setPreferredSize(new Dimension((int)(mapImage.getWidth() * currentZoom), (int)(mapImage.getHeight() * currentZoom)));
+        this.setSize(new Dimension((int)(mapImage.getWidth() * currentZoom), (int)(mapImage.getHeight() * currentZoom)));
 
         Editor.validateAll(this);
     }

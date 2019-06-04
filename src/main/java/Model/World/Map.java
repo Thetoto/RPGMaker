@@ -1,5 +1,8 @@
 package Model.World;
 
+import Editor.Editor;
+import Model.Editor.EditorState;
+import Model.Editor.MapState;
 import Model.Editor.TileType;
 import Tools.ActionManager;
 
@@ -104,6 +107,9 @@ public class Map {
                 }
             }
             npc.remove(toDelete);
+            MapState mapState = EditorState.getInstance().mapState;
+            mapState.updateRequestOut = new Point(in.x + toDelete.getAnimation().getSize(),
+                    in.y + toDelete.getAnimation().getSize());
         } else {
             npc.add(new NPC((Animation)currentTile, in));
         }
@@ -172,6 +178,15 @@ public class Map {
 
     private boolean checkBoundsPerso(Player perso, double x, double y) {
         int size = perso.getAnim().getSize();
+        return checkBoundsAnim(x, y, size);
+    }
+
+    public boolean checkBoundsNPC(NPC npc, double x, double y) {
+        int size = npc.getAnimation().getSize();
+        return checkBoundsAnim(x, y, size);
+    }
+
+    private boolean checkBoundsAnim(double x, double y, int size) {
         int dy = size / 2;
         for (double iy = y + dy; iy < y + size; iy++) {
             for (double ix = x + 0; ix < x + size; ix++) {
@@ -198,24 +213,6 @@ public class Map {
                 return checkBoundsNPC(npc, p.getX() + 0.01 * delta_time, p.getY());
             case UP:
                 return checkBoundsNPC(npc, p.getX(), p.getY() - 0.01 * delta_time);
-        }
-        return false;
-    }
-
-    public boolean checkBoundsNPC(NPC npc, double x, double y) {
-        int size = npc.getAnimation().getSize();
-        int dy = size / 2;
-        for (double iy = y + dy; iy < y + size; iy++) {
-            for (double ix = x + 0; ix < x + size; ix++) {
-                int intx = (int) Math.round(ix);
-                int inty = (int) Math.round(iy);
-                boolean res = checkBounds(intx, inty);
-                if (res)
-                    return true;
-                boolean walkable = getWalkable(intx, inty);
-                if (!walkable)
-                    return true;
-            }
         }
         return false;
     }
@@ -259,6 +256,11 @@ public class Map {
         ImportedTile imp = (ImportedTile)foreground.get(pt);
         Dimension dim = new Dimension(imp.getWidth(), imp.getHeight());
         foreground.remove(pt);
+        MapState mapState = EditorState.getInstance().mapState;
+        mapState.updateRequestIn = new Point(Math.min(mapState.updateRequestIn.x, pt.x),
+                Math.min(mapState.updateRequestIn.y, pt.y));
+        mapState.updateRequestOut = new Point(Math.max(mapState.updateRequestOut.x, pt.x + imp.getWidth()),
+                Math.max(mapState.updateRequestOut.y, pt.y + imp.getHeight()));
 
         for (int i = pt.x; i < pt.x + dim.getWidth(); i++) {
             for (int j = pt.y; j < pt.y + dim.getHeight(); j++) {

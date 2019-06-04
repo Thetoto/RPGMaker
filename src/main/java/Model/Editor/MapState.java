@@ -14,6 +14,8 @@ public class MapState extends Observable {
 
     public Point selectionIn;
     public Point selectionOut;
+    public Point updateRequestIn;
+    public Point updateRequestOut;
 
     public Point mousePos;
     private Mode mode;
@@ -81,9 +83,11 @@ public class MapState extends Observable {
             return;
         }
         if (EditorState.getInstance().toolsState.currentTools == ToolsEnum.TILES) {
+            updateRequestIn = selectionIn;
+            updateRequestOut = selectionOut;
             currentMap.draw(EditorState.getInstance().tilesState.currentTile, selectionIn, selectionOut);
             mousePreview(null, null);
-            updateMap();
+            updateMap(false);
             if (EditorState.getInstance().tilesState.currentTile instanceof Animation) {
                 setChanged();
                 notifyObservers("Update Map");
@@ -91,16 +95,20 @@ public class MapState extends Observable {
         }
     }
 
-    public void updateMap() {
+    public void updateMap(boolean forceRedraw) {
         ThreadLauncher.execute(() -> {
             mousePreview(null, null);
             setChanged();
-            notifyObservers("Load Me");
+            if (forceRedraw)
+                notifyObservers("Load Me");
+            else
+                notifyObservers("Update Me");
+            updateRequestIn = null;
+            updateRequestOut = null;
         });
     }
 
     public void updateMap(Map map) {
-
         if (currentMap != null && currentMap.toString() == map.toString()) {
             var world = EditorState.getInstance().world;
             int i = world.maps.indexOf(currentMap);
@@ -111,9 +119,7 @@ public class MapState extends Observable {
             ActionManager.reset();
         }
         this.currentMap = map;
-        updateMap();
-        setChanged();
-        notifyObservers("Update Background");
+        updateMap(true);
     }
 
     public void setShowWalk(boolean b) {
@@ -222,9 +228,11 @@ public class MapState extends Observable {
 
     public void deleteNPC() {
         currentMap.getNpcs().remove(currentNPC);
+        updateRequestIn = new Point((int)currentNPC.getPoint().x, (int)currentNPC.getPoint().y);
+        updateRequestOut = new Point(updateRequestIn.x + currentNPC.getAnimation().getSize(), updateRequestIn.y + currentNPC.getAnimation().getSize());
         EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.NONE);
         setChanged();
         notifyObservers("Update Map");
-        updateMap();
+        updateMap(false);
     }
 }

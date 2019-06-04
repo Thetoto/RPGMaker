@@ -90,7 +90,7 @@ public class EditorState extends Observable {
             return;
         showGrid = !showGrid;
         mapState.mousePreview(mapState.selectionIn, mapState.selectionOut);
-        mapState.updateMap();
+        mapState.updateMap(true);
     }
 
     public void renameMap() {

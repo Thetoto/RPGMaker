@@ -11,8 +11,15 @@ import java.util.Vector;
 public class Draw {
 
     public static synchronized void drawBackTiles(Graphics2D g, Map map, int multiply) {
-        for (int x = 0; x < map.getDim().width; x++) {
-            for (int y = 0; y < map.getDim().height; y++) {
+        drawBackTiles(g, map, multiply, new Point(0,0), new Point(map.getDim().width - 1, map.getDim().height - 1));
+    }
+    public static synchronized void drawBackTiles(Graphics2D g, Map map, int multiply, Point reqIn, Point reqOut) {
+        if (reqIn == null) {
+            drawBackTiles(g, map, multiply);
+            return;
+        }
+        for (int x = reqIn.x; x <= reqOut.x; x++) {
+            for (int y = reqIn.y; y <= reqOut.y; y++) {
                 BufferedImage tile = map.getTile(x, y).get();
                 g.drawImage(tile, x * multiply, y * multiply, null);
             }
@@ -20,6 +27,13 @@ public class Draw {
     }
 
     public static synchronized void drawForeTiles(Graphics2D g, Map map, int multiply) {
+        drawForeTiles(g, map, multiply, new Point(0,0), new Point(map.getDim().width - 1, map.getDim().height - 1));
+    }
+    public static synchronized void drawForeTiles(Graphics2D g, Map map, int multiply, Point reqIn, Point reqOut) {
+        if (reqIn == null) {
+            drawForeTiles(g, map, multiply);
+            return;
+        }
         HashMap<Point, Tile> foreSet = map.getForegroundSet();
         for (Point pt : foreSet.keySet()) {
             ImportedTile tile = (ImportedTile)foreSet.get(pt);
@@ -28,6 +42,13 @@ public class Draw {
     }
 
     public static synchronized void drawNPC(Graphics2D g, Map map, int multiply) {
+        drawNPC(g, map, multiply, new Point(0,0), new Point(map.getDim().width - 1, map.getDim().height - 1));
+    }
+    public static void drawNPC(Graphics2D g, Map map, int multiply, Point reqIn, Point reqOut) {
+        if (reqIn == null) {
+            drawNPC(g, map, multiply);
+            return;
+        }
         Vector<NPC> npcV = map.getNpcs();
         for (NPC npc : npcV) {
             Animation tile = npc.getAnimation();
