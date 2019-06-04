@@ -14,7 +14,7 @@ public class EngineController {
     Engine frame;
     EngineState state;
     Vector<Boolean> keyState = new Vector<>();
-    Model.Engine.Timer timeCycle;
+    Model.Engine.Timer timeCycle = null;
 
     public EngineController(World world) {
         for (int i = 0; i < 256; i++) {
@@ -53,6 +53,7 @@ public class EngineController {
 
         ThreadLauncher.execute(() -> {
             new Game(this);
+            frame.dispose();
             destroyGame();
         });
 
@@ -66,7 +67,8 @@ public class EngineController {
 
     public void destroyGame() {
         keyState.set(KeyEvent.VK_ESCAPE, true);
-        timeCycle.stop();
+        if (timeCycle != null)
+            timeCycle.stop();
         if (Main.standalone)
             System.exit(0);
     }
