@@ -37,7 +37,8 @@ public class MainController {
 
         editor.topBar.loadButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.getWorld()));
         editor.topBar.toolsButton.addActionListener(actionEvent -> toolsController.setTool(ToolsEnum.TOOLBOX));
-        editor.topBar.createButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState)));
+        editor.topBar.createWorldButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, true)));
+        editor.topBar.createButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, false)));
         editor.topBar.saveButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.saveWorld()));
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
 
@@ -101,26 +102,23 @@ public class MainController {
             }
         });
 
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
-            @Override
-            public boolean dispatchKeyEvent(KeyEvent e) {
-                if (e.getID() == KeyEvent.KEY_RELEASED) {
-                    if (e.getKeyCode() == KeyEvent.VK_Z && e.isControlDown())
-                        editorState.mapState.undo();
-                    else if (e.getKeyCode() == KeyEvent.VK_Y && e.isControlDown())
-                        editorState.mapState.redo();
-                    else if (e.getKeyCode() == KeyEvent.VK_N && e.isControlDown())
-                        ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState));
-                    else if (e.getKeyCode() == KeyEvent.VK_S && e.isControlDown())
-                        ThreadLauncher.execute(() -> editorState.saveWorld());
-                    else if (e.getKeyCode() == KeyEvent.VK_F5)
-                        editorState.launchGame();
-                    else if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-                        System.exit(0);
-                    return true;
-                }
-                return false;
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+            if (e.getID() == KeyEvent.KEY_RELEASED) {
+                if (e.getKeyCode() == KeyEvent.VK_Z && e.isControlDown())
+                    editorState.mapState.undo();
+                else if (e.getKeyCode() == KeyEvent.VK_Y && e.isControlDown())
+                    editorState.mapState.redo();
+                else if (e.getKeyCode() == KeyEvent.VK_N && e.isControlDown())
+                    ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, false));
+                else if (e.getKeyCode() == KeyEvent.VK_S && e.isControlDown())
+                    ThreadLauncher.execute(() -> editorState.saveWorld());
+                else if (e.getKeyCode() == KeyEvent.VK_F5)
+                    editorState.launchGame();
+                else if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+                    System.exit(0);
+                return true;
             }
+            return false;
         });
     }
 }

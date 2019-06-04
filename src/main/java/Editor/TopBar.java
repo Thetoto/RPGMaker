@@ -8,6 +8,7 @@ public class TopBar extends JPanel {
     public JButton saveButton;
     public JButton undoButton;
     public JButton redoButton;
+    public JButton createWorldButton;
     public JButton createButton;
     public JButton toolsButton;
     public JButton showGridButton;
@@ -23,6 +24,7 @@ public class TopBar extends JPanel {
         saveButton = Editor.initIconButton("save.png", this);
         undoButton = Editor.initIconButton("undo.png", this);
         redoButton = Editor.initIconButton("redo.png", this);
+        createWorldButton = Editor.initIconButton("create_world.png", this);
         createButton = Editor.initIconButton("create.png", this);
         toolsButton = Editor.initIconButton("tools.png", this);
         showGridButton = Editor.initIconButton("grid.png", this);

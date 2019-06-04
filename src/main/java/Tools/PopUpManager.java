@@ -14,7 +14,9 @@ public class PopUpManager {
                 JOptionPane.WARNING_MESSAGE);
     }
 
-    public static void askNewMap(EditorState editorState) {
+    public static void askNewMap(EditorState editorState, boolean newWorld) {
+        if (newWorld && editorState.world != null && !Confirm("All unsave work will be lost"))
+            return;
         JDialog frame = new JDialog(Editor.getInstance(), true);
         frame.setLayout(new GridLayout(4,2));
         frame.setLocationRelativeTo(null);
@@ -43,6 +45,8 @@ public class PopUpManager {
             int Mheight = (int) height.getModel().getValue();
             String Mname = name.getText();
             frame.dispose();
+            if (newWorld)
+                editorState.world = null;
             Map map = new Map(new Dimension(Mwidth, Mheight), Mname);
             if (editorState.world == null) {
                 editorState.defaultWorld(map);
