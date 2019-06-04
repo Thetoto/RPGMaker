@@ -92,9 +92,10 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
         g.dispose();
 
-        midLayer.setIcon(new ImageIcon(midImage));
-        midLayer.setBounds(0, 0, midImage.getWidth(), midImage.getHeight());
-
+        if (newMap) {
+            midLayer.setIcon(new ImageIcon(midImage));
+            midLayer.setBounds(0, 0, midImage.getWidth(), midImage.getHeight());
+        }
         this.repaint();
     }
 
@@ -106,8 +107,10 @@ public class MapPanel extends JLayeredPane implements Observer {
         Draw.drawBackground(g, mapState.currentMap.getBackgroundTile(), mapState.currentMap.getDim(), multiply);
         g.dispose();
 
-        backLayer.setIcon(new ImageIcon(backImage));
-        backLayer.setBounds(0, 0, backImage.getWidth(), backImage.getHeight());
+        if (newMap) {
+            backLayer.setIcon(new ImageIcon(backImage));
+            backLayer.setBounds(0, 0, backImage.getWidth(), backImage.getHeight());
+        }
         this.repaint();
     }
 
@@ -158,7 +161,8 @@ public class MapPanel extends JLayeredPane implements Observer {
         selectLayer.setBounds(in.x * multiply, in.y * multiply,
                                   selection_layout.getWidth(), selection_layout.getHeight());
 
-        this.repaint();
+        this.repaint(in.x * multiply, in.y * multiply,
+                selection_layout.getWidth(), selection_layout.getHeight());
     }
 
     public static BufferedImage createImage(Dimension dim) {

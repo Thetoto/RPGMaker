@@ -106,10 +106,12 @@ public class Map {
                     break;
                 }
             }
-            npc.remove(toDelete);
-            MapState mapState = EditorState.getInstance().mapState;
-            mapState.updateRequestOut = new Point(in.x + toDelete.getAnimation().getSize(),
-                    in.y + toDelete.getAnimation().getSize());
+            if (toDelete != null) {
+                npc.remove(toDelete);
+                MapState mapState = EditorState.getInstance().mapState;
+                mapState.updateRequestOut = new Point(in.x + toDelete.getAnimation().getSize(),
+                        in.y + toDelete.getAnimation().getSize());
+            }
         } else {
             npc.add(new NPC((Animation)currentTile, in));
         }

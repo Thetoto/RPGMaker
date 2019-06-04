@@ -36,8 +36,10 @@ public class Draw {
         }
         HashMap<Point, Tile> foreSet = map.getForegroundSet();
         for (Point pt : foreSet.keySet()) {
-            ImportedTile tile = (ImportedTile)foreSet.get(pt);
-            drawImported(g, tile, pt, multiply);
+            if (checkBounds(pt, reqIn, reqOut)) {
+                ImportedTile tile = (ImportedTile) foreSet.get(pt);
+                drawImported(g, tile, pt, multiply);
+            }
         }
     }
 
@@ -51,11 +53,13 @@ public class Draw {
         }
         Vector<NPC> npcV = map.getNpcs();
         for (NPC npc : npcV) {
-            Animation tile = npc.getAnimation();
-            if (npc.isMoving())
-                drawImported(g, tile.toImportedTile(npc.getDirection()), npc.getPoint(), multiply);
-            else
-                drawImported(g, tile.toImportedTile(), npc.getPoint(), multiply);
+            if (checkBounds(npc.getIntPoint(), reqIn, reqOut)) {
+                Animation tile = npc.getAnimation();
+                if (npc.isMoving())
+                    drawImported(g, tile.toImportedTile(npc.getDirection()), npc.getPoint(), multiply);
+                else
+                    drawImported(g, tile.toImportedTile(), npc.getPoint(), multiply);
+            }
         }
     }
 
@@ -108,5 +112,13 @@ public class Draw {
             g.drawImage(bt.getTile(2, 0).get(), (d.width - 1) * multiply, 0, null);
             g.drawImage(bt.getTile(2, 2).get(), (d.width - 1) * multiply, (d.height - 1) * multiply, null);
         }
+    }
+
+    public static boolean checkBounds(Point pt, Point in, Point out) {
+        if (pt.x < in.x || pt.x > out.x)
+            return false;
+        if (pt.y  < in.y || pt.y > out.y)
+            return false;
+        return true;
     }
 }

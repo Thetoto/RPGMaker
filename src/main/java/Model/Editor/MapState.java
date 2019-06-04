@@ -228,7 +228,7 @@ public class MapState extends Observable {
 
     public void deleteNPC() {
         currentMap.getNpcs().remove(currentNPC);
-        updateRequestIn = new Point((int)currentNPC.getPoint().x, (int)currentNPC.getPoint().y);
+        updateRequestIn = currentNPC.getIntPoint();
         updateRequestOut = new Point(updateRequestIn.x + currentNPC.getAnimation().getSize(), updateRequestIn.y + currentNPC.getAnimation().getSize());
         EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.NONE);
         setChanged();

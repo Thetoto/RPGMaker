@@ -52,6 +52,10 @@ public class NPC {
         return this.coordinates;
     }
 
+    public Point getIntPoint() {
+        return new Point((int)coordinates.x, (int)coordinates.y);
+    }
+
     public void setAnimation(Animation animation) {
         anim = animation;
     }
