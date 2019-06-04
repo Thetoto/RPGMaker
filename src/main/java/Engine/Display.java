@@ -27,6 +27,9 @@ public class Display extends JLayeredPane implements Observer {
     JLabel playerLayer;
     JLabel timeCycleLayer;
 
+    BufferedImage background = null;
+    BufferedImage foreground = null;
+
     public static BufferedImage createImage(Dimension dim) {
         return new BufferedImage(dim.width * 16, dim.height * 16, BufferedImage.TYPE_INT_ARGB);
     }
@@ -57,7 +60,18 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawBackTiles(g, map, 16);
         g.dispose();
 
+        this.background = back;
+
         BufferedImage resized = getResizedImage(back);
+
+        backLayer.setIcon(new ImageIcon(resized));
+        backLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+    }
+
+    public void drawBackLayerUpdate() {
+        if (background == null)
+            return;
+        BufferedImage resized = getResizedImage(background);
 
         backLayer.setIcon(new ImageIcon(resized));
         backLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
@@ -71,7 +85,18 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawForeTiles(g, map, 16);
         g.dispose();
 
+        this.foreground = fore;
+
         BufferedImage resized = getResizedImage(fore);
+
+        foreLayer.setIcon(new ImageIcon(resized));
+        foreLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+    }
+
+    public void drawForeLayerUpdate() {
+        if (foreground == null)
+            return;
+        BufferedImage resized = getResizedImage(foreground);
 
         foreLayer.setIcon(new ImageIcon(resized));
         foreLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
@@ -130,6 +155,13 @@ public class Display extends JLayeredPane implements Observer {
             ThreadLauncher.execute(() -> drawTimeCycleLayer(state.currentMap, state.world.timeCycle.isNight()));
     }
 
+    public void drawUpdate (EngineState state) {
+        ThreadLauncher.execute(() -> drawBackLayerUpdate());
+        ThreadLauncher.execute(() -> drawForeLayerUpdate());
+        ThreadLauncher.execute(() -> drawNpcLayer(state.currentMap));
+        ThreadLauncher.execute(() -> drawPlayerLayer(state));
+    }
+
     @Override
     public void update(Observable observable, Object o) {
         if (observable instanceof EngineState && o instanceof String) {
@@ -141,7 +173,7 @@ public class Display extends JLayeredPane implements Observer {
                 repaint();
             }
             if (str.equals("Update Perso")) {
-                drawAll(state);
+                drawUpdate(state);
                 repaint();
             }
             if (str.equals("Update NPC")) {
