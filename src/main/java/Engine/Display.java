@@ -62,19 +62,14 @@ public class Display extends JLayeredPane implements Observer {
 
         this.background = back;
 
-        BufferedImage resized = getResizedImage(back);
-
-        backLayer.setIcon(new ImageIcon(resized));
-        backLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+        backLayer.setIcon(new ImageIcon(back));
+        resizeLayer(back, backLayer);
     }
 
     public void drawBackLayerUpdate() {
         if (background == null)
             return;
-        BufferedImage resized = getResizedImage(background);
-
-        backLayer.setIcon(new ImageIcon(resized));
-        backLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+        resizeLayer(background, backLayer);
     }
 
     public void drawForeLayer(Map map) {
@@ -87,19 +82,14 @@ public class Display extends JLayeredPane implements Observer {
 
         this.foreground = fore;
 
-        BufferedImage resized = getResizedImage(fore);
-
-        foreLayer.setIcon(new ImageIcon(resized));
-        foreLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+        foreLayer.setIcon(new ImageIcon(fore));
+        resizeLayer(fore, foreLayer);
     }
 
     public void drawForeLayerUpdate() {
         if (foreground == null)
             return;
-        BufferedImage resized = getResizedImage(foreground);
-
-        foreLayer.setIcon(new ImageIcon(resized));
-        foreLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+        resizeLayer(foreground, foreLayer);
     }
 
     public void drawNpcLayer(Map map) {
@@ -109,10 +99,8 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawNPC(g, map, 16);
         g.dispose();
 
-        BufferedImage resized = getResizedImage(npc);
-
-        npcLayer.setIcon(new ImageIcon(resized));
-        npcLayer.setBounds(0, 0,  resized.getWidth(), resized.getHeight());
+        npcLayer.setIcon(new ImageIcon(npc));
+        resizeLayer(npc, npcLayer);
     }
 
     public void drawPlayerLayer(EngineState state) {
@@ -123,10 +111,8 @@ public class Display extends JLayeredPane implements Observer {
         Draw.drawImported(g, t, state.player.getPosition(), 16);
         g.dispose();
 
-        BufferedImage resized = getResizedImage(player);
-
-        playerLayer.setIcon(new ImageIcon(resized));
-        playerLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+        playerLayer.setIcon(new ImageIcon(player));
+        resizeLayer(player, playerLayer);
     }
 
     public void drawTimeCycleLayer(Map map, boolean isNight) {
@@ -140,10 +126,8 @@ public class Display extends JLayeredPane implements Observer {
         g.fillRect(0,0,time.getWidth(), time.getHeight());
         g.dispose();
 
-        BufferedImage resized = getResizedImage(time);
-
-        timeCycleLayer.setIcon(new ImageIcon(resized));
-        timeCycleLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+        timeCycleLayer.setIcon(new ImageIcon(time));
+        resizeLayer(time, timeCycleLayer);
     }
 
     public void drawAll(EngineState state) {
@@ -183,7 +167,7 @@ public class Display extends JLayeredPane implements Observer {
         }
     }
 
-    private BufferedImage getResizedImage(BufferedImage image) {
+    private void resizeLayer(BufferedImage image, JLabel layer) {
         Map map = EditorState.getInstance().mapState.currentMap;
         int width = Math.min(992, image.getWidth());
         int height = Math.min(688, image.getHeight());
@@ -208,10 +192,9 @@ public class Display extends JLayeredPane implements Observer {
                 deltaY = (int) ((pos.getY() * 16) - (height / 2));
         }
 
-        BufferedImage tmp2 = image.getSubimage(deltaX, deltaY, width, height);
-
-        return tmp2;
+        layer.setBounds(-deltaX, -deltaY, width, height);
     }
+
 
     private void setSizeMap() {
         Map map = EngineState.getInstance().currentMap;
