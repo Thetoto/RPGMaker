@@ -123,13 +123,16 @@ public class MapPanel extends JLayeredPane implements Observer {
             return;
         }
 
-        selection_layout = new BufferedImage((Math.abs(in.x - out.x) + 1) * 16,
-                                            (Math.abs(in.y - out.y) + 1) * 16, BufferedImage.TYPE_INT_ARGB);
+        int sizeX = cur == null || in != out ? 1 : cur.get().getWidth() / 16;
+        int sizeY = cur == null || in != out ? 1 : cur.get().getHeight() / 16;
+        selection_layout = new BufferedImage((Math.abs(in.x - out.x) + 1) * multiply * sizeX,
+                                            (Math.abs(in.y - out.y) + 1) * multiply * sizeY,
+                                                    BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = selection_layout.createGraphics();
         g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
         if (in != null && out != null) {
-            for (int x = 0; x <= selection_layout.getWidth() / 16; x++) {
-                for (int y = 0; y <= selection_layout.getHeight() / 16; y++) {
+            for (int x = 0; x <= selection_layout.getWidth() / 16; x += sizeX) {
+                for (int y = 0; y <= selection_layout.getHeight() / 16; y += sizeY) {
                     if (cur != null && ((cur.get().getWidth() == 16 && cur.get().getHeight() == 16) || in.equals(out))) {
                         g.drawImage(cur.get(), x * multiply, y * multiply, null);
                     } else {
@@ -142,7 +145,8 @@ public class MapPanel extends JLayeredPane implements Observer {
         }
         g.dispose();
         selectLayer.setIcon(new ImageIcon(selection_layout));
-        selectLayer.setBounds(in.x * 16, in.y * 16, selection_layout.getWidth(), selection_layout.getHeight());
+        selectLayer.setBounds(in.x * multiply, in.y * multiply,
+                                  selection_layout.getWidth(), selection_layout.getHeight());
 
         this.repaint();
     }
