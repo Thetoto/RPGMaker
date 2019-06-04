@@ -110,6 +110,8 @@ public class MainController {
                     editorState.mapState.redo();
                 else if (e.getKeyCode() == KeyEvent.VK_N && e.isControlDown())
                     ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, false));
+                else if (e.getKeyCode() == KeyEvent.VK_W && e.isControlDown())
+                    ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, true));
                 else if (e.getKeyCode() == KeyEvent.VK_S && e.isControlDown())
                     ThreadLauncher.execute(() -> editorState.saveWorld());
                 else if (e.getKeyCode() == KeyEvent.VK_F5)
