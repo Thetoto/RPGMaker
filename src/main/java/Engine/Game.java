@@ -34,9 +34,9 @@ public class Game {
                 moveNPCs(controller.state.currentMap, delta_time);
 
             if (hasMoved)
-                ThreadLauncher.execute(() -> controller.state.redrawPerso());
+                controller.state.redrawPerso();
             else
-                ThreadLauncher.execute(() -> controller.state.redrawNPC());
+                controller.state.redrawNPC();
 
             if (controller.keyState.get(KeyEvent.VK_E)) {
                 controller.keyState.set(KeyEvent.VK_E, false);

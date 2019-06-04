@@ -156,10 +156,10 @@ public class Display extends JLayeredPane implements Observer {
     }
 
     public void drawUpdate (EngineState state) {
-        ThreadLauncher.execute(() -> drawBackLayerUpdate());
-        ThreadLauncher.execute(() -> drawForeLayerUpdate());
-        ThreadLauncher.execute(() -> drawNpcLayer(state.currentMap));
-        ThreadLauncher.execute(() -> drawPlayerLayer(state));
+        drawBackLayerUpdate();
+        drawForeLayerUpdate();
+        drawNpcLayer(state.currentMap);
+        drawPlayerLayer(state);
     }
 
     @Override
