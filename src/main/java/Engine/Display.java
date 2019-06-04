@@ -188,9 +188,6 @@ public class Display extends JLayeredPane implements Observer {
         int width = Math.min(992, image.getWidth());
         int height = Math.min(688, image.getHeight());
 
-        BufferedImage tmp = createImage(new Dimension(width / 16, height / 16));
-        Graphics2D g2 = tmp.createGraphics();
-
         Player p = EngineState.getInstance().player;
 
         int deltaX = 0;
@@ -212,10 +209,8 @@ public class Display extends JLayeredPane implements Observer {
         }
 
         BufferedImage tmp2 = image.getSubimage(deltaX, deltaY, width, height);
-        g2.drawImage(tmp2, 0, 0, tmp2.getWidth(), tmp2.getHeight(), null);
-        g2.dispose();
 
-        return tmp;
+        return tmp2;
     }
 
     private void setSizeMap() {
