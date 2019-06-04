@@ -29,6 +29,7 @@ public class Display extends JLayeredPane implements Observer {
 
     BufferedImage background = null;
     BufferedImage foreground = null;
+    BufferedImage timeCycleImage = null;
 
     public static BufferedImage createImage(Dimension dim) {
         return new BufferedImage(dim.width * 16, dim.height * 16, BufferedImage.TYPE_INT_ARGB);
@@ -130,20 +131,20 @@ public class Display extends JLayeredPane implements Observer {
     }
 
     public void drawTimeCycleLayer(Map map, boolean isNight) {
-        BufferedImage time = createImage(map.getDim());
+        if (timeCycleImage == null) {
+            int width = Math.min(992, map.getDim().width * 16);
+            int height = Math.min(688, map.getDim().height * 16);
+            timeCycleImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g = timeCycleImage.createGraphics();
+            int alpha = 100;
+            g.setColor(new Color(100, 100, 100, alpha));
+            g.fillRect(0,0, timeCycleImage.getWidth(), timeCycleImage.getHeight());
+            g.dispose();
 
-        Graphics2D g = time.createGraphics();
-        int alpha = 0;
-        if (isNight)
-            alpha = 100;
-        g.setColor(new Color(100, 100, 100, alpha));
-        g.fillRect(0,0,time.getWidth(), time.getHeight());
-        g.dispose();
-
-        BufferedImage resized = getResizedImage(time);
-
-        timeCycleLayer.setIcon(new ImageIcon(resized));
-        timeCycleLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+            timeCycleLayer.setIcon(new ImageIcon(timeCycleImage));
+            timeCycleLayer.setBounds(0, 0, timeCycleImage.getWidth(), timeCycleImage.getHeight());
+        }
+        timeCycleLayer.setVisible(isNight);
     }
 
     public void drawAll(EngineState state) {
@@ -195,13 +196,13 @@ public class Display extends JLayeredPane implements Observer {
 
         Point2D pos = p.getPosition();
 
-        if (pos.getX() * 16 >= width / 2) {
+        if (pos.getX() * 16 > width / 2) {
             if (pos.getX() * 16 > (map.getDim().width * 16) - width / 2)
                 deltaX = (map.getDim().width * 16) - width;
             else
                 deltaX = (int) ((pos.getX() * 16) - (width / 2));
         }
-        if (pos.getY() * 16 >= height / 2) {
+        if (pos.getY() * 16 > height / 2) {
             if (pos.getY() * 16 > (map.getDim().height * 16) - height / 2)
                 deltaY = (map.getDim().height * 16) - height;
             else
