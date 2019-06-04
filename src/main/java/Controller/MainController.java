@@ -12,6 +12,7 @@ import Tools.ThreadLauncher;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 
@@ -97,6 +98,22 @@ public class MainController {
                     editorState.toolsState.setCurrentTools(ToolsEnum.PNC);
                     toolsController.setNpcMessageListener();
                 }
+            }
+        });
+
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent e) {
+                if (e.getID() == KeyEvent.KEY_RELEASED) {
+                    if (e.getKeyCode() == KeyEvent.VK_Z && e.isControlDown())
+                        editorState.mapState.undo();
+                    else if (e.getKeyCode() == KeyEvent.VK_A && e.isControlDown())
+                        editorState.mapState.redo();
+                    else if (e.getKeyCode() == KeyEvent.VK_F5)
+                        editorState.launchGame();
+                    return true;
+                }
+                return false;
             }
         });
     }
