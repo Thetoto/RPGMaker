@@ -2,10 +2,15 @@ package Editor;
 
 import Model.Editor.EditorState;
 import Model.World.Foreground;
+import Model.World.ImportedTile;
 import Model.World.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Vector;
+import java.util.function.Function;
 
 public class ToolForegroundPanel extends JPanel {
 
@@ -60,7 +65,9 @@ public class ToolForegroundPanel extends JPanel {
 
     public void UpdateBreaker(boolean b) {
         if (b) {
-            Object[] tiles = EditorState.getInstance().tilesState.foregroundTiles.values().stream().toArray();
+            Vector<Object> tiles = new Vector(Arrays.asList(EditorState.getInstance().tilesState.foregroundTiles.values().stream()
+                        .map((Function<ImportedTile, Object>) importedTile -> importedTile.toString()).toArray()));
+            tiles.add(0, "------");
             DefaultComboBoxModel model = new DefaultComboBoxModel(tiles);
             breaker.setModel(model);
         }

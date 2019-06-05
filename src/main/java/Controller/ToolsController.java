@@ -6,6 +6,7 @@ import Model.Editor.EditorState;
 import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
+import Model.World.Tile;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -52,6 +53,15 @@ public class ToolsController {
         });
         toolsPanel.toolForegroundPanel.setAsHide.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isHided = (e.getStateChange() == ItemEvent.SELECTED));
         toolsPanel.toolForegroundPanel.setPickable.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isPickable = (e.getStateChange() == ItemEvent.SELECTED));
+        toolsPanel.toolForegroundPanel.breaker.addActionListener(e -> {
+            JComboBox jcb = (JComboBox) e.getSource();
+            String s = (String) jcb.getSelectedItem();
+            if (s != null) {
+                if (s.equals("------"))
+                    s = "";
+                EditorState.getInstance().mapState.getCurrentForeground().breaker = s;
+            }
+        });
 
         toolsPanel.toolPlayerPanel.setSpawn.addActionListener(e -> EditorState.getInstance().mapState.setMode(Mode.PLAYER));
     }

@@ -8,6 +8,7 @@ public class Foreground {
     public boolean isBreakable;
     public boolean isHided;
     public boolean isPickable;
+    public String breaker;
 
     public Foreground(Tile t) {
         this.t = t;
@@ -15,6 +16,7 @@ public class Foreground {
         isBreakable = false;
         isHided = false;
         isPickable = false;
+        breaker = "";
     }
 
     public BufferedImage get() {
