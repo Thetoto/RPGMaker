@@ -9,9 +9,7 @@ import Model.Editor.ToolsEnum;
 import Model.World.BigTile;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.Map;
 
 public class TilesController {
@@ -37,6 +35,12 @@ public class TilesController {
                 tilesState.setCurrentTile(entry.getKey(), TileType.FOREGROUND);
                 setupCheckboxAndBigTile();
             });
+            tilesPanel.foregroundTab.searchbar.addKeyListener(new KeyAdapter() {
+                public void keyReleased(KeyEvent keyEvent) {
+                    String filter = tilesPanel.foregroundTab.searchbar.getText();
+                    tilesPanel.foregroundTab.filter(filter);
+                }
+            });
         }
         for(Map.Entry<String, JButton> entry : tilesPanel.backgroundTab.buttons.entrySet()) {
             entry.getValue().addActionListener((e) -> {
@@ -45,6 +49,12 @@ public class TilesController {
                 tilesState.setCurrentTile(entry.getKey(), TileType.BACKGROUND);
                 setupCheckboxAndBigTile();
             });
+            tilesPanel.backgroundTab.searchbar.addKeyListener(new KeyAdapter() {
+                public void keyReleased(KeyEvent keyEvent) {
+                    String filter = tilesPanel.backgroundTab.searchbar.getText();
+                    tilesPanel.backgroundTab.filter(filter);
+                }
+            });
         }
         for(Map.Entry<String, JButton> entry : tilesPanel.NPCTab.buttons.entrySet()) {
             entry.getValue().addActionListener((e) -> {
@@ -52,6 +62,12 @@ public class TilesController {
                     toolsController.setTool(ToolsEnum.TILES);
                 tilesState.setCurrentTile(entry.getKey(), TileType.NPC);
                 setupCheckboxAndBigTile();
+            });
+            tilesPanel.NPCTab.searchbar.addKeyListener(new KeyAdapter() {
+                public void keyReleased(KeyEvent keyEvent) {
+                    String filter = tilesPanel.NPCTab.searchbar.getText();
+                    tilesPanel.NPCTab.filter(filter);
+                }
             });
         }
     }
