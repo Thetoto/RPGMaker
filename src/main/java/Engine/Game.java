@@ -45,7 +45,19 @@ public class Game {
                     does_action = false;
                     continue;
                 }
+                if (controller.state.pickObject())
+                    continue;
                 does_action = controller.state.talk();
+            }
+
+            if (controller.keyState.get(KeyEvent.VK_I)) {
+                controller.keyState.set(KeyEvent.VK_I, false);
+                if (does_action) {
+                    controller.state.hideInv();
+                    does_action = false;
+                    continue;
+                }
+                does_action = controller.state.showInv();
             }
 
             if (controller.keyState.get(KeyEvent.VK_P)) {

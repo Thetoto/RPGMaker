@@ -1,6 +1,7 @@
 package Engine;
 
 import Model.World.*;
+import Tools.Tools;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -68,6 +69,24 @@ public class EngineState extends Observable {
         return does_action;
     }
 
+    public boolean pickObject() {
+        Optional<Point> pt = currentMap.getForegroundSet().keySet().stream().min((o1, o2) -> {
+            double dist1 = o1.distance(player.getPosition());
+            double dist2 = o2.distance(player.getPosition());
+            return (int) (dist1 - dist2);
+        });
+
+        if (pt.isPresent()) {
+            Point2D.Double newPt = new Point2D.Double(pt.get().x, pt.get().y);
+            if (newPt.distance(player.getPosition()) < 1) {
+                System.out.println("Pick object " + currentMap.getForegroundSet().get(pt.get()).getName());
+                player.getItems().add(currentMap.getForegroundSet().get(pt.get()));
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void shutUp() {
         setChanged();
         notifyObservers("Remove Message");
@@ -103,5 +122,17 @@ public class EngineState extends Observable {
     public void redrawNPC() {
         setChanged();
         notifyObservers("Update NPC");
+    }
+
+    public boolean showInv() {
+        setChanged();
+        notifyObservers("Show Inventory");
+        return true;
+    }
+
+    public boolean hideInv() {
+        setChanged();
+        notifyObservers("Hide Inventory");
+        return true;
     }
 }

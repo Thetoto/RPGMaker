@@ -19,8 +19,9 @@ public class Display extends JLayeredPane implements Observer {
     static Integer NPC_LAYER = 2;
     static Integer PLAYER_LAYER = 3;
     static Integer TIME_CYCLE_LAYER = 4;
-    static Integer DIALOG_LAYER = 5;
-    static Integer PAUSE_LAYER = 6;
+    static Integer INVENTORY_LAYER = 5;
+    static Integer DIALOG_LAYER = 6;
+    static Integer PAUSE_LAYER = 7;
 
     JLabel backLayer;
     JLabel foreLayer;
@@ -29,9 +30,11 @@ public class Display extends JLayeredPane implements Observer {
     JLabel timeCycleLayer;
     JLabel pauseLayer;
     JLabel dialogLayer;
+    JLabel inventoryLayer;
 
     PauseMenu pause;
     Dialog dialog;
+    Inventory inventory;
 
     BufferedImage background = null;
     BufferedImage foreground = null;
@@ -75,6 +78,15 @@ public class Display extends JLayeredPane implements Observer {
         pauseLayer.add(pause);
         pauseLayer.setVisible(false);
         this.add(pauseLayer, PAUSE_LAYER);
+
+        inventoryLayer = new JLabel();
+        inventoryLayer.setLayout(new GridBagLayout());
+        inventory = new Inventory();
+        inventory.setVisible(true);
+        //inventory.setSize();
+        inventoryLayer.add(inventory);
+        inventoryLayer.setVisible(false);
+        this.add(inventoryLayer, INVENTORY_LAYER);
     }
 
     public void drawBackLayer(Map map) {
@@ -182,6 +194,7 @@ public class Display extends JLayeredPane implements Observer {
         Dimension size = getMySize();
         pauseLayer.setBounds(0, 0, size.width, size.height);
         dialogLayer.setBounds(0, 0, size.width, size.height);
+        inventoryLayer.setBounds(0, 0, size.width, size.height);
     }
 
     public void drawUpdate (EngineState state) {
@@ -201,11 +214,11 @@ public class Display extends JLayeredPane implements Observer {
                 setSizeMap();
                 repaint();
             }
-            if (str.equals("Update Perso")) {
+            else if (str.equals("Update Perso")) {
                 drawUpdate(state);
                 repaint();
             }
-            if (str.equals("Update NPC")) {
+            else if (str.equals("Update NPC")) {
                 drawNpcLayer(state.currentMap);
                 repaint();
             }
@@ -215,7 +228,7 @@ public class Display extends JLayeredPane implements Observer {
             else if (str.equals("Resume")) {
                 pauseLayer.setVisible(false);
             }
-            if (str.equals("Update Message")) {
+            else if (str.equals("Update Message")) {
                 dialog.setText(EngineState.getInstance().currentMessage.getMessage());
                 dialog.setName(EngineState.getInstance().currentMessage.getName());
                 dialogLayer.setVisible(true);
@@ -224,6 +237,13 @@ public class Display extends JLayeredPane implements Observer {
                 dialog.setText("");
                 dialog.setName("");
                 dialogLayer.setVisible(false);
+            }
+            else if (str.equals("Show Inventory")) {
+                inventory.updateInventory();
+                inventoryLayer.setVisible(true);
+            }
+            else if (str.equals("Hide Inventory")) {
+                inventoryLayer.setVisible(false);
             }
         }
     }

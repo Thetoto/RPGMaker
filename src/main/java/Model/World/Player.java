@@ -4,12 +4,15 @@ import Model.Editor.EditorState;
 import Tools.Tools;
 
 import java.awt.geom.Point2D;
+import java.util.Vector;
 
 public class Player {
     private int mapId;
     private Point2D.Double position;
     private Animation anim;
     private Direction direction;
+
+    transient Vector<Foreground> items = new Vector<>();
 
     public Player() {
         position = new Point2D.Double(0,0);
@@ -69,5 +72,9 @@ public class Player {
 
     public Direction getDirection() {
         return direction;
+    }
+
+    public Vector<Foreground> getItems() {
+        return items;
     }
 }
