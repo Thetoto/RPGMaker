@@ -69,6 +69,7 @@ public class ToolTilePanel extends JPanel implements Observer {
                     JButton but = new JButton();
                     but.setIcon(new ImageIcon(bt.getTile(i, j).get()));
                     but.setPreferredSize(new Dimension(16, 16));
+                    but.setContentAreaFilled(false);
                     container.add(but);
                     bigTileSeclector.add(but);
                 }

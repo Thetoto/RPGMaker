@@ -18,6 +18,7 @@ public class TilesSelectPanel extends JPanel {
     }
 
     public void addTile(String name, JButton button) {
+        button.setContentAreaFilled(false);
         buttons.put(name, button);
         container.add(button);
     }

@@ -3888,42 +3888,7 @@
         true,
         true,
         true,
-        false,
         true,
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        false,
         true,
         true,
         false,
@@ -3958,7 +3923,42 @@
         true,
         true,
         true,
+        true,
+        true,
+        true,
         false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         true,
         true,
         false,
@@ -4915,29 +4915,17 @@
       "foreground": [
         [
           {
-            "x": 27,
-            "y": 5
-          },
-          {
-            "image": "pilier.png"
-          }
-        ],
-        [
-          {
             "x": 6,
             "y": 4
           },
           {
-            "image": "center.png"
-          }
-        ],
-        [
-          {
-            "x": 7,
-            "y": 14
-          },
-          {
-            "image": "tapis.png"
+            "t": {
+              "image": "center.png"
+            },
+            "name": "center.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ],
         [
@@ -4946,7 +4934,13 @@
             "y": 25
           },
           {
-            "image": "stairs_up.png"
+            "t": {
+              "image": "stairs_up.png"
+            },
+            "name": "stairs_up.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ],
         [
@@ -4955,25 +4949,19 @@
             "y": 27
           },
           {
-            "image": "lit.png"
+            "t": {
+              "image": "lit.png"
+            },
+            "name": "lit.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ]
       ],
       "npc": [
         {
-          "message": "Hello i\u0027m the princess !",
-          "direction": "DOWN",
-          "anim": {
-            "image": "women.png"
-          },
-          "coordinates": {
-            "x": 16.0,
-            "y": 7.0
-          },
-          "isMoving": false
-        },
-        {
-          "message": "You should not pass !!!",
+          "message": "Hello!",
           "direction": "DOWN",
           "anim": {
             "image": "death.png"
@@ -4985,7 +4973,19 @@
           "isMoving": false
         },
         {
-          "message": "I\u0027m so tired.",
+          "message": "Hello!",
+          "direction": "DOWN",
+          "anim": {
+            "image": "women.png"
+          },
+          "coordinates": {
+            "x": 16.0,
+            "y": 6.0
+          },
+          "isMoving": false
+        },
+        {
+          "message": "Hello!",
           "direction": "DOWN",
           "anim": {
             "image": "poseidon.png"
@@ -5006,8 +5006,8 @@
             "y": 26
           },
           "destPosition": {
-            "x": 17,
-            "y": 18
+            "x": 16,
+            "y": 19
           }
         }
       ],
@@ -5564,7 +5564,112 @@
           "image": "TransPlaceHolder"
         },
         {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
           "image": "Sans titre3.png_0"
+        },
+        {
+          "image": "Sans titre3.png_1"
         },
         {
           "image": "Sans titre3.png_1"
@@ -5666,25 +5771,25 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
-        },
-        {
           "image": "Sans titre3.png_3"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
+        },
+        {
+          "image": "stone.png"
         },
         {
           "image": "Sans titre3.png_5"
@@ -5771,25 +5876,25 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
-        },
-        {
           "image": "Sans titre3.png_3"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
+        },
+        {
+          "image": "stone.png"
         },
         {
           "image": "Sans titre3.png_5"
@@ -5876,25 +5981,25 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
-        },
-        {
           "image": "Sans titre3.png_3"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
+        },
+        {
+          "image": "stone.png"
         },
         {
           "image": "Sans titre3.png_5"
@@ -5981,25 +6086,25 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
-        },
-        {
           "image": "Sans titre3.png_3"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
+        },
+        {
+          "image": "stone.png"
         },
         {
           "image": "Sans titre3.png_5"
@@ -6086,28 +6191,133 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "TransPlaceHolder"
-        },
-        {
           "image": "Sans titre3.png_3"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
         },
         {
-          "image": "Sans titre3.png_4"
+          "image": "stone.png"
+        },
+        {
+          "image": "stone.png"
         },
         {
           "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_6"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
+          "image": "Sans titre3.png_8"
         },
         {
           "image": "TransPlaceHolder"
@@ -6194,114 +6404,6 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "Sans titre3.png_6"
-        },
-        {
-          "image": "Sans titre3.png_7"
-        },
-        {
-          "image": "Sans titre3.png_7"
-        },
-        {
-          "image": "wood.png"
-        },
-        {
-          "image": "wood.png"
-        },
-        {
-          "image": "Sans titre3.png_7"
-        },
-        {
-          "image": "Sans titre3.png_8"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "Sans titre3.png_3"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_5"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
           "image": "TransPlaceHolder"
         },
         {
@@ -6312,6 +6414,9 @@
         },
         {
           "image": "wood.png"
+        },
+        {
+          "image": "TransPlaceHolder"
         },
         {
           "image": "TransPlaceHolder"
@@ -6410,13 +6515,13 @@
           "image": "TransPlaceHolder"
         },
         {
+          "image": "wood.png"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
           "image": "TransPlaceHolder"
-        },
-        {
-          "image": "wood.png"
-        },
-        {
-          "image": "wood.png"
         },
         {
           "image": "TransPlaceHolder"
@@ -6477,9 +6582,6 @@
         },
         {
           "image": "Sans titre3.png_5"
-        },
-        {
-          "image": "TransPlaceHolder"
         },
         {
           "image": "TransPlaceHolder"
@@ -6566,6 +6668,9 @@
           "image": "TransPlaceHolder"
         },
         {
+          "image": "TransPlaceHolder"
+        },
+        {
           "image": "Sans titre3.png_3"
         },
         {
@@ -6582,6 +6687,216 @@
         },
         {
           "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_3"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "wall.png"
+        },
+        {
+          "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_3"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_3"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_6"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
+          "image": "Sans titre3.png_8"
         },
         {
           "image": "TransPlaceHolder"
@@ -6620,9 +6935,6 @@
           "image": "Sans titre3.png_0"
         },
         {
-          "image": "Sans titre3.png_1"
-        },
-        {
           "image": "wood.png"
         },
         {
@@ -6641,111 +6953,6 @@
           "image": "Sans titre3.png_3"
         },
         {
-          "image": "wall.png"
-        },
-        {
-          "image": "wall.png"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "wall.png"
-        },
-        {
-          "image": "wall.png"
-        },
-        {
-          "image": "Sans titre3.png_5"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "Sans titre3.png_3"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_5"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "Sans titre3.png_3"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_5"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "Sans titre3.png_3"
-        },
-        {
           "image": "Sans titre3.png_4"
         },
         {
@@ -6771,108 +6978,6 @@
         },
         {
           "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "Sans titre3.png_6"
-        },
-        {
-          "image": "Sans titre3.png_7"
-        },
-        {
-          "image": "wood.png"
-        },
-        {
-          "image": "wood.png"
-        },
-        {
-          "image": "Sans titre3.png_7"
-        },
-        {
-          "image": "Sans titre3.png_8"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "Sans titre3.png_3"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_5"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "Sans titre3.png_3"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_4"
-        },
-        {
-          "image": "Sans titre3.png_5"
         },
         {
           "image": "TransPlaceHolder"
@@ -6936,6 +7041,108 @@
         },
         {
           "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_3"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "wood.png"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_3"
         },
         {
           "image": "Sans titre3.png_4"
@@ -6998,6 +7205,9 @@
           "image": "wood.png"
         },
         {
+          "image": "wood.png"
+        },
+        {
           "image": "TransPlaceHolder"
         },
         {
@@ -7038,9 +7248,6 @@
         },
         {
           "image": "Sans titre3.png_3"
-        },
-        {
-          "image": "Sans titre3.png_4"
         },
         {
           "image": "Sans titre3.png_4"
@@ -7103,6 +7310,9 @@
           "image": "wood.png"
         },
         {
+          "image": "wood.png"
+        },
+        {
           "image": "TransPlaceHolder"
         },
         {
@@ -7143,9 +7353,6 @@
         },
         {
           "image": "Sans titre3.png_3"
-        },
-        {
-          "image": "Sans titre3.png_4"
         },
         {
           "image": "Sans titre3.png_4"
@@ -7247,22 +7454,109 @@
           "image": "TransPlaceHolder"
         },
         {
-          "image": "Sans titre3.png_6"
+          "image": "TransPlaceHolder"
         },
         {
-          "image": "Sans titre3.png_7"
+          "image": "Sans titre3.png_3"
         },
         {
-          "image": "Sans titre3.png_7"
+          "image": "Sans titre3.png_4"
         },
         {
-          "image": "Sans titre3.png_7"
+          "image": "Sans titre3.png_4"
         },
         {
-          "image": "Sans titre3.png_7"
+          "image": "Sans titre3.png_4"
         },
         {
-          "image": "Sans titre3.png_8"
+          "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_3"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_4"
+        },
+        {
+          "image": "Sans titre3.png_5"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "TransPlaceHolder"
         },
         {
           "image": "TransPlaceHolder"
@@ -7280,6 +7574,24 @@
           "image": "Sans titre3.png_7"
         },
         {
+          "image": "Sans titre3.png_8"
+        },
+        {
+          "image": "TransPlaceHolder"
+        },
+        {
+          "image": "Sans titre3.png_6"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
+          "image": "Sans titre3.png_7"
+        },
+        {
           "image": "Sans titre3.png_7"
         },
         {
@@ -7293,318 +7605,6 @@
         },
         {
           "image": "Sans titre3.png_8"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
-        },
-        {
-          "image": "TransPlaceHolder"
         },
         {
           "image": "TransPlaceHolder"
@@ -8700,615 +8700,54 @@
         }
       ],
       "walkable": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
-        false,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
         true,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
         true,
-        false,
-        false,
-        false,
         true,
         true,
         true,
@@ -9316,34 +8755,12 @@
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
         true,
-        false,
-        false,
-        false,
         true,
         true,
         true,
@@ -9358,20 +8775,6 @@
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
@@ -9393,20 +8796,6 @@
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
         true,
         true,
         true,
@@ -9421,582 +8810,1241 @@
         true,
         true,
         true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
         false,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
       ],
       "foreground": [
         [
           {
-            "x": 8,
-            "y": 8
+            "x": 7,
+            "y": 9
           },
           {
-            "image": "stairs_down.png"
-          }
-        ],
-        [
-          {
-            "x": 10,
-            "y": 4
-          },
-          {
-            "image": "pilier.png"
-          }
-        ],
-        [
-          {
-            "x": 10,
-            "y": 8
-          },
-          {
-            "image": "pilier.png"
+            "t": {
+              "image": "stairs_down.png"
+            },
+            "name": "stairs_down.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ],
         [
           {
             "x": 25,
-            "y": 10
+            "y": 11
           },
           {
-            "image": "center.png"
+            "t": {
+              "image": "center.png"
+            },
+            "name": "center.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ],
         [
           {
-            "x": 16,
-            "y": 13
+            "x": 5,
+            "y": 5
           },
           {
-            "image": "house.png"
+            "t": {
+              "image": "pilier.png"
+            },
+            "name": "pilier.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ],
         [
           {
-            "x": 6,
-            "y": 4
+            "x": 10,
+            "y": 5
           },
           {
-            "image": "pilier.png"
+            "t": {
+              "image": "pilier.png"
+            },
+            "name": "pilier.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ],
         [
           {
-            "x": 6,
-            "y": 8
+            "x": 10,
+            "y": 9
           },
           {
-            "image": "pilier.png"
+            "t": {
+              "image": "pilier.png"
+            },
+            "name": "pilier.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ],
         [
           {
-            "x": 11,
-            "y": 19
+            "x": 5,
+            "y": 9
           },
           {
-            "image": "tapis.png"
+            "t": {
+              "image": "pilier.png"
+            },
+            "name": "pilier.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
+          }
+        ],
+        [
+          {
+            "x": 15,
+            "y": 15
+          },
+          {
+            "t": {
+              "image": "house.png"
+            },
+            "name": "house.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
+          }
+        ],
+        [
+          {
+            "x": 10,
+            "y": 22
+          },
+          {
+            "t": {
+              "image": "tapis.png"
+            },
+            "name": "tapis.png",
+            "is_breakable": false,
+            "is_hided": false,
+            "is_pickable": false
           }
         ]
       ],
@@ -10006,12 +10054,12 @@
           "name": "New map | 0",
           "mapDestId": 0,
           "position": {
-            "x": 8,
-            "y": 8
+            "x": 7,
+            "y": 9
           },
           "destPosition": {
-            "x": 17,
-            "y": 27
+            "x": 7,
+            "y": 8
           }
         }
       ],
@@ -10020,12 +10068,12 @@
       }
     }
   ],
-  "curIdMap": 3,
+  "curIdMap": 2,
   "player": {
     "mapId": 0,
     "position": {
-      "x": 15.0,
-      "y": 27.0
+      "x": 16.0,
+      "y": 13.0
     },
     "anim": {
       "image": "orc.png"
