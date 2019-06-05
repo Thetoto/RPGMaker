@@ -4,6 +4,7 @@ import Model.Editor.EditorState;
 import Model.Editor.ToolsEnum;
 import Model.World.*;
 import Model.Editor.MapState;
+import Tools.CompressedImage;
 import Tools.Draw;
 
 import javax.swing.*;
@@ -30,10 +31,10 @@ public class MapPanel extends JLayeredPane implements Observer {
     static int multiply;
     public double currentZoom = 1.;
 
-    BufferedImage backImage = Tile.getPlaceholder().get();
-    BufferedImage mapImage = Tile.getPlaceholder().get();
-    BufferedImage midImage = Tile.getTransPlaceholder().get();
-    BufferedImage selection_layout = Tile.getTransPlaceholder().get();
+    CompressedImage backImage = null;
+    CompressedImage mapImage = null;
+    CompressedImage midImage = null;
+    BufferedImage selection_layout = null;
 
     public MapPanel() {
         backLayer = new JLabel();
@@ -53,23 +54,26 @@ public class MapPanel extends JLayeredPane implements Observer {
         if (newMap)
             mapImage = createImage(map.getDim());
 
+        BufferedImage in = mapImage.getImage();
+
         MapState mapState = EditorState.getInstance().mapState;
         if (mapState.updateRequestIn != null) {
-            clearRectBi(mapImage, mapState.updateRequestIn, mapState.updateRequestOut);
+            clearRectBi(in, mapState.updateRequestIn, mapState.updateRequestOut);
         }
 
-        Graphics2D g = mapImage.createGraphics();
+        Graphics2D g = in.createGraphics();
         Draw.drawBackTiles(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
         Draw.drawForeTiles(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
         Draw.drawNPC(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
         g.dispose();
 
         if (newMap) {
-            mapLayer.setIcon(new ImageIcon(mapImage));
+            mapLayer.setIcon(new ImageIcon(in));
             mapLayer.setBounds(0, 0, mapImage.getWidth(), mapImage.getHeight());
 
             this.setSizeMap();
         }
+        mapImage.dispose();
         repainRect(this, mapState);
     }
 
@@ -79,7 +83,9 @@ public class MapPanel extends JLayeredPane implements Observer {
         if (newMap)
             midImage = createImage(mapState.currentMap.getDim());
 
-        Graphics2D g = midImage.createGraphics();
+        BufferedImage in = midImage.getImage();
+
+        Graphics2D g = in.createGraphics();
         for (int x = 0; x < mapState.currentMap.getDim().width; x++) {
             for (int y = 0; y < mapState.currentMap.getDim().height; y++) {
                 if (mapState.currentMap.getWalkable(x, y))
@@ -93,9 +99,10 @@ public class MapPanel extends JLayeredPane implements Observer {
         g.dispose();
 
         if (newMap) {
-            midLayer.setIcon(new ImageIcon(midImage));
+            midLayer.setIcon(new ImageIcon(in));
             midLayer.setBounds(0, 0, midImage.getWidth(), midImage.getHeight());
         }
+        midImage.dispose();
         this.repaint();
     }
 
@@ -103,14 +110,17 @@ public class MapPanel extends JLayeredPane implements Observer {
         if (newMap)
             backImage = createImage(mapState.currentMap.getDim());
 
-        Graphics2D g = backImage.createGraphics();
+        BufferedImage in = backImage.getImage();
+
+        Graphics2D g = in.createGraphics();
         Draw.drawBackground(g, mapState.currentMap.getBackgroundTile(), mapState.currentMap.getDim(), multiply);
         g.dispose();
 
         if (newMap) {
-            backLayer.setIcon(new ImageIcon(backImage));
+            backLayer.setIcon(new ImageIcon(in));
             backLayer.setBounds(0, 0, backImage.getWidth(), backImage.getHeight());
         }
+        backImage.dispose();
         this.repaint();
     }
 
@@ -165,10 +175,9 @@ public class MapPanel extends JLayeredPane implements Observer {
                 selection_layout.getWidth(), selection_layout.getHeight());
     }
 
-    public static BufferedImage createImage(Dimension dim) {
-        BufferedImage bi = new BufferedImage(dim.width * multiply, dim.height * multiply, BufferedImage.TYPE_INT_ARGB);
-        Color transparent = new Color(255, 255, 255, 255);
-        return bi;
+    public static CompressedImage createImage(Dimension dim) {
+        CompressedImage ci = new CompressedImage(new BufferedImage(dim.width * multiply, dim.height * multiply, BufferedImage.TYPE_INT_ARGB));
+        return ci;
     }
 
     public static void clearRectBi(BufferedImage bi, Point in, Point out) {
