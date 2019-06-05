@@ -68,13 +68,6 @@ public class Engine extends JFrame implements Observer {
                     dialog.setVisible(false);
                     validateAll(dialog);
                 }
-                else if (s.equals("Pause")) {
-                    mapPanel.pauseLayer.setVisible(true);
-                    System.out.println(mapPanel.pauseLayer.getBounds());
-                }
-                else if (s.equals("Resume")) {
-                    mapPanel.pauseLayer.setVisible(false);
-                }
                 else if (s.equals("Switch Time")) {
                     mapPanel.drawTimeCycleLayer(EngineState.getInstance().currentMap,
                                                 EngineState.getInstance().world.timeCycle.isNight());

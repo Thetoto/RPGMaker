@@ -27,7 +27,7 @@ public class Display extends JLayeredPane implements Observer {
     JLabel npcLayer;
     JLabel playerLayer;
     JLabel timeCycleLayer;
-    public JLabel pauseLayer;
+    JLabel pauseLayer;
 
     BufferedImage background = null;
     BufferedImage foreground = null;
@@ -194,6 +194,12 @@ public class Display extends JLayeredPane implements Observer {
             if (str.equals("Update NPC")) {
                 drawNpcLayer(state.currentMap);
                 repaint();
+            }
+            else if (str.equals("Pause")) {
+                pauseLayer.setVisible(true);
+            }
+            else if (str.equals("Resume")) {
+                pauseLayer.setVisible(false);
             }
         }
     }
