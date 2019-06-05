@@ -16,14 +16,16 @@ public class ToolPlayerPanel extends JPanel {
     JLabel Xcoord = new JLabel();
     JLabel Ycoord = new JLabel();
     JLabel playerAnim = new JLabel();
+    public JButton setSpawn = new JButton("Set Spawn point");
 
     public ToolPlayerPanel() {
-        this.setLayout(new GridLayout(4,1));
+        this.setLayout(new GridLayout(5,1));
 
         this.add(mapName);
         this.add(Xcoord);
         this.add(Ycoord);
         this.add(playerAnim);
+        this.add(setSpawn);
     }
 
     @Override

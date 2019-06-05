@@ -45,6 +45,8 @@ public class ToolsController {
             JCheckBox tmp = (JCheckBox) e.getSource();
             EditorState.getInstance().mapState.getCurrentNPC().setMoving(tmp.isSelected());
         });
+
+        toolsPanel.toolPlayerPanel.setSpawn.addActionListener(e -> EditorState.getInstance().mapState.setMode(Mode.PLAYER));
     }
 
     public ToolsEnum getCurrentTool() {
