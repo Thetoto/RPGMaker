@@ -20,12 +20,14 @@ public class Display extends JLayeredPane implements Observer {
     static Integer NPC_LAYER = 2;
     static Integer PLAYER_LAYER = 3;
     static Integer TIME_CYCLE_LAYER = 4;
+    static Integer PAUSE_LAYER = 5;
 
     JLabel backLayer;
     JLabel foreLayer;
     JLabel npcLayer;
     JLabel playerLayer;
     JLabel timeCycleLayer;
+    public JLabel pauseLayer;
 
     BufferedImage background = null;
     BufferedImage foreground = null;
@@ -50,6 +52,17 @@ public class Display extends JLayeredPane implements Observer {
 
         timeCycleLayer = new JLabel();
         this.add(timeCycleLayer, TIME_CYCLE_LAYER);
+
+        pauseLayer = new JLabel();
+        pauseLayer.setLayout(new GridBagLayout());
+        Dialog pause = new Dialog();
+        pause.setText("Game paused.");
+        pause.setVisible(true);
+        pause.setSize( 100, 200);
+        pauseLayer.add(pause);
+        pauseLayer.setVisible(false);
+        this.add(pauseLayer, PAUSE_LAYER);
+
     }
 
     public void drawBackLayer(Map map) {
@@ -148,12 +161,13 @@ public class Display extends JLayeredPane implements Observer {
     }
 
     public void drawAll(EngineState state) {
-        ThreadLauncher.execute(() -> drawBackLayer(state.currentMap));
-        ThreadLauncher.execute(() -> drawForeLayer(state.currentMap));
-        ThreadLauncher.execute(() -> drawNpcLayer(state.currentMap));
-        ThreadLauncher.execute(() -> drawPlayerLayer(state));
-        if (state.world.timeCycle.isActive());
-            ThreadLauncher.execute(() -> drawTimeCycleLayer(state.currentMap, state.world.timeCycle.isNight()));
+        drawBackLayer(state.currentMap);
+        drawForeLayer(state.currentMap);
+        drawNpcLayer(state.currentMap);
+        drawPlayerLayer(state);
+        if (state.world.timeCycle.isActive())
+            drawTimeCycleLayer(state.currentMap, state.world.timeCycle.isNight());
+        pauseLayer.setBounds(0, 0, background.getWidth(), background.getHeight());
     }
 
     public void drawUpdate (EngineState state) {

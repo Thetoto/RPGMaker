@@ -7,7 +7,6 @@ import java.util.Observer;
 
 public class Engine extends JFrame implements Observer {
     public Display mapPanel;
-    public Dialog pause;
     public Dialog dialog;
 
     public Engine() {
@@ -19,9 +18,6 @@ public class Engine extends JFrame implements Observer {
             e.printStackTrace();
         }
         this.setLocationRelativeTo(null);
-
-        pause = new Dialog();
-        pause.setText("Game paused.");
 
         mapPanel = new Display();
         mapPanel.setVisible(true);
@@ -37,7 +33,6 @@ public class Engine extends JFrame implements Observer {
         JPanel level = new JPanel();
         level.setLayout(new BorderLayout());
         level.add(panel, BorderLayout.CENTER);
-        level.add(pause, BorderLayout.PAGE_START);
         level.add(dialog,  BorderLayout.PAGE_END);
         level.setVisible(true);
 
@@ -46,11 +41,9 @@ public class Engine extends JFrame implements Observer {
         this.setVisible(true);
         System.out.println("FRAME: " + this.getWidth() + " " + this.getHeight());
         System.out.println("\tLEVEL: " + level.getWidth() + " " + level.getHeight());
-        System.out.println("\t\tPAUSE: " + pause.getWidth() + " " + pause.getHeight());
         System.out.println("\t\tPANEL: " + panel.getWidth() + " " + panel.getHeight());
         System.out.println("\t\t\tMAP: " + mapPanel.getWidth() + " " + mapPanel.getHeight());
         System.out.println("\t\tDIALOG: " + dialog.getWidth() + " " + dialog.getHeight());
-        pause.setVisible(false);
     }
 
     public static void validateAll(Container j) {
@@ -76,10 +69,11 @@ public class Engine extends JFrame implements Observer {
                     validateAll(dialog);
                 }
                 else if (s.equals("Pause")) {
-                    pause.setVisible(true);
+                    mapPanel.pauseLayer.setVisible(true);
+                    System.out.println(mapPanel.pauseLayer.getBounds());
                 }
                 else if (s.equals("Resume")) {
-                    pause.setVisible(false);
+                    mapPanel.pauseLayer.setVisible(false);
                 }
                 else if (s.equals("Switch Time")) {
                     mapPanel.drawTimeCycleLayer(EngineState.getInstance().currentMap,
