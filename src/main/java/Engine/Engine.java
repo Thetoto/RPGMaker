@@ -7,7 +7,6 @@ import java.util.Observer;
 
 public class Engine extends JFrame implements Observer {
     public Display mapPanel;
-    public Dialog dialog;
 
     public Engine() {
         this.setSize(1080,720);
@@ -26,14 +25,10 @@ public class Engine extends JFrame implements Observer {
         panel.add(mapPanel);
         panel.setVisible(true);
 
-        dialog = new Dialog();
-        dialog.setSize(100, 100);
-        dialog.setVisible(false);
 
         JPanel level = new JPanel();
         level.setLayout(new BorderLayout());
         level.add(panel, BorderLayout.CENTER);
-        level.add(dialog,  BorderLayout.PAGE_END);
         level.setVisible(true);
 
         this.add(level);
@@ -43,7 +38,6 @@ public class Engine extends JFrame implements Observer {
         System.out.println("\tLEVEL: " + level.getWidth() + " " + level.getHeight());
         System.out.println("\t\tPANEL: " + panel.getWidth() + " " + panel.getHeight());
         System.out.println("\t\t\tMAP: " + mapPanel.getWidth() + " " + mapPanel.getHeight());
-        System.out.println("\t\tDIALOG: " + dialog.getWidth() + " " + dialog.getHeight());
     }
 
     public static void validateAll(Container j) {
@@ -58,17 +52,7 @@ public class Engine extends JFrame implements Observer {
         if (o instanceof EngineState) {
             if (arg instanceof String) {
                 String s = (String) arg;
-                if (s.equals("Update Message")) {
-                    dialog.setText(EngineState.getInstance().currentMessage);
-                    dialog.setVisible(true);
-                    validateAll(dialog);
-                }
-                else if (s.equals("Remove Message")) {
-                    dialog.setText("");
-                    dialog.setVisible(false);
-                    validateAll(dialog);
-                }
-                else if (s.equals("Switch Time")) {
+                if (s.equals("Switch Time")) {
                     mapPanel.drawTimeCycleLayer(EngineState.getInstance().currentMap,
                                                 EngineState.getInstance().world.timeCycle.isNight());
                 }

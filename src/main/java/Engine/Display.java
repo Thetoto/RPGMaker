@@ -5,7 +5,6 @@ import Model.World.ImportedTile;
 import Model.World.Map;
 import Model.World.Player;
 import Tools.Draw;
-import Tools.ThreadLauncher;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +19,8 @@ public class Display extends JLayeredPane implements Observer {
     static Integer NPC_LAYER = 2;
     static Integer PLAYER_LAYER = 3;
     static Integer TIME_CYCLE_LAYER = 4;
-    static Integer PAUSE_LAYER = 5;
+    static Integer DIALOG_LAYER = 5;
+    static Integer PAUSE_LAYER = 6;
 
     JLabel backLayer;
     JLabel foreLayer;
@@ -28,6 +28,8 @@ public class Display extends JLayeredPane implements Observer {
     JLabel playerLayer;
     JLabel timeCycleLayer;
     JLabel pauseLayer;
+    JLabel dialogLayer;
+    Dialog dialog;
 
     BufferedImage background = null;
     BufferedImage foreground = null;
@@ -53,6 +55,15 @@ public class Display extends JLayeredPane implements Observer {
         timeCycleLayer = new JLabel();
         this.add(timeCycleLayer, TIME_CYCLE_LAYER);
 
+        dialogLayer = new JLabel();
+        dialogLayer.setLayout(new BorderLayout());
+        dialog = new Dialog();
+        dialog.setVisible(true);
+        dialog.setSize(100, 100);
+        dialogLayer.add(dialog, BorderLayout.PAGE_END);
+        dialogLayer.setVisible(false);
+        this.add(dialogLayer, DIALOG_LAYER);
+
         pauseLayer = new JLabel();
         pauseLayer.setLayout(new GridBagLayout());
         Dialog pause = new Dialog();
@@ -62,7 +73,6 @@ public class Display extends JLayeredPane implements Observer {
         pauseLayer.add(pause);
         pauseLayer.setVisible(false);
         this.add(pauseLayer, PAUSE_LAYER);
-
     }
 
     public void drawBackLayer(Map map) {
@@ -168,6 +178,7 @@ public class Display extends JLayeredPane implements Observer {
         if (state.world.timeCycle.isActive())
             drawTimeCycleLayer(state.currentMap, state.world.timeCycle.isNight());
         pauseLayer.setBounds(0, 0, background.getWidth(), background.getHeight());
+        dialogLayer.setBounds(0, 0, background.getWidth(), background.getHeight());
     }
 
     public void drawUpdate (EngineState state) {
@@ -200,6 +211,14 @@ public class Display extends JLayeredPane implements Observer {
             }
             else if (str.equals("Resume")) {
                 pauseLayer.setVisible(false);
+            }
+            if (str.equals("Update Message")) {
+                dialog.setText(EngineState.getInstance().currentMessage);
+                dialogLayer.setVisible(true);
+            }
+            else if (str.equals("Remove Message")) {
+                dialog.setText("");
+                dialogLayer.setVisible(false);
             }
         }
     }
