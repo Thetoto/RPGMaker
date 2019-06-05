@@ -79,9 +79,15 @@ public class EngineState extends Observable {
         if (pt.isPresent()) {
             Point2D.Double newPt = new Point2D.Double(pt.get().x, pt.get().y);
             if (newPt.distance(player.getPosition()) < 1) {
-                System.out.println("Pick object " + currentMap.getForegroundSet().get(pt.get()).getName());
-                player.getItems().add(currentMap.getForegroundSet().get(pt.get()));
-                return true;
+                Foreground f = currentMap.getForegroundSet().get(pt.get());
+                if (f.isPickable) {
+                    System.out.println("Pick object " + currentMap.getForegroundSet().get(pt.get()).getName());
+                    player.getItems().add(f);
+                    f.isRemoved = true;
+                    setChanged();
+                    notifyObservers("Update foreground");
+                    return true;
+                }
             }
         }
         return false;

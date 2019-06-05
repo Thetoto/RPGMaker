@@ -343,4 +343,8 @@ public class Map {
     public Vector<Tile> getBackground() {
         return background;
     }
+
+    public void remove(Point point) {
+        foreground.remove(point);
+    }
 }

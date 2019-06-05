@@ -38,8 +38,11 @@ public class Draw {
             for (int y = reqIn.y; y <= reqOut.y; y++) {
                 Point pt = map.isOccupied(x, y, new Dimension(1, 1));
                 if (pt != null) {
-                    ImportedTile tile = (ImportedTile) map.getForegroundSet().get(pt).getTile();
-                    drawImported(g, tile, pt, multiply);
+                    Foreground f = map.getForegroundSet().get(pt);
+                    if (!f.isRemoved) {
+                        ImportedTile tile = (ImportedTile) f.getTile();
+                        drawImported(g, tile, pt, multiply);
+                    }
                 }
             }
         }

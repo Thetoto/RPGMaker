@@ -8,6 +8,7 @@ public class Foreground {
     public boolean isBreakable;
     public boolean isHided;
     public boolean isPickable;
+    public boolean isRemoved;
     public String breaker;
 
     public Foreground(Tile t) {
@@ -16,6 +17,7 @@ public class Foreground {
         isBreakable = false;
         isHided = false;
         isPickable = false;
+        isRemoved = false;
         breaker = "";
     }
 

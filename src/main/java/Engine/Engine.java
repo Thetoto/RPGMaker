@@ -55,6 +55,8 @@ public class Engine extends JFrame implements Observer {
                 if (s.equals("Switch Time")) {
                     mapPanel.drawTimeCycleLayer(EngineState.getInstance().currentMap,
                                                 EngineState.getInstance().world.timeCycle.isNight());
+                } else if (s.equals("Update foreground")) {
+                    mapPanel.drawForeLayer(EngineState.getInstance().currentMap);
                 }
             }
         }

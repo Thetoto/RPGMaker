@@ -1,6 +1,9 @@
 package Engine;
 
+import Model.Editor.EditorState;
 import Model.Engine.Timer;
+import Model.World.Foreground;
+import Model.World.Map;
 import Model.World.World;
 import Tools.ThreadLauncher;
 
@@ -75,6 +78,11 @@ public class EngineController {
 
     public void destroyGame() {
         keyState.set(KeyEvent.VK_ESCAPE, true);
+        for (Map m : EditorState.getInstance().world.getMaps()) {
+            for (Foreground f : m.getForegroundSet().values()) {
+                f.isRemoved = false;
+            }
+        }
         if (timeCycle != null)
             timeCycle.stop();
         if (Main.standalone)
