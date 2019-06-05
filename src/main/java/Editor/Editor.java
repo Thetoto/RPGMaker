@@ -14,7 +14,6 @@ import java.util.Observer;
 public class Editor extends JFrame implements Observer {
     private static Editor editor;
 
-    public JMenuBar menuBar;
     public JPanel mainPane;
 
     public TilesPanel tilesPane;
@@ -41,10 +40,6 @@ public class Editor extends JFrame implements Observer {
 
 
     private void setUpEditor() {
-        menuBar = new JMenuBar();
-        menuBar.add(new JMenu("coucou"));
-        this.setJMenuBar(menuBar);
-
         topBar = new TopBar();
 
         tilesPane = new TilesPanel();
@@ -59,7 +54,7 @@ public class Editor extends JFrame implements Observer {
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+
         panel.add(mapPane);
         JScrollPane scrollFrame = addScrollBar(panel);
 
@@ -97,8 +92,6 @@ public class Editor extends JFrame implements Observer {
 
     @Override
     public void setVisible(boolean flag) {
-        menuBar.setVisible(flag);
-
         mapPane.setVisible(flag);
 
         tilesPane.setVisible(flag);

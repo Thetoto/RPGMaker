@@ -50,14 +50,12 @@ public class EngineController {
             public synchronized void keyPressed(KeyEvent keyEvent) {
                 if (keyEvent.getKeyCode() < 256)
                     keyState.set(keyEvent.getKeyCode(), true);
-                System.out.println(keyEvent.getKeyCode() + " Begin");
             }
 
             @Override
             public synchronized void keyReleased(KeyEvent keyEvent) {
                 if (keyEvent.getKeyCode() < 256)
                     keyState.set(keyEvent.getKeyCode(), false);
-                System.out.println(keyEvent.getKeyCode() + " End");
             }
         });
 

@@ -179,8 +179,9 @@ public class Display extends JLayeredPane implements Observer {
         drawPlayerLayer(state);
         if (state.world.timeCycle.isActive())
             drawTimeCycleLayer(state.currentMap, state.world.timeCycle.isNight());
-        pauseLayer.setBounds(0, 0, background.getWidth(), background.getHeight());
-        dialogLayer.setBounds(0, 0, background.getWidth(), background.getHeight());
+        Dimension size = getMySize();
+        pauseLayer.setBounds(0, 0, size.width, size.height);
+        dialogLayer.setBounds(0, 0, size.width, size.height);
     }
 
     public void drawUpdate (EngineState state) {
@@ -210,7 +211,6 @@ public class Display extends JLayeredPane implements Observer {
             }
             else if (str.equals("Pause")) {
                 pauseLayer.setVisible(true);
-                pause.resume.requestFocus();
             }
             else if (str.equals("Resume")) {
                 pauseLayer.setVisible(false);
