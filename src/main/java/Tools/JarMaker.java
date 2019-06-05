@@ -79,8 +79,8 @@ public class JarMaker {
 
     private static void addImagesJar(JarOutputStream target, World w) {
         for (Map m : w.maps) {
-            for (Tile t : m.getForegroundSet().values()) {
-                addEntryImageJar(target, t.get(), "foreground/" + t.getName());
+            for (Foreground f : m.getForegroundSet().values()) {
+                addEntryImageJar(target, f.get(), "foreground/" + f.getName());
             }
             for (Tile t : m.getBackground()) {
                 addEntryImageJar(target, t.get(), "background/" + t.getName());

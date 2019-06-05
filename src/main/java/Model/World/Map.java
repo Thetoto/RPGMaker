@@ -18,7 +18,7 @@ public class Map {
     Dimension dimension;
     Vector<Tile> background;
     Vector<Boolean> walkable;
-    HashMap<Point, Tile> foreground; // Tile but it's a ImportedTile. Point is top left corner.
+    HashMap<Point, Foreground> foreground; // Tile but it's a ImportedTile. Point is top left corner.
     Vector<NPC> npc;
     Vector<Teleporter> teleporters;
     Tile backgroundTile;
@@ -153,7 +153,7 @@ public class Map {
         for (int i = x; i < x + dimension.width; i++) {
             for (int j = y; j < y + dimension.height; j++) {
                 for (var item : foreground.entrySet()) {
-                    ImportedTile tile = (ImportedTile)item.getValue();
+                    ImportedTile tile = (ImportedTile)item.getValue().getTile();
                     Point pt = item.getKey();
                     if (i >= pt.x && i < pt.x + tile.getWidth() && j >= pt.y && j < pt.y + tile.getHeight()) {
                         return pt;
@@ -244,7 +244,7 @@ public class Map {
         if (checkBounds(x, y))
             return;
 
-        foreground.put(new Point(x, y), tile);
+        foreground.put(new Point(x, y), new Foreground(tile));
 
         for (int i = x; i < x + tile.getWidth(); i++) {
             for (int j = y; j < y + tile.getHeight(); j++) {
@@ -255,7 +255,7 @@ public class Map {
     private void removeFore(Point pt) {
         if (checkBounds(pt.x, pt.y))
             return;
-        ImportedTile imp = (ImportedTile)foreground.get(pt);
+        ImportedTile imp = (ImportedTile)foreground.get(pt).getTile();
         Dimension dim = new Dimension(imp.getWidth(), imp.getHeight());
         foreground.remove(pt);
         MapState mapState = EditorState.getInstance().mapState;
@@ -284,7 +284,7 @@ public class Map {
         walkable.set(x + dimension.width * y, bool);
     }
 
-    public HashMap<Point, Tile> getForegroundSet() {
+    public HashMap<Point, Foreground> getForegroundSet() {
         return foreground;
     }
     public Vector<NPC> getNpcs() {

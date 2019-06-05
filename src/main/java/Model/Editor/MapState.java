@@ -88,7 +88,7 @@ public class MapState extends Observable {
             currentMap.draw(EditorState.getInstance().tilesState.currentTile, selectionIn, selectionOut);
             mousePreview(null, null);
             updateMap(false);
-            if (EditorState.getInstance().tilesState.currentTile instanceof Animation) {
+            if (EditorState.getInstance().tilesState.currentTile.getType() != TileType.BACKGROUND) {
                 setChanged();
                 notifyObservers("Update Map");
             }

@@ -44,7 +44,13 @@ public class TreePanel extends JTree {
                 DefaultMutableTreeNode Tnpc = new DefaultMutableTreeNode(npc);
                 Tnpcs.add(Tnpc);
             }
+            DefaultMutableTreeNode Tfores = new DefaultMutableTreeNode("Foregrounds");
+            for (Foreground f : map.getForegroundSet().values()) {
+                DefaultMutableTreeNode Tfore = new DefaultMutableTreeNode(f);
+                Tfores.add(Tfore);
+            }
             Tmap.add(Tnpcs);
+            Tmap.add(Tfores);
             Tmaps.add(Tmap);
             if (map == EditorState.getInstance().mapState.currentMap)
                 curPath = new TreePath(Tmap.getPath());

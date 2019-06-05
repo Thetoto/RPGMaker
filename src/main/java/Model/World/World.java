@@ -69,7 +69,7 @@ public class World extends Observable {
                     System.out.println(map.foreground.get(pt).getName() + " not found");
                     return false;
                 }
-                map.foreground.put(pt, tile);
+                map.foreground.put(pt, new Foreground(tile));
             }
             for (NPC npc : map.npc) {
                 Animation anim = npcTiles.get(npc.getName());

@@ -34,10 +34,10 @@ public class Draw {
             drawForeTiles(g, map, multiply);
             return;
         }
-        HashMap<Point, Tile> foreSet = map.getForegroundSet();
+        HashMap<Point, Foreground> foreSet = map.getForegroundSet();
         for (Point pt : foreSet.keySet()) {
             if (checkBounds(pt, reqIn, reqOut)) {
-                ImportedTile tile = (ImportedTile) foreSet.get(pt);
+                ImportedTile tile = (ImportedTile) foreSet.get(pt).getTile();
                 drawImported(g, tile, pt, multiply);
             }
         }
