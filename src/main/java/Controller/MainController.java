@@ -53,13 +53,13 @@ public class MainController {
         editor.topBar.redoButton.addActionListener(e -> editorState.mapState.redo());
 
         editor.topBar.addNewTiles.addActionListener(e -> {
-            int sizeBefore = editorState.tilesState.foregroundTiles.size() + editorState.tilesState.backgroundTiles.size();
+            int sizeBefore = editorState.tilesState.foregroundTiles.size() + editorState.tilesState.backgroundTiles.size() + editorState.tilesState.npcTile.size();
             File f = FileManager.getFileOrDir();
             if (f == null)
                 return;
             editorState.tilesState.autoAddTiles(f);
             tilesController.setupListener();
-            int sizeAfter = editorState.tilesState.foregroundTiles.size() + editorState.tilesState.backgroundTiles.size();
+            int sizeAfter = editorState.tilesState.foregroundTiles.size() + editorState.tilesState.backgroundTiles.size() + editorState.tilesState.npcTile.size();
             Tools.PopUpManager.Alert((sizeAfter - sizeBefore) + " tiles loaded");
         });
 
