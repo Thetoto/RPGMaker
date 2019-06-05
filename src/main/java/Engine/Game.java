@@ -21,13 +21,13 @@ public class Game {
 
             boolean hasMoved = false;
             if (!does_action && controller.keyState.get(KeyEvent.VK_Z))
-                hasMoved |= controller.state.movePerso(Direction.UP, delta_time);
-            if (!does_action && controller.keyState.get(KeyEvent.VK_Q))
-                hasMoved |= controller.state.movePerso(Direction.LEFT, delta_time);
+                hasMoved |= controller.state.movePerso(UP, delta_time);
             if (!does_action && controller.keyState.get(KeyEvent.VK_S))
                 hasMoved |= controller.state.movePerso(DOWN, delta_time);
+            if (!does_action && controller.keyState.get(KeyEvent.VK_Q))
+                hasMoved |= controller.state.movePerso(LEFT, delta_time);
             if (!does_action && controller.keyState.get(KeyEvent.VK_D))
-                hasMoved |= controller.state.movePerso(Direction.RIGHT, delta_time);
+                hasMoved |= controller.state.movePerso(RIGHT, delta_time);
             if (hasMoved)
                 ThreadLauncher.execute(() -> controller.state.redrawPerso());
             if (!does_action)

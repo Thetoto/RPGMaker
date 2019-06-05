@@ -36,6 +36,7 @@ public class Display extends JLayeredPane implements Observer {
     BufferedImage background = null;
     BufferedImage foreground = null;
     BufferedImage timeCycleImage = null;
+    BufferedImage npcImage = null;
 
     public static BufferedImage createImage(Dimension dim) {
         return new BufferedImage(dim.width * 16, dim.height * 16, BufferedImage.TYPE_INT_ARGB);
@@ -78,16 +79,14 @@ public class Display extends JLayeredPane implements Observer {
 
     public void drawBackLayer(Map map) {
         Dimension dim = map.getDim();
-        BufferedImage back = createImage(map.getDim());
+        background = createImage(map.getDim());
 
-        Graphics2D g = back.createGraphics();
+        Graphics2D g = background.createGraphics();
         Draw.drawBackground(g, map.getBackgroundTile(), dim, 16);
         Draw.drawBackTiles(g, map, 16);
         g.dispose();
 
-        this.background = back;
-
-        BufferedImage resized = getResizedImage(back);
+        BufferedImage resized = getResizedImage(background);
 
         backLayer.setIcon(new ImageIcon(resized));
         backLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
@@ -103,16 +102,14 @@ public class Display extends JLayeredPane implements Observer {
     }
 
     public void drawForeLayer(Map map) {
-        BufferedImage fore = createImage(map.getDim());
+        foreground = createImage(map.getDim());
 
-        Graphics2D g = fore.createGraphics();
+        Graphics2D g = foreground.createGraphics();
 
         Draw.drawForeTiles(g, map, 16);
         g.dispose();
 
-        this.foreground = fore;
-
-        BufferedImage resized = getResizedImage(fore);
+        BufferedImage resized = getResizedImage(foreground);
 
         foreLayer.setIcon(new ImageIcon(resized));
         foreLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
@@ -128,37 +125,39 @@ public class Display extends JLayeredPane implements Observer {
     }
 
     public void drawNpcLayer(Map map) {
-        BufferedImage npc = createImage(map.getDim());
+        if (npcImage == null)
+            npcImage = createImage(map.getDim());
 
-        Graphics2D g = npc.createGraphics();
-        Draw.drawNPC(g, map, 16);
+        Point delta = getDelta();
+        delta = new Point(delta.x / 16, delta.y / 16);
+        Dimension size = getMySize();
+        Point end = new Point(delta.x + size.width / 16, delta.y + size.height / 16);
+
+        clearRectBi(npcImage, delta, end);
+
+        Graphics2D g = npcImage.createGraphics();
+        Draw.drawNPC(g, map, 16, delta, end);
         g.dispose();
 
-        BufferedImage resized = getResizedImage(npc);
+        BufferedImage resized = getResizedImage(npcImage);
 
         npcLayer.setIcon(new ImageIcon(resized));
         npcLayer.setBounds(0, 0,  resized.getWidth(), resized.getHeight());
     }
 
     public void drawPlayerLayer(EngineState state) {
-        BufferedImage player = createImage(state.currentMap.getDim());
-
-        Graphics2D g = player.createGraphics();
         ImportedTile t = state.player.getAnim().toImportedTile(state.player.getDirection());
-        Draw.drawImported(g, t, state.player.getPosition(), 16);
-        g.dispose();
 
-        BufferedImage resized = getResizedImage(player);
-
-        playerLayer.setIcon(new ImageIcon(resized));
-        playerLayer.setBounds(0, 0, resized.getWidth(), resized.getHeight());
+        playerLayer.setIcon(new ImageIcon(t.get()));
+        Point delta = getDelta();
+        Point playerPos = new Point((int)(state.player.getPosition().getX() * 16), (int)(state.player.getPosition().getY() * 16));
+        playerLayer.setBounds(playerPos.x - delta.x, playerPos.y - delta.y, t.getWidth() * 16, t.getHeight() * 16);
     }
 
     public void drawTimeCycleLayer(Map map, boolean isNight) {
         if (timeCycleImage == null) {
-            int width = Math.min(992, map.getDim().width * 16);
-            int height = Math.min(688, map.getDim().height * 16);
-            timeCycleImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            Dimension size = getMySize();
+            timeCycleImage = new BufferedImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g = timeCycleImage.createGraphics();
             int alpha = 100;
             g.setColor(new Color(100, 100, 100, alpha));
@@ -172,6 +171,8 @@ public class Display extends JLayeredPane implements Observer {
     }
 
     public void drawAll(EngineState state) {
+        npcImage = null;
+
         drawBackLayer(state.currentMap);
         drawForeLayer(state.currentMap);
         drawNpcLayer(state.currentMap);
@@ -226,9 +227,31 @@ public class Display extends JLayeredPane implements Observer {
     }
 
     private BufferedImage getResizedImage(BufferedImage image) {
-        Map map = EditorState.getInstance().mapState.currentMap;
-        int width = Math.min(992, image.getWidth());
-        int height = Math.min(688, image.getHeight());
+        Point delta = getDelta();
+        Dimension size = getMySize();
+
+        return image.getSubimage(delta.x, delta.y, size.width, size.height);
+    }
+
+    public static void clearRectBi(BufferedImage bi, Point in, Point out) {
+        Graphics2D g = bi.createGraphics();
+        g.setComposite(AlphaComposite.Src);
+        g.setColor(new Color(0, 255, 0, 0));
+        g.fillRect(in.x * 16, in.y * 16, (out.x - in.x + 1) * 16, (out.y - in.y + 1) * 16);
+        g.dispose();
+    }
+
+    private Dimension getMySize() {
+        Map map = EngineState.getInstance().currentMap;
+        int width = Math.min(992, map.getDim().width * 16);
+        int height = Math.min(688, map.getDim().height * 16);
+        return new Dimension(width, height);
+    }
+
+    private Point getDelta() {
+        Map map = EngineState.getInstance().currentMap;
+        int width = Math.min(992, map.getDim().width * 16);
+        int height = Math.min(688, map.getDim().height * 16);
 
         Player p = EngineState.getInstance().player;
 
@@ -249,21 +272,17 @@ public class Display extends JLayeredPane implements Observer {
             else
                 deltaY = (int) ((pos.getY() * 16) - (height / 2));
         }
-
-        BufferedImage tmp2 = image.getSubimage(deltaX, deltaY, width, height);
-
-        return tmp2;
+        return new Point(deltaX, deltaY);
     }
 
     private void setSizeMap() {
         Map map = EngineState.getInstance().currentMap;
 
-        int width = Math.min(992, map.getDim().width * 16);
-        int height = Math.min(688, map.getDim().height * 16);
+        Dimension size = getMySize();
 
-        System.out.println(width + " " + height);
-        this.setPreferredSize(new Dimension(width, height));
-        this.setSize(new Dimension(width, height));
+        System.out.println(size.width + " " + size.height);
+        this.setPreferredSize(new Dimension(size.width, size.height));
+        this.setSize(new Dimension(size.width, size.height));
 
         Engine.validateAll(this);
     }
