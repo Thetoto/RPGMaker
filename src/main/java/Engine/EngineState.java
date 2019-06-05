@@ -13,7 +13,7 @@ public class EngineState extends Observable {
     public World world;
     public Map currentMap;
     public Player player;
-    public String currentMessage;
+    public NPC currentMessage;
 
     static EngineState engineState;
 
@@ -21,7 +21,7 @@ public class EngineState extends Observable {
         engineState = this;
         this.world = world;
         this.player = new Player(world.getPlayer());
-        this.currentMessage = "";
+        this.currentMessage = null;
     }
 
     public static EngineState getInstance() {
@@ -60,7 +60,7 @@ public class EngineState extends Observable {
             return (int) (dist1 - dist2);
         });
         if (npc.isPresent() && npc.get().getPoint().distance(player.getPosition()) < 1) {
-            currentMessage = npc.get().getMessage();
+            currentMessage = npc.get();
             setChanged();
             notifyObservers("Update Message");
             does_action = true;

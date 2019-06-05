@@ -3,6 +3,7 @@ package Model.Editor;
 import Model.World.*;
 import Tools.ActionManager;
 import Tools.CursorManager;
+import Tools.PopUpManager;
 import Tools.ThreadLauncher;
 
 import java.awt.*;
@@ -234,5 +235,21 @@ public class MapState extends Observable {
         setChanged();
         notifyObservers("Update Map");
         updateMap(false);
+    }
+
+    public void renameTeleport(Teleporter t) {
+        String s = PopUpManager.askString("Choose a new name for " + t.toString());
+        if (s != null)
+            t.setName(s);
+        setChanged();
+        notifyObservers("Update Map");
+    }
+
+    public void renameNPC(NPC npc) {
+        String s = PopUpManager.askString("Choose a new name for " + npc.toString());
+        if (s != null)
+            npc.setName(s);
+        setChanged();
+        notifyObservers("Update Map");
     }
 }

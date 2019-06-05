@@ -216,11 +216,13 @@ public class Display extends JLayeredPane implements Observer {
                 pauseLayer.setVisible(false);
             }
             if (str.equals("Update Message")) {
-                dialog.setText(EngineState.getInstance().currentMessage);
+                dialog.setText(EngineState.getInstance().currentMessage.getMessage());
+                dialog.setName(EngineState.getInstance().currentMessage.getName());
                 dialogLayer.setVisible(true);
             }
             else if (str.equals("Remove Message")) {
                 dialog.setText("");
+                dialog.setName("");
                 dialogLayer.setVisible(false);
             }
         }

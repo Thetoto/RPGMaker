@@ -142,4 +142,8 @@ public class NPC {
     public Direction getDirection() {
         return direction;
     }
+
+    public void setName(String s) {
+        this.name = s;
+    }
 }

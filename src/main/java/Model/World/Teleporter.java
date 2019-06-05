@@ -37,4 +37,8 @@ public class Teleporter {
     public Point getPointDest() {
         return destPosition;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

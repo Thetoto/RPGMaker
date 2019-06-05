@@ -84,6 +84,10 @@ public class MainController {
                 }
                 if (obj instanceof Teleporter) {
                     Teleporter t = (Teleporter) obj;
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        editorState.mapState.renameTeleport(t);
+                        return;
+                    }
                     editorState.mapState.setCurrentTeleporter(t);
                     editorState.toolsState.setCurrentTools(ToolsEnum.TELEPORTER);
                 }
@@ -95,6 +99,10 @@ public class MainController {
                 }
                 if (obj instanceof NPC) {
                     NPC npc = (NPC) obj;
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        editorState.mapState.renameNPC(npc);
+                        return;
+                    }
                     editorState.mapState.setCurrentNPC(npc);
                     editorState.toolsState.setCurrentTools(ToolsEnum.PNC);
                     toolsController.setNpcMessageListener();
