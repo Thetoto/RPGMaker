@@ -93,6 +93,30 @@ public class EngineState extends Observable {
         return false;
     }
 
+    public boolean destroyObject() {
+        Optional<Point> pt = currentMap.getForegroundSet().keySet().stream().min((o1, o2) -> {
+            double dist1 = o1.distance(player.getPosition());
+            double dist2 = o2.distance(player.getPosition());
+            return (int) (dist1 - dist2);
+        });
+
+        if (pt.isPresent()) {
+            Point2D.Double newPt = new Point2D.Double(pt.get().x, pt.get().y);
+            if (newPt.distance(player.getPosition()) < 1) {
+                Foreground f = currentMap.getForegroundSet().get(pt.get());
+                if (f.isBreakable && player.hasItem(f.breaker)) {
+                    System.out.println("Destroy object " + currentMap.getForegroundSet().get(pt.get()).getName());
+                    player.getItems().add(f);
+                    f.isRemoved = true;
+                    setChanged();
+                    notifyObservers("Update foreground");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public void shutUp() {
         setChanged();
         notifyObservers("Remove Message");

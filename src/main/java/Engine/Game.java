@@ -49,6 +49,10 @@ public class Game {
                     continue;
                 does_action = controller.state.talk();
             }
+            if (controller.keyState.get(KeyEvent.VK_A)) {
+                controller.keyState.set(KeyEvent.VK_A, false);
+                controller.state.destroyObject();
+            }
 
             if (controller.keyState.get(KeyEvent.VK_I)) {
                 controller.keyState.set(KeyEvent.VK_I, false);

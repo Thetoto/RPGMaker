@@ -77,4 +77,12 @@ public class Player {
     public Vector<Foreground> getItems() {
         return items;
     }
+
+    public boolean hasItem(String breaker) {
+        for (Foreground f : items) {
+            if (f.toString().equals(breaker))
+                return true;
+        }
+        return false;
+    }
 }
