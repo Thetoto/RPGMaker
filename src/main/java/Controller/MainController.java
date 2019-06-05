@@ -116,7 +116,7 @@ public class MainController {
                     ThreadLauncher.execute(() -> editorState.saveWorld());
                 else if (e.getKeyCode() == KeyEvent.VK_F5)
                     editorState.launchGame();
-                else if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+                else if (e.getKeyCode() == KeyEvent.VK_Q && e.isControlDown())
                     System.exit(0);
                 return true;
             }
