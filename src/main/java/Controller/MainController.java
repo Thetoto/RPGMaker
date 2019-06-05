@@ -107,6 +107,11 @@ public class MainController {
                     editorState.toolsState.setCurrentTools(ToolsEnum.PNC);
                     toolsController.setNpcMessageListener();
                 }
+                if (obj instanceof Foreground) {
+                    Foreground fore = (Foreground) obj;
+                    editorState.mapState.setCurrentForeground(fore);
+                    editorState.toolsState.setCurrentTools(ToolsEnum.FOREGROUND);
+                }
             }
         });
 

@@ -6,5 +6,6 @@ public enum ToolsEnum {
     NONE,
     PLAYER,
     TELEPORTER,
-    PNC;
+    PNC,
+    FOREGROUND;
 }

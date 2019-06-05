@@ -23,6 +23,7 @@ public class MapState extends Observable {
     private Player player;
     private Teleporter currentTeleporter;
     private NPC currentNPC;
+    private Foreground currentForeground;
 
     public double zoomPercent = 1.;
 
@@ -182,6 +183,10 @@ public class MapState extends Observable {
         return currentTeleporter;
     }
 
+    public Foreground getCurrentForeground() {
+        return currentForeground;
+    }
+
     public void forceWalkable(boolean b) {
         if (currentMap == null || selectionIn == null || selectionOut == null)
             return;
@@ -195,6 +200,10 @@ public class MapState extends Observable {
             notifyObservers("Show Walk");
         }
         mousePreview(null, null);
+    }
+
+    public void setCurrentForeground(Foreground currentForeground) {
+        this.currentForeground = currentForeground;
     }
 
     public void setBackgroundCurrentTile() {

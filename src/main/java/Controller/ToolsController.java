@@ -46,6 +46,10 @@ public class ToolsController {
             EditorState.getInstance().mapState.getCurrentNPC().setMoving(tmp.isSelected());
         });
 
+        toolsPanel.toolForegroundPanel.setBreakable.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isBreakable = (e.getStateChange() == ItemEvent.SELECTED));
+        toolsPanel.toolForegroundPanel.setAsHide.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isHided = (e.getStateChange() == ItemEvent.SELECTED));
+        toolsPanel.toolForegroundPanel.setPickable.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isPickable = (e.getStateChange() == ItemEvent.SELECTED));
+
         toolsPanel.toolPlayerPanel.setSpawn.addActionListener(e -> EditorState.getInstance().mapState.setMode(Mode.PLAYER));
     }
 

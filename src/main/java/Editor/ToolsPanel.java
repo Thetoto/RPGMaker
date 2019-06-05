@@ -19,6 +19,7 @@ public class ToolsPanel extends JPanel implements Observer {
     public ToolPlayerPanel toolPlayerPanel;
     public ToolTeleporterPanel toolTeleporterPanel;
     public ToolNPCPanel toolNPCPanel;
+    public ToolForegroundPanel toolForegroundPanel;
 
     public ToolsPanel() {
         toolBoxPanel = new ToolBoxPanel();
@@ -26,11 +27,13 @@ public class ToolsPanel extends JPanel implements Observer {
         toolPlayerPanel = new ToolPlayerPanel();
         toolTeleporterPanel = new ToolTeleporterPanel();
         toolNPCPanel = new ToolNPCPanel();
+        toolForegroundPanel = new ToolForegroundPanel();
         this.add(toolBoxPanel);
         this.add(toolTilePanel);
         this.add(toolPlayerPanel);
         this.add(toolTeleporterPanel);
         this.add(toolNPCPanel);
+        this.add(toolForegroundPanel);
 
         this.setVisible(false);
     }
@@ -54,6 +57,7 @@ public class ToolsPanel extends JPanel implements Observer {
         toolPlayerPanel.setVisible(false);
         toolTeleporterPanel.setVisible(false);
         toolNPCPanel.setVisible(false);
+        toolForegroundPanel.setVisible(false);
 
         switch (currentPanel) {
             case TOOLBOX:
@@ -74,6 +78,10 @@ public class ToolsPanel extends JPanel implements Observer {
             case PNC:
                 toolNPCPanel.updateInfo(EditorState.getInstance().mapState.getCurrentNPC());
                 toolNPCPanel.setVisible(true);
+                break;
+            case FOREGROUND:
+                toolForegroundPanel.updateInfo(EditorState.getInstance().mapState.getCurrentForeground());
+                toolForegroundPanel.setVisible(true);
                 break;
             case NONE:
                 setVisible(false);

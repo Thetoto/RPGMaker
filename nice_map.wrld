@@ -4923,9 +4923,9 @@
               "image": "center.png"
             },
             "name": "center.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -4938,9 +4938,9 @@
               "image": "stairs_up.png"
             },
             "name": "stairs_up.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -4953,9 +4953,9 @@
               "image": "lit.png"
             },
             "name": "lit.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ]
       ],
@@ -9937,9 +9937,9 @@
               "image": "stairs_down.png"
             },
             "name": "stairs_down.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -9952,9 +9952,9 @@
               "image": "center.png"
             },
             "name": "center.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -9967,9 +9967,9 @@
               "image": "pilier.png"
             },
             "name": "pilier.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -9982,9 +9982,9 @@
               "image": "pilier.png"
             },
             "name": "pilier.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -9997,9 +9997,9 @@
               "image": "pilier.png"
             },
             "name": "pilier.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -10012,9 +10012,9 @@
               "image": "pilier.png"
             },
             "name": "pilier.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -10027,9 +10027,9 @@
               "image": "house.png"
             },
             "name": "house.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ],
         [
@@ -10042,9 +10042,9 @@
               "image": "tapis.png"
             },
             "name": "tapis.png",
-            "is_breakable": false,
-            "is_hided": false,
-            "is_pickable": false
+            "isBreakable": false,
+            "isHided": false,
+            "isPickable": false
           }
         ]
       ],
