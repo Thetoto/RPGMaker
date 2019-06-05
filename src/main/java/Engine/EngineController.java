@@ -21,6 +21,14 @@ public class EngineController {
             keyState.add(false);
         }
         frame = new Engine();
+        frame.mapPanel.pause.resume.addActionListener(e -> {
+            keyState.set(KeyEvent.VK_P, true);
+            frame.requestFocus();
+        });
+        frame.mapPanel.pause.exit.addActionListener(e -> {
+            frame.dispose();
+            destroyGame();
+        });
         state = new EngineState(world);
         state.addObserver(frame.mapPanel);
         state.addObserver(frame);
@@ -42,12 +50,14 @@ public class EngineController {
             public synchronized void keyPressed(KeyEvent keyEvent) {
                 if (keyEvent.getKeyCode() < 256)
                     keyState.set(keyEvent.getKeyCode(), true);
+                System.out.println(keyEvent.getKeyCode() + " Begin");
             }
 
             @Override
             public synchronized void keyReleased(KeyEvent keyEvent) {
                 if (keyEvent.getKeyCode() < 256)
                     keyState.set(keyEvent.getKeyCode(), false);
+                System.out.println(keyEvent.getKeyCode() + " End");
             }
         });
 

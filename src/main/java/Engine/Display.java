@@ -29,6 +29,8 @@ public class Display extends JLayeredPane implements Observer {
     JLabel timeCycleLayer;
     JLabel pauseLayer;
     JLabel dialogLayer;
+
+    PauseMenu pause;
     Dialog dialog;
 
     BufferedImage background = null;
@@ -66,8 +68,7 @@ public class Display extends JLayeredPane implements Observer {
 
         pauseLayer = new JLabel();
         pauseLayer.setLayout(new GridBagLayout());
-        Dialog pause = new Dialog();
-        pause.setText("Game paused.");
+        pause = new PauseMenu();
         pause.setVisible(true);
         pause.setSize( 100, 200);
         pauseLayer.add(pause);
@@ -208,6 +209,7 @@ public class Display extends JLayeredPane implements Observer {
             }
             else if (str.equals("Pause")) {
                 pauseLayer.setVisible(true);
+                pause.resume.requestFocus();
             }
             else if (str.equals("Resume")) {
                 pauseLayer.setVisible(false);
