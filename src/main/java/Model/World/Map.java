@@ -163,6 +163,20 @@ public class Map {
         }
         return null;
     }
+    public NPC isOccupiedNPC(int x, int y, Dimension dimension) {
+        for (int i = x; i < x + dimension.width; i++) {
+            for (int j = y; j < y + dimension.height; j++) {
+                for (var item : npc) {
+                    Animation tile = item.getAnimation();
+                    Point pt = item.getIntPoint();
+                    if (i >= pt.x && i < pt.x + tile.getSize() && j >= pt.y && j < pt.y + tile.getSize()) {
+                        return item;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
     public boolean checkBoundsPerso(Player perso, Direction dir, Point2D p, int delta_time) {
         switch (dir) {
@@ -257,12 +271,9 @@ public class Map {
             return;
         ImportedTile imp = (ImportedTile)foreground.get(pt).getTile();
         Dimension dim = new Dimension(imp.getWidth(), imp.getHeight());
+
+        extendRequest(pt);
         foreground.remove(pt);
-        MapState mapState = EditorState.getInstance().mapState;
-        mapState.updateRequestIn = new Point(Math.min(mapState.updateRequestIn.x, pt.x),
-                Math.min(mapState.updateRequestIn.y, pt.y));
-        mapState.updateRequestOut = new Point(Math.max(mapState.updateRequestOut.x, pt.x + imp.getWidth()),
-                Math.max(mapState.updateRequestOut.y, pt.y + imp.getHeight()));
 
         for (int i = pt.x; i < pt.x + dim.getWidth(); i++) {
             for (int j = pt.y; j < pt.y + dim.getHeight(); j++) {
@@ -271,6 +282,20 @@ public class Map {
         }
     }
 
+    private void extendTileOccupied(int x, int y) {
+        Point isOccupied = isOccupied(x, y, new Dimension(1, 1));
+        if (isOccupied != null)
+            extendRequest(isOccupied.getLocation());
+    }
+
+    private void extendRequest(Point pt) {
+        ImportedTile imp = (ImportedTile)foreground.get(pt).getTile();
+        MapState mapState = EditorState.getInstance().mapState;
+        mapState.updateRequestIn = new Point(Math.min(mapState.updateRequestIn.x, pt.x),
+                Math.min(mapState.updateRequestIn.y, pt.y));
+        mapState.updateRequestOut = new Point(Math.max(mapState.updateRequestOut.x, pt.x + imp.getWidth()),
+                Math.max(mapState.updateRequestOut.y, pt.y + imp.getHeight()));
+    }
 
     public boolean getWalkable(int x, int y) {
         if (checkBounds(x, y))

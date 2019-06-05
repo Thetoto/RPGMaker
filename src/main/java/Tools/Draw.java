@@ -34,11 +34,13 @@ public class Draw {
             drawForeTiles(g, map, multiply);
             return;
         }
-        HashMap<Point, Foreground> foreSet = map.getForegroundSet();
-        for (Point pt : foreSet.keySet()) {
-            if (checkBounds(pt, reqIn, reqOut)) {
-                ImportedTile tile = (ImportedTile) foreSet.get(pt).getTile();
-                drawImported(g, tile, pt, multiply);
+        for (int x = reqIn.x; x <= reqOut.x; x++) {
+            for (int y = reqIn.y; y <= reqOut.y; y++) {
+                Point pt = map.isOccupied(x, y, new Dimension(1, 1));
+                if (pt != null) {
+                    ImportedTile tile = (ImportedTile) map.getForegroundSet().get(pt).getTile();
+                    drawImported(g, tile, pt, multiply);
+                }
             }
         }
     }
@@ -52,13 +54,16 @@ public class Draw {
             return;
         }
         Vector<NPC> npcV = map.getNpcs();
-        for (NPC npc : npcV) {
-            if (checkBounds(npc.getIntPoint(), reqIn, reqOut)) {
-                Animation tile = npc.getAnimation();
-                if (npc.isMoving())
-                    drawImported(g, tile.toImportedTile(npc.getDirection()), npc.getPoint(), multiply);
-                else
-                    drawImported(g, tile.toImportedTile(), npc.getPoint(), multiply);
+        for (int x = reqIn.x; x <= reqOut.x; x++) {
+            for (int y = reqIn.y; y <= reqOut.y; y++) {
+                NPC npc = map.isOccupiedNPC(x, y, new Dimension(1, 1));
+                if (npc != null) {
+                    Animation tile = npc.getAnimation();
+                    if (npc.isMoving())
+                        drawImported(g, tile.toImportedTile(npc.getDirection()), npc.getPoint(), multiply);
+                    else
+                        drawImported(g, tile.toImportedTile(), npc.getPoint(), multiply);
+                }
             }
         }
     }
