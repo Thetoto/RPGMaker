@@ -26,7 +26,7 @@ public class NPC {
     @Override
     public String toString() {
         if (name == null)
-            return anim.getName();
+            return anim.toString();
         return name;
     }
 

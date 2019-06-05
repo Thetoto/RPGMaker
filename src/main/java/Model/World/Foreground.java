@@ -11,7 +11,7 @@ public class Foreground {
 
     public Foreground(Tile t) {
         this.t = t;
-        name = t.getName();
+        name = t.toString();
         isBreakable = false;
         isHided = false;
         isPickable = false;

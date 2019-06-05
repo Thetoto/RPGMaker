@@ -81,4 +81,8 @@ public class Tile {
         else
             return TileType.BACKGROUND;
     }
+
+    public String toString() {
+        return image.substring(0, image.lastIndexOf('.'));
+    }
 }
