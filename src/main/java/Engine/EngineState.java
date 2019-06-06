@@ -1,15 +1,16 @@
 package Engine;
 
 import Model.World.*;
-import Tools.Tools;
+import Model.World.Map;
+import Tools.Pair;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.util.Comparator;
-import java.util.Observable;
-import java.util.Optional;
-import java.util.Vector;
+import java.security.KeyPair;
+import java.util.*;
 import java.util.function.BiConsumer;
+
+import static java.lang.Math.round;
 
 public class EngineState extends Observable {
     public World world;
@@ -71,48 +72,34 @@ public class EngineState extends Observable {
     }
 
     public boolean pickObject() {
-        Optional<Point> pt = currentMap.getForegroundSet().keySet().stream().min((o1, o2) -> {
-            double dist1 = o1.distance(player.getPosition());
-            double dist2 = o2.distance(player.getPosition());
-            return (int) (dist1 - dist2);
-        });
-
-        if (pt.isPresent()) {
-            Point2D.Double newPt = new Point2D.Double(pt.get().x, pt.get().y);
-            if (newPt.distance(player.getPosition()) < 1) {
-                Foreground f = currentMap.getForegroundSet().get(pt.get());
-                if (f.isPickable && !f.isHided && !f.isRemoved) {
-                    System.out.println("Pick object " + currentMap.getForegroundSet().get(pt.get()).getName());
-                    player.getItems().add(f);
-                    f.isRemoved = true;
-                    setChanged();
-                    notifyObservers("Update foreground");
-                    return true;
-                }
+        var dimPt = getDimPointFromDirection();
+        Point occupied = currentMap.isOccupied(dimPt.right.x, dimPt.right.y, dimPt.left);
+        if (occupied != null) {
+            Foreground f = currentMap.getForegroundSet().get(occupied);
+            if (f.isPickable && !f.isHided && !f.isRemoved) {
+                System.out.println("Pick object " + currentMap.getForegroundSet().get(occupied).getName());
+                player.getItems().add(f);
+                f.isRemoved = true;
+                setChanged();
+                notifyObservers("Update foreground");
+                return true;
             }
         }
         return false;
     }
 
     public boolean destroyObject() {
-        Optional<Point> pt = currentMap.getForegroundSet().keySet().stream().min((o1, o2) -> {
-            double dist1 = o1.distance(player.getPosition());
-            double dist2 = o2.distance(player.getPosition());
-            return (int) (dist1 - dist2);
-        });
-
-        if (pt.isPresent()) {
-            Point2D.Double newPt = new Point2D.Double(pt.get().x, pt.get().y);
-            if (newPt.distance(player.getPosition()) < 1) {
-                Foreground f = currentMap.getForegroundSet().get(pt.get());
-                if (f.isBreakable && !f.isRemoved && !f.isHided && player.hasItem(f.getBreaker())) {
-                    System.out.println("Destroy object " + currentMap.getForegroundSet().get(pt.get()).getName());
-                    player.getItems().add(f);
-                    f.isRemoved = true;
-                    setChanged();
-                    notifyObservers("Update foreground");
-                    return true;
-                }
+        var dimPt = getDimPointFromDirection();
+        Point occupied = currentMap.isOccupied(dimPt.right.x, dimPt.right.y, dimPt.left);
+        if (occupied != null) {
+            Foreground f = currentMap.getForegroundSet().get(occupied);
+            if (f.isBreakable && !f.isRemoved && !f.isHided && player.hasItem(f.getBreaker())) {
+                System.out.println("Destroy object " + currentMap.getForegroundSet().get(occupied).getName());
+                player.getItems().add(f);
+                f.isRemoved = true;
+                setChanged();
+                notifyObservers("Update foreground");
+                return true;
             }
         }
         return false;
@@ -178,5 +165,28 @@ public class EngineState extends Observable {
         setChanged();
         notifyObservers("Hide Inventory");
         return true;
+    }
+
+    public Pair<Dimension, Point> getDimPointFromDirection() {
+        Point player1D = new Point(Math.round((float)player.getPosition().getX()), Math.round((float)player.getPosition().getY()));
+        Direction dir = player.getDirection();
+        Dimension dim = null;
+        switch (dir) {
+            case DOWN:
+                dim = new Dimension(2, 3);
+                break;
+            case LEFT:
+                dim = new Dimension(3, 2);
+                player1D = new Point(player1D.x - 1, player1D.y);
+                break;
+            case RIGHT:
+                dim = new Dimension(3, 2);
+                break;
+            case UP:
+                dim = new Dimension(2, 3);
+                player1D = new Point(player1D.x, player1D.y - 1);
+                break;
+        }
+        return new Pair<>(dim, player1D);
     }
 }
