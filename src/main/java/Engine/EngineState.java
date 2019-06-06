@@ -82,7 +82,7 @@ public class EngineState extends Observable {
         Point occupied = currentMap.isOccupied(dimPt.right.x, dimPt.right.y, dimPt.left);
         if (occupied != null) {
             Foreground f = currentMap.getForegroundSet().get(occupied);
-            if (f.isPickable && !f.isHided && !f.isRemoved) {
+            if (f.isPickable && (!f.isHided || f.isShowed) && !f.isRemoved) {
                 System.out.println("Pick object " + currentMap.getForegroundSet().get(occupied).getName());
                 player.getItems().add(f);
                 f.isRemoved = true;
