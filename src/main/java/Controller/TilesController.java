@@ -84,6 +84,7 @@ public class TilesController {
         });
         toolsController.toolsPanel.toolTilePanel.setPlayerAnim.addActionListener(e -> {
             EditorState.getInstance().world.getPlayer().setAnim();
+            Editor.getInstance().mapPane.update(EditorState.getInstance().mapState, "Update Me");
         });
         for (int i = 0;  i < toolsController.toolsPanel.toolTilePanel.bigTileSeclector.size(); i++) {
             final Integer j = i;

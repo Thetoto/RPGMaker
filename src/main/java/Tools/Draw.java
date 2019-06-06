@@ -93,6 +93,16 @@ public class Draw {
         }
     }
 
+    public static void drawPlayer(Graphics2D g, Player player, int multiply, Point reqIn, Point reqOut) {
+        Point2D p = player.getPosition();
+        Animation a = player.getAnim();
+        if (p != null && a != null &&
+                ((reqIn == null && reqOut == null) ||
+                 (p.getX() >= reqIn.x && p.getX() <= reqOut.x && p.getY() >= reqIn.y && p.getY() <= reqOut.y))) {
+            g.drawImage(a.get(),(int) p.getX() * multiply, (int) p.getY() * multiply, null);
+        }
+    }
+
     public static synchronized void drawImported(Graphics2D g, ImportedTile img, Point2D top, int multiply) {
         for (int i = 0; i < img.getWidth(); i++) {
             for (int j = 0; j < img.getHeight(); j++) {

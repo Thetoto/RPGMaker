@@ -56,6 +56,8 @@ public class MapState extends Observable {
                 player.setPosition(new Point2D.Double(selectionIn.x, selectionIn.y), currentMap.id);
                 setMode(Mode.DEFAULT);
                 deselect();
+                setChanged();
+                notifyObservers("Update Me");
                 EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.PLAYER);
             }
             return;
