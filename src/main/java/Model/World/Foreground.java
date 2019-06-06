@@ -70,6 +70,10 @@ public class Foreground {
         return breaker;
     }
 
+    public ImportedTile getImported() {
+        return (ImportedTile)t;
+    }
+
     public void setTile(Tile tile) {
         this.t = tile;
     }

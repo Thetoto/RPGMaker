@@ -22,7 +22,7 @@ public class EngineState extends Observable {
 
     public EngineState(World world) {
         engineState = this;
-        this.world = world;
+        this.world = new World(world);
         this.player = new Player(world.getPlayer());
         this.currentMessage = null;
     }
@@ -99,10 +99,17 @@ public class EngineState extends Observable {
         Point occupied = currentMap.isOccupied(dimPt.right.x, dimPt.right.y, dimPt.left);
         if (occupied != null) {
             Foreground f = currentMap.getForegroundSet().get(occupied);
-            if (f.isBreakable && !f.isRemoved && !f.isHided && player.hasItem(f.getBreaker())) {
+            if (f.isBreakable && !f.isRemoved && (!f.isHided || f.isShowed) && player.hasItem(f.getBreaker())) {
                 System.out.println("Destroy object " + currentMap.getForegroundSet().get(occupied).getName());
                 player.getItems().add(f);
                 f.isRemoved = true;
+
+                Dimension dim = f.getImported().getDimention();
+                for (int i = occupied.x; i < occupied.x + dim.width; i++) {
+                    for (int j = occupied.y; j < occupied.y + dim.height; j++) {
+                        currentMap.setWalkable(i, j, true);
+                    }
+                }
                 setChanged();
                 notifyObservers("Update foreground");
                 return true;

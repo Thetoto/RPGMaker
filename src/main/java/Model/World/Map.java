@@ -43,6 +43,7 @@ public class Map {
     }
 
     public Map(Map map) {
+        this.id = map.id;
         this.name = map.name;
         this.dimension = new Dimension(map.dimension);
         this.background = new Vector<>(map.background);

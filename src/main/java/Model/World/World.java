@@ -24,6 +24,16 @@ public class World extends Observable {
         timeCycle = new TimeCycle();
     }
 
+    public World(World world) {
+        this.name = world.name;
+        this.maps = new ArrayList<>();
+        for (Map map : world.getMaps()) {
+            this.maps.add(new Map(map));
+        }
+        this.player = world.player;
+        this.timeCycle = world.timeCycle;
+    }
+
     public List<Map> getMaps() {
         return maps;
     }
