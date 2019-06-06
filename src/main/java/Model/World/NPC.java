@@ -4,6 +4,7 @@ import Tools.Tools;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.util.Vector;
 
 public class NPC {
     private String name;
@@ -13,6 +14,8 @@ public class NPC {
     private Animation anim;
     private Point2D.Double coordinates;
     private boolean isMoving;
+
+    public Vector<Point> revealForeground = new Vector<>();
 
     public NPC(Animation anim, Point coordinates) {
         this.anim = anim;
@@ -145,5 +148,11 @@ public class NPC {
 
     public void setName(String s) {
         this.name = s;
+    }
+
+    public Vector<Point> getRevealForeground() {
+        if (revealForeground == null)
+            revealForeground = new Vector<>();
+        return revealForeground;
     }
 }

@@ -1,6 +1,12 @@
 package Model.World;
 
+import Model.Editor.EditorState;
+
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.Optional;
 
 public class Foreground {
     Tile t;
@@ -39,5 +45,14 @@ public class Foreground {
 
     public String toString() {
         return name;
+    }
+
+    public Point getPoint() {
+        var forSet = EditorState.getInstance().mapState.currentMap.getForegroundSet();
+        for(Point p : forSet.keySet()) {
+            if (forSet.get(p) == this)
+                return p;
+        }
+        return null;
     }
 }

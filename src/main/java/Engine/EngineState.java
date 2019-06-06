@@ -8,6 +8,7 @@ import java.awt.geom.Point2D;
 import java.util.Comparator;
 import java.util.Observable;
 import java.util.Optional;
+import java.util.Vector;
 import java.util.function.BiConsumer;
 
 public class EngineState extends Observable {
@@ -118,6 +119,15 @@ public class EngineState extends Observable {
     }
 
     public void shutUp() {
+        Vector<Point> v = currentMessage.getRevealForeground();
+        for (Point p : v) {
+            currentMap.getForegroundSet().get(p).isHided = false;
+        }
+        if (!v.isEmpty()) {
+            setChanged();
+            notifyObservers("Update foreground");
+            v.clear();
+        }
         setChanged();
         notifyObservers("Remove Message");
     }

@@ -3,6 +3,7 @@ package Editor;
 import Model.Editor.EditorState;
 import Model.World.Foreground;
 import Model.World.ImportedTile;
+import Model.World.NPC;
 import Model.World.Tile;
 
 import javax.swing.*;
@@ -20,7 +21,8 @@ public class ToolForegroundPanel extends JPanel {
     public JCheckBox setBreakable;
     public JCheckBox setAsHide;
     public JCheckBox setPickable;
-    public JComboBox<Foreground> breaker;
+    public JComboBox<String> breaker;
+    public JComboBox<NPC> hider;
 
     public ToolForegroundPanel() {
         this.setLayout(new GridBagLayout());
@@ -29,7 +31,8 @@ public class ToolForegroundPanel extends JPanel {
         setBreakable = new JCheckBox("Set breakable");
         setAsHide = new JCheckBox("Is Hide");
         setPickable = new JCheckBox("Set Pickable");
-        breaker = new JComboBox();
+        breaker = new JComboBox<>();
+        hider = new JComboBox<>();
 
         image.setVisible(true);
         name.setVisible(true);
@@ -37,6 +40,7 @@ public class ToolForegroundPanel extends JPanel {
         setAsHide.setVisible(true);
         setPickable.setVisible(true);
         breaker.setVisible(true);
+        hider.setVisible(true);
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -47,11 +51,13 @@ public class ToolForegroundPanel extends JPanel {
         c.gridy += 1;
         this.add(setBreakable, c);
         c.gridy += 1;
+        this.add(breaker, c);
+        c.gridy += 1;
         this.add(setAsHide, c);
         c.gridy += 1;
-        this.add(setPickable, c);
+        this.add(hider, c);
         c.gridy += 1;
-        this.add(breaker, c);
+        this.add(setPickable, c);
     }
 
     public void updateInfo(Foreground fore) {
@@ -61,6 +67,18 @@ public class ToolForegroundPanel extends JPanel {
         setAsHide.setSelected(fore.isHided);
         setPickable.setSelected(fore.isPickable);
         UpdateBreaker(fore);
+        UpdateHider(fore.isHided);
+    }
+
+    public void UpdateHider(boolean isHided) {
+        if (isHided) {
+            Vector<Object> tiles = new Vector<>();
+            tiles.addAll(EditorState.getInstance().mapState.currentMap.getNpcs());
+            tiles.add(0, "------");
+            DefaultComboBoxModel model = new DefaultComboBoxModel(tiles);
+            hider.setModel(model);
+        }
+        hider.setVisible(isHided);
     }
 
     public void UpdateBreaker(Foreground f) {

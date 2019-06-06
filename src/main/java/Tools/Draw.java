@@ -26,12 +26,12 @@ public class Draw {
         }
     }
 
-    public static synchronized void drawForeTiles(Graphics2D g, Map map, int multiply) {
-        drawForeTiles(g, map, multiply, new Point(0,0), new Point(map.getDim().width - 1, map.getDim().height - 1));
+    public static synchronized void drawForeTiles(Graphics2D g, Map map, int multiply, boolean showHided) {
+        drawForeTiles(g, map, multiply, new Point(0,0), new Point(map.getDim().width - 1, map.getDim().height - 1), showHided);
     }
-    public static synchronized void drawForeTiles(Graphics2D g, Map map, int multiply, Point reqIn, Point reqOut) {
+    public static synchronized void drawForeTiles(Graphics2D g, Map map, int multiply, Point reqIn, Point reqOut, boolean showHided) {
         if (reqIn == null) {
-            drawForeTiles(g, map, multiply);
+            drawForeTiles(g, map, multiply, showHided);
             return;
         }
         for (int x = reqIn.x; x <= reqOut.x; x++) {
@@ -39,7 +39,7 @@ public class Draw {
                 Point pt = map.isOccupied(x, y, new Dimension(1, 1));
                 if (pt != null) {
                     Foreground f = map.getForegroundSet().get(pt);
-                    if (!f.isRemoved) {
+                    if (!f.isRemoved && (showHided || !f.isHided)) {
                         ImportedTile tile = (ImportedTile) f.getTile();
                         drawImported(g, tile, pt, multiply);
                     }

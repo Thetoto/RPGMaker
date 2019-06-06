@@ -7,6 +7,7 @@ import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
 import Model.World.Foreground;
+import Model.World.NPC;
 import Model.World.Tile;
 
 import javax.swing.*;
@@ -53,8 +54,27 @@ public class ToolsController {
             f.isBreakable = (e.getStateChange() == ItemEvent.SELECTED);
             toolsPanel.toolForegroundPanel.UpdateBreaker(f);
         });
-        toolsPanel.toolForegroundPanel.setAsHide.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isHided = (e.getStateChange() == ItemEvent.SELECTED));
+        toolsPanel.toolForegroundPanel.setAsHide.addItemListener(e -> {
+            EditorState.getInstance().mapState.getCurrentForeground().isHided = (e.getStateChange() == ItemEvent.SELECTED);
+            toolsPanel.toolForegroundPanel.UpdateHider(e.getStateChange() == ItemEvent.SELECTED);
+        });
         toolsPanel.toolForegroundPanel.setPickable.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isPickable = (e.getStateChange() == ItemEvent.SELECTED));
+        toolsPanel.toolForegroundPanel.hider.addItemListener(e -> {
+            Object o = e.getItem();
+            if (o != null) {
+                if (o instanceof NPC) {
+                    NPC npc = (NPC)o;
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        System.err.println("Add " + EditorState.getInstance().mapState.getCurrentForeground() + " to hideable of " + npc);
+                        npc.getRevealForeground().add(EditorState.getInstance().mapState.getCurrentForeground().getPoint());
+                    } else {
+                        System.err.println("Remove " + EditorState.getInstance().mapState.getCurrentForeground() + " to hideable of " + npc);
+                        npc.getRevealForeground().remove(EditorState.getInstance().mapState.getCurrentForeground().getPoint());
+                    }
+                }
+
+            }
+        });
         toolsPanel.toolForegroundPanel.breaker.addActionListener(e -> {
             JComboBox jcb = (JComboBox) e.getSource();
             String s = (String) jcb.getSelectedItem();

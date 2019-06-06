@@ -118,7 +118,7 @@ public class Display extends JLayeredPane implements Observer {
 
         Graphics2D g = foreground.createGraphics();
 
-        Draw.drawForeTiles(g, map, 16);
+        Draw.drawForeTiles(g, map, 16, false);
         g.dispose();
 
         BufferedImage resized = getResizedImage(foreground);

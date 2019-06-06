@@ -60,7 +60,7 @@ public class MapPanel extends JLayeredPane implements Observer {
 
         Graphics2D g = mapImage.createGraphics();
         Draw.drawBackTiles(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
-        Draw.drawForeTiles(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
+        Draw.drawForeTiles(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut, true);
         Draw.drawNPC(g, map, multiply, mapState.updateRequestIn, mapState.updateRequestOut);
         g.dispose();
 
