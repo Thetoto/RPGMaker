@@ -57,16 +57,22 @@ public class EngineState extends Observable {
 
     public boolean talk() {
         boolean does_action = false;
+
         Optional<NPC> npc = currentMap.getNpcs().stream().min((o1, o2) -> {
             double dist1 = o1.getPoint().distance(player.getPosition());
             double dist2 = o2.getPoint().distance(player.getPosition());
             return (int) (dist1 - dist2);
         });
-        if (npc.isPresent() && npc.get().getPoint().distance(player.getPosition()) < 1) {
-            currentMessage = npc.get();
-            setChanged();
-            notifyObservers("Update Message");
-            does_action = true;
+
+        if (npc.isPresent()) {
+            var centerPos = new Point2D.Double(player.getPosition().getX() + 0.5f, player.getPosition().getY() + 0.5f);
+            var centerPosNPC = new Point2D.Double(npc.get().getPoint().getX() + 0.5f, npc.get().getPoint().getY() + 0.5f);
+            if (centerPosNPC.distance(centerPos) < 2) {
+                currentMessage = npc.get();
+                setChanged();
+                notifyObservers("Update Message");
+                does_action = true;
+            }
         }
         return does_action;
     }
