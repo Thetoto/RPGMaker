@@ -69,4 +69,8 @@ public class Foreground {
             breaker = "";
         return breaker;
     }
+
+    public void setTile(Tile tile) {
+        this.t = tile;
+    }
 }
