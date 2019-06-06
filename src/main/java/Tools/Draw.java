@@ -44,7 +44,7 @@ public class Draw {
                 Point pt = map.isOccupied(x, y, new Dimension(1, 1));
                 if (pt != null) {
                     Foreground f = map.getForegroundSet().get(pt);
-                    if (!f.isRemoved && (showHided || !f.isHided)) {
+                    if (!f.isRemoved && (showHided || !f.isHided || f.isShowed)) {
                         ImportedTile tile = (ImportedTile) f.getTile();
                         drawImported(g, tile, pt, multiply);
                     }

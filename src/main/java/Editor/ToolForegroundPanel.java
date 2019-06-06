@@ -67,18 +67,28 @@ public class ToolForegroundPanel extends JPanel {
         setAsHide.setSelected(fore.isHided);
         setPickable.setSelected(fore.isPickable);
         UpdateBreaker(fore);
-        UpdateHider(fore.isHided);
+        UpdateHider(fore);
     }
 
-    public void UpdateHider(boolean isHided) {
-        if (isHided) {
+    public void UpdateHider(Foreground f) {
+        Point pt = f.getPoint();
+        if (f.isHided) {
             Vector<Object> tiles = new Vector<>();
             tiles.addAll(EditorState.getInstance().mapState.currentMap.getNpcs());
             tiles.add(0, "------");
             DefaultComboBoxModel model = new DefaultComboBoxModel(tiles);
             hider.setModel(model);
+            for (NPC npc : EditorState.getInstance().mapState.currentMap.getNpcs()) {
+                if (npc.getRevealForeground().contains(pt)) {
+                    hider.setSelectedItem(npc);
+                }
+            }
+        } else {
+            for (NPC npc : EditorState.getInstance().mapState.currentMap.getNpcs()) {
+                npc.getRevealForeground().remove(pt);
+            }
         }
-        hider.setVisible(isHided);
+        hider.setVisible(f.isHided);
     }
 
     public void UpdateBreaker(Foreground f) {
@@ -88,7 +98,7 @@ public class ToolForegroundPanel extends JPanel {
             tiles.add(0, "------");
             DefaultComboBoxModel model = new DefaultComboBoxModel(tiles);
             breaker.setModel(model);
-            breaker.setSelectedItem(f.breaker == "" ? "------" : f.breaker);
+            breaker.setSelectedItem(f.getBreaker() == "" ? "------" : f.getBreaker());
         }
         breaker.setVisible(f.isBreakable);
     }

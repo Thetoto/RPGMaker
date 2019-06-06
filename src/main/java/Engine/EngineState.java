@@ -105,7 +105,7 @@ public class EngineState extends Observable {
             Point2D.Double newPt = new Point2D.Double(pt.get().x, pt.get().y);
             if (newPt.distance(player.getPosition()) < 1) {
                 Foreground f = currentMap.getForegroundSet().get(pt.get());
-                if (f.isBreakable && !f.isRemoved && !f.isHided && player.hasItem(f.breaker)) {
+                if (f.isBreakable && !f.isRemoved && !f.isHided && player.hasItem(f.getBreaker())) {
                     System.out.println("Destroy object " + currentMap.getForegroundSet().get(pt.get()).getName());
                     player.getItems().add(f);
                     f.isRemoved = true;
@@ -120,13 +120,16 @@ public class EngineState extends Observable {
 
     public void shutUp() {
         Vector<Point> v = currentMessage.getRevealForeground();
+        boolean hasChanged = false;
         for (Point p : v) {
-            currentMap.getForegroundSet().get(p).isHided = false;
+            if (currentMap.getForegroundSet().get(p).isHided && !currentMap.getForegroundSet().get(p).isShowed) {
+                currentMap.getForegroundSet().get(p).isShowed = true;
+                hasChanged = true;
+            }
         }
-        if (!v.isEmpty()) {
+        if (hasChanged) {
             setChanged();
             notifyObservers("Update foreground");
-            v.clear();
         }
         setChanged();
         notifyObservers("Remove Message");

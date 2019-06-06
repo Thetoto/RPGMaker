@@ -14,8 +14,11 @@ public class Foreground {
     public boolean isBreakable;
     public boolean isHided;
     public boolean isPickable;
-    public boolean isRemoved;
-    public String breaker;
+
+    transient public boolean isRemoved;
+    transient public boolean isShowed;
+
+    private String breaker;
 
     public Foreground(Tile t) {
         this.t = t;
@@ -24,6 +27,7 @@ public class Foreground {
         isHided = false;
         isPickable = false;
         isRemoved = false;
+        isShowed = false;
         breaker = "";
     }
 
@@ -54,5 +58,15 @@ public class Foreground {
                 return p;
         }
         return null;
+    }
+
+    public void setBreaker(String breaker) {
+        this.breaker = breaker;
+    }
+
+    public String getBreaker() {
+        if (breaker == null)
+            breaker = "";
+        return breaker;
     }
 }

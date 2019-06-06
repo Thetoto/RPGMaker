@@ -13,6 +13,7 @@ import Model.World.Tile;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.event.*;
 
 public class ToolsController {
@@ -56,7 +57,7 @@ public class ToolsController {
         });
         toolsPanel.toolForegroundPanel.setAsHide.addItemListener(e -> {
             EditorState.getInstance().mapState.getCurrentForeground().isHided = (e.getStateChange() == ItemEvent.SELECTED);
-            toolsPanel.toolForegroundPanel.UpdateHider(e.getStateChange() == ItemEvent.SELECTED);
+            toolsPanel.toolForegroundPanel.UpdateHider(EditorState.getInstance().mapState.getCurrentForeground());
         });
         toolsPanel.toolForegroundPanel.setPickable.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isPickable = (e.getStateChange() == ItemEvent.SELECTED));
         toolsPanel.toolForegroundPanel.hider.addItemListener(e -> {
@@ -64,12 +65,14 @@ public class ToolsController {
             if (o != null) {
                 if (o instanceof NPC) {
                     NPC npc = (NPC)o;
+                    Point pt = EditorState.getInstance().mapState.getCurrentForeground().getPoint();
                     if (e.getStateChange() == ItemEvent.SELECTED) {
                         System.err.println("Add " + EditorState.getInstance().mapState.getCurrentForeground() + " to hideable of " + npc);
-                        npc.getRevealForeground().add(EditorState.getInstance().mapState.getCurrentForeground().getPoint());
+                        if (!npc.getRevealForeground().contains(pt))
+                            npc.getRevealForeground().add(pt);
                     } else {
                         System.err.println("Remove " + EditorState.getInstance().mapState.getCurrentForeground() + " to hideable of " + npc);
-                        npc.getRevealForeground().remove(EditorState.getInstance().mapState.getCurrentForeground().getPoint());
+                        npc.getRevealForeground().remove(pt);
                     }
                 }
 
@@ -81,7 +84,7 @@ public class ToolsController {
             if (s != null) {
                 if (s.equals("------"))
                     s = "";
-                EditorState.getInstance().mapState.getCurrentForeground().breaker = s;
+                EditorState.getInstance().mapState.getCurrentForeground().setBreaker(s);
             }
         });
 
