@@ -125,6 +125,7 @@ public class EngineState extends Observable {
             if (currentMap.getForegroundSet().get(p).isHided && !currentMap.getForegroundSet().get(p).isShowed) {
                 currentMap.getForegroundSet().get(p).isShowed = true;
                 hasChanged = true;
+                System.out.println("Showing " + currentMap.getForegroundSet().get(p));
             }
         }
         if (hasChanged) {
