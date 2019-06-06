@@ -81,7 +81,7 @@ public class EngineState extends Observable {
             Point2D.Double newPt = new Point2D.Double(pt.get().x, pt.get().y);
             if (newPt.distance(player.getPosition()) < 1) {
                 Foreground f = currentMap.getForegroundSet().get(pt.get());
-                if (f.isPickable) {
+                if (f.isPickable && !f.isHided && !f.isRemoved) {
                     System.out.println("Pick object " + currentMap.getForegroundSet().get(pt.get()).getName());
                     player.getItems().add(f);
                     f.isRemoved = true;
@@ -105,7 +105,7 @@ public class EngineState extends Observable {
             Point2D.Double newPt = new Point2D.Double(pt.get().x, pt.get().y);
             if (newPt.distance(player.getPosition()) < 1) {
                 Foreground f = currentMap.getForegroundSet().get(pt.get());
-                if (f.isBreakable && player.hasItem(f.breaker)) {
+                if (f.isBreakable && !f.isRemoved && !f.isHided && player.hasItem(f.breaker)) {
                     System.out.println("Destroy object " + currentMap.getForegroundSet().get(pt.get()).getName());
                     player.getItems().add(f);
                     f.isRemoved = true;
