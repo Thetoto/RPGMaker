@@ -3,6 +3,7 @@ package Model.World;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.sql.BatchUpdateException;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class Animation extends Tile {
@@ -76,6 +77,14 @@ public class Animation extends Tile {
         tiles = new Vector<>();
         int biW = bi.getWidth();
         int biH = bi.getHeight();
+        if (biW == 96 && biH == 128) {
+            for (int i : Arrays.asList(0, 2, 3, 1)) {
+                for (int j = 0; j < 3; j++) {
+                    tiles.add(new Tile("animation", bi.getSubimage(j * 32, i * 32, 32, 32)));
+                }
+            }
+            return;
+        }
         if (biW % biH != 0 && biW % 4 != 0) {
             tiles = null;
             return;
