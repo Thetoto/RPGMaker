@@ -57,7 +57,12 @@ public class Draw {
     public static synchronized void drawTeleporters(Graphics2D g, Map map, int multiply, Point reqIn, Point reqOut) {
         if (teleporter == null) {
             try {
-                teleporter = ImageIO.read(ClassLoader.getSystemResource("teleporter_icon.png"));
+                teleporter = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+                Graphics2D gt = teleporter.createGraphics();
+                gt.setColor(new Color(255, 50, 50, 100));
+                gt.fillRect(0, 0, 16, 16);
+                gt.drawImage(ImageIO.read(ClassLoader.getSystemResource("teleporter_icon.png")), 0, 0, null);
+                gt.dispose();
             } catch (IOException e) {
                 e.printStackTrace();
             }
