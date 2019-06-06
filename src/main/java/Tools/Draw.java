@@ -1,5 +1,6 @@
 package Tools;
 
+import Model.Editor.EditorState;
 import Model.World.*;
 
 import javax.imageio.ImageIO;
@@ -96,7 +97,7 @@ public class Draw {
     public static void drawPlayer(Graphics2D g, Player player, int multiply, Point reqIn, Point reqOut) {
         Point2D p = player.getPosition();
         Animation a = player.getAnim();
-        if (p != null && a != null &&
+        if (p != null && a != null && player.getMapId() == EditorState.getInstance().mapState.currentMap.id &&
                 ((reqIn == null && reqOut == null) ||
                  (p.getX() >= reqIn.x && p.getX() <= reqOut.x && p.getY() >= reqIn.y && p.getY() <= reqOut.y))) {
             g.drawImage(a.get(),(int) p.getX() * multiply, (int) p.getY() * multiply, null);
