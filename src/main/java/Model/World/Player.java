@@ -80,7 +80,7 @@ public class Player {
 
     public boolean hasItem(String breaker) {
         for (Foreground f : items) {
-            if (f.toString().equals(breaker))
+            if (f.getTileName().equals(breaker))
                 return true;
         }
         return false;

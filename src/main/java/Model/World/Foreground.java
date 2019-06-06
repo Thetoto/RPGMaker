@@ -29,6 +29,10 @@ public class Foreground {
         return t;
     }
 
+    public String getTileName() {
+        return t.toString();
+    }
+
     public String getName() {
         return name;
     }
