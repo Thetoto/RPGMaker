@@ -64,7 +64,7 @@ public class World extends Observable {
                 map.background.set(i, tile);
             }
             for (Point pt : map.foreground.keySet()) {
-                Tile tile = foreTiles.get(map.foreground.get(pt).getName());
+                Tile tile = foreTiles.get(map.foreground.get(pt).getTile().getName());
                 if (tile == null) {
                     System.out.println(map.foreground.get(pt).getName() + " not found");
                     return false;
@@ -72,7 +72,7 @@ public class World extends Observable {
                 map.foreground.put(pt, new Foreground(tile));
             }
             for (NPC npc : map.npc) {
-                Animation anim = npcTiles.get(npc.getName());
+                Animation anim = npcTiles.get(npc.getAnimation().getName());
                 if (anim == null) {
                     System.out.println(npc.getName() + " not found");
                     return false;
