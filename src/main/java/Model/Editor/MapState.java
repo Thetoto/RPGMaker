@@ -67,6 +67,8 @@ public class MapState extends Observable {
                 deselect();
                 setChanged();
                 notifyObservers("Update Map");
+                setChanged();
+                notifyObservers("Update Me");
                 if (res != null) {
                     setCurrentTeleporter(res);
                     EditorState.getInstance().toolsState.setCurrentTools(ToolsEnum.TELEPORTER);

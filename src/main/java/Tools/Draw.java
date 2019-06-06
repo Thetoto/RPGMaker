@@ -2,13 +2,18 @@ package Tools;
 
 import Model.World.*;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Vector;
 
 public class Draw {
+
+    static BufferedImage teleporter = null;
 
     public static synchronized void drawBackTiles(Graphics2D g, Map map, int multiply) {
         drawBackTiles(g, map, multiply, new Point(0,0), new Point(map.getDim().width - 1, map.getDim().height - 1));
@@ -44,6 +49,23 @@ public class Draw {
                         drawImported(g, tile, pt, multiply);
                     }
                 }
+            }
+        }
+    }
+
+    public static synchronized void drawTeleporters(Graphics2D g, Map map, int multiply, Point reqIn, Point reqOut) {
+        if (teleporter == null) {
+            try {
+                teleporter = ImageIO.read(ClassLoader.getSystemResource("teleporter_icon.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        for (Teleporter t : map.getTeleporters()) {
+            Point p = t.getPosition();
+            if ((reqIn == null && reqOut == null) ||
+                 p.x >= reqIn.x && p.x <= reqOut.x && p.y >= reqIn.y && p.y <= reqOut.y) {
+                g.drawImage(teleporter, p.x * multiply, p.y * multiply, null);
             }
         }
     }
