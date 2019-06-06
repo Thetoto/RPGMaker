@@ -6,6 +6,7 @@ import Model.Editor.EditorState;
 import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
+import Model.World.Foreground;
 import Model.World.Tile;
 
 import javax.swing.*;
@@ -48,8 +49,9 @@ public class ToolsController {
         });
 
         toolsPanel.toolForegroundPanel.setBreakable.addItemListener(e -> {
-            EditorState.getInstance().mapState.getCurrentForeground().isBreakable = (e.getStateChange() == ItemEvent.SELECTED);
-            toolsPanel.toolForegroundPanel.UpdateBreaker(e.getStateChange() == ItemEvent.SELECTED);
+            Foreground f = EditorState.getInstance().mapState.getCurrentForeground();
+            f.isBreakable = (e.getStateChange() == ItemEvent.SELECTED);
+            toolsPanel.toolForegroundPanel.UpdateBreaker(f);
         });
         toolsPanel.toolForegroundPanel.setAsHide.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isHided = (e.getStateChange() == ItemEvent.SELECTED));
         toolsPanel.toolForegroundPanel.setPickable.addItemListener(e -> EditorState.getInstance().mapState.getCurrentForeground().isPickable = (e.getStateChange() == ItemEvent.SELECTED));

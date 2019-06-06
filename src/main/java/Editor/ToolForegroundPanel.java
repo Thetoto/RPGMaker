@@ -60,17 +60,18 @@ public class ToolForegroundPanel extends JPanel {
         setBreakable.setSelected(fore.isBreakable);
         setAsHide.setSelected(fore.isHided);
         setPickable.setSelected(fore.isPickable);
-        UpdateBreaker(fore.isBreakable);
+        UpdateBreaker(fore);
     }
 
-    public void UpdateBreaker(boolean b) {
-        if (b) {
+    public void UpdateBreaker(Foreground f) {
+        if (f.isBreakable) {
             Vector<Object> tiles = new Vector(Arrays.asList(EditorState.getInstance().tilesState.foregroundTiles.values().stream()
                         .map((Function<ImportedTile, Object>) importedTile -> importedTile.toString()).toArray()));
             tiles.add(0, "------");
             DefaultComboBoxModel model = new DefaultComboBoxModel(tiles);
             breaker.setModel(model);
+            breaker.setSelectedItem(f.breaker == "" ? "------" : f.breaker);
         }
-        breaker.setVisible(b);
+        breaker.setVisible(f.isBreakable);
     }
 }
