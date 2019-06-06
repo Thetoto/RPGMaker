@@ -125,8 +125,9 @@ public class EngineState extends Observable {
 
     public void checkTeleporter() {
         var realPos = new Point2D.Double(player.getPosition().getX(), player.getPosition().getY() + 1);
+        var realPos2 = new Point2D.Double(player.getPosition().getX() + 1, player.getPosition().getY() + 1);
         for (Teleporter t : currentMap.getTeleporters()) {
-            if (t.getPosition().distance(realPos) < 0.5f) {
+            if (t.getPosition().distance(realPos) < 0.5f || t.getPosition().distance(realPos2) < 0.5f) {
                 player.setPosition(new Point2D.Double(t.getPointDest().getX(), t.getPointDest().getY()), t.getMapDestId());
                 if (currentMap.id != t.getMapDestId())
                     changeMap(world.getMapById(t.getMapDestId()));
