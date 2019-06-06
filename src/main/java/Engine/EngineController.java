@@ -94,10 +94,12 @@ public class EngineController {
     }
     public void destroyGame() {
         keyState.set(KeyEvent.VK_ESCAPE, true);
-        for (Map m : EditorState.getInstance().world.getMaps()) {
-            for (Foreground f : m.getForegroundSet().values()) {
-                f.isRemoved = false;
-                f.isShowed = false;
+        if (!Main.standalone) {
+            for (Map m : EditorState.getInstance().world.getMaps()) {
+                for (Foreground f : m.getForegroundSet().values()) {
+                    f.isRemoved = false;
+                    f.isShowed = false;
+                }
             }
         }
         if (timeCycle != null)

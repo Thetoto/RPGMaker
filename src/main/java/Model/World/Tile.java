@@ -83,6 +83,8 @@ public class Tile {
     }
 
     public String toString() {
-        return image.substring(0, image.lastIndexOf('.'));
+        if (image.contains("."))
+            return image.substring(0, image.lastIndexOf('.'));
+        return image;
     }
 }
