@@ -32,6 +32,10 @@ public class EngineController {
             frame.dispose();
             destroyGame();
         });
+        frame.mapPanel.pause.replay.addActionListener(e -> {
+            frame.dispose();
+            rebootGame(world);
+        });
         state = new EngineState(world);
         state.addObserver(frame.mapPanel);
         state.addObserver(frame);
@@ -76,6 +80,18 @@ public class EngineController {
         });
     }
 
+    public void rebootGame(World world) {
+        keyState.set(KeyEvent.VK_ESCAPE, true);
+        for (Map m : EditorState.getInstance().world.getMaps()) {
+            for (Foreground f : m.getForegroundSet().values()) {
+                f.isRemoved = false;
+                f.isShowed = false;
+            }
+        }
+        if (timeCycle != null)
+            timeCycle.stop();
+        new EngineController(world);
+    }
     public void destroyGame() {
         keyState.set(KeyEvent.VK_ESCAPE, true);
         for (Map m : EditorState.getInstance().world.getMaps()) {
