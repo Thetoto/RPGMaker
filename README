@@ -1,0 +1,67 @@
+-------------------------------------------------------------------------------
+                ______  _    _ _____                                           
+                | ___ \| |  | /  __ \                                          
+                | |_/ /| |  | | /  \/                                          
+                | ___ \| |/\| | |                                              
+                | |_/ /\  /\  / \__/\                                          
+                \____/  \/  \/ \____/                                          
+                                                                               
+                                                                               
+                 ____________ _____  ___  ___      _                           
+                 | ___ \ ___ \  __ \ |  \/  |     | |                          
+                 | |_/ / |_/ / |  \/ | .  . | __ _| | _____ _ __               
+                 |    /|  __/| | __  | |\/| |/ _` | |/ / _ \ '__|              
+                 | |\ \| |   | |_\ \_| |  | | (_| |   <  __/ |                 
+                 \_| \_\_|    \____(_)_|  |_/\__,_|_|\_\___|_|                 
+                                                                               
+-------------------------------------------------------------------------------
+
+                                AUTHORS
+
+                              Thomas LUPIN
+                             Arthur BUSUTTIL
+
+-------------------------------------------------------------------------------
+
+                                PROJECT
+
+          This project is about recreating the software RPGMaker.
+      RPGMaker has been created in 1992. This software allow an user
+    to create a game of type RP (Role Play). The user can put some tiles
+      (image representing a part of a map) to create maps or add NPC
+    (Non Player Character) to create his own adventure. Finally, when the
+       user has finished his game, he can export it as a real game.
+
+-------------------------------------------------------------------------------
+
+                                 BONUS
+
+                        * Cycle jour nuit
+                        * Inventaire/Items
+                        * Scrolling (engine, grande map)
+                        * NPC random moves
+                        * Edit NPC names
+                        * Edit dialogs
+                        * Search bar for tiles
+                        * Default collision properties
+                        * Destructible world
+                        * "Conditions"
+                        * mouse coordinates
+                        * Shortcuts
+                        * Zoom on map
+                        * turn on/off grid
+                        * Real game
+
+-------------------------------------------------------------------------------
+
+                              INPUT PLAYER
+
+                            Z - UP
+                            Q - LEFT
+                            S - DOWN
+                            D - RIGHT
+
+                            A - DESTROY
+                            E - TALK/PICK
+
+-------------------------------------------------------------------------------
