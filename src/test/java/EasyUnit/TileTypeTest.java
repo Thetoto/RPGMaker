@@ -1,3 +1,5 @@
+package EasyUnit;
+
 import Model.Editor.TileType;
 import Model.World.*;
 import org.junit.Assert;

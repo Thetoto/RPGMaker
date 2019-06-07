@@ -14,7 +14,10 @@ public class PopUpManager {
                 JOptionPane.WARNING_MESSAGE);
     }
 
-    public static void askNewMap(EditorState editorState, boolean newWorld) {
+    public static void askNewMap(boolean newWorld) {
+
+        EditorState editorState = EditorState.getInstance();
+
         if (newWorld && editorState.world != null && !Confirm("All unsave work will be lost"))
             return;
         JDialog frame = new JDialog(Editor.getInstance(), true);

@@ -1,3 +1,5 @@
+package EasyUnit;
+
 import Model.Editor.EditorState;
 import Model.World.*;
 import org.junit.Assert;

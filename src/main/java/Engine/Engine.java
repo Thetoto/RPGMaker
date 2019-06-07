@@ -8,7 +8,10 @@ import java.util.Observer;
 public class Engine extends JFrame implements Observer {
     public Display mapPanel;
 
+    public static Engine engine;
+
     public Engine() {
+        engine = this;
         this.setSize(1080,720);
         this.setTitle("BibleEngine");
         try {
@@ -60,5 +63,9 @@ public class Engine extends JFrame implements Observer {
                 }
             }
         }
+    }
+
+    public static Engine getInstance() {
+        return engine;
     }
 }

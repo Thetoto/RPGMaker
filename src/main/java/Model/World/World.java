@@ -57,6 +57,9 @@ public class World extends Observable {
         var backTiles = EditorState.getInstance().tilesState.backgroundTiles;
         var foreTiles = EditorState.getInstance().tilesState.foregroundTiles;
         var npcTiles = EditorState.getInstance().tilesState.npcTile;
+        System.out.println(backTiles);
+        System.out.println(foreTiles);
+        System.out.println(npcTiles);
         for (Map map: maps) {
             map.backgroundTile = getTileByName(backTiles, map.backgroundTile.getName());
             if (map.backgroundTile == null)

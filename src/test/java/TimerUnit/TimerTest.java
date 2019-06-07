@@ -1,3 +1,5 @@
+package TimerUnit;
+
 import Model.Engine.Timer;
 import org.junit.After;
 import org.junit.Assert;
@@ -5,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 
 public class TimerTest {
@@ -43,5 +44,4 @@ public class TimerTest {
             Assert.assertTrue( false);
         }
     }
-
 }

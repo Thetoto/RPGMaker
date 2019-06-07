@@ -14,8 +14,8 @@ import java.awt.event.WindowEvent;
 import java.util.Vector;
 
 public class EngineController {
-    Engine frame;
-    EngineState state;
+    public Engine frame;
+    public EngineState state;
     Vector<Boolean> keyState = new Vector<>();
     Model.Engine.Timer timeCycle = null;
 

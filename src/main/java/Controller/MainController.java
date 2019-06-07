@@ -37,8 +37,8 @@ public class MainController {
 
         editor.topBar.loadButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.getWorld()));
         editor.topBar.toolsButton.addActionListener(actionEvent -> toolsController.setTool(ToolsEnum.TOOLBOX));
-        editor.topBar.createWorldButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, true)));
-        editor.topBar.createButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, false)));
+        editor.topBar.createWorldButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(true)));
+        editor.topBar.createButton.addActionListener(e -> ThreadLauncher.execute(() -> PopUpManager.askNewMap(false)));
         editor.topBar.saveButton.addActionListener(e -> ThreadLauncher.execute(() -> editorState.saveWorld()));
         editor.topBar.showGridButton.addActionListener(e -> editorState.invertGrid());
 
@@ -122,9 +122,9 @@ public class MainController {
                 else if (e.getKeyCode() == KeyEvent.VK_Y && e.isControlDown())
                     editorState.mapState.redo();
                 else if (e.getKeyCode() == KeyEvent.VK_N && e.isControlDown())
-                    ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, false));
+                    ThreadLauncher.execute(() -> PopUpManager.askNewMap(false));
                 else if (e.getKeyCode() == KeyEvent.VK_W && e.isControlDown())
-                    ThreadLauncher.execute(() -> PopUpManager.askNewMap(editorState, true));
+                    ThreadLauncher.execute(() -> PopUpManager.askNewMap(true));
                 else if (e.getKeyCode() == KeyEvent.VK_S && e.isControlDown())
                     ThreadLauncher.execute(() -> editorState.saveWorld());
                 else if (e.getKeyCode() == KeyEvent.VK_F5)

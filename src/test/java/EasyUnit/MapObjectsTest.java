@@ -1,3 +1,5 @@
+package EasyUnit;
+
 import Model.World.*;
 import org.junit.Assert;
 import org.junit.Before;

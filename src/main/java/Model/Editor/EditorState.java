@@ -46,7 +46,6 @@ public class EditorState extends Observable {
             return;
         World backup = world;
         Gson gson = new Gson();
-        System.out.println(file.toString() + " " + gson);
         try {
             world = gson.fromJson(new FileReader(file), World.class);
         } catch(Exception e) {

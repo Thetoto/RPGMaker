@@ -1,3 +1,5 @@
+package EasyUnit;
+
 import Model.World.Direction;
 import Model.World.Foreground;
 import Model.World.Player;

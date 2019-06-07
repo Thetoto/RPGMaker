@@ -1,3 +1,5 @@
+package EasyUnit;
+
 import Model.World.Map;
 import Model.World.World;
 import org.junit.Assert;

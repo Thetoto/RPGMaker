@@ -12,7 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Editor extends JFrame implements Observer {
-    private static Editor editor;
+    public static Editor editor;
 
     public JPanel mainPane;
 
