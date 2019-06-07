@@ -7,10 +7,6 @@ public class Teleporter {
     int mapDestId;
     Point position;
 
-    public Point getPosition() {
-        return position;
-    }
-
     Point destPosition;
 
     public Teleporter(Map map, String name, Point p) {
@@ -32,6 +28,10 @@ public class Teleporter {
 
     public int getMapDestId() {
         return mapDestId;
+    }
+
+    public Point getPosition() {
+        return position;
     }
 
     public Point getPointDest() {

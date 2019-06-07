@@ -155,4 +155,12 @@ public class NPC {
             revealForeground = new Vector<>();
         return revealForeground;
     }
+
+    public Point2D.Double getCoordinates() {
+        return coordinates;
+    }
+
+    public void setDest(Point2D.Double dest) {
+        this.dest = dest;
+    }
 }
