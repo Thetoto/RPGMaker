@@ -228,9 +228,9 @@ public class EngineState extends Observable {
         Gson gson = new Gson();
         try {
             SaveState saveState = gson.fromJson(new FileReader(file), SaveState.class);
-            saveState.updateWorld(world);
+            saveState.updateWorld(this);
             controller.keyState.set(KeyEvent.VK_P, true);
-            init();
+            changeMap(world.getMapById(player.getMapId()));
         } catch(Exception e) {
             PopUpManager.Alert("This save state is corrupt !");
         }

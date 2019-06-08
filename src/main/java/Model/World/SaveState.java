@@ -30,28 +30,28 @@ public class SaveState {
         }
     }
 
-    public void updateWorld(World world) {
-        if (world.getMapById(playerMapId) == null) {
+    public void updateWorld(EngineState state) {
+        if (state.world.getMapById(playerMapId) == null) {
             PopUpManager.Alert("This save is not compatible with this save state");
             return;
         }
-        world.getPlayer().setPosition(playerPosition, playerMapId);
-        world.getPlayer().setDirection(playerDirection);
+        state.player.setPosition(playerPosition, playerMapId);
+        state.player.setDirection(playerDirection);
 
         for (var entry : isShowedMap.entrySet()) {
-            Map map = world.getMapById(entry.getKey());
+            Map map = state.world.getMapById(entry.getKey());
             if (!testEntry(map, entry))
                 return;
             map.getForegroundSet().get(entry.getValue()).isShowed = true;
         }
 
         for (var entry : isRemovedMap.entrySet()) {
-            Map map = world.getMapById(entry.getKey());
+            Map map = state.world.getMapById(entry.getKey());
             if (!testEntry(map, entry))
                 return;
             map.getForegroundSet().get(entry.getValue()).isRemoved = true;
 
-            world.getPlayer().getItems().add(map.getForegroundSet().get(entry.getValue()));
+            state.player.getItems().add(map.getForegroundSet().get(entry.getValue()));
         }
     }
 
