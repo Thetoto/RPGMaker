@@ -28,7 +28,7 @@ public class Editor extends JFrame implements Observer {
         this.editor = this;
         CursorManager.init(this);
         this.setSize(1080,720);
-        this.setTitle("BibleRPG - Premium ULTIMATE ++ AllInclusive Remake Edition Deluxe");
+        this.setTitle("BibleRPG - Black Edition");
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {

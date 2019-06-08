@@ -4980,7 +4980,8 @@
       ],
       "npc": [
         {
-          "message": "Hello!",
+          "name": "DEATH",
+          "message": "YOU SHALL NOT PASS",
           "direction": "DOWN",
           "anim": {
             "image": "death.png"
@@ -4993,20 +4994,22 @@
           "revealForeground": []
         },
         {
-          "message": "Hello!",
+          "name": "Princess",
+          "message": "I\u0027m the princess !",
           "direction": "DOWN",
           "anim": {
             "image": "women.png"
           },
           "coordinates": {
-            "x": 16.0,
-            "y": 6.0
+            "x": 17.0,
+            "y": 4.768000000000006
           },
-          "isMoving": false,
+          "isMoving": true,
           "revealForeground": []
         },
         {
-          "message": "Hello!",
+          "name": "Poseïdon",
+          "message": "I\u0027m so tired !",
           "direction": "DOWN",
           "anim": {
             "image": "poseidon.png"
@@ -5038,9 +5041,6 @@
           }
         }
       ],
-      "music": {
-        "name": "Zelda.wav"
-      },
       "backgroundTile": {
         "image": "lava.png"
       }
