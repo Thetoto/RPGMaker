@@ -7,9 +7,11 @@ import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
 import Model.World.Foreground;
+import Model.World.Map;
 import Model.World.NPC;
 import Model.World.Tile;
 
+import javax.sound.sampled.DataLine;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -40,6 +42,26 @@ public class ToolsController {
         toolsPanel.toolBoxPanel.nightTime.addChangeListener(e -> {
             JSpinner spinner = (JSpinner) e.getSource();
             EditorState.getInstance().world.timeCycle.setNightDuration((int)spinner.getModel().getValue());
+        });
+        toolsPanel.toolBoxPanel.setMusics.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                Object o = e.getItem();
+                if (o != null) {
+                    if (o instanceof String) {
+                        Map map = EditorState.getInstance().mapState.currentMap;
+                        if (map != null && e.getStateChange() == ItemEvent.SELECTED) {
+                            String name = (String) o;
+                            if (name.equals("------")) {
+                                EditorState.getInstance().mapState.currentMap.setMusic(null);
+                            }
+                            DataLine.Info info = EditorState.getInstance().tilesState.musics.get(name);
+                            EditorState.getInstance().mapState.currentMap.setMusic(info);
+                        }
+                    }
+
+                }
+            }
         });
 
         toolsPanel.toolTeleporterPanel.setDestButton.addActionListener(e -> EditorState.getInstance().mapState.setMode(Mode.TELEPORTERDEST));

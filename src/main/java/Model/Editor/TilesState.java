@@ -4,6 +4,7 @@ import Model.World.*;
 import Tools.Tools;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -25,6 +26,7 @@ public class TilesState extends Observable {
     public Map<String, Tile> backgroundTiles = new HashMap<>();
     public Map<String, ImportedTile> foregroundTiles = new HashMap<>();
     public Map<String, Animation> npcTile = new HashMap<>();
+    public Map<String, DataLine.Info> musics = new HashMap<>();
 
     public TilesState() {
     }
@@ -62,6 +64,11 @@ public class TilesState extends Observable {
 
     public void addTile(Path file, TileType type, boolean askUpdate) {
         try {
+            if (type == TileType.MUSIC) {
+                File f = new File(file.toUri());
+                addMusic(f, file.getFileName().toString());
+                return;
+            }
             BufferedImage img = ImageIO.read(file.toFile());
             if (img == null)
                 return;
@@ -74,7 +81,7 @@ public class TilesState extends Observable {
             } else {
                 cutAndAddBackTile(img, file.getFileName().toString());
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("Can't load this file : " + file.getFileName());
         }
         if (askUpdate)
@@ -83,6 +90,11 @@ public class TilesState extends Observable {
 
     void addTile(URL file, String fileName, TileType type, boolean askUpdate) {
         try {
+            if (type == TileType.MUSIC) {
+                File f = new File(file.toURI());
+                addMusic(f, file.getFile());
+                return;
+            }
             BufferedImage img = ImageIO.read(file);
             if (img == null)
                 return;
@@ -95,7 +107,7 @@ public class TilesState extends Observable {
             } else {
                 cutAndAddBackTile(img, fileName);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("Can't load this file : " + fileName);
         }
         if (askUpdate)
@@ -155,14 +167,20 @@ public class TilesState extends Observable {
 
     public void autoAddTiles(File fileOrDir) {
         // TODO : Better algo
-        if (fileOrDir.isFile())
-            addTile(fileOrDir.toPath(), TileType.BACKGROUND);
+        if (fileOrDir.isFile()) {
+            if (fileOrDir.getName().contains(".wav"))
+                addMusic(fileOrDir, fileOrDir.getName());
+            else
+                addTile(fileOrDir.toPath(), TileType.BACKGROUND);
+        }
         else if (fileOrDir.getName().contains("fore"))
             addDirectoryTiles(fileOrDir.toPath().toString(), TileType.FOREGROUND);
         else if (fileOrDir.getName().contains("back"))
             addDirectoryTiles(fileOrDir.toPath().toString(), TileType.BACKGROUND);
         else if (fileOrDir.getName().contains("npc"))
             addDirectoryTiles(fileOrDir.toPath().toString(), TileType.NPC);
+        else if (fileOrDir.getName().contains("music"))
+            addDirectoryTiles(fileOrDir.toPath().toString(), TileType.MUSIC);
         else {
             try (Stream<Path> paths = Files.walk(fileOrDir.toPath())) {
                 paths.filter(Files::isDirectory)
@@ -173,6 +191,18 @@ public class TilesState extends Observable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void addMusic(File f, String name) {
+        AudioInputStream inputStream = null;
+        try {
+            inputStream = AudioSystem.getAudioInputStream(f);
+            AudioFormat format = inputStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, format);
+            musics.put(name, info);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

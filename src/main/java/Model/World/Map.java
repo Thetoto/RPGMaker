@@ -1,11 +1,11 @@
 package Model.World;
 
-import Editor.Editor;
 import Model.Editor.EditorState;
 import Model.Editor.MapState;
 import Model.Editor.TileType;
 import Tools.ActionManager;
 
+import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.HashMap;
@@ -21,6 +21,7 @@ public class Map {
     HashMap<Point, Foreground> foreground; // Tile but it's a ImportedTile. Point is top left corner.
     Vector<NPC> npc;
     Vector<Teleporter> teleporters;
+    Clip clip;
     Tile backgroundTile;
 
     public Map(Dimension dimension, String name) {
@@ -347,5 +348,21 @@ public class Map {
 
     public void remove(Point point) {
         foreground.remove(point);
+    }
+
+    public Clip getClip() {
+        return clip;
+    }
+
+    public void setMusic(DataLine.Info info) {
+        if (info == null)
+            clip = null;
+        else {
+            try {
+                clip = (Clip) AudioSystem.getLine(info);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

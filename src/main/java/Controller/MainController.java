@@ -54,13 +54,18 @@ public class MainController {
 
         editor.topBar.addNewTiles.addActionListener(e -> {
             int sizeBefore = editorState.tilesState.foregroundTiles.size() + editorState.tilesState.backgroundTiles.size() + editorState.tilesState.npcTile.size();
+            int sizeMusicBefore = editorState.tilesState.musics.size();
             File f = FileManager.getFileOrDir();
             if (f == null)
                 return;
             editorState.tilesState.autoAddTiles(f);
             tilesController.setupListener();
             int sizeAfter = editorState.tilesState.foregroundTiles.size() + editorState.tilesState.backgroundTiles.size() + editorState.tilesState.npcTile.size();
-            Tools.PopUpManager.Alert((sizeAfter - sizeBefore) + " tiles loaded");
+            int sizeMusicAfter = editorState.tilesState.musics.size();
+            Tools.PopUpManager.Alert((sizeAfter - sizeBefore) + " tiles loaded" + System.lineSeparator()
+                    + (sizeMusicAfter - sizeMusicBefore) + " musics loaded");
+            if (sizeMusicAfter - sizeMusicBefore != 0)
+                toolsController.toolsPanel.toolBoxPanel.updateInfo();
         });
 
         editor.tilesPane.treePanel.addMouseListener(new MouseAdapter() {

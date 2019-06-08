@@ -1,10 +1,12 @@
 package Editor;
 
+import Model.Editor.EditorState;
 import Model.World.TimeCycle;
 
 import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Vector;
 
 public class ToolBoxPanel extends JPanel {
     public JButton setSpawnButton;
@@ -18,6 +20,8 @@ public class ToolBoxPanel extends JPanel {
     public JPanel timeCyclePanel;
     public JSpinner dayTime;
     public JSpinner nightTime;
+
+    public JComboBox setMusics;
 
     public ToolBoxPanel() {
         this.setLayout(new GridBagLayout());
@@ -44,6 +48,9 @@ public class ToolBoxPanel extends JPanel {
         dayTime.setModel(new SpinnerNumberModel(10, 10, 800, 1));
         nightTime.setModel(new SpinnerNumberModel(10, 10, 800, 1));
 
+        JLabel label = new JLabel("Set music");
+        setMusics = new JComboBox();
+
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -60,6 +67,10 @@ public class ToolBoxPanel extends JPanel {
         this.add(activeTimeCycle, c);
         c.gridy += 1;
         this.add(timeCyclePanel, c);
+        c.gridy += 1;
+        this.add(label, c);
+        c.gridy += 1;
+        this.add(setMusics, c);
 
         timeCyclePanel.setVisible(false);
     }
@@ -71,6 +82,9 @@ public class ToolBoxPanel extends JPanel {
         addTeleporterButton.setVisible(aFlag);
         showWalkable.setVisible(aFlag);
         activeTimeCycle.setVisible(aFlag);
+        if (aFlag)
+            updateInfo();
+        setMusics.setVisible(aFlag);
     }
 
     public void showCycleSetting(TimeCycle timeCycle) {
@@ -81,5 +95,13 @@ public class ToolBoxPanel extends JPanel {
             dayTime.getModel().setValue(timeCycle.getDayDuration());
             nightTime.getModel().setValue(timeCycle.getNightDuration());
         }
+    }
+
+    public void updateInfo() {
+        Vector<Object> musics = new Vector();
+        musics.addAll(EditorState.getInstance().tilesState.musics.keySet());
+        musics.add(0, "------");
+        DefaultComboBoxModel model = new DefaultComboBoxModel(musics);
+        setMusics.setModel(model);
     }
 }
