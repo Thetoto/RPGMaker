@@ -222,15 +222,14 @@ public class EngineState extends Observable {
         if (!PopUpManager.Confirm("Do you really want to load this save state ?\n" +
                 "You will loose your current progression."))
             return;
-        SaveState saveState = null;
         Gson gson = new Gson();
         try {
-            saveState = gson.fromJson(new FileReader(file), SaveState.class);
+            SaveState saveState = gson.fromJson(new FileReader(file), SaveState.class);
+            saveState.updateWorld(world);
+            init();
         } catch(Exception e) {
-            e.printStackTrace();
+            PopUpManager.Alert("This save state is corrupt !");
         }
-        saveState.updateWorld(world);
-        setChanged();
-        notifyObservers("Load Save");
+
     }
 }
