@@ -27,7 +27,7 @@ public class Player {
         this.direction = player.direction;
     }
 
-    public Point2D getPosition() {
+    public Point2D.Double getPosition() {
         return position;
     }
 

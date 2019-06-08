@@ -2,10 +2,15 @@ package Engine;
 
 import Model.World.*;
 import Model.World.Map;
+import Tools.FileManager;
 import Tools.Pair;
+import Tools.PopUpManager;
+import com.google.gson.Gson;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.io.File;
+import java.io.FileReader;
 import java.security.KeyPair;
 import java.util.*;
 import java.util.function.BiConsumer;
@@ -204,5 +209,28 @@ public class EngineState extends Observable {
                 break;
         }
         return new Pair<>(dim, player1D);
+    }
+
+    public void saveState() {
+        FileManager.saveFile(new SaveState(world), ".save");
+    }
+
+    public void loadState() {
+        File file = FileManager.getFile();
+        if (file == null)
+            return;
+        if (!PopUpManager.Confirm("Do you really want to load this save state ?\n" +
+                "You will loose your current progression."))
+            return;
+        SaveState saveState = null;
+        Gson gson = new Gson();
+        try {
+            saveState = gson.fromJson(new FileReader(file), SaveState.class);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        saveState.updateWorld(world);
+        setChanged();
+        notifyObservers("Load Save");
     }
 }

@@ -32,7 +32,7 @@ public class FileManager {
         return file;
     }
 
-    public static void saveFile(Object o) {
+    public static void saveFile(Object o, String extension) {
         if (o == null) {
             PopUpManager.Alert("Nothing to save.");
             return;
@@ -45,8 +45,8 @@ public class FileManager {
             file = fc.getSelectedFile();
             if (file == null)
                 return;
-            if (!file.getName().endsWith(".wrld"))
-                file = new File(file.toString() + ".wrld");
+            if (!file.getName().endsWith(extension))
+                file = new File(file.toString() + extension);
             Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
                     .setPrettyPrinting().create();
             String world_json = gson.toJson(o);

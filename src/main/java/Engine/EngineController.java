@@ -37,6 +37,9 @@ public class EngineController {
             frame.dispose();
             rebootGame(world);
         });
+        frame.mapPanel.pause.save.addActionListener(e -> state.saveState());
+        frame.mapPanel.pause.load.addActionListener(e -> state.loadState());
+
         state = new EngineState(world);
         state.addObserver(frame.mapPanel);
         state.addObserver(frame);

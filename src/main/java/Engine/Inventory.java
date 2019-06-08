@@ -16,6 +16,8 @@ public class Inventory extends JPanel {
         this.removeAll();
         this.add(new JLabel("Inventory :\n"));
         for (Foreground fore : EngineState.getInstance().player.getItems()) {
+            if (!fore.isPickable)
+                continue;
             JLabel label = new JLabel();
             label.setIcon(new ImageIcon(fore.getTile().get()));
             this.add(label);

@@ -81,7 +81,7 @@ public class EditorState extends Observable {
     }
 
     public void saveWorld() {
-        FileManager.saveFile(world);
+        FileManager.saveFile(world, ".wrld");
     }
 
     public void invertGrid() {
