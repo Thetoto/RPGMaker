@@ -121,6 +121,7 @@ public class JarMaker {
         try {
             target.putNextEntry(new JarEntry(name));
             ByteArrayOutputStream out = new ByteArrayOutputStream();
+            music.getAudioInputStream().reset();
             AudioSystem.write(music.getAudioInputStream(), AudioFileFormat.Type.WAVE, out);
             addStreamToJar(new BufferedInputStream(new ByteArrayInputStream(out.toByteArray())), target);
         } catch (Exception e) {

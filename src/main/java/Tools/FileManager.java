@@ -54,7 +54,10 @@ public class FileManager {
                 file.createNewFile();
                 FileOutputStream writer = new FileOutputStream(file);
                 writer.write(world_json.getBytes());
-                PopUpManager.Alert("World saved !");
+                if (extension.equals(".wrld"))
+                    PopUpManager.Alert("World saved !");
+                if (extension.equals(".save"))
+                    PopUpManager.Alert("Save state saved !");
             } catch (IOException e) {
                 e.printStackTrace();
             }

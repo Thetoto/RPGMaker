@@ -1,10 +1,10 @@
 {
   "playerMapId": 1,
   "playerPosition": {
-    "x": 12.480000000000004,
-    "y": 9.290000000000013
+    "x": 9.329999999999993,
+    "y": 12.669999999999993
   },
-  "playerDirection": "RIGHT",
+  "playerDirection": "DOWN",
   "isShowedMap": {
     "1": {
       "x": 9,

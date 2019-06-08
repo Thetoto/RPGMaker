@@ -4969,6 +4969,9 @@
           }
         }
       ],
+      "music": {
+        "name": "Zelda.wav"
+      },
       "backgroundTile": {
         "image": "zground.png"
       }
@@ -6637,6 +6640,9 @@
           }
         }
       ],
+      "music": {
+        "name": "Zelda.wav"
+      },
       "backgroundTile": {
         "image": "zblack.png"
       }
@@ -11881,6 +11887,9 @@
           }
         }
       ],
+      "music": {
+        "name": "Zelda.wav"
+      },
       "backgroundTile": {
         "image": "zground.png"
       }
@@ -16983,6 +16992,9 @@
           }
         }
       ],
+      "music": {
+        "name": "Zelda.wav"
+      },
       "backgroundTile": {
         "image": "zblack.png"
       }
