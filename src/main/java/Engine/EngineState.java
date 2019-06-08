@@ -8,6 +8,7 @@ import Tools.PopUpManager;
 import com.google.gson.Gson;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.FileReader;
@@ -22,11 +23,13 @@ public class EngineState extends Observable {
     public Map currentMap;
     public Player player;
     public NPC currentMessage;
+    EngineController controller;
 
     static EngineState engineState;
 
-    public EngineState(World world) {
+    public EngineState(World world, EngineController controller) {
         engineState = this;
+        this.controller = controller;
         this.world = new World(world);
         this.player = new Player(world.getPlayer());
         this.currentMessage = null;
@@ -212,7 +215,7 @@ public class EngineState extends Observable {
     }
 
     public void saveState() {
-        FileManager.saveFile(new SaveState(world), ".save");
+        FileManager.saveFile(new SaveState(this), ".save");
     }
 
     public void loadState() {
@@ -226,6 +229,7 @@ public class EngineState extends Observable {
         try {
             SaveState saveState = gson.fromJson(new FileReader(file), SaveState.class);
             saveState.updateWorld(world);
+            controller.keyState.set(KeyEvent.VK_P, true);
             init();
         } catch(Exception e) {
             PopUpManager.Alert("This save state is corrupt !");

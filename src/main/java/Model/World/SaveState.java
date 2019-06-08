@@ -1,5 +1,6 @@
 package Model.World;
 
+import Engine.EngineState;
 import Tools.Pair;
 import Tools.PopUpManager;
 
@@ -15,11 +16,11 @@ public class SaveState {
     private HashMap<Integer, Point> isShowedMap = new HashMap<>();
     private HashMap<Integer, Point> isRemovedMap = new HashMap<>();
 
-    public SaveState(World world) {
-        playerMapId = world.getPlayer().getMapId();
-        playerPosition = world.getPlayer().getPosition();
-        playerDirection = world.getPlayer().getDirection();
-        for (Map map: world.getMaps()) {
+    public SaveState(EngineState state) {
+        playerMapId = state.currentMap.id;
+        playerPosition = state.player.getPosition();
+        playerDirection = state.player.getDirection();
+        for (Map map: state.world.getMaps()) {
             for (var entry: map.getForegroundSet().entrySet()) {
                 if (entry.getValue().isRemoved)
                     isRemovedMap.put(map.id, entry.getKey());
@@ -35,7 +36,7 @@ public class SaveState {
             return;
         }
         world.getPlayer().setPosition(playerPosition, playerMapId);
-        world.getPlayer().move(playerDirection, 0);
+        world.getPlayer().setDirection(playerDirection);
 
         for (var entry : isShowedMap.entrySet()) {
             Map map = world.getMapById(entry.getKey());

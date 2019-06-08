@@ -40,7 +40,7 @@ public class EngineController {
         frame.mapPanel.pause.save.addActionListener(e -> state.saveState());
         frame.mapPanel.pause.load.addActionListener(e -> state.loadState());
 
-        state = new EngineState(world);
+        state = new EngineState(world, this);
         state.addObserver(frame.mapPanel);
         state.addObserver(frame);
         state.init();

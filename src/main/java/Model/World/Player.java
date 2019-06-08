@@ -85,4 +85,8 @@ public class Player {
         }
         return false;
     }
+
+    public void setDirection(Direction playerDirection) {
+        direction = playerDirection;
+    }
 }
