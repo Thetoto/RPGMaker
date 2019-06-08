@@ -5,7 +5,6 @@ import Model.Editor.MapState;
 import Model.Editor.TileType;
 import Tools.ActionManager;
 
-import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ public class Map {
     HashMap<Point, Foreground> foreground; // Tile but it's a ImportedTile. Point is top left corner.
     Vector<NPC> npc;
     Vector<Teleporter> teleporters;
-    Clip clip;
+    Music music;
     Tile backgroundTile;
 
     public Map(Dimension dimension, String name) {
@@ -53,6 +52,14 @@ public class Map {
         this.walkable = new Vector<>(map.walkable);
         this.backgroundTile = map.backgroundTile;
         this.npc = new Vector<>(map.npc);
+        Music music = map.getMusic();
+        if (music != null) {
+            try {
+                this.music = music;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -350,16 +357,16 @@ public class Map {
         foreground.remove(point);
     }
 
-    public Clip getClip() {
-        return clip;
+    public Music getMusic() {
+        return music;
     }
 
-    public void setMusic(DataLine.Info info) {
-        if (info == null)
-            clip = null;
+    public void setMusic(Music music) {
+        if (music == null)
+            this.music = null;
         else {
             try {
-                clip = (Clip) AudioSystem.getLine(info);
+                this.music = music;
             } catch (Exception e) {
                 e.printStackTrace();
             }

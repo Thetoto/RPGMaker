@@ -82,6 +82,7 @@ public class MainController {
                     }
                     Map map = (Map) obj;
                     editorState.mapState.updateMap(map);
+                    toolsController.toolsPanel.toolBoxPanel.updateInfo();
                 }
                 if (obj instanceof Player) {
                     //Player p = (Player) obj;

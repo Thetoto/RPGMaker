@@ -1,6 +1,8 @@
 package Editor;
 
 import Model.Editor.EditorState;
+import Model.Editor.MapState;
+import Model.World.Music;
 import Model.World.TimeCycle;
 
 import javax.sound.midi.SysexMessage;
@@ -99,9 +101,18 @@ public class ToolBoxPanel extends JPanel {
 
     public void updateInfo() {
         Vector<Object> musics = new Vector();
-        musics.addAll(EditorState.getInstance().tilesState.musics.keySet());
+        musics.addAll(EditorState.getInstance().tilesState.musics);
         musics.add(0, "------");
         DefaultComboBoxModel model = new DefaultComboBoxModel(musics);
+
+        Music tmp = null;
+        if (EditorState.getInstance().mapState.currentMap != null)
+            tmp = EditorState.getInstance().mapState.currentMap.getMusic();
+        if (tmp == null)
+            model.setSelectedItem("------");
+        else
+            model.setSelectedItem(tmp);
+
         setMusics.setModel(model);
     }
 }

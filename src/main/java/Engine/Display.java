@@ -1,6 +1,5 @@
 package Engine;
 
-import Model.Editor.EditorState;
 import Model.World.ImportedTile;
 import Model.World.Map;
 import Model.World.Player;

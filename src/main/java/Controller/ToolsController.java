@@ -6,17 +6,22 @@ import Model.Editor.EditorState;
 import Model.Editor.Mode;
 import Model.Editor.ToolsEnum;
 import Model.Editor.ToolsState;
-import Model.World.Foreground;
-import Model.World.Map;
-import Model.World.NPC;
-import Model.World.Tile;
+import Model.World.*;
+import Tools.Pair;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Vector;
+import java.util.function.BinaryOperator;
+import java.util.function.Predicate;
 
 public class ToolsController {
     ToolsPanel toolsPanel;
@@ -48,16 +53,16 @@ public class ToolsController {
             public void itemStateChanged(ItemEvent e) {
                 Object o = e.getItem();
                 if (o != null) {
-                    if (o instanceof String) {
+                    if (o instanceof Music) {
                         Map map = EditorState.getInstance().mapState.currentMap;
                         if (map != null && e.getStateChange() == ItemEvent.SELECTED) {
-                            String name = (String) o;
-                            if (name.equals("------")) {
-                                EditorState.getInstance().mapState.currentMap.setMusic(null);
-                            }
-                            DataLine.Info info = EditorState.getInstance().tilesState.musics.get(name);
-                            EditorState.getInstance().mapState.currentMap.setMusic(info);
+                            Music music = (Music) o;
+                            EditorState.getInstance().mapState.currentMap.setMusic(music);
                         }
+                        System.out.println(o.getClass() + " " + o);
+                    } else {
+                        System.out.println(o.getClass() + " " + o);
+                        EditorState.getInstance().mapState.currentMap.setMusic(null);
                     }
 
                 }
@@ -97,7 +102,6 @@ public class ToolsController {
                         npc.getRevealForeground().remove(pt);
                     }
                 }
-
             }
         });
         toolsPanel.toolForegroundPanel.breaker.addActionListener(e -> {

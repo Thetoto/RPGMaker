@@ -1,12 +1,21 @@
 package Engine;
 
+import Model.Editor.EditorState;
+import Model.World.Music;
+import Tools.Pair;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
 public class Engine extends JFrame implements Observer {
     public Display mapPanel;
+    public Music music;
 
     public static Engine engine;
 
@@ -60,6 +69,15 @@ public class Engine extends JFrame implements Observer {
                                                 EngineState.getInstance().world.timeCycle.isNight());
                 } else if (s.equals("Update foreground")) {
                     mapPanel.drawForeLayer(EngineState.getInstance().currentMap);
+                } else if (s.equals("Change Map")) {
+                    Music  music = EngineState.getInstance().currentMap.getMusic();
+                    try {
+                        Music.stop();
+                        if (music != null)
+                            music.play();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

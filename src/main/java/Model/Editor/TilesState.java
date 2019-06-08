@@ -1,16 +1,13 @@
 package Model.Editor;
 
 import Model.World.*;
-import Tools.Tools;
+import Tools.Pair;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.*;
 import java.security.CodeSource;
@@ -26,7 +23,7 @@ public class TilesState extends Observable {
     public Map<String, Tile> backgroundTiles = new HashMap<>();
     public Map<String, ImportedTile> foregroundTiles = new HashMap<>();
     public Map<String, Animation> npcTile = new HashMap<>();
-    public Map<String, DataLine.Info> musics = new HashMap<>();
+    public Vector<Music> musics = new Vector<>();
 
     public TilesState() {
     }
@@ -198,9 +195,7 @@ public class TilesState extends Observable {
         AudioInputStream inputStream = null;
         try {
             inputStream = AudioSystem.getAudioInputStream(f);
-            AudioFormat format = inputStream.getFormat();
-            DataLine.Info info = new DataLine.Info(Clip.class, format);
-            musics.put(name, info);
+            musics.add(new Music(name, inputStream));
         } catch (Exception e) {
             e.printStackTrace();
         }

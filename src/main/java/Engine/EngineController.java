@@ -4,6 +4,7 @@ import Model.Editor.EditorState;
 import Model.Engine.Timer;
 import Model.World.Foreground;
 import Model.World.Map;
+import Model.World.Music;
 import Model.World.World;
 import Tools.ThreadLauncher;
 
@@ -93,6 +94,7 @@ public class EngineController {
         new EngineController(world);
     }
     public void destroyGame() {
+        Music.destroy();
         keyState.set(KeyEvent.VK_ESCAPE, true);
         if (!Main.standalone) {
             for (Map m : EditorState.getInstance().world.getMaps()) {
@@ -112,6 +114,7 @@ public class EngineController {
         System.out.println("Pause...");
         state.setPause(true);
 
+        Music.pause();
         if (timeCycle != null)
             timeCycle.pause();
 
@@ -123,6 +126,7 @@ public class EngineController {
             }
         }
 
+        Music.restart();
         if (timeCycle != null)
             timeCycle.resume();
 
