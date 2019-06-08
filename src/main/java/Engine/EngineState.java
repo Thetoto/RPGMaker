@@ -7,6 +7,7 @@ import Tools.Pair;
 import Tools.PopUpManager;
 import com.google.gson.Gson;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Point2D;
@@ -222,8 +223,8 @@ public class EngineState extends Observable {
         File file = FileManager.getFile();
         if (file == null)
             return;
-        if (!PopUpManager.Confirm("Do you really want to load this save state ?\n" +
-                "You will loose your current progression."))
+        if (JOptionPane.showConfirmDialog(Engine.getInstance(), "Do you really want to load this save state ?\n" +
+                "You will loose your current progression.") != 0)
             return;
         Gson gson = new Gson();
         try {
@@ -232,7 +233,8 @@ public class EngineState extends Observable {
             controller.keyState.set(KeyEvent.VK_P, true);
             changeMap(world.getMapById(player.getMapId()));
         } catch(Exception e) {
-            PopUpManager.Alert("This save state is corrupt !");
+            JOptionPane.showMessageDialog(Engine.getInstance(), "This save state is corrupt !", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
         }
 
     }

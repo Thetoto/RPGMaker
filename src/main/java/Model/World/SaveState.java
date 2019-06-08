@@ -1,9 +1,11 @@
 package Model.World;
 
+import Editor.Editor;
 import Engine.EngineState;
 import Tools.Pair;
 import Tools.PopUpManager;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.HashMap;
@@ -32,7 +34,8 @@ public class SaveState {
 
     public void updateWorld(EngineState state) {
         if (state.world.getMapById(playerMapId) == null) {
-            PopUpManager.Alert("This save is not compatible with this save state");
+            JOptionPane.showMessageDialog(Engine.Engine.getInstance(), "This save is not compatible with this save state", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
         state.player.setPosition(playerPosition, playerMapId);
@@ -57,7 +60,8 @@ public class SaveState {
 
     private boolean testEntry(Map map, java.util.Map.Entry<Integer, Point> entry) {
         if (map == null || !map.getForegroundSet().containsKey(entry.getValue())) {
-            PopUpManager.Alert("This save is not compatible with this save state");
+            JOptionPane.showMessageDialog(Engine.Engine.getInstance(), "This save is not compatible with this save state", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return true;
