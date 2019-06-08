@@ -72,9 +72,14 @@ public class Engine extends JFrame implements Observer {
                 } else if (s.equals("Change Map")) {
                     Music  music = EngineState.getInstance().currentMap.getMusic();
                     try {
-                        Music.stop();
-                        if (music != null)
+                        System.out.println(Music.musicPlayed + "END");
+                        if (music != null) {
                             music.play();
+                            System.out.println("OK");
+                        } else {
+                            Music.stop();
+                            System.out.println("DONE");
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

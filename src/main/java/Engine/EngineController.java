@@ -85,8 +85,9 @@ public class EngineController {
     }
 
     public void rebootGame(World world) {
+        Music.destroy();
         keyState.set(KeyEvent.VK_ESCAPE, true);
-        for (Map m : EditorState.getInstance().world.getMaps()) {
+        for (Map m : world.getMaps()) {
             for (Foreground f : m.getForegroundSet().values()) {
                 f.isRemoved = false;
                 f.isShowed = false;
@@ -96,6 +97,7 @@ public class EngineController {
             timeCycle.stop();
         new EngineController(world);
     }
+
     public void destroyGame() {
         Music.destroy();
         keyState.set(KeyEvent.VK_ESCAPE, true);
