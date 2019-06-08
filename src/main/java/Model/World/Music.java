@@ -1,11 +1,12 @@
 package Model.World;
 
 import javax.sound.sampled.*;
+import java.util.BitSet;
 
 public class Music {
     String name;
-    AudioInputStream audioStream;
-    static Clip clip = null;
+    transient AudioInputStream audioStream;
+    transient static Clip clip = null;
 
     public Music(String name, AudioInputStream inputStream) throws Exception {
         this.name = name;
@@ -31,7 +32,8 @@ public class Music {
 
     public static void stop() {
         try {
-            clip.close();
+            if (clip != null)
+                clip.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,5 +55,9 @@ public class Music {
         clip.setFramePosition(0);
         clip.setMicrosecondPosition(0);
         clip.start();
+    }
+
+    public AudioInputStream getAudioInputStream() {
+        return audioStream;
     }
 }

@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioSystem;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
@@ -29,6 +31,7 @@ public class JarMaker {
             JarInputStream j = new JarInputStream(jar.openStream());
             addJar(j, target, wStream);
             addImagesJar(target, w);
+            addMusicJar(target, w);
             target.close();
             PopUpManager.Alert("JAR saved !");
         } catch (IOException e) {
@@ -42,7 +45,7 @@ public class JarMaker {
         return gson.toJson(w);
     }
 
-    private static void addStreamToJar(BufferedInputStream in, JarOutputStream target) throws IOException {
+    private static void addStreamToJar(InputStream in, JarOutputStream target) throws IOException {
         byte[] buffer = new byte[1024];
         while (true) {
             int count = in.read(buffer);
@@ -94,6 +97,14 @@ public class JarMaker {
         }
     }
 
+    private static void addMusicJar(JarOutputStream target, World w) {
+        for (Map m : w.maps) {
+            Music music = m.getMusic();
+            if (music != null)
+                addEntryMusicJar(target, music, "music/" + music.getName());
+        }
+    }
+
     public static void addEntryImageJar(JarOutputStream target, BufferedImage obj, String name) {
         try {
             target.putNextEntry(new JarEntry(name));
@@ -101,6 +112,16 @@ public class JarMaker {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             ImageIO.write(obj, "png", out);
 
+            addStreamToJar(new BufferedInputStream(new ByteArrayInputStream(out.toByteArray())), target);
+        } catch (Exception e) {
+        }
+    }
+
+    public static void addEntryMusicJar(JarOutputStream target, Music music, String name) {
+        try {
+            target.putNextEntry(new JarEntry(name));
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            AudioSystem.write(music.getAudioInputStream(), AudioFileFormat.Type.WAVE, out);
             addStreamToJar(new BufferedInputStream(new ByteArrayInputStream(out.toByteArray())), target);
         } catch (Exception e) {
         }

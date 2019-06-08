@@ -1,11 +1,11 @@
 package Model.Editor;
 
 import Model.World.*;
-import Tools.Pair;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -49,6 +49,7 @@ public class TilesState extends Observable {
         addTile(ClassLoader.getSystemResource("eraser.png"), "eraser.png", TileType.NPC);
         addDirectoryTilesResource("background", TileType.BACKGROUND);
         addDirectoryTilesResource("foreground", TileType.FOREGROUND);
+        addDirectoryTilesResource("music", TileType.MUSIC);
     }
 
     public void addTile(Path file, TileType type) {
@@ -88,8 +89,7 @@ public class TilesState extends Observable {
     void addTile(URL file, String fileName, TileType type, boolean askUpdate) {
         try {
             if (type == TileType.MUSIC) {
-                File f = new File(file.toURI());
-                addMusic(f, file.getFile());
+                addMusic(file, fileName);
                 return;
             }
             BufferedImage img = ImageIO.read(file);
@@ -106,6 +106,7 @@ public class TilesState extends Observable {
             }
         } catch (Exception e) {
             System.err.println("Can't load this file : " + fileName);
+            e.printStackTrace();
         }
         if (askUpdate)
             askUpdate();
@@ -192,6 +193,16 @@ public class TilesState extends Observable {
     }
 
     public void addMusic(File f, String name) {
+        AudioInputStream inputStream = null;
+        try {
+            inputStream = AudioSystem.getAudioInputStream(f);
+            musics.add(new Music(name, inputStream));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addMusic(URL f, String name) {
         AudioInputStream inputStream = null;
         try {
             inputStream = AudioSystem.getAudioInputStream(f);

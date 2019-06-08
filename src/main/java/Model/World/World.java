@@ -7,6 +7,8 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -57,9 +59,11 @@ public class World extends Observable {
         var backTiles = EditorState.getInstance().tilesState.backgroundTiles;
         var foreTiles = EditorState.getInstance().tilesState.foregroundTiles;
         var npcTiles = EditorState.getInstance().tilesState.npcTile;
+        var musicTiles = EditorState.getInstance().tilesState.musics;
         System.out.println(backTiles);
         System.out.println(foreTiles);
         System.out.println(npcTiles);
+        System.out.println(musicTiles);
         for (Map map: maps) {
             map.backgroundTile = getTileByName(backTiles, map.backgroundTile.getName());
             if (map.backgroundTile == null)
@@ -88,6 +92,15 @@ public class World extends Observable {
                     return false;
                 }
                 npc.setAnimation(anim);
+            }
+            if (map.music != null) {
+                 Optional<Music> tmp = musicTiles.stream().filter(music -> music.getName().equals(map.music.name)).findFirst();
+                 if (tmp.isPresent())
+                     map.music = tmp.get();
+                 else {
+                     System.out.println(map.music + " not found");
+                     return false;
+                 }
             }
         }
         Animation anim = npcTiles.get(player.getAnim().getName());
