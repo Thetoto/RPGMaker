@@ -1,5 +1,6 @@
 package Tools;
 
+import Editor.Editor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -56,8 +57,10 @@ public class FileManager {
                 writer.write(world_json.getBytes());
                 if (extension.equals(".wrld"))
                     PopUpManager.Alert("World saved !");
-                if (extension.equals(".save"))
-                    PopUpManager.Alert("Save state saved !");
+                if (extension.equals(".save")) {
+                    JOptionPane.showMessageDialog(Engine.Engine.getInstance(), "Save state saved !", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
